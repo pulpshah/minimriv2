@@ -20,8 +20,8 @@ export default function Home() {
         setError('');
     }
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();  // Prevent default form submission
+    const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
 
         // Email validation using regular expression
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -61,29 +61,28 @@ export default function Home() {
                         breaking it down
                     </div>
                 </div>
-                <form onSubmit={handleSubmit}>
-                    <div className={`box drawer transition-all lg:h-fit lg:py-[40px] lg:w-[420px] lg:rounded-[40px] flex-col rounded-t-[40px] px-[20px] pb-[20px] pt-[30px] gap-[20px] ${drawerOpen ? 'h-3/4' : 'h-[195px]'}`}>
-                        <div className="auth-text">enter your email</div>
-                        <input
-                            onFocus={handleInputFocus}
-                            onChange={handleEmailChange}
-                            type="email"
-                            value={email}
-                            className="input text-white black-opaque transition-all p-2 focus:outline-none focus:ring-2 focus:ring-white text-xl"
-                        />
-                        <div className={`disclaimer lg:!flex transition-all poppins-regular ${drawerOpen ? '!flex' : '!hidden'}`}>
-                            by entering you agree to receive emails from us.
-                        </div>
-                        <button
-                            type="submit"
-                            className={`!text-black enter lg:!flex box starting-button white-opaque starting-text hover:scale-105 transition-all ${drawerOpen ? '!flex' : '!hidden'}`}
-                        >
-                            enter
-                        </button>
-                        {error && (
-                            <p className="text-red-500 text-sm">{error}</p>
-                        )}
+                <form className={`box drawer transition-all lg:h-fit lg:py-[40px] lg:w-[420px] lg:rounded-[40px] flex-col rounded-t-[40px] px-[20px] pb-[20px] pt-[30px] gap-[20px] ${drawerOpen ? 'h-3/4' : 'h-[195px]'}`}>
+                    <div className="auth-text">enter your email</div>
+                    <input
+                        onFocus={handleInputFocus}
+                        onChange={handleEmailChange}
+                        type="email"
+                        value={email}
+                        className="input text-white black-opaque transition-all p-2 focus:outline-none focus:ring-2 focus:ring-white text-xl"
+                    />
+                    <div className={`disclaimer lg:!flex transition-all poppins-regular ${drawerOpen ? '!flex' : '!hidden'}`}>
+                        by entering you agree to receive emails from us.
                     </div>
+                    <button
+                        type="submit"
+                        onClick={handleSubmit}
+                        className={`!text-black enter lg:!flex box starting-button white-opaque starting-text hover:scale-105 transition-all ${drawerOpen ? '!flex' : '!hidden'}`}
+                    >
+                        enter
+                    </button>
+                    {error && (
+                        <p className="text-red-500 text-sm">{error}</p>
+                    )}
                 </form>
             </div>
         </div>
