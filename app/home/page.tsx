@@ -4,26 +4,26 @@ import Image from 'next/image'
 const HomePage = () => {
   return (
     <div className="screen-container h-full min-h[100svh]">
-        <div className="light absolute hidden z-50 inset-0 h-[80px] w-full"></div>
+        <div className="light absolute z-50 inset-0 h-[80px] w-full"></div>
 
         <div className="mainbody bg-gradient-to-b from-white to-[#bc49bf]">
 
-            <div className="header box flex-col gap-[21px] w-full h-fit px-[20px]">
+            <div className="header box flex-col gap-[21px] w-full h-fit">
               
-              <div className="search w-full h-[81px] box !justify-between flex-row items-center">
+              <div className="search gap-2 w-full h-[81px] box !justify-between flex-row !items-center">
 
-              <div className="inbox">
-                <div className="icon w-[28px] h-[28px]">
-                  <Image src='icons/inbox-icon.svg' alt='Fetch' height={28} width={28}/>
-                </div>
+              <button className='cursor-pointer'>
+                    <Image src='icons/inbox-icon.svg' alt='Fetch' height={28} width={28}/>
+              </button>
+
+              <div className="search-bar flex-shrink-0 justify-between w-[65vw] max-w-[400px] h-[35px] flex flex-row gap-[10px] px-[8px]">
+
+                <Image src='icons/search-icon.svg' alt='Fetch' height={19} width={19}/>
               </div>
 
-              <div className="search-bar min-w-[254px] h-[35px] flex gap-[10px] px-[8px]">1</div>
-              <div className="fetch">
-                <div className="icon w-[28px] h-[28px]">
+              <button className='cursor-pointer'>
                   <Image src='icons/fetch-icon.svg' alt='Fetch' height={28} width={28}/>
-                </div>
-              </div>
+              </button>
               
               </div>
               <div className="scores-topic">
@@ -45,7 +45,7 @@ const HomePage = () => {
 
                   <div className="h-[50px] flex justify-between w-full">
 
-                    <div className="speaker w-fit h-full flex-row items-start justify-start gap-[10px] px-[11px]">
+                    <div className="speaker w-fit h-full flex-row items-start justify-start gap-[10px]">
                     <button>
                         <div className="profile flex items-center justify-center rounded-full">
                           <Image src='icons/profile-icon.svg' alt='Fetch' height={46} width={46}/>

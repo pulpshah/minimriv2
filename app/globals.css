@@ -141,6 +141,7 @@ html, body {
 .light {
   background: linear-gradient(180deg, #E0D6D9 0%, rgba(224, 214, 217, 0.04) 52%);
   filter: blur(50px);
+  pointer-events: none;
 }
 
 .white-opaque {
