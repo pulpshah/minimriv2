@@ -5,13 +5,11 @@ import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { db } from '@/firebaseConfig';
-import { useRouter } from 'next/navigation';
 
 export default function Home() {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
     const [drawerOpen, setDrawerOpen] = useState(false);
-    const router = useRouter();
     const router = useRouter();
 
     const handleInputFocus = () => setDrawerOpen(true);
@@ -63,7 +61,7 @@ export default function Home() {
                         breaking it down
                     </div>
                 </div>
-                <form className={`box drawer transition-all lg:h-fit lg:py-[40px] lg:w-[420px] lg:rounded-[40px] flex-col rounded-t-[40px] px-[20px] pb-[20px] pt-[30px] gap-[20px] ${drawerOpen ? 'h-3/4' : 'h-[195px]'}`}>
+                <form className={`box drawer transition-all lg:h-fit lg:py-[40px] lg:w-[420px] lg:rounded-[40px] flex-col rounded-t-[40px] px-[20px] pb-[20px] pt-[30px] duration-200 gap-[20px] ${drawerOpen ? 'h-3/4' : 'h-[195px]'}`}>
                     <div className="auth-text">enter your email</div>
                     <input
                         onFocus={handleInputFocus}

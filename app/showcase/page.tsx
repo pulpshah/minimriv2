@@ -48,7 +48,7 @@ export default function Home() {
                 rounded-t-[40px] 
                 px-[20px] pb-[45px] 
                 pt-[30px] gap-[20px]">
-                    <div className='rounded-[40px] opacity-80 black-opaque w-full h-full px-[30px] py-7 flex justify-start items-center text-white flex-col'>
+                    <div className='rounded-[40px] black-opaque w-full h-full px-[30px] py-7 flex justify-start items-center text-white flex-col'>
                         <div className="card-text transition-all">
                             {steps[step].title}
                         </div>
