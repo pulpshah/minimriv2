@@ -3,12 +3,14 @@
 import { useState } from 'react';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { db } from '@/firebaseConfig';
 
 export default function Home() {
     const [email, setEmail] = useState('');
-    const [error, setError] = useState('');  // Error state
+    const [error, setError] = useState('');
     const [drawerOpen, setDrawerOpen] = useState(false);
+    const router = useRouter();
 
     const handleInputFocus = () => setDrawerOpen(true);
     const handleInputBlur = () => setDrawerOpen(false);
@@ -35,6 +37,7 @@ export default function Home() {
             });
             console.log("Email saved with ID: ", docRef.id);
             setEmail('');
+            router.push("./showcase");
         } catch (e) {
             setError('Error saving email. Please try again.');
             console.error("Error adding email: ", e);
@@ -65,7 +68,7 @@ export default function Home() {
                         onChange={handleEmailChange}
                         type="email"
                         value={email}
-                        className="input text-white black-opaque transition-all p-2 focus:outline-none focus:ring-2 focus:ring-white text-xl"
+                        className="input text-white black-opaque transition-all p-5 focus:outline-none focus:ring-2 focus:ring-white text-xl"
                     />
                     <div className={`disclaimer lg:!flex transition-all poppins-regular ${drawerOpen ? '!flex' : '!hidden'}`}>
                         by entering you agree to receive emails from us.

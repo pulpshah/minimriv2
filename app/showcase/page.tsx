@@ -65,7 +65,7 @@ export default function Home() {
                         onChange={handleEmailChange}
                         type="email"
                         value={email}
-                        className="input text-white black-opaque transition-all p-2 focus:outline-none focus:ring-2 focus:ring-white text-xl"
+                        className="input text-white black-opaque transition-all p-5 focus:outline-none focus:ring-2 focus:ring-white text-xl"
                     />
                     <div className={`disclaimer lg:!flex transition-all poppins-regular ${drawerOpen ? '!flex' : '!hidden'}`}>
                         by entering you agree to receive emails from us.
