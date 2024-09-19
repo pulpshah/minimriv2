@@ -16,7 +16,7 @@ const HomePage = () => {
                     <Image src='icons/inbox-icon.svg' alt='Fetch' height={28} width={28}/>
               </button>
 
-              <div className="search-bar flex-shrink-0 justify-between w-[65vw] max-w-[400px] h-[35px] flex flex-row gap-[10px] px-[8px] overflow-hidden">
+              <div className="search-bar flex-shrink-0 justify-between w-[65vw] max-w-[400px] h-[35px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white">
                 
                 <div className="flex items-center gap-[10px] justify-between w-full">
                 <Image src='icons/search-icon.svg' alt='Fetch' height={19} width={19}/>
@@ -43,9 +43,10 @@ const HomePage = () => {
 
         </div>
             <div className="transcript text-white fixed bottom-0 h-[125px] w-full rounded-t-[40px]">
-                <div className="tab flex flex-col gap-[10px] py-[6px] w-full items-center">
-                  <div className="bg-[#9c9c9c] w-[48px] h-[5px] rounded-full"></div>
-                </div>
+    
+                <button className="tab flex flex-col gap-[10px] py-[6px] w-full items-center">
+                  <div className="white-opaque opacity-40 w-[48px] h-[5px] rounded-full"></div>
+                </button>
 
                 <div className="meta w-full h-full">
 
