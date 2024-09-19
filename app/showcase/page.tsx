@@ -4,11 +4,13 @@ import { useState } from 'react';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import Image from 'next/image';
 import { db } from '@/firebaseConfig';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');  // Error state
     const [drawerOpen, setDrawerOpen] = useState(false);
+    const router = useRouter();
 
     const handleInputFocus = () => setDrawerOpen(true);
     const handleInputBlur = () => setDrawerOpen(false);
@@ -35,6 +37,7 @@ export default function Home() {
             });
             console.log("Email saved with ID: ", docRef.id);
             setEmail('');
+            router.push("/showcase");
         } catch (e) {
             setError('Error saving email. Please try again.');
             console.error("Error adding email: ", e);
@@ -58,7 +61,7 @@ export default function Home() {
                         breaking it down
                     </div>
                 </div>
-                <div className={`box drawer transition-all lg:h-fit lg:py-[40px] lg:w-[420px] lg:rounded-[40px] flex-col rounded-t-[40px] px-[20px] pb-[20px] pt-[30px] gap-[20px] ${drawerOpen ? 'h-3/4' : 'h-[195px]'}`}>
+                <form className={`box drawer transition-all lg:h-fit lg:py-[40px] lg:w-[420px] lg:rounded-[40px] flex-col rounded-t-[40px] px-[20px] pb-[20px] pt-[30px] gap-[20px] ${drawerOpen ? 'h-3/4' : 'h-[195px]'}`}>
                     <div className="auth-text">enter your email</div>
                     <input
                         onFocus={handleInputFocus}
@@ -80,7 +83,7 @@ export default function Home() {
                     {error && (
                         <p className="text-red-500 text-sm">{error}</p>
                     )}
-                </div>
+                </form>
             </div>
         </div>
     );
