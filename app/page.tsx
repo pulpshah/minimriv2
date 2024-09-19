@@ -23,7 +23,7 @@ export default function Home() {
 
 
   return (
-    <div className="screen-container bg-[url('/bg/startingBg.webp')] bg-cover bg-center overflow-hidden">
+    <div className="screen-container h-screen bg-[url('/bg/startingBg.webp')] bg-cover bg-center overflow-hidden">
       <div className="absolute z-0 inset-0 bg-black opacity-50"></div>
       
       <div className="contained z-10 flex flex-col gap-[20px] px-[6vw]">
