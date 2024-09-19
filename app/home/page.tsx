@@ -4,22 +4,30 @@ import Image from 'next/image'
 const HomePage = () => {
   return (
     <div className="screen-container h-full min-h[100svh]">
-        <div className="light absolute z-0 inset-0 h-[50px] backdrop-blur-[50px] opacity-10"></div>
+        <div className="light absolute z-50 inset-0 h-[80px] w-full"></div>
 
         <div className="mainbody bg-gradient-to-b from-white to-[#bc49bf]">
 
-            <div className="flex-col w-fit h-fit gap-y-[21px] items-center justify-center">
-              <div className='flex-row justify-between items-center text-black'>
-                <button>
-                  <Image src='icons/inbox-icon.svg' alt='Inbox' height={28} width={28}/>
-                </button>
-                <input></input>
-                
-                <button>
-                  <Image src='icons/fetch-icon.svg' alt='Fetch' height={28} width={28}/>
-                </button>
+            <div className="header box flex-col gap-[21px] w-full h-fit px-[20px]">
+              <div className="search w-full h-[81px] box !justify-center flex-row items-center">
+
+              <div className="inbox">
+                <div className="icon w-[28px] h-[28px]">
+                  <Image src='icons/inbox-icon.svg' alt='Fetch' height={28} width={28}/>
+                </div>
               </div>
 
+              <div className="search-bar w-full h-[35px] flex gap-[10px] px-[8px]">1</div>
+              <div className="fetch">
+                <div className="icon w-[28px] h-[28px]">
+                  <Image src='icons/fetch-icon.svg' alt='Fetch' height={28} width={28}/>
+                </div>
+              </div>
+              
+              </div>
+              <div className="scores-topic">
+
+              </div>
             </div>
 
             <div className="feed">
