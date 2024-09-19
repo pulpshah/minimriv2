@@ -19,7 +19,8 @@ export default function Home() {
     } else {
       setError('Incorrect PIN. Please try again.');
     }
-  };
+};
+
 
   return (
     <div className="screen-container bg-[url('/bg/startingBg.webp')] bg-cover bg-center">
