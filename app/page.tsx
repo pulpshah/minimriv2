@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';  // Use `next/navigation` for app d
 import { useState } from 'react';
 export default function Home() {
 
-  const correctPin = "pulpdemo";
+  const correctPin = process.env.NEXT_PUBLIC_CORRECT_PIN;
   const [enteredPin, setEnteredPin] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
