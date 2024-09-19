@@ -20,13 +20,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <body
-      className={`${rockGrotesk.variable} antialiased`}
-      style={{ fontFamily: 'var(--font-rock-grotesk), sans-serif' }}
-    >
-      {children}
-    </body>
-
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, orientation=portrait" />
+        {/* Add any other meta tags you may need */}
+      </head>
+      <body
+        className={`${rockGrotesk.variable} antialiased`}
+        style={{ fontFamily: 'var(--font-rock-grotesk), sans-serif' }}
+      >
+        {children}
+      </body>
     </html>
   );
 }
