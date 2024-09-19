@@ -17,7 +17,7 @@ export default function Home() {
       };
  
   return (
-    <div className="screen-container min-h-screen bg-[url('/bg/startingBg.webp')] bg-cover bg-center">
+    <div className="screen-container h-full min-h-screen bg-[url('/bg/startingBg.webp')] bg-cover bg-center">
       
       <div className="drawer-screen lg:justify-center h-full gap-[12px]">
 
@@ -35,7 +35,7 @@ export default function Home() {
             breaking it down
           </div>
         </div>
-        <div className={`box drawer transition-all lg:h-fit lg:py-[40px] lg:w-[420px] lg:rounded-[40px] flex-col rounded-t-[40px] px-[20px] pb-[20px] pt-[30px] gap-[20px] ${drawerOpen ? 'h-3/4' : 'h-[195px]'}`}>
+        <div className={`box drawer transition-all lg:h-fit lg:py-[40px] lg:w-[420px] lg:rounded-[40px] flex-col rounded-t-[40px] px-[20px] pb-[20px] pt-[30px] gap-[20px] ${drawerOpen ? 'h-[75%]' : 'h-[195px]'}`}>
 
             <div className="auth-text">
                 enter your email
