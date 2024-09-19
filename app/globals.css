@@ -186,3 +186,8 @@ html, body {
   height: 44px;
   font-family: "Poppins";
 }
+
+.poppins {
+  font-family: "Poppins";
+  line-height: 22px;
+}
