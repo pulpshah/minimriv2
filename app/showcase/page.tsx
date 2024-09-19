@@ -7,42 +7,23 @@ import { db } from '@/firebaseConfig';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
-    const [email, setEmail] = useState('');
-    const [error, setError] = useState('');  // Error state
-    const [drawerOpen, setDrawerOpen] = useState(false);
+    const [step, setStep] = useState(0);
     const router = useRouter();
 
-    const handleInputFocus = () => setDrawerOpen(true);
-    const handleInputBlur = () => setDrawerOpen(false);
-
-    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(event.target.value);
-        setError('');
+    const handleNext = () => {
+        if (step < 2) {
+            setStep(step + 1);
+        }
+        else {
+            router.push("/home");
+        }
     }
 
-    const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-
-        // Email validation using regular expression
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            setError('Please enter a valid email address');
-            return;
-        }
-
-        try {
-            const docRef = await addDoc(collection(db, "emails"), {
-                email: email,
-                timestamp: Timestamp.now()
-            });
-            console.log("Email saved with ID: ", docRef.id);
-            setEmail('');
-            router.push("/showcase");
-        } catch (e) {
-            setError('Error saving email. Please try again.');
-            console.error("Error adding email: ", e);
-        }
-    };
+    const steps = [
+        {title: "Scoring Debate", content: "P. DIDDLER"},
+        {title: "References", content: "JATT"},
+        {title: "Analytics", content: "GYAAAAT"},
+    ];
 
     return (
         <div className="screen-container h-full min-h[100svh] bg-[url('/bg/startingBg.webp')] bg-cover bg-center">
@@ -61,29 +42,28 @@ export default function Home() {
                         breaking it down
                     </div>
                 </div>
-                <form className={`box drawer transition-all lg:h-fit lg:py-[40px] lg:w-[420px] lg:rounded-[40px] flex-col rounded-t-[40px] px-[20px] pb-[20px] pt-[30px] gap-[20px] ${drawerOpen ? 'h-3/4' : 'h-[195px]'}`}>
-                    <div className="auth-text">enter your email</div>
-                    <input
-                        onFocus={handleInputFocus}
-                        onChange={handleEmailChange}
-                        type="email"
-                        value={email}
-                        className="input text-white black-opaque transition-all p-2 focus:outline-none focus:ring-2 focus:ring-white text-xl"
-                    />
-                    <div className={`disclaimer lg:!flex transition-all poppins-regular ${drawerOpen ? '!flex' : '!hidden'}`}>
-                        by entering you agree to receive emails from us.
+                <div className="box 
+                drawer transition-all
+                lg:p-[30px] lg:w-[830px] h-3/4 lg:h-[643px] lg:rounded-[40px] flex-col 
+                rounded-t-[40px] 
+                px-[20px] pb-[45px] 
+                pt-[30px] gap-[20px]">
+                    <div className='rounded-[40px] opacity-80 black-opaque w-full h-full px-[30px] py-7 flex justify-start items-center text-white flex-col'>
+                        <div className="card-text transition-all">
+                            {steps[step].title}
+                        </div>
+                        <div className="content transition-all h-full w-full">
+                            {steps[step].content}
+                        </div>
                     </div>
                     <button
-                        type="submit"
-                        onClick={handleSubmit}
-                        className={`!text-black enter lg:!flex box starting-button white-opaque starting-text hover:scale-105 transition-all ${drawerOpen ? '!flex' : '!hidden'}`}
+                    onClick={handleNext}
+                    type="submit"
+                    className="enter box starting-button !text-black white-opaque starting-text hover:scale-105 transition-all"
                     >
-                        enter
+                        {step < 2 ? 'next' : 'finish'}
                     </button>
-                    {error && (
-                        <p className="text-red-500 text-sm">{error}</p>
-                    )}
-                </form>
+                </div>
             </div>
         </div>
     );

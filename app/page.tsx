@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <div className="screen-container h-full min-h[100svh] bg-[url('/bg/startingBg.webp')] bg-cover bg-center">
-      <div className="overlay absolute z-0 inset-0 bg-black bg-opacity-50 backdrop-blur-[50px] opacity-100"></div>
+      <div className="overlay absolute z-0 inset-0 bg-black bg-opacity-20 backdrop-blur-[50px] opacity-100"></div>
       
       <div className="contained z-10 flex flex-col gap-[20px] px-[6vw]">
         
@@ -70,9 +70,7 @@ export default function Home() {
                 <p className="text-red-500 text-sm">{error}</p>  // Error message
               )}
         </form>
-
         </div>
-        
       </div>
     </div>
   );
