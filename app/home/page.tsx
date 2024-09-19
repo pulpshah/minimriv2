@@ -16,11 +16,13 @@ const HomePage = () => {
                     <Image src='icons/inbox-icon.svg' alt='Fetch' height={28} width={28}/>
               </button>
 
-              <div className="search-bar flex-shrink-0 justify-between w-[65vw] max-w-[400px] h-[35px] flex flex-row gap-[10px] px-[8px]">
-
-                <div className="flex items-center gap-[10px]">
+              <div className="search-bar flex-shrink-0 justify-between w-[65vw] max-w-[400px] h-[35px] flex flex-row gap-[10px] px-[8px] overflow-hidden">
+                
+                <div className="flex items-center gap-[10px] justify-between w-full">
                 <Image src='icons/search-icon.svg' alt='Fetch' height={19} width={19}/>
-                <div className="poppins text-white">search</div>
+                
+                <input placeholder= "search" type="text" className="poppins bg-transparent  outline-none justify-between w-full text-white bg-none"/>
+
                 </div>
                 
               </div>
