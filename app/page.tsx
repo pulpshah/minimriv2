@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from 'next/navigation';  // Use `next/navigation` for app directory
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 export default function Home() {
 
@@ -15,7 +15,7 @@ export default function Home() {
     e.preventDefault();
     
     if (enteredPin === correctPin) {
-      router.push("/auth"); // Redirect to a restricted page
+      router.push("/auth");
     } else {
       setError('Incorrect PIN. Please try again.');
     }
@@ -56,7 +56,6 @@ export default function Home() {
           value={enteredPin}
           onChange={(e) => setEnteredPin(e.target.value)}
           className="input white-opaque transition-all p-2 focus:outline-none focus:ring-2 focus:ring-white text-xl">
-
           </input>
 
 

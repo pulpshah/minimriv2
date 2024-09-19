@@ -3,13 +3,15 @@
 import { useState } from 'react';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { db } from '@/firebaseConfig';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
     const [email, setEmail] = useState('');
-    const [error, setError] = useState('');  // Error state
+    const [error, setError] = useState('');
     const [drawerOpen, setDrawerOpen] = useState(false);
+    const router = useRouter();
     const router = useRouter();
 
     const handleInputFocus = () => setDrawerOpen(true);
@@ -68,7 +70,7 @@ export default function Home() {
                         onChange={handleEmailChange}
                         type="email"
                         value={email}
-                        className="input text-white black-opaque transition-all p-2 focus:outline-none focus:ring-2 focus:ring-white text-xl"
+                        className="input text-white black-opaque transition-all p-5 focus:outline-none focus:ring-2 focus:ring-white text-xl"
                     />
                     <div className={`disclaimer lg:!flex transition-all poppins-regular ${drawerOpen ? '!flex' : '!hidden'}`}>
                         by entering you agree to receive emails from us.
