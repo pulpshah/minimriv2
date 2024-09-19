@@ -43,7 +43,7 @@ export default function Home() {
 
             <input 
             onFocus={handleInputFocus}
-            type="password"
+            type="email"
             className="input text-white black-opaque transition-all p-2 focus:outline-none focus:ring-2 focus:ring-white text-xl">
 
             </input>
