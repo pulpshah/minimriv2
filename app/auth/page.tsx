@@ -17,7 +17,7 @@ export default function Home() {
       };
  
   return (
-    <div className="screen-container bg-[url('/bg/startingBg.webp')] bg-cover bg-center overflow-hidden">
+    <div className="screen-container bg-[url('/bg/startingBg.webp')] bg-cover bg-center overflow-hidden overflow-y-hidden">
       
       <div className="drawer-screen lg:justify-center h-full gap-[12px]">
 
