@@ -12,22 +12,26 @@ const HomePage = () => {
               
               <div className="search gap-2 w-full h-[81px] box !justify-between flex-row !items-center">
 
-              <button className='cursor-pointer'>
+              <button className='cursor-pointer flex-shrink-0 '>
                     <Image src='icons/inbox-icon.svg' alt='Fetch' height={28} width={28}/>
               </button>
 
-              <div className="search-bar flex-shrink-0 justify-between w-[65vw] max-w-[400px] h-[35px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white">
+              <div className="search-bar transition-all flex-shrink-0 justify-between w-[65vw] max-w-[400px] h-[35px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full">
                 
                 <div className="flex items-center gap-[10px] justify-between w-full">
-                <Image src='icons/search-icon.svg' alt='Fetch' height={19} width={19}/>
                 
-                <input placeholder= "search" type="text" className="poppins bg-transparent  outline-none justify-between w-full text-white bg-none"/>
+                <button className='w-[19px] h-[19px] flex-shrink-0'>
+
+                <Image className='cursor-pointer' src='icons/search-icon.svg' alt='Fetch' height={19} width={19}/>
+                </button>
+                
+                <input placeholder= "search" type="text" className="placeholder-white transition-all poppins bg-transparent  outline-none justify-between w-full text-white bg-none"/>
 
                 </div>
                 
               </div>
 
-              <button className='cursor-pointer'>
+              <button className='cursor-pointer flex-shrink-0 '>
                   <Image src='icons/fetch-icon.svg' alt='Fetch' height={28} width={28}/>
               </button>
               
@@ -42,26 +46,26 @@ const HomePage = () => {
             </div>
 
         </div>
-            <div className="transcript text-white fixed bottom-0 h-[125px] w-full rounded-t-[40px]">
+            <div className="transcript transition-all text-white fixed bottom-0 h-[125px] w-full rounded-t-[40px]">
     
-                <button className="tab flex flex-col gap-[10px] py-[6px] w-full items-center">
-                  <div className="white-opaque opacity-40 w-[48px] h-[5px] rounded-full"></div>
+                <button className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center">
+                  <div className="white-opaque transition-all opacity-40 w-[48px] h-[5px] rounded-full"></div>
                 </button>
 
-                <div className="meta w-full h-full">
+                <div className="meta transition-all w-full h-full">
 
                   <div className="h-[50px] flex justify-between w-full">
 
-                    <div className="speaker w-fit h-full flex-row items-start justify-start gap-[10px]">
+                    <div className="speaker w-fit transition-all h-full flex-row items-start justify-start gap-[10px]">
                     <button>
-                        <div className="profile flex items-center justify-center rounded-full">
+                        <div className="profile flex transition-all items-center justify-center rounded-full">
                           <Image src='icons/profile-icon.svg' alt='Fetch' height={46} width={46}/>
                         </div>
                     </button>
 
                     </div>
                     <button>
-                    <div className="play text-white flex-shrink-0">
+                    <div className="play text-white transition-all flex-shrink-0">
                       <Image src='icons/play-icon.svg' alt='play' height={50} width={50}/>
                     </div>
                     </button>
