@@ -11,7 +11,7 @@ export default function Home() {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     if (enteredPin === correctPin) {
