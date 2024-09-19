@@ -42,12 +42,13 @@ export default function Home() {
             </div>
 
             <input 
+            onFocus={handleInputFocus}
             type="password"
             className="input text-white black-opaque transition-all p-2 focus:outline-none focus:ring-2 focus:ring-white text-xl">
 
             </input>
 
-            <div className={`disclaimer poppins-regular ${drawerOpen ? '!flex' : '!hidden'}`}>
+            <div className={`disclaimer lg:!flex transition-all poppins-regular ${drawerOpen ? '!flex' : '!hidden'}`}>
                 by entering you agree to recieve emails from us.
             </div>
             <button
