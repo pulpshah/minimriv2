@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';  // Use `next/navigation` for app d
 import { useState } from 'react';
 export default function Home() {
 
-    const [drawerOpen, setDrawerOpen] = useState(true);
+    const [drawerOpen, setDrawerOpen] = useState(false);
 
     const handleInputFocus = () => {
         setDrawerOpen(true);
