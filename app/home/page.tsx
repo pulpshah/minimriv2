@@ -1,22 +1,39 @@
-"use client"
+'use client'
 
 import React, {useState} from 'react'
 import Image from 'next/image'
 import FeedItem from '@/components/FeedItem'
-
 import JFile from "@/public/data/dummydata.json";
 
 const HomePage = () => {
+  const [isTranscriptOpen, setTranscriptOpen] = useState(false);
   const [currentTurn, setCurrentTurn] = useState(0);
+
   const turnsData = JFile.analysis;
+  const currentData = turnsData[currentTurn];
+
+  const toggleTranscript = () => {
+    setTranscriptOpen(!isTranscriptOpen);
+  };
   
-  const handlePlayClick = () => {
+  const handleNextClick = () => {
     setCurrentTurn((prevTurn) => {
       return prevTurn < turnsData.length - 1 ? prevTurn + 1 : 0;
     });
   };
 
-  const currentData = turnsData[currentTurn];
+  const handleBackClick = () => {
+    setCurrentTurn((prevTurn) => {
+      return prevTurn > 0 ? prevTurn - 1 : turnsData.length - 1;
+    });
+  };
+
+  const formatTalkTime = (seconds: number) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-[#bc49bf]">
@@ -82,70 +99,65 @@ const HomePage = () => {
                   </div>
               </div>
             </div>
-
         </div>
 
-            <div className="transcript z-40 transition-all text-white fixed bottom-0 h-[125px] w-full rounded-t-[40px]">
+        <div className={`transcript z-40 transition-all text-white fixed bottom-0 ${isTranscriptOpen ? 'h-[50vh]' : 'h-[125px]'} w-full rounded-t-[40px]`}>
     
-                <button className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center">
-                  <div className="white-opaque transition-all opacity-40 w-[48px] h-[5px] rounded-full"></div>
-                </button>
+            <button className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center" onClick={toggleTranscript}>
+            <div className="white-opaque transition-all opacity-40 w-[48px] h-[5px] rounded-full"></div>
+          </button>
 
-                <div className="meta transition-all w-full h-full">
-
-                  <div className="h-[50px] flex justify-between w-full">
-
-                    <div className="speaker flex w-fit transition-all h-full flex-row items-start justify-start gap-[10px]">
-                    <button>
-                        <div className="profile flex transition-all items-center justify-center rounded-full">
-
-                          <Image src='icons/profile-icon.svg' alt='Fetch' height={46} width={46}/>
-                        </div>
-                    </button>
-                    <div className="name-stats w-fit h-fit flex flex-col justify-start text-black text-[1.125rem]">
-                          <div className="name text !text-left">
-                            Kamala Harris
-                          </div>
-                          <div className="stats text flex h-fit w-fit gap-[5px] text[1rem] poppins">
-                            <div className="time-turn text flex flex-row gap-[4px]">
-                              <div className="time text !text-left">10:42</div>
-                              <div className="text !text-left">•</div>
-                              <div className="turn text !text-left">Turn 5</div>
-                            </div>
-                            <div className="">,</div>
-                            <div className="sentiment text !text-left">
-                              Upset
-                            </div>
-                          </div>
-                        </div>
-
+        <div className="meta transition-all w-full h-full">
+          <div className="h-[50px] flex justify-between w-full">
+            <div className="speaker flex w-fit transition-all h-full flex-row items-start justify-start gap-[10px]">
+              <button>
+                <div className="profile flex transition-all items-center justify-center rounded-full">
+                  <Image src="icons/profile-icon.svg" alt="Fetch" height={46} width={46} />
+                </div>
+              </button>
+              <div className="name-stats w-fit h-fit flex flex-col justify-start text-black text-[1.125rem]">
+                <div className="name text !text-left">
+                  {currentData.speaker_name || "Unknown Speaker"}
+                </div>
+                <div className="stats text flex h-fit w-fit gap-[5px] text[1rem] poppins">
+                  <div className="time-turn text flex flex-row gap-[4px]">
+                    <div className="time text !text-left">
+                      {formatTalkTime(currentData.talk_time)} {/* Converted talk time */}
                     </div>
-                    <div className="flex gap-[16px] items-center justify-center">
-                    <button>
-                    <div className="back hidden md:flex text-white transition-all flex-shrink-0">
-                      <Image src='icons/back-icon.svg' alt='back' height={45} width={40}/>
-                    </div>
-                    </button>
-                    <button>
-                    <div className="play text-white transition-all flex-shrink-0">
-                      <Image src='icons/play-icon.svg' alt='play' height={50} width={50}/>
-                    </div>
-                    </button>
-
-                    <button>
-                    <div className="next hidden md:flex text-white transition-all flex-shrink-0">
-                      <Image src='icons/skip-icon.svg' alt='next' height={45} width={40}/>
-                    </div>
-                    </button>
-
+                    <div className="text !text-left">•</div>
+                    <div className="turn text !text-left">
+                      Turn {currentData.turn_number}
                     </div>
                   </div>
-
+                  <div className="">,</div>
+                  <div className="sentiment text !text-left">
+                    {currentData.turn_category}
+                  </div>
                 </div>
+              </div>
             </div>
+            <div className="flex gap-[16px] items-center justify-center">
+              <button onClick={handleBackClick}>
+                <div className="back hidden md:flex text-white transition-all flex-shrink-0">
+                  <Image src="icons/back-icon.svg" alt="back" height={45} width={40} />
+                </div>
+              </button>
+              <button>
+                <div className="play text-white transition-all flex-shrink-0">
+                  <Image src="icons/play-icon.svg" alt="play" height={50} width={50} />
+                </div>
+              </button>
+              <button onClick={handleNextClick}>
+                <div className="next hidden md:flex text-white transition-all flex-shrink-0">
+                  <Image src="icons/skip-icon.svg" alt="next" height={45} width={40} />
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default HomePage
+export default HomePage;
