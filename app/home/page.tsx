@@ -1,8 +1,18 @@
+'use client'
 import React from 'react'
 import Image from 'next/image'
 import FeedItem
  from '@/components/feedItem'
+import { useState } from 'react'
+
 const HomePage = () => {
+
+  const [isTranscriptOpen, setTranscriptOpen] = useState(false);
+
+  const toggleTranscript = () => {
+    setTranscriptOpen(!isTranscriptOpen);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-[#bc49bf]">
         
@@ -70,11 +80,11 @@ const HomePage = () => {
 
         </div>
 
-            <div className="transcript z-40 transition-all text-white fixed bottom-0 h-[125px] w-full rounded-t-[40px]">
+        <div className={`transcript z-40 transition-all text-white fixed bottom-0 ${isTranscriptOpen ? 'h-[50vh]' : 'h-[125px]'} w-full rounded-t-[40px]`}>
     
-                <button className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center">
-                  <div className="white-opaque transition-all opacity-40 w-[48px] h-[5px] rounded-full"></div>
-                </button>
+            <button className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center" onClick={toggleTranscript}>
+            <div className="white-opaque transition-all opacity-40 w-[48px] h-[5px] rounded-full"></div>
+          </button>
 
                 <div className="meta transition-all w-full h-full">
 
