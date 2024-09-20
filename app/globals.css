@@ -64,15 +64,11 @@ html, body {
 
 .mainbody {
   display: flex;
-  padding-top: 10px;
-  padding-bottom: 0;
   padding-inline: 20px;
   align-items: center;
   justify-content: start;
-  width: 100%;
   flex-direction: column;
-  gap: 24px;
-  flex-shrink: 0;
+
 }
 
 .drawer-screen {
@@ -136,15 +132,12 @@ html, body {
   color: white;
 }
 
-
 .starting-text {
   font-size: 1.25rem;
   text-align: center;
 }
 
 .light {
-  background: linear-gradient(180deg, #E0D6D9 0%, rgba(224, 214, 217, 0.04) 72%);
-  filter: blur(50px);
   pointer-events: none;
 }
 
@@ -155,13 +148,6 @@ html, body {
 
 .blurry {
   filter: blur(50px);
-}
-
-.feed {
-  width: 100%;
-  height: fit-content;
-  gap: 24px;
-
 }
 
 /* fa */
