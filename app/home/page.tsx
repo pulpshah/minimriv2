@@ -3,12 +3,11 @@ import Image from 'next/image'
 
 const HomePage = () => {
   return (
-    <div className="screen-container h-full min-h[100svh]">
+    <div className="screen-container bg-gradient-to-b from-white to-[#bc49bf] h-fit min-h[100svh] !overflow-y-auto">
         <div className="light absolute z-50 inset-0 h-[80px] w-full"></div>
 
-        <div className="mainbody bg-gradient-to-b from-white to-[#bc49bf]">
-
-            <div className="header box flex-col gap-[21px] w-full h-fit">
+        <div className="mainbody min-h-screen bg-fixed inset-0">
+            <div className="header top-0 px-[20px] fixed box flex-col gap-[21px] w-full h-fit">
               
               <div className="search gap-2 w-full h-[81px] box !justify-between flex-row !items-center">
 
@@ -16,7 +15,7 @@ const HomePage = () => {
                     <Image src='icons/inbox-icon.svg' alt='Fetch' height={28} width={28}/>
               </button>
 
-              <div className="search-bar transition-all flex-shrink-0 justify-between w-[65vw] max-w-[400px] h-[35px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full">
+              <div className="search-bar transition-all z-50 flex-shrink-0 justify-between w-[65vw] max-w-[400px] h-[35px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full">
                 
                 <div className="flex items-center gap-[10px] justify-between w-full">
                 
@@ -41,17 +40,91 @@ const HomePage = () => {
               </div>
             </div>
 
-            <div className="feed">
-                <div className="graph box w-full max-h-[288px] h-fit gap-[24px]">
-                    <div className="box gap-[10px] flex-col p-[25px] justify-start white-opaque rounded-[40px]">
-                      <div className="title-turn-play flex flex-row justify-between items-center h-[22px] w-full">
-                        <div className="feed-text w-fit h-fit flex flex-row justify-start gap-[10px]">
+            <div className="feed grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+                <div className="graph box w-full h-fit gap-[24px]">
+                    <div className="box gap-[10px] flex-col p-[25px] !justify-start white-opaque rounded-[40px] min-h-fit h-[288px]">
+                      <div className="title-turn-play flex flex-row justify-between items-center h-fit w-full">
+
+                        <div className="feed-text w-fit h-fit flex flex-row items-center justify-start gap-[10px]">
                           graph title
+                        </div>
+
+                        <div className="turn-play w-fit h-fit flex flex-row justify-end items-center gap-[5px]">
+                          <div className="turn flex w-fit black-opaque h-fit px-[5px] py-[1px] items-center rounded-full box text-white">
+                              turn 1
+                          </div>
+                          <button>
+                            <Image className='cursor-pointer' src='icons/feed-play.svg' alt='Fetch' height={42} width={42}/>
+                          </button>
                         </div>
 
                       </div>
                     </div>
                 </div>
+                <div className="graph box w-full h-fit gap-[24px]">
+                    <div className="box gap-[10px] flex-col p-[25px] !justify-start white-opaque rounded-[40px] min-h-fit h-[288px]">
+                      <div className="title-turn-play flex flex-row justify-between items-center h-fit w-full">
+
+                        <div className="feed-text w-fit h-fit flex flex-row items-center justify-start gap-[10px]">
+                          graph title
+                        </div>
+
+                        <div className="turn-play w-fit h-fit flex flex-row justify-end items-center gap-[5px]">
+                          <div className="turn flex w-fit black-opaque h-fit px-[5px] py-[1px] items-center rounded-full box text-white">
+                              turn 1
+                          </div>
+                          <button>
+                            <Image className='cursor-pointer' src='icons/feed-play.svg' alt='Fetch' height={42} width={42}/>
+                          </button>
+                        </div>
+
+                      </div>
+                    </div>
+                </div>
+                <div className="graph box w-full h-fit gap-[24px]">
+                    <div className="box gap-[10px] flex-col p-[25px] !justify-start white-opaque rounded-[40px] min-h-fit h-[288px]">
+                      <div className="title-turn-play flex flex-row justify-between items-center h-fit w-full">
+
+                        <div className="feed-text w-fit h-fit flex flex-row items-center justify-start gap-[10px]">
+                          graph title
+                        </div>
+
+                        <div className="turn-play w-fit h-fit flex flex-row justify-end items-center gap-[5px]">
+                          <div className="turn flex w-fit black-opaque h-fit px-[5px] py-[1px] items-center rounded-full box text-white">
+                              turn 1
+                          </div>
+                          <button>
+                            <Image className='cursor-pointer' src='icons/feed-play.svg' alt='Fetch' height={42} width={42}/>
+                          </button>
+                        </div>
+
+                      </div>
+                    </div>
+                </div>
+
+                <div className="graph box w-full h-fit gap-[24px]">
+                    <div className="box gap-[10px] flex-col p-[25px] !justify-start white-opaque rounded-[40px] min-h-fit h-[288px]">
+                      <div className="title-turn-play flex flex-row justify-between items-center h-fit w-full">
+
+                        <div className="feed-text w-fit h-fit flex flex-row items-center justify-start gap-[10px]">
+                          graph title
+                        </div>
+
+                        <div className="turn-play w-fit h-fit flex flex-row justify-end items-center gap-[5px]">
+                          <div className="turn flex w-fit black-opaque h-fit px-[5px] py-[1px] items-center rounded-full box text-white">
+                              turn 1
+                          </div>
+                          <button>
+                            <Image className='cursor-pointer' src='icons/feed-play.svg' alt='Fetch' height={42} width={42}/>
+                          </button>
+                        </div>
+
+                      </div>
+                    </div>
+                </div>
+
+
             </div>
 
         </div>
