@@ -80,26 +80,29 @@ const HomePage = () => {
 
                   <div className="h-[50px] flex justify-between w-full">
 
-                    <div className="speaker w-fit transition-all h-full flex-row items-start justify-start gap-[10px] flex">
+                    <div className="speaker flex w-fit transition-all h-full flex-row items-start justify-start gap-[10px]">
                     <button>
                         <div className="profile flex transition-all items-center justify-center rounded-full">
+
                           <Image src='icons/profile-icon.svg' alt='Fetch' height={46} width={46}/>
                         </div>
-                        <div className="name-stats w-fit h-fit flex flex-col justify-start">
-                          Kamala Harris
-                          <div className="stats flex h-fit w-fit gap-[5px] text[1rem] poppins">
-                            <div className="time-turn flex flex-row">
-                              <div className="time">10:42</div>
-                              <div className="">•</div>
-                              <div className="turn">Turn 5</div>
+                    </button>
+                    <div className="name-stats w-fit h-fit flex flex-col justify-start text-black text-[1.125rem]">
+                          <div className="name text !text-left">
+                            Kamala Harris
+                          </div>
+                          <div className="stats text flex h-fit w-fit gap-[5px] text[1rem] poppins">
+                            <div className="time-turn text flex flex-row gap-[4px]">
+                              <div className="time text !text-left">10:42</div>
+                              <div className="text !text-left">•</div>
+                              <div className="turn text !text-left">Turn 5</div>
                             </div>
                             <div className="">,</div>
-                            <div className="sentiment">
-                              upset
+                            <div className="sentiment text !text-left">
+                              Upset
                             </div>
                           </div>
                         </div>
-                    </button>
 
                     </div>
                     <button>
