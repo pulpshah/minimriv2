@@ -74,16 +74,15 @@ const HomePage = () => {
         <div className="overlay bg-white bg-opacity-20 absolute z-0 inset-0 backdrop-blur-[200px] opacity-100"></div>
         <div className={`mainbody h-screen w-full pt-[125px] pb-[150px] bg-none overflow-y-auto scroll-smooth ${isTranscriptOpen ? 'pb-[54vh]' : 'pb-[150px]'}`}>
 
-            <div className="feed w-full z-10 h-full items-center justify-center flex">
-              <div className="grid grid-cols-1 gap-[20px]">
-                  <div className="w-full white-opaque rounded-[40px] p-[25px] h-full">
-                      asdas
-                  </div>
-                  <div className="w-full white-opaque rounded-[40px] p-[25px] h-full">
-                      asdas
-                  </div>
-              </div>
+          <div className="feed w-full h-fit z-40 items-center justify-center flex">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 w-full h-fit gap-[24px]">
+              <FeedItem></FeedItem>
+              <FeedItem></FeedItem>
+              <FeedItem></FeedItem>
+              {/* Add more FeedItems */}
             </div>
+          </div>
+
             <div className="header top-0 px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit]">
               
               <div className="search z-20 gap-2 w-full h-[81px] box !justify-between flex-row !items-center">
@@ -130,7 +129,7 @@ const HomePage = () => {
         </div>
 
         <div
-          className={`transcript z-40 transition-all text-white fixed bottom-0 ${isTranscriptOpen ? 'h-[50vh]' : 'h-[125px]'} w-full rounded-t-[40px]`}
+          className={`transcript z-40 transition-all text-black fixed bottom-0 ${isTranscriptOpen ? 'h-[50vh]' : 'h-[125px]'} w-full rounded-t-[40px]`}
           onClick={toggleTranscript}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
@@ -151,7 +150,7 @@ const HomePage = () => {
                           <Image src='icons/profile-icon.svg' alt='Profile' height={46} width={46}/>
                         </div>
                     </button>
-                    <div className="name-stats w-fit h-fit flex flex-col justify-start text-white text-[1.125rem]">
+                    <div className="name-stats w-fit h-fit flex flex-col justify-start text-black text-[1.125rem]">
                           <div className="name text !text-left">
                             {currentData.speaker_name}
                           </div>
@@ -221,13 +220,13 @@ const HomePage = () => {
 
                   <div className="lines flex box w-full h-full flex-col gap-[15px] px-[10px] py-[10px]">
                     <div className="turn1 !text-right flex h-fit text text-[1.25rem] w-full justify-end">
-                      <div className="line max-w-[290px]">
+                      <div className="line max-w-[290px] text-white">
                         Remember this, she is Biden. She is trying to get away from Biden.
 
                       </div>
                     </div>
 
-                    <div className="turn2 !text-left flex h-fit text text-[1.25rem] text-gray-400 w-full justify-start">
+                    <div className="turn2 !text-left flex h-fit text text-[1.25rem] text-gray-300 w-full justify-start">
                       <div className="line max-w-[290px]">
                         Remember this, she is Biden. She is trying to get away from Biden.
 
