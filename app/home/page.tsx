@@ -54,8 +54,17 @@ const HomePage = () => {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     const remainingSeconds = Math.floor(seconds % 60);
-    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+  
+    if (hours > 0) {
+      return `${hours}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+    } else if (minutes > 0) {
+      return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+    } else {
+      return `0:${remainingSeconds.toString().padStart(2, '0')}`;
+    }
   };
+  
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-[#bc49bf]">
@@ -132,7 +141,7 @@ const HomePage = () => {
         >
     
             <button className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center" onClick={toggleTranscript}>
-            <div className="white-opaque transition-all opacity-40 w-[48px] h-[5px] rounded-full"></div>
+            <div className="black-opaque transition-all !opacity-100 w-[48px] h-[5px] rounded-full"></div>
           </button>
 
                 <div className="meta transition-all w-full h-full">
@@ -187,7 +196,7 @@ const HomePage = () => {
 
                 </div>
                 <div
-                  className={`transcript-box flex flex-col p-[25px] gap-[10px] w-full h-full black-opaque rounded-[40px] transitions-all duration-200 ${isTranscriptOpen ? 'flex' : 'hidden'}`}
+                  className={`transcript-box flex flex-col p-[25px] gap-[10px] w-full h-full black-opaque !shadow-none rounded-[40px] transitions-all duration-200 ${isTranscriptOpen ? 'flex' : 'hidden'}`}
                 >
                   <div className="points-phase w-full h-fit flex items-center justify-between flex-row px-[20px]">
 
