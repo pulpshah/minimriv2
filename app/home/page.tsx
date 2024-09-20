@@ -187,7 +187,7 @@ const HomePage = () => {
 
                     <button onClick={handleNextClick}>
                     <div className="next hidden md:flex text-white transition-all flex-shrink-0">
-                      <Image src='icons/skip-icon.svg' alt='next' height={45} width={40}/>
+                      <Image className='co' src='icons/skip-icon.svg' alt='next' height={45} width={40}/>
                     </div>
                     </button>
 
