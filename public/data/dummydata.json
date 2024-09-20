@@ -2,20 +2,26 @@
   "analysis": [
     {
       "turn_number": 7,
-      "speaker_name": "speaker1",
+      "speaker_name": "Donald Trump",
       "turn_category": "question turn",
       "timestamp_start": 96.84,
       "timestamp_end": 119.64,
       "talk_time": 22.8,
       "analysis": {
-        "claims": [],
+        "claims": [
+          {
+            "text": "diddy"
+          }
+        ],
         "knowledge_types": [],
         "references": []
-      }
+      },
+      "cumulative_score": 200,
+      "score": 100
     },
     {
       "turn_number": 8,
-      "speaker_name": "speaker2",
+      "speaker_name": "Kamala Harris",
       "turn_category": "response turn",
       "timestamp_start": 120.42,
       "timestamp_end": 238.19,
@@ -381,7 +387,9 @@
         ],
         "knowledge_types": ["Declarative"],
         "references": []
-      }
+      },
+      "cumulative_score": 200,
+      "score": 50
     }
   ]
 }

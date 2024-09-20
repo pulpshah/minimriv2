@@ -2,17 +2,22 @@
 import React from 'react'
 import JFile from "@/public/data/dummydata.json";
 import Image from 'next/image'
-import FeedItem from '@/components/FeedItem'
+import FeedItem
+ from '@/components/FeedItem'
 import { useState } from 'react'
 
 const HomePage = () => {
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
   const [currentTurn, setCurrentTurn] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const turnsData = JFile.analysis;
   const currentData = turnsData[currentTurn];
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
+  const nextData = turnsData[currentTurn + 1] || null;
+  const currentTurnText = currentData.analysis.claims.length > 0 ? currentData.analysis.claims[0].text : "No text available";
+  const nextTurnText = nextData && nextData.analysis.claims.length > 0 ? nextData.analysis.claims[0].text : "No next turn text available";
+
 
   const toggleTranscript = () => {
     setTranscriptOpen(!isTranscriptOpen);
@@ -31,26 +36,36 @@ const HomePage = () => {
     }
   };
 
-  const handleNextClick = (e) => {
+  const handleNextClick = (e: { stopPropagation: () => void; }) => {
     e.stopPropagation(); // Prevent the event from propagating
     setCurrentTurn((prevTurn) => {
       return prevTurn < turnsData.length - 1 ? prevTurn + 1 : 0;
     });
   };
   
-  const handleBackClick = (e) => {
+  const handleBackClick = (e: { stopPropagation: () => void; }) => {
     e.stopPropagation(); // Prevent the event from propagating
     setCurrentTurn((prevTurn) => {
       return prevTurn > 0 ? prevTurn - 1 : turnsData.length - 1;
     });
   };
+  
 
   const formatTalkTime = (seconds: number) => {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     const remainingSeconds = Math.floor(seconds % 60);
-    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+  
+    if (hours > 0) {
+      return `${hours}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+    } else if (minutes > 0) {
+      return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+    } else {
+      return `0:${remainingSeconds.toString().padStart(2, '0')}`;
+    }
   };
+  
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-[#bc49bf]">
@@ -58,7 +73,7 @@ const HomePage = () => {
         <div className="light bg-gradient-to-b from-[#ffffff60] to-[#bb49bf00] absolute z-50 inset-0 h-[80px] w-full"></div>
 
 
-        <div className="mainbody h-screen w-full pt-[125px] pb-[150px] bg-none overflow-y-auto scroll-smooth">
+        <div className={`mainbody h-screen w-full pt-[125px] pb-[150px] bg-none overflow-y-auto scroll-smooth ${isTranscriptOpen ? 'pb-[54vh]' : 'pb-[150px]'}`}>
 
             <div className="feed w-full h-fit items-center justify-center flex">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 w-full h-fit gap-[24px]">
@@ -126,7 +141,7 @@ const HomePage = () => {
         >
     
             <button className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center" onClick={toggleTranscript}>
-            <div className="white-opaque transition-all opacity-40 w-[48px] h-[5px] rounded-full"></div>
+            <div className="black-opaque transition-all !opacity-100 w-[48px] h-[5px] rounded-full"></div>
           </button>
 
                 <div className="meta transition-all w-full h-full">
@@ -181,7 +196,7 @@ const HomePage = () => {
 
                 </div>
                 <div
-                  className={`transcript-box flex flex-col p-[25px] gap-[10px] w-full h-full black-opaque rounded-[40px] transitions-all duration-200 ${isTranscriptOpen ? 'flex' : 'hidden'}`}
+                  className={`transcript-box flex flex-col p-[25px] gap-[10px] w-full h-full black-opaque !shadow-none rounded-[40px] transitions-all duration-200 ${isTranscriptOpen ? 'flex' : 'hidden'}`}
                 >
                   <div className="points-phase w-full h-fit flex items-center justify-between flex-row px-[20px]">
 
@@ -211,15 +226,14 @@ const HomePage = () => {
                   <div className="lines flex box w-full h-full flex-col gap-[15px] px-[10px] py-[10px]">
                     <div className="turn1 !text-right flex h-fit text text-[1.25rem] w-full justify-end">
                       <div className="line max-w-[290px]">
-                        Remember this, she is Biden. She is trying to get away from Biden.
+                        {currentTurnText}
 
                       </div>
                     </div>
 
                     <div className="turn2 !text-left flex h-fit text text-[1.25rem] text-gray-400 w-full justify-start">
                       <div className="line max-w-[290px]">
-                        Remember this, she is Biden. She is trying to get away from Biden.
-
+                        {nextTurnText}
                       </div>
                     </div>
                     
