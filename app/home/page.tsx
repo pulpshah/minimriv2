@@ -42,7 +42,16 @@ const HomePage = () => {
             </div>
 
             <div className="feed">
-                1
+                <div className="graph box w-full max-h-[288px] h-fit gap-[24px]">
+                    <div className="box gap-[10px] flex-col p-[25px] justify-start white-opaque rounded-[40px]">
+                      <div className="title-turn-play flex flex-row justify-between items-center h-[22px] w-full">
+                        <div className="feed-text w-fit h-fit flex flex-row justify-start gap-[10px]">
+                          graph title
+                        </div>
+
+                      </div>
+                    </div>
+                </div>
             </div>
 
         </div>

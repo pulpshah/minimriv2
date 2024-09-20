@@ -113,6 +113,13 @@ html, body {
   color: #ffffff;
 }
 
+.feed-text {
+  font-size: 1.25rem;
+  line-height: 30px;
+  text-align: center;
+  color: #000000;
+}
+
 .text {
   line-height: 22px;
   text-align: center;
@@ -151,6 +158,14 @@ html, body {
 
 .blurry {
   filter: blur(50px);
+}
+
+.feed {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  gap: 24px;
+
 }
 
 /* fa */
