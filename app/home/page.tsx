@@ -30,7 +30,7 @@ const HomePage = () => {
               <div className="search z-20 gap-2 w-full h-[81px] box !justify-between flex-row !items-center">
 
               <button className='cursor-pointer flex-shrink-0 '>
-                    <Image src='icons/inbox-icon.svg' alt='Fetch' height={28} width={28}/>
+                    <Image src='icons/inbox-icon.svg' alt='Fetch' height={35} width={35}/>
               </button>
 
               <div className="search-bar backdrop-blur-[50px] transition-all z-20 flex-shrink-0 justify-between w-[65vw] max-w-[600px] h-[35px] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full">
@@ -49,7 +49,7 @@ const HomePage = () => {
               </div>
 
               <button className='cursor-pointer flex-shrink-0 '>
-                  <Image src='icons/fetch-icon.svg' alt='Fetch' height={28} width={28}/>
+                  <Image src='icons/fetch-icon.svg' alt='Fetch' height={35} width={35}/>
               </button>
               
               </div>
