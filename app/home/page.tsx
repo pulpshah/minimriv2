@@ -23,7 +23,7 @@ const HomePage = () => {
       return prevTurn < turnsData.length - 1 ? prevTurn + 1 : 0;
     });
   };
-
+//a
   const handleBackClick = () => {
     setCurrentTurn((prevTurn) => {
       return prevTurn > 0 ? prevTurn - 1 : turnsData.length - 1;
