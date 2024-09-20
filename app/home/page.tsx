@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
-
+import FeedItem
+ from '@/components/feedItem'
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-[#bc49bf]">
@@ -8,53 +9,23 @@ const HomePage = () => {
         <div className="light bg-gradient-to-b from-[#ffffff60] to-[#bb49bf00] absolute z-50 inset-0 h-[80px] w-full"></div>
 
 
-        <div className="mainbody h-screen w-full pt-[122px] pb-[150px] bg-none overflow-y-auto">
+        <div className="mainbody h-screen w-full pt-[125px] pb-[150px] bg-none overflow-y-auto scroll-smooth">
 
             <div className="feed w-full h-fit items-center justify-center flex">
-              <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
-              <div className="graph box w-full h-fit gap-[24px]">
-                    <div className="box gap-[10px] flex-col p-[25px] !justify-start white-opaque rounded-[40px] min-h-fit h-[288px]">
-                      <div className="title-turn-play flex flex-row justify-between items-center h-fit w-full">
-
-                        <div className="feed-text w-fit h-fit flex flex-row items-center justify-start gap-[10px]">
-                          graph title
-                        </div>
-
-                        <div className="turn-play w-fit h-fit flex flex-row justify-end items-center gap-[5px]">
-                          <div className="turn flex w-fit black-opaque h-fit px-[5px] py-[1px] items-center rounded-full box text-white">
-                              turn 1
-                          </div>
-                          <button>
-                            <Image className='cursor-pointer' src='icons/feed-play.svg' alt='Fetch' height={42} width={42}/>
-                          </button>
-                        </div>
-
-                      </div>
-                    </div>
-                </div>
-                <div className="graph box w-full h-fit gap-[24px]">
-                    <div className="box gap-[10px] flex-col p-[25px] !justify-start white-opaque rounded-[40px] min-h-fit h-[288px]">
-                      <div className="title-turn-play flex flex-row justify-between items-center h-fit w-full">
-
-                        <div className="feed-text w-fit h-fit flex flex-row items-center justify-start gap-[10px]">
-                          graph title
-                        </div>
-
-                        <div className="turn-play w-fit h-fit flex flex-row justify-end items-center gap-[5px]">
-                          <div className="turn flex w-fit black-opaque h-fit px-[5px] py-[1px] items-center rounded-full box text-white">
-                              turn 1
-                          </div>
-                          <button>
-                            <Image className='cursor-pointer' src='icons/feed-play.svg' alt='Fetch' height={42} width={42}/>
-                          </button>
-                        </div>
-
-                      </div>
-                    </div>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 w-full h-fit gap-[24px]">
+                <FeedItem></FeedItem>
+                <FeedItem></FeedItem>
+                <FeedItem></FeedItem>
+                <FeedItem></FeedItem>
+                <FeedItem></FeedItem>
+                <FeedItem></FeedItem>
+                <FeedItem></FeedItem>
+                <FeedItem></FeedItem>
+                <FeedItem></FeedItem>
+                <FeedItem></FeedItem>
               </div>
             </div>
-            <div className="header top-0 px-[20px] pb-[15px] fixed box flex-col w-full h-fit bg-gradient-to-b from-[#ffffff86] to-[#bb49bf00]">
+            <div className="header top-0 px-[20px] pb-[15px] fixed box flex-col w-full h-fit bg-gradient-to-b from-[#ffffff] to-[#bb49bf00]">
               
               <div className="search z-20 gap-2 w-full h-[81px] box !justify-between flex-row !items-center">
 
@@ -109,10 +80,24 @@ const HomePage = () => {
 
                   <div className="h-[50px] flex justify-between w-full">
 
-                    <div className="speaker w-fit transition-all h-full flex-row items-start justify-start gap-[10px]">
+                    <div className="speaker w-fit transition-all h-full flex-row items-start justify-start gap-[10px] flex">
                     <button>
                         <div className="profile flex transition-all items-center justify-center rounded-full">
                           <Image src='icons/profile-icon.svg' alt='Fetch' height={46} width={46}/>
+                        </div>
+                        <div className="name-stats w-fit h-fit flex flex-col justify-start">
+                          Kamala Harris
+                          <div className="stats flex h-fit w-fit gap-[5px] text[1rem] poppins">
+                            <div className="time-turn flex flex-row">
+                              <div className="time">10:42</div>
+                              <div className="">•</div>
+                              <div className="turn">Turn 5</div>
+                            </div>
+                            <div className="">,</div>
+                            <div className="sentiment">
+                              upset
+                            </div>
+                          </div>
                         </div>
                     </button>
 
