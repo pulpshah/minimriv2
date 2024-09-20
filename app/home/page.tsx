@@ -37,7 +37,6 @@ const HomePage = () => {
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
 
-  // Handle swipe up
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     setTouchStart(e.targetTouches[0].clientY);
   };
@@ -45,10 +44,8 @@ const HomePage = () => {
   const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
     setTouchEnd(e.changedTouches[0].clientY);
     if (touchStart - touchEnd > 50) {
-      // Swipe up
       setTranscriptOpen(true);
     } else if (touchEnd - touchStart > 50) {
-      // Swipe down
       setTranscriptOpen(false);
     }
   };
@@ -154,7 +151,7 @@ const HomePage = () => {
                   </div>
                   <div className="">,</div>
                   <div className="sentiment text !text-left">
-                    {currentData.turn_category}
+                    horny
                   </div>
                 </div>
               </div>
