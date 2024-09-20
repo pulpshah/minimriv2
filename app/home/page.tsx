@@ -1,8 +1,9 @@
 'use client'
 import React from 'react'
+import JFile from "@/public/data/dummydata.json";
 import Image from 'next/image'
 import FeedItem
- from '@/components/feedItem'
+ from '@/components/FeedItem'
 import { useState } from 'react'
 
 const HomePage = () => {
@@ -10,6 +11,9 @@ const HomePage = () => {
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
+  const [currentTurn, setCurrentTurn] = useState(0);
+  const turnsData = JFile.analysis;
+  const currentData = turnsData[currentTurn];
 
   const toggleTranscript = () => {
     setTranscriptOpen(!isTranscriptOpen);
@@ -20,7 +24,7 @@ const HomePage = () => {
     setTouchStart(e.targetTouches[0].clientY);
   };
 
-  const handleTouchEnd = (e) => {
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => { // Specify the type for 'e'
     setTouchEnd(e.changedTouches[0].clientY);
     if (touchStart - touchEnd > 50) {
       // Swipe up
@@ -29,6 +33,28 @@ const HomePage = () => {
       // Swipe down
       setTranscriptOpen(false);
     }
+  };
+
+  const handleNextClick = (e) => {
+    e.stopPropagation(); // Prevent the event from propagating
+    setCurrentTurn((prevTurn) => {
+      return prevTurn < turnsData.length - 1 ? prevTurn + 1 : 0;
+    });
+  };
+  
+  const handleBackClick = (e) => {
+    e.stopPropagation(); // Prevent the event from propagating
+    setCurrentTurn((prevTurn) => {
+      return prevTurn > 0 ? prevTurn - 1 : turnsData.length - 1;
+    });
+  };
+  
+
+  const formatTalkTime = (seconds: number) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
 
   return (
@@ -58,7 +84,7 @@ const HomePage = () => {
               <div className="search z-20 gap-2 w-full h-[81px] box !justify-between flex-row !items-center">
 
               <button className='cursor-pointer flex-shrink-0 '>
-                    <Image src='icons/inbox-icon.svg' alt='Fetch' height={35} width={35}/>
+                    <Image src='icons/inbox-icon.svg' alt='inbox' height={35} width={35}/>
               </button>
 
               <div className="search-bar backdrop-blur-[50px] transition-all z-20 flex-shrink-0 justify-between w-[65vw] max-w-[600px] h-[35px] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full">
@@ -117,18 +143,18 @@ const HomePage = () => {
                     <button>
                         <div className="profile flex transition-all items-center justify-center rounded-full">
 
-                          <Image src='icons/profile-icon.svg' alt='Fetch' height={46} width={46}/>
+                          <Image src='icons/profile-icon.svg' alt='Profile' height={46} width={46}/>
                         </div>
                     </button>
                     <div className="name-stats w-fit h-fit flex flex-col justify-start text-black text-[1.125rem]">
                           <div className="name text !text-left">
-                            Kamala Harris
+                            {currentData.speaker_name}
                           </div>
                           <div className="stats text flex h-fit w-fit gap-[5px] text[1rem] poppins">
                             <div className="time-turn text flex flex-row gap-[4px]">
-                              <div className="time text !text-left">10:42</div>
+                              <div className="time text !text-left">{formatTalkTime(currentData.talk_time)}</div>
                               <div className="text !text-left">•</div>
-                              <div className="turn text !text-left">Turn 5</div>
+                              <div className="turn text !text-left">Turn {currentData.turn_number}</div>
                             </div>
                             <div className="">,</div>
                             <div className="sentiment text !text-left">
@@ -138,8 +164,8 @@ const HomePage = () => {
                         </div>
 
                     </div>
-                    <div className="flex gap-[16px] items-center justify-center">
-                    <button>
+                    <div className="flex gap-[16px] z-50 items-center justify-center">
+                    <button onClick={handleBackClick}>
                     <div className="back hidden md:flex text-white transition-all flex-shrink-0">
                       <Image src='icons/back-icon.svg' alt='back' height={45} width={40}/>
                     </div>
@@ -150,7 +176,7 @@ const HomePage = () => {
                     </div>
                     </button>
 
-                    <button>
+                    <button onClick={handleNextClick}>
                     <div className="next hidden md:flex text-white transition-all flex-shrink-0">
                       <Image src='icons/skip-icon.svg' alt='next' height={45} width={40}/>
                     </div>
