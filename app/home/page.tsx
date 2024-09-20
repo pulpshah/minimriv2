@@ -67,7 +67,7 @@ const HomePage = () => {
   
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-[#bc49bf]">
+    <div className="min-h-screen bg-gradient-to-b">
         
         <div className="light bg-gradient-to-b from-[#ffffff60] to-[#bb49bf00] absolute z-50 inset-0 h-[80px] w-full"></div>
 

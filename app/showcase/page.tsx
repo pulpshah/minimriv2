@@ -20,9 +20,10 @@ export default function Home() {
     }
 
     const steps = [
-        {title: "Scoring Debate", content: "P. DIDDLER"},
-        {title: "References", content: "JATT"},
-        {title: "Analytics", content: "GYAAAAT"},
+        {title: "Scoring Debate", content: "2"},
+        {title: "References", content: "2"},
+        {title: "Analytics", content: "2"},
+        {title: "You", content: "2"},
     ];
 
     return (
@@ -42,7 +43,7 @@ export default function Home() {
                         breaking it down
                     </div>
                 </div>
-                <div className="box 
+                <div className="box
                 drawer transition-all
                 lg:p-[30px] lg:w-[830px] h-3/4 lg:h-[643px] lg:rounded-[40px] flex-col 
                 rounded-t-[40px] 
