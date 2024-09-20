@@ -20,7 +20,7 @@
               
            ]
         },
-        "cumulative_score":200,
+        "cumulative_score":600,
         "score":100
      },
      {
@@ -396,8 +396,31 @@
               
            ]
         },
-        "cumulative_score":200,
-        "score":50
-     }
+        "cumulative_score":250,
+        "score":60
+     },
+     {
+      "turn_number":9,
+      "speaker_name":"Donald Trump",
+      "turn_category":"question turn",
+      "timestamp_start":96.84,
+      "timestamp_end":119.64,
+      "talk_time":42.8,
+      "analysis":{
+         "claims":[
+            {
+               "text":"diddy2"
+            }
+         ],
+         "knowledge_types":[
+            
+         ],
+         "references":[
+            
+         ]
+      },
+      "cumulative_score":650,
+      "score":50
+   }
   ]
 }

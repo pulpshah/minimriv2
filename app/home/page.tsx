@@ -23,6 +23,24 @@ const HomePage = () => {
       ? nextData.analysis.claims[0].text
       : "No next turn text available";
 
+  // Fetch cumulative score for Kamala Harris or Donald Trump dynamically based on the current turn
+  const getCumulativeScoreKH = () => {
+    return turnsData
+      .filter((turn) => turn.speaker_name === "Kamala Harris")
+      .find((turn) => turn.turn_number === currentData.turn_number)?.cumulative_score || 0;
+  };
+
+  const getCumulativeScoreDT = () => {
+    return turnsData
+      .filter((turn) => turn.speaker_name === "Donald Trump")
+      .find((turn) => turn.turn_number === currentData.turn_number)?.cumulative_score || 0;
+  };
+
+  const cumulativeScoreKH = getCumulativeScoreKH();
+  const cumulativeScoreDT = getCumulativeScoreDT();
+
+  const scoreForCurrentTurn = currentData.score; // Score for the current turn
+
   const toggleTranscript = () => {
     setTranscriptOpen(!isTranscriptOpen);
   };
@@ -32,7 +50,6 @@ const HomePage = () => {
   };
 
   const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
-    // Specify the type for 'e'
     setTouchEnd(e.changedTouches[0].clientY);
     if (touchStart - touchEnd > 50) {
       setTranscriptOpen(true);
@@ -41,34 +58,26 @@ const HomePage = () => {
     }
   };
 
+  // Handle next button click
   const handleNextClick = (e: { stopPropagation: () => void }) => {
     e.stopPropagation(); // Prevent the event from propagating
-    setCurrentTurn((prevTurn) => {
-      return prevTurn < turnsData.length - 1 ? prevTurn + 1 : 0;
-    });
+    if (currentTurn < turnsData.length - 1) {
+      setCurrentTurn(currentTurn + 1);
+    }
   };
 
+  // Handle back button click
   const handleBackClick = (e: { stopPropagation: () => void }) => {
     e.stopPropagation(); // Prevent the event from propagating
-    setCurrentTurn((prevTurn) => {
-      return prevTurn > 0 ? prevTurn - 1 : turnsData.length - 1;
-    });
+    if (currentTurn > 0) {
+      setCurrentTurn(currentTurn - 1);
+    }
   };
 
   const formatTalkTime = (seconds: number) => {
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
+    const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60);
-
-    if (hours > 0) {
-      return `${hours}:${minutes.toString().padStart(2, "0")}:${remainingSeconds
-        .toString()
-        .padStart(2, "0")}`;
-    } else if (minutes > 0) {
-      return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
-    } else {
-      return `0:${remainingSeconds.toString().padStart(2, "0")}`;
-    }
+    return `${minutes.toString().padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`;
   };
 
   return (
@@ -83,60 +92,37 @@ const HomePage = () => {
         <div className="feed w-full h-fit items-center justify-center flex">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 w-full h-fit gap-[24px]">
             <FeedItem></FeedItem>
-            <FeedItem></FeedItem>
-            <FeedItem></FeedItem>
-            <FeedItem></FeedItem>
-            <FeedItem></FeedItem>
-            <FeedItem></FeedItem>
-            <FeedItem></FeedItem>
-            <FeedItem></FeedItem>
-            <FeedItem></FeedItem>
-            <FeedItem></FeedItem>
+            {/* Add more FeedItems */}
           </div>
         </div>
         <div className="header top-0 px-[20px] pb-[15px] fixed box flex-col w-full h-fit bg-gradient-to-b from-[#ffffff] to-[#bb49bf00]">
           <div className="search z-20 gap-2 w-full h-[81px] box !justify-between flex-row !items-center">
             <button className="cursor-pointer flex-shrink-0 ">
-              <Image
-                src="icons/inbox-icon.svg"
-                alt="inbox"
-                height={35}
-                width={35}
-              />
+              <Image src="icons/inbox-icon.svg" alt="inbox" height={35} width={35} />
             </button>
 
             <div className="search-bar backdrop-blur-[50px] transition-all z-20 flex-shrink-0 justify-between w-[65vw] max-w-[600px] h-[35px] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full">
               <div className="flex items-center gap-[10px] justify-between w-full">
                 <button className="w-[19px] h-[19px] flex-shrink-0">
-                  <Image
-                    className="cursor-pointer"
-                    src="icons/search-icon.svg"
-                    alt="Fetch"
-                    height={19}
-                    width={19}
-                  />
+                  <Image className="cursor-pointer" src="icons/search-icon.svg" alt="Fetch" height={19} width={19} />
                 </button>
 
                 <input
                   placeholder="search"
                   type="text"
-                  className="placeholder-white transition-all poppins bg-transparent  outline-none justify-between w-full text-white bg-none"
+                  className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
                 />
               </div>
             </div>
 
             <button className="cursor-pointer flex-shrink-0 ">
-              <Image
-                src="icons/fetch-icon.svg"
-                alt="Fetch"
-                height={35}
-                width={35}
-              />
+              <Image src="icons/fetch-icon.svg" alt="Fetch" height={35} width={35} />
             </button>
           </div>
           <div className="scores-topic flex justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full">
+            {/* Display cumulative scores */}
             <div className="points-1 w-fit text-[.8rem] h-fit text-black poppins">
-              KH: 1200 pts
+              KH: {cumulativeScoreKH} pts
             </div>
 
             <div className="points-1 w-fit h-fit text-[1rem] text-black">
@@ -144,7 +130,7 @@ const HomePage = () => {
             </div>
 
             <div className="points-1 w-fit text-[.8rem] h-fit text-black poppins">
-              DT: 1500 pts
+              DT: {cumulativeScoreDT} pts
             </div>
           </div>
         </div>
@@ -170,12 +156,7 @@ const HomePage = () => {
             <div className="speaker flex w-fit transition-all h-full flex-row items-start justify-start gap-[10px]">
               <button>
                 <div className="profile flex transition-all items-center justify-center rounded-full">
-                  <Image
-                    src="icons/profile-icon.svg"
-                    alt="Profile"
-                    height={46}
-                    width={46}
-                  />
+                  <Image src="icons/profile-icon.svg" alt="Profile" height={46} width={46} />
                 </div>
               </button>
               <div className="name-stats w-fit h-fit flex flex-col justify-start text-black text-[1.125rem]">
@@ -193,40 +174,31 @@ const HomePage = () => {
                     </div>
                   </div>
                   <div className="">,</div>
-                  <div className="sentiment text !text-left">Upset</div>
+                  <div className="sentiment text !text-left">
+                    Angry
+                  </div>
                 </div>
               </div>
             </div>
             <div className="flex gap-[16px] z-50 items-center justify-center">
-              <button onClick={handleBackClick}>
+              {/* Prevent navigation beyond bounds */}
+              <button onClick={handleBackClick} disabled={currentTurn === 0}>
                 <div className="back hidden md:flex text-white transition-all flex-shrink-0">
-                  <Image
-                    src="icons/back-icon.svg"
-                    alt="back"
-                    height={45}
-                    width={40}
-                  />
+                  <Image src="icons/back-icon.svg" alt="back" height={45} width={40} />
                 </div>
               </button>
               <button>
                 <div className="play text-white transition-all flex-shrink-0">
-                  <Image
-                    src="icons/play-icon.svg"
-                    alt="play"
-                    height={50}
-                    width={50}
-                  />
+                  <Image src="icons/play-icon.svg" alt="play" height={50} width={50} />
                 </div>
               </button>
 
-              <button onClick={handleNextClick}>
+              <button
+                onClick={handleNextClick}
+                disabled={currentTurn === turnsData.length - 1}
+              >
                 <div className="next hidden md:flex text-white transition-all flex-shrink-0">
-                  <Image
-                    src="icons/skip-icon.svg"
-                    alt="next"
-                    height={45}
-                    width={40}
-                  />
+                  <Image src="icons/skip-icon.svg" alt="next" height={45} width={40} />
                 </div>
               </button>
             </div>
@@ -242,8 +214,9 @@ const HomePage = () => {
               transcript
             </div>
 
+            {/* Display the score for the current turn */}
             <div className="points flex flex-row gap-[3px] poppins text text-[1rem] text-[#79FF80]">
-              <div className="num">20</div>
+              <div className="num">{scoreForCurrentTurn}</div>
 
               <div className="pts">pts</div>
 
@@ -254,7 +227,7 @@ const HomePage = () => {
             </div>
 
             <div className="turn flex w-fit black-opaque !shadow-none h-fit px-[12px] py-[1px] items-center rounded-full text-white">
-              intro
+              {currentData.turn_category}
             </div>
           </div>
 
