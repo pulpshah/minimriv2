@@ -11,6 +11,8 @@ const HomePage = () => {
 
   const turnsData = JFile.analysis;
   const currentData = turnsData[currentTurn];
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const toggleTranscript = () => {
     setTranscriptOpen(!isTranscriptOpen);
@@ -33,6 +35,22 @@ const HomePage = () => {
     const minutes = Math.floor((seconds % 3600) / 60);
     const remainingSeconds = Math.floor(seconds % 60);
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+  };
+
+  // Handle swipe up
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStart(e.targetTouches[0].clientY);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchEnd(e.changedTouches[0].clientY);
+    if (touchStart - touchEnd > 50) {
+      // Swipe up
+      setTranscriptOpen(true);
+    } else if (touchEnd - touchStart > 50) {
+      // Swipe down
+      setTranscriptOpen(false);
+    }
   };
 
   return (
@@ -101,7 +119,12 @@ const HomePage = () => {
             </div>
         </div>
 
-        <div className={`transcript z-40 transition-all text-white fixed bottom-0 ${isTranscriptOpen ? 'h-[50vh]' : 'h-[125px]'} w-full rounded-t-[40px]`}>
+        <div
+          className={`transcript z-40 transition-all text-white fixed bottom-0 ${isTranscriptOpen ? 'h-[50vh]' : 'h-[125px]'} w-full rounded-t-[40px]`}
+          onClick={toggleTranscript}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
     
             <button className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center" onClick={toggleTranscript}>
             <div className="white-opaque transition-all opacity-40 w-[48px] h-[5px] rounded-full"></div>
