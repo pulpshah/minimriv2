@@ -1,8 +1,11 @@
 import React from 'react'
 import Image from 'next/image'
-import FeedItem
- from '@/components/feedItem'
+import FeedItem from '@/components/FeedItem'
+
+import JFile from "@/public/data/dummydata.json";
+
 const HomePage = () => {
+  
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-[#bc49bf]">
         
