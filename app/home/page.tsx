@@ -160,6 +160,52 @@ const HomePage = () => {
                   </div>
 
                 </div>
+                <div
+                  className={`transcript-box flex flex-col p-[25px] gap-[10px] w-full h-full black-opaque rounded-[40px] transitions-all duration-200 ${isTranscriptOpen ? 'flex' : 'hidden'}`}
+                >
+                  <div className="points-phase w-full h-fit flex items-center justify-between flex-row px-[20px]">
+
+                    <div className="transcript-title text text-[1rem] text-white">transcript</div>
+
+                    <div className="points flex flex-row gap-[3px] poppins text text-[1rem] text-[#79FF80]">
+                        <div className="num">
+                          20
+                        </div>
+
+                        <div className="pts">
+                          pts
+                        </div>
+
+                        <div className="plus-minus">
+
+                          <div className="minus hidden">-</div>
+                          <div className="plus">+</div>
+                        </div>
+                    </div>
+
+                      <div className="turn flex w-fit black-opaque !shadow-none h-fit px-[12px] py-[1px] items-center rounded-full text-white">
+                            intro
+                      </div>
+                  </div>
+
+                  <div className="lines flex box w-full h-full flex-col gap-[15px] px-[10px] py-[10px]">
+                    <div className="turn1 !text-right flex h-fit text text-[1.25rem] w-full justify-end">
+                      <div className="line max-w-[290px]">
+                        Remember this, she is Biden. She is trying to get away from Biden.
+
+                      </div>
+                    </div>
+
+                    <div className="turn2 !text-left flex h-fit text text-[1.25rem] text-gray-400 w-full justify-start">
+                      <div className="line max-w-[290px]">
+                        Remember this, she is Biden. She is trying to get away from Biden.
+
+                      </div>
+                    </div>
+                    
+                  </div>
+
+                </div>
             </div>
     </div>
 
