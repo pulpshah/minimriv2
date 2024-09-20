@@ -1,9 +1,9 @@
 'use client'
-
-import React, {useState} from 'react'
+import React from 'react'
+import JFile from "@/public/data/dummydata.json";
 import Image from 'next/image'
 import FeedItem from '@/components/FeedItem'
-import JFile from "@/public/data/dummydata.json";
+import { useState } from 'react'
 
 const HomePage = () => {
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
@@ -17,14 +17,29 @@ const HomePage = () => {
   const toggleTranscript = () => {
     setTranscriptOpen(!isTranscriptOpen);
   };
-  
-  const handleNextClick = () => {
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStart(e.targetTouches[0].clientY);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => { // Specify the type for 'e'
+    setTouchEnd(e.changedTouches[0].clientY);
+    if (touchStart - touchEnd > 50) {
+      setTranscriptOpen(true);
+    } else if (touchEnd - touchStart > 50) {
+      setTranscriptOpen(false);
+    }
+  };
+
+  const handleNextClick = (e) => {
+    e.stopPropagation(); // Prevent the event from propagating
     setCurrentTurn((prevTurn) => {
       return prevTurn < turnsData.length - 1 ? prevTurn + 1 : 0;
     });
   };
-//a
-  const handleBackClick = () => {
+  
+  const handleBackClick = (e) => {
+    e.stopPropagation(); // Prevent the event from propagating
     setCurrentTurn((prevTurn) => {
       return prevTurn > 0 ? prevTurn - 1 : turnsData.length - 1;
     });
@@ -35,19 +50,6 @@ const HomePage = () => {
     const minutes = Math.floor((seconds % 3600) / 60);
     const remainingSeconds = Math.floor(seconds % 60);
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
-
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    setTouchStart(e.targetTouches[0].clientY);
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
-    setTouchEnd(e.changedTouches[0].clientY);
-    if (touchStart - touchEnd > 50) {
-      setTranscriptOpen(true);
-    } else if (touchEnd - touchStart > 50) {
-      setTranscriptOpen(false);
-    }
   };
 
   return (
@@ -77,7 +79,7 @@ const HomePage = () => {
               <div className="search z-20 gap-2 w-full h-[81px] box !justify-between flex-row !items-center">
 
               <button className='cursor-pointer flex-shrink-0 '>
-                    <Image src='icons/inbox-icon.svg' alt='Fetch' height={35} width={35}/>
+                    <Image src='icons/inbox-icon.svg' alt='inbox' height={35} width={35}/>
               </button>
 
               <div className="search-bar backdrop-blur-[50px] transition-all z-20 flex-shrink-0 justify-between w-[65vw] max-w-[600px] h-[35px] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full">
@@ -127,55 +129,104 @@ const HomePage = () => {
             <div className="white-opaque transition-all opacity-40 w-[48px] h-[5px] rounded-full"></div>
           </button>
 
-        <div className="meta transition-all w-full h-full">
-          <div className="h-[50px] flex justify-between w-full">
-            <div className="speaker flex w-fit transition-all h-full flex-row items-start justify-start gap-[10px]">
-              <button>
-                <div className="profile flex transition-all items-center justify-center rounded-full">
-                  <Image src="icons/profile-icon.svg" alt="Fetch" height={46} width={46} />
-                </div>
-              </button>
-              <div className="name-stats w-fit h-fit flex flex-col justify-start text-black text-[1.125rem]">
-                <div className="name text !text-left">
-                  {currentData.speaker_name || "Unknown Speaker"}
-                </div>
-                <div className="stats text flex h-fit w-fit gap-[5px] text[1rem] poppins">
-                  <div className="time-turn text flex flex-row gap-[4px]">
-                    <div className="time text !text-left">
-                      {formatTalkTime(currentData.talk_time)} {/* Converted talk time */}
+                <div className="meta transition-all w-full h-full">
+
+                  <div className="h-[50px] flex justify-between w-full">
+
+                    <div className="speaker flex w-fit transition-all h-full flex-row items-start justify-start gap-[10px]">
+                    <button>
+                        <div className="profile flex transition-all items-center justify-center rounded-full">
+
+                          <Image src='icons/profile-icon.svg' alt='Profile' height={46} width={46}/>
+                        </div>
+                    </button>
+                    <div className="name-stats w-fit h-fit flex flex-col justify-start text-black text-[1.125rem]">
+                          <div className="name text !text-left">
+                            {currentData.speaker_name}
+                          </div>
+                          <div className="stats text flex h-fit w-fit gap-[5px] text[1rem] poppins">
+                            <div className="time-turn text flex flex-row gap-[4px]">
+                              <div className="time text !text-left">{formatTalkTime(currentData.talk_time)}</div>
+                              <div className="text !text-left">•</div>
+                              <div className="turn text !text-left">Turn {currentData.turn_number}</div>
+                            </div>
+                            <div className="">,</div>
+                            <div className="sentiment text !text-left">
+                              Upset
+                            </div>
+                          </div>
+                        </div>
+
                     </div>
-                    <div className="text !text-left">•</div>
-                    <div className="turn text !text-left">
-                      Turn {currentData.turn_number}
+                    <div className="flex gap-[16px] z-50 items-center justify-center">
+                    <button onClick={handleBackClick}>
+                    <div className="back hidden md:flex text-white transition-all flex-shrink-0">
+                      <Image src='icons/back-icon.svg' alt='back' height={45} width={40}/>
+                    </div>
+                    </button>
+                    <button>
+                    <div className="play text-white transition-all flex-shrink-0">
+                      <Image src='icons/play-icon.svg' alt='play' height={50} width={50}/>
+                    </div>
+                    </button>
+
+                    <button onClick={handleNextClick}>
+                    <div className="next hidden md:flex text-white transition-all flex-shrink-0">
+                      <Image src='icons/skip-icon.svg' alt='next' height={45} width={40}/>
+                    </div>
+                    </button>
+
                     </div>
                   </div>
-                  <div className="">,</div>
-                  <div className="sentiment text !text-left">
-                    horny
+
+                </div>
+                <div
+                  className={`transcript-box flex flex-col p-[25px] gap-[10px] w-full h-full black-opaque rounded-[40px] transitions-all duration-200 ${isTranscriptOpen ? 'flex' : 'hidden'}`}
+                >
+                  <div className="points-phase w-full h-fit flex items-center justify-between flex-row px-[20px]">
+
+                    <div className="transcript-title text text-[1rem] text-white">transcript</div>
+
+                    <div className="points flex flex-row gap-[3px] poppins text text-[1rem] text-[#79FF80]">
+                        <div className="num">
+                          20
+                        </div>
+
+                        <div className="pts">
+                          pts
+                        </div>
+
+                        <div className="plus-minus">
+
+                          <div className="minus hidden">-</div>
+                          <div className="plus">+</div>
+                        </div>
+                    </div>
+
+                      <div className="turn flex w-fit black-opaque !shadow-none h-fit px-[12px] py-[1px] items-center rounded-full text-white">
+                            intro
+                      </div>
                   </div>
+
+                  <div className="lines flex box w-full h-full flex-col gap-[15px] px-[10px] py-[10px]">
+                    <div className="turn1 !text-right flex h-fit text text-[1.25rem] w-full justify-end">
+                      <div className="line max-w-[290px]">
+                        Remember this, she is Biden. She is trying to get away from Biden.
+
+                      </div>
+                    </div>
+
+                    <div className="turn2 !text-left flex h-fit text text-[1.25rem] text-gray-400 w-full justify-start">
+                      <div className="line max-w-[290px]">
+                        Remember this, she is Biden. She is trying to get away from Biden.
+
+                      </div>
+                    </div>
+                    
+                  </div>
+
                 </div>
-              </div>
             </div>
-            <div className="flex gap-[16px] items-center justify-center">
-              <button onClick={handleBackClick}>
-                <div className="back hidden md:flex text-white transition-all flex-shrink-0">
-                  <Image src="icons/back-icon.svg" alt="back" height={45} width={40} />
-                </div>
-              </button>
-              <button>
-                <div className="play text-white transition-all flex-shrink-0">
-                  <Image src="icons/play-icon.svg" alt="play" height={50} width={50} />
-                </div>
-              </button>
-              <button onClick={handleNextClick}>
-                <div className="next hidden md:flex text-white transition-all flex-shrink-0">
-                  <Image src="icons/skip-icon.svg" alt="next" height={45} width={40} />
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
