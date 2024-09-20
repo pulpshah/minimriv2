@@ -105,11 +105,25 @@ const HomePage = () => {
                         </div>
 
                     </div>
+                    <div className="flex gap-[16px] items-center justify-center">
+                    <button>
+                    <div className="back hidden md:flex text-white transition-all flex-shrink-0">
+                      <Image src='icons/back-icon.svg' alt='back' height={45} width={40}/>
+                    </div>
+                    </button>
                     <button>
                     <div className="play text-white transition-all flex-shrink-0">
                       <Image src='icons/play-icon.svg' alt='play' height={50} width={50}/>
                     </div>
                     </button>
+
+                    <button>
+                    <div className="next hidden md:flex text-white transition-all flex-shrink-0">
+                      <Image src='icons/skip-icon.svg' alt='next' height={45} width={40}/>
+                    </div>
+                    </button>
+
+                    </div>
                   </div>
 
                 </div>
