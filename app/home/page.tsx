@@ -1,11 +1,23 @@
-import React from 'react'
+"use client"
+
+import React, {useState} from 'react'
 import Image from 'next/image'
 import FeedItem from '@/components/FeedItem'
 
 import JFile from "@/public/data/dummydata.json";
 
 const HomePage = () => {
+  const [currentTurn, setCurrentTurn] = useState(0);
+  const turnsData = JFile.analysis;
   
+  const handlePlayClick = () => {
+    setCurrentTurn((prevTurn) => {
+      return prevTurn < turnsData.length - 1 ? prevTurn + 1 : 0;
+    });
+  };
+
+  const currentData = turnsData[currentTurn];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-[#bc49bf]">
         
