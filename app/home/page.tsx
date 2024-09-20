@@ -67,32 +67,28 @@ const HomePage = () => {
   
 
   return (
-    <div className="min-h-screen bg-gradient-to-b">
-        
-        <div className="light bg-gradient-to-b from-[#ffffff60] to-[#bb49bf00] absolute z-50 inset-0 h-[80px] w-full"></div>
+    <div className="min-h-screen bg-[url('/bg/Bg.webp')] bg-cover bg-center backdrop-blur-[50px]">
+        <div className="light absolute z-50 inset-0 h-[80px] w-full"></div>
 
 
+        <div className="overlay bg-white bg-opacity-20 absolute z-0 inset-0 backdrop-blur-[200px] opacity-100"></div>
         <div className={`mainbody h-screen w-full pt-[125px] pb-[150px] bg-none overflow-y-auto scroll-smooth ${isTranscriptOpen ? 'pb-[54vh]' : 'pb-[150px]'}`}>
 
-            <div className="feed w-full h-fit items-center justify-center flex">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 w-full h-fit gap-[24px]">
-                <FeedItem></FeedItem>
-                <FeedItem></FeedItem>
-                <FeedItem></FeedItem>
-                <FeedItem></FeedItem>
-                <FeedItem></FeedItem>
-                <FeedItem></FeedItem>
-                <FeedItem></FeedItem>
-                <FeedItem></FeedItem>
-                <FeedItem></FeedItem>
-                <FeedItem></FeedItem>
+            <div className="feed w-full z-10 h-full items-center justify-center flex">
+              <div className="grid grid-cols-1 gap-[20px]">
+                  <div className="w-full white-opaque rounded-[40px] p-[25px] h-full">
+                      asdas
+                  </div>
+                  <div className="w-full white-opaque rounded-[40px] p-[25px] h-full">
+                      asdas
+                  </div>
               </div>
             </div>
-            <div className="header top-0 px-[20px] pb-[15px] fixed box flex-col w-full h-fit bg-gradient-to-b from-[#ffffff] to-[#bb49bf00]">
+            <div className="header top-0 px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit]">
               
               <div className="search z-20 gap-2 w-full h-[81px] box !justify-between flex-row !items-center">
 
-              <button className='cursor-pointer flex-shrink-0 '>
+              <button className='cursor-pointer flex-shrink-0 z-50 '>
                     <Image src='icons/inbox-icon.svg' alt='inbox' height={35} width={35}/>
               </button>
 
@@ -111,7 +107,7 @@ const HomePage = () => {
                 
               </div>
 
-              <button className='cursor-pointer flex-shrink-0 '>
+              <button className='cursor-pointer flex-shrink-0 z-50 '>
                   <Image src='icons/fetch-icon.svg' alt='Fetch' height={35} width={35}/>
               </button>
               
@@ -155,7 +151,7 @@ const HomePage = () => {
                           <Image src='icons/profile-icon.svg' alt='Profile' height={46} width={46}/>
                         </div>
                     </button>
-                    <div className="name-stats w-fit h-fit flex flex-col justify-start text-black text-[1.125rem]">
+                    <div className="name-stats w-fit h-fit flex flex-col justify-start text-white text-[1.125rem]">
                           <div className="name text !text-left">
                             {currentData.speaker_name}
                           </div>
