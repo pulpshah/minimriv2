@@ -72,7 +72,7 @@ const HomePage = () => {
         <div className="light bg-gradient-to-b from-[#ffffff60] to-[#bb49bf00] absolute z-50 inset-0 h-[80px] w-full"></div>
 
 
-        <div className="mainbody h-screen w-full pt-[125px] pb-[150px] bg-none overflow-y-auto scroll-smooth">
+        <div className={`mainbody h-screen w-full pt-[125px] pb-[150px] bg-none overflow-y-auto scroll-smooth ${isTranscriptOpen ? 'pb-[54vh]' : 'pb-[150px]'}`}>
 
             <div className="feed w-full h-fit items-center justify-center flex">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 w-full h-fit gap-[24px]">
@@ -141,7 +141,7 @@ const HomePage = () => {
         >
     
             <button className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center" onClick={toggleTranscript}>
-            <div className="black-opaque transition-all !opacity-100 w-[48px] h-[5px] rounded-full"></div>
+            <div className="black-opaque !shadow-none transition-all !opacity-100 w-[48px] h-[5px] rounded-full"></div>
           </button>
 
                 <div className="meta transition-all w-full h-full">
