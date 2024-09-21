@@ -105,14 +105,20 @@ const HomePage = () => {
         <div className="overlay bg-white bg-opacity-20 absolute z-0 inset-0 backdrop-blur-[200px] opacity-100"></div>
         <div className={`mainbody h-screen w-full pt-[125px] pb-[150px] bg-none overflow-y-auto scroll-smooth ${isTranscriptOpen ? 'pb-[54vh]' : 'pb-[150px]'}`}>
 
-          <div className="feed w-full h-fit z-40 items-center justify-center flex">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 w-full h-fit gap-[24px]">
-              <FeedItem></FeedItem>
-              <FeedItem></FeedItem>
-              <FeedItem></FeedItem>
-              {/* Add more FeedItems */}
-            </div>
-          </div>
+        <div className="feed w-full h-fit z-40 items-center justify-center flex">
+        <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
+        {turnsData.map((turn, index) => (
+        <FeedItem 
+          key={index}
+          topic={turn.topic || 'No Topic'} // Make sure to pass topic here
+          turn_number={turn.turn_number}
+          title={turn.turn_category || 'segment'}
+        />
+      ))}
+
+
+        </div>
+      </div>
 
             <div className="header top-0 px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit]">
               
@@ -148,7 +154,7 @@ const HomePage = () => {
                   </div>
 
                   <div className="points-1 w-fit h-fit text-[1rem] text-black">
-                    gun control
+                    score
                   </div>
 
                   <div className="points-1 w-fit text-[.8rem] h-fit text-black poppins">
@@ -232,7 +238,7 @@ const HomePage = () => {
                 >
                   <div className="points-phase w-full h-fit flex items-center justify-between flex-row px-[20px]">
 
-                    <div className="transcript-title text text-[1rem] text-white">transcript</div>
+                  
 
                     <div className="points flex flex-row gap-[3px] poppins text text-[1rem] text-[#79FF80]">
                         <div className="num">

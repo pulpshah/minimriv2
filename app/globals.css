@@ -99,6 +99,14 @@ html, body {
   color: #ffffff;
 }
 
+.topic-text {
+  font-size: 1.875rem;
+  line-height: 30px;
+  text-align: center;
+  color: #ffffff;
+}
+
+
 .card-text {
   font-size: 1.875rem;
   line-height: 22px;
