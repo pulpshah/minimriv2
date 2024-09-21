@@ -107,7 +107,7 @@ html, body {
 }
 
 .topic-outline {
-  background: linear-gradient(270deg, #da8888, #696fc5);
+  background: linear-gradient(270deg, #da5757, #565ece);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;
