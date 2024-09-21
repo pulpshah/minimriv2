@@ -12,14 +12,14 @@ const HomePage = () => {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [currentTurn, setCurrentTurn] = useState(0);
-  const turnsData = JFile.analysis;
-  const currentData = turnsData[currentTurn];
+  const turnsData: Array<{ speaker_name: string; topic?: string; turn_number: number; turn_category?: string; score: number; talk_time: number; analysis: { claims: Array<{ text: string }> } }> = JFile.analysis;
+  const currentData: { speaker_name: string; turn_number: number; talk_time: number; turn_category?: string; score: number; analysis: { claims: Array<{ text: string }> } } = turnsData[currentTurn];
+  const nextData: { speaker_name: string; turn_number: number; talk_time: number; turn_category?: string; score: number; analysis: { claims: Array<{ text: string }> } } | null = turnsData[currentTurn + 1] || null;
+  
   const currentTurnText =
     currentData.analysis.claims.length > 0
       ? currentData.analysis.claims[0].text
       : "No text available";
-  
-  const nextData = turnsData[currentTurn + 1] || null;
   
   const nextTurnText =
     nextData && nextData.analysis.claims.length > 0
@@ -104,7 +104,7 @@ const HomePage = () => {
 
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
         <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
-        {turnsData.map((turn, index) => (
+        {turnsData.map((turn: { speaker_name: string; topic?: string; turn_number: number; turn_category?: string; score: number; talk_time: number; analysis: { claims: Array<{ text: string }> } } , index) => (
         <FeedItem 
           speaker={turn.speaker_name}
           key={index}

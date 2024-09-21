@@ -84,20 +84,20 @@ const FeedItem: React.FC<{
 
                   </div>
                   : <div className="analysis grid grid-cols-1 w-full h-fit">
-                      <div className="appeal-score box flex-col lg:!justify-between lg:flex-row gap-[25px]">
-                        <div className="appeal w-full h-full">
-                          <div className="flex gap-2 text-7xl md:text-8xl items- justify-center lg:text-9xl w-full h-fit lg:justify-start outline-text items-center">
-                              <div className="flex md:gap-3 lg:gap-4">
+                      <div className="appeal-score box flex-col lg:!justify-start lg:flex-row gap-[35px]">
+                        <div className="appeal lg:mt-[100px] w-fit h-full">
+                          <div className="flex gap-2 text-7xl md:text-8xl items- justify-center lg:text-9xl w-fit h-fit lg:justify-center outline-text items-center">
+                              <div className="flex w-fit md:gap-3 lg:gap-4">
                                 appeal
                               </div>
                             </div>
                         </div>
-                            <div className="w-fit text-center lg:text-left poppins text-lg">
+                            <div className="w-fit text-center lg:text-left lg:w-[682px] flex justify-start poppins text-lg">
                               The appeal score evaluates a speaker's effectiveness in using ethos (credibility), pathos (emotional impact), and logos (logical reasoning). Each aspect is scored based on trustworthiness, emotional engagement, and logical soundness.
                             </div>
                       </div>
                       <div className="analysis-content w-full h-fit">
-                          s
+                         
                       </div>
                   </div> }
       </div>
