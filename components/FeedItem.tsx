@@ -86,8 +86,11 @@ const FeedItem: React.FC<{
                   : <div className="analysis grid grid-cols-1 w-full h-fit bg-gray-200">
                       <div className="appeal-score box">
                         <div className="appeal w-full h-full">
-                          <div className="text-7xl md:text-8xl lg:text-9xl w-full h-fit text-center lg:text-left outline-text">appeal</div>
-
+                          <div className="flex gap-2 md:gap-3 lg:gap-4 text-7xl md:text-8xl items- justify-center lg:text-9xl w-full h-fit lg:justify-start outline-text">
+                            appeal
+                            <img className='h-full w-[50px] md:w-[65px] lg:w-[90px]' src="/icons/appeal-icon.svg" alt="" />
+                            </div>
+                          
                         </div>
                       </div>
 
