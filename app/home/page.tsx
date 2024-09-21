@@ -264,20 +264,12 @@ const HomePage = () => {
                       </div>
                   </div>
 
-                  <div className="lines flex box w-full h-full flex-col gap-[15px] px-[10px] py-[10px]">
-                    <div className="turn2 !text-right flex h-fit text text-[1.25rem] text-gray-300 w-full justify-end">
-                      <div className="line max-w-[290px] line-clamp-5">
-                        {nextTurnText}
+                  <div className="lines flex box w-full h-full flex-col gap-[15px] px-[10px] py-[10px] overflow-y-auto">
+                    <div className="turn2 !text-left flex h-fit text text-[1.25rem] text-gray-300 w-full justify-center">
+                      <div className="line text !text-left line-clamp-5">
+                        {currentTurnText}
                       </div>
                     </div>
-
-                    <div className="turn2 !text-left flex h-fit text text-[1.25rem] text-gray-300 w-full justify-start">
-                    <div className="line max-w-[290px] line-clamp-2">
-                      {nextTurnText}
-                    </div>
-                  </div>
-
-                    
                   </div>
 
                 </div>

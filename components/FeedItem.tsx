@@ -79,6 +79,19 @@ const FeedItem: React.FC<{
           </div>
         </div>
 
+        {isQuestion 
+                  ? <div className="question">
+
+                  </div>
+                  : <div className="analysis grid grid-cols-1 w-full h-fit bg-gray-200">
+                      <div className="appeal-score box">
+                        appeal
+                      </div>
+
+                      <div className="style-score box">
+                        style
+                      </div>
+                  </div> }
       </div>
     </div>
   )
