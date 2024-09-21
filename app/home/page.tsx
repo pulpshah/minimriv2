@@ -14,6 +14,35 @@ const HomePage = () => {
   const [currentTurn, setCurrentTurn] = useState(0);
   const turnsData = JFile.analysis;
   const currentData = turnsData[currentTurn];
+  const currentTurnText =
+    currentData.analysis.claims.length > 0
+      ? currentData.analysis.claims[0].text
+      : "No text available";
+  
+  const nextData = turnsData[currentTurn + 1] || null;
+  
+  const nextTurnText =
+    nextData && nextData.analysis.claims.length > 0
+      ? nextData.analysis.claims[0].text
+      : "No next turn text available";
+
+      const getCumulativeScoreKH = () => {
+        return turnsData
+          .filter((turn) => turn.speaker_name === "Kamala Harris")
+          .find((turn) => turn.turn_number === currentData.turn_number)?.cumulative_score || 0;
+      };
+    
+      const getCumulativeScoreDT = () => {
+        return turnsData
+          .filter((turn) => turn.speaker_name === "Donald Trump")
+          .find((turn) => turn.turn_number === currentData.turn_number)?.cumulative_score || 0;
+      };
+    
+      const cumulativeScoreKH = getCumulativeScoreKH();
+      const cumulativeScoreDT = getCumulativeScoreDT();
+    
+      const scoreForCurrentTurn = currentData.score;
+
 
   const toggleTranscript = () => {
     setTranscriptOpen(!isTranscriptOpen);
@@ -35,18 +64,19 @@ const HomePage = () => {
     }
   };
 
-  const handleNextClick = (e) => {
+  const handleNextClick = (e: { stopPropagation: () => void }) => {
     e.stopPropagation(); // Prevent the event from propagating
-    setCurrentTurn((prevTurn) => {
-      return prevTurn < turnsData.length - 1 ? prevTurn + 1 : 0;
-    });
+    if (currentTurn < turnsData.length - 1) {
+      setCurrentTurn(currentTurn + 1);
+    }
   };
-  
-  const handleBackClick = (e) => {
+
+  // Handle back button click
+  const handleBackClick = (e: { stopPropagation: () => void }) => {
     e.stopPropagation(); // Prevent the event from propagating
-    setCurrentTurn((prevTurn) => {
-      return prevTurn > 0 ? prevTurn - 1 : turnsData.length - 1;
-    });
+    if (currentTurn > 0) {
+      setCurrentTurn(currentTurn - 1);
+    }
   };
   
 
@@ -64,6 +94,7 @@ const HomePage = () => {
     }
   };
   
+
   
 
   return (
@@ -113,7 +144,7 @@ const HomePage = () => {
               </div>
               <div className="scores-topic flex justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full">
                   <div className="points-1 w-fit text-[.8rem] h-fit text-black poppins">
-                    KH: 1200 pts
+                    KH: {cumulativeScoreKH} pts
                   </div>
 
                   <div className="points-1 w-fit h-fit text-[1rem] text-black">
@@ -121,7 +152,7 @@ const HomePage = () => {
                   </div>
 
                   <div className="points-1 w-fit text-[.8rem] h-fit text-black poppins">
-                    DT: 1500 pts
+                    DT: {cumulativeScoreDT} pts
                   </div>
               </div>
             </div>
@@ -130,7 +161,6 @@ const HomePage = () => {
 
         <div
           className={`transcript z-40 transition-all text-black fixed bottom-0 ${isTranscriptOpen ? 'h-[50vh]' : 'h-[125px]'} w-full rounded-t-[40px]`}
-          onClick={toggleTranscript}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
@@ -143,7 +173,7 @@ const HomePage = () => {
 
                   <div className="h-[50px] flex justify-between w-full">
 
-                    <div className="speaker flex w-fit transition-all h-full flex-row items-start justify-start gap-[10px]">
+                    <div onClick={toggleTranscript} className="speaker cursor-pointer flex w-fit transition-all h-full flex-row items-start justify-start gap-[10px]">
                     <button>
                         <div className="profile flex transition-all items-center justify-center rounded-full">
 
@@ -168,25 +198,32 @@ const HomePage = () => {
                         </div>
 
                     </div>
-                    <div className="flex gap-[16px] z-50 items-center justify-center">
-                    <button onClick={handleBackClick}>
-                    <div className="back hidden md:flex text-white transition-all flex-shrink-0">
-                      <Image src='icons/back-icon.svg' alt='back' height={45} width={40}/>
-                    </div>
-                    </button>
-                    <button>
-                    <div className="play text-white transition-all flex-shrink-0">
-                      <Image src='icons/play-icon.svg' alt='play' height={50} width={50}/>
-                    </div>
-                    </button>
 
-                    <button onClick={handleNextClick}>
-                    <div className="next hidden md:flex text-white transition-all flex-shrink-0">
-                      <Image className='co' src='icons/skip-icon.svg' alt='next' height={45} width={40}/>
-                    </div>
-                    </button>
+                    <div className="points-1 w-fit text-[.8rem] h-fit text-black poppins">
+            </div>
+              <div className="flex gap-[16px] z-50 items-center justify-center">
+              {/* Prevent navigation beyond bounds */}
+              <button onClick={handleBackClick} disabled={currentTurn === 0}>
+                <div className="back hidden md:flex text-white transition-all flex-shrink-0">
+                  <Image src="icons/back-icon.svg" alt="back" height={45} width={40} />
+                </div>
+              </button>
+              <button>
+                <div className="play text-white transition-all flex-shrink-0">
+                  <Image src="icons/play-icon.svg" alt="play" height={50} width={50} />
+                </div>
+              </button>
 
-                    </div>
+              <button
+                onClick={handleNextClick}
+                disabled={currentTurn === turnsData.length - 1}
+              >
+                <div className="next hidden md:flex text-white transition-all flex-shrink-0">
+                  <Image src="icons/skip-icon.svg" alt="next" height={45} width={40} />
+                </div>
+              </button>
+            </div>
+
                   </div>
 
                 </div>
@@ -199,7 +236,7 @@ const HomePage = () => {
 
                     <div className="points flex flex-row gap-[3px] poppins text text-[1rem] text-[#79FF80]">
                         <div className="num">
-                          20
+                          {scoreForCurrentTurn}
                         </div>
 
                         <div className="pts">
@@ -214,21 +251,21 @@ const HomePage = () => {
                     </div>
 
                       <div className="turn flex w-fit black-opaque !shadow-none h-fit px-[12px] py-[1px] items-center rounded-full text-white">
-                            intro
+                            {currentData.turn_category}
                       </div>
                   </div>
 
                   <div className="lines flex box w-full h-full flex-col gap-[15px] px-[10px] py-[10px]">
                     <div className="turn1 !text-right flex h-fit text text-[1.25rem] w-full justify-end">
                       <div className="line max-w-[290px] text-white">
-                        Remember this, she is Biden. She is trying to get away from Biden.
+                       {currentTurnText}
 
                       </div>
                     </div>
 
                     <div className="turn2 !text-left flex h-fit text text-[1.25rem] text-gray-300 w-full justify-start">
                       <div className="line max-w-[290px]">
-                        Remember this, she is Biden. She is trying to get away from Biden.
+                      {nextTurnText}
 
                       </div>
                     </div>

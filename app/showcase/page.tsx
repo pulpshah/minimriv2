@@ -20,10 +20,9 @@ export default function Home() {
     }
 
     const steps = [
-        {title: "Scoring Debate", content: "2"},
-        {title: "References", content: "2"},
-        {title: "Analytics", content: "2"},
-        {title: "You", content: "2"},
+        {title: "Scoring Debate", content: "..."},
+        {title: "References", content: "..."},
+        {title: "Analytics", content: "..."},
     ];
 
     return (
