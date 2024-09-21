@@ -122,17 +122,17 @@ const HomePage = () => {
               
               <div className="search z-20 gap-2 w-full h-[81px] box !justify-between flex-row !items-center">
 
-              <button className='cursor-pointer flex-shrink-0 z-50 '>
-                    <Image src='icons/inbox-icon.svg' alt='inbox' height={35} width={35}/>
+              <button className='cursor-pointer flex-shrink-0 z-50 w-[35px] md:w-[45px]'>
+                    <Image src='icons/inbox-icon.svg' alt='inbox' height={35} width={45}/>
               </button>
 
               <div className="search-bar backdrop-blur-[50px] transition-all z-20 flex-shrink-0 justify-between w-[65vw] max-w-[600px] h-[35px] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full">
                 
                 <div className="flex items-center gap-[10px] justify-between w-full">
                 
-                <button className='w-[19px] h-[19px] flex-shrink-0'>
+                <button className='w-[19px] h-[19px] md:w[50px] flex-shrink-0'>
 
-                <Image className='cursor-pointer' src='icons/search-icon.svg' alt='Fetch' height={19} width={19}/>
+                <Image className='cursor-pointer' src='icons/search-icon.svg' alt='search' height={19} width={19}/>
                 </button>
                 
                 <input placeholder= "search" type="text" className="placeholder-white transition-all poppins bg-transparent  outline-none justify-between w-full text-white bg-none"/>
@@ -141,21 +141,21 @@ const HomePage = () => {
                 
               </div>
 
-              <button className='cursor-pointer flex-shrink-0 z-50 '>
-                  <Image src='icons/fetch-icon.svg' alt='Fetch' height={35} width={35}/>
+              <button className='cursor-pointer flex-shrink-0 z-50 w-[35px] md:w-[45px] '>
+                  <Image src='icons/fetch-icon.svg' alt='Fetch' height={35} width={45}/>
               </button>
               
               </div>
               <div className="scores-topic flex justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full">
-                  <div className="points-1 w-fit text-[.8rem] h-fit text-black poppins">
+                  <div className="points-1 w-fit text-base md:text-lg h-fit text-black poppins">
                     KH: {cumulativeScoreKH} pts
                   </div>
 
-                  <div className="points-1 w-fit h-fit text-[1rem] text-black">
+                  <div className="points-1 w-fit h-fit text-lg md:text-xl text-black">
                     score
                   </div>
 
-                  <div className="points-1 w-fit text-[.8rem] h-fit text-black poppins">
+                  <div className="points-1 w-fit text-base md:text-lg h-fit text-black poppins">
                     DT: {cumulativeScoreDT} pts
                   </div>
               </div>
@@ -177,18 +177,18 @@ const HomePage = () => {
 
                   <div className="h-[50px] flex justify-between w-full">
 
-                    <div onClick={toggleTranscript} className="speaker cursor-pointer flex w-fit transition-all h-full flex-row items-start justify-start gap-[10px]">
+                    <div onClick={toggleTranscript} className="speaker cursor-pointer flex w-fit transition-all h-full flex-row items-cen justify-start gap-[10px]">
                     <button>
                         <div className="profile flex transition-all items-center justify-center rounded-full">
 
                           <Image src='icons/profile-icon.svg' alt='Profile' height={46} width={46}/>
                         </div>
                     </button>
-                    <div className="name-stats w-fit h-fit flex flex-col justify-start text-black text-[1.125rem]">
-                          <div className="name text !text-left">
+                    <div className="name-stats w-fit h-fit flex flex-col justify-start text-black">
+                          <div className="name text text-base md:text-lg !text-left">
                             {currentData.speaker_name}
                           </div>
-                          <div className="stats text flex h-fit w-fit gap-[5px] text[1rem] poppins">
+                          <div className="stats text flex h-fit w-fit gap-[5px] text-base md:text-lg poppins">
                             <div className="time-turn text flex flex-row gap-[4px]">
                               <div className="time text !text-left">{formatTalkTime(currentData.talk_time)}</div>
                               <div className="text !text-left">•</div>
@@ -238,7 +238,7 @@ const HomePage = () => {
 
                   
 
-                    <div className="points flex flex-row gap-[3px] poppins text text-[1rem] text-[#79FF80]">
+                    <div className="points flex flex-row gap-[3px] poppins text text-base text-[#79FF80]">
                         <div className="num">
                           {scoreForCurrentTurn}
                         </div>
@@ -254,7 +254,7 @@ const HomePage = () => {
                         </div>
                     </div>
 
-                      <div className="turn flex w-fit black-opaque !shadow-none h-fit px-[12px] py-[1px] items-center rounded-full text-white">
+                      <div className="turn flex w-fit black-opaque !shadow-none text-base h-fit px-[12px] py-[1px] items-center rounded-full text-white">
                             {currentData.turn_category}
                       </div>
                   </div>

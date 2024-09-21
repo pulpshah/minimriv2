@@ -31,17 +31,17 @@ const FeedItem: React.FC<{
       <div className={`box gap-[25px] flex-col p-[20px] !justify-start white-opaque rounded-[40px] min-h-fit h-full ${isQuestion ? 'black-opaque' : 'white-opaque'}`}>
         <div className="title-turn-play flex flex-row justify-between items-center h-fit w-full">
 
-          <div className={`feed-text w-fit h-fit flex flex-row items-center justify-start gap-[10px] text-[1.25rem] ${isQuestion ? 'text-white' : 'text-black'}`}>
+          <div className={`feed-text w-fit !text-lg md:!text-xl h-fit flex flex-row items-center justify-start gap-[10px] ${isQuestion ? 'text-white' : 'text-black'}`}>
             <span>{title}</span>
           </div>
 
           <div className="turn-play w-fit h-fit flex flex-row justify-end items-center gap-[5px]">
-            <div className={`turn flex w-fit !shadow-none h-fit px-[5px] py-[1px] items-center rounded-full box ${isQuestion ? 'white-opaque' : 'black-opaque'}`}>
+            <div className={`turn flex w-fit !shadow-none text-lg md:text-xl h-fit px-[5px] py-[1px] items-center rounded-full box ${isQuestion ? 'white-opaque' : 'black-opaque'}`}>
               Turn {turn_number}
             </div>
 
             <button>
-              <Image className={`cursor-pointer ${isQuestion ? 'invert' : ''}`} src='/icons/feed-play.svg' alt='Fetch' height={42} width={42} />
+              <Image className={`cursor-pointer ${isQuestion ? 'invert' : ''}`} src='/icons/feed-play.svg' alt='Fetch' height={44} width={47} />
             </button>
           </div>
 
@@ -74,7 +74,7 @@ const FeedItem: React.FC<{
               className="block mx-auto"
             />
           </div>
-          <div className="text-center poppins pt-1.5">
+          <div className="text-center text-base md:text-lg poppins pt-1.5">
             {speaker}
           </div>
         </div>
@@ -85,7 +85,10 @@ const FeedItem: React.FC<{
                   </div>
                   : <div className="analysis grid grid-cols-1 w-full h-fit bg-gray-200">
                       <div className="appeal-score box">
-                        appeal
+                        <div className="appeal w-full h-full">
+                          <div className="text-7xl md:text-8xl lg:text-9xl w-full h-fit text-center lg:text-left outline-text">appeal</div>
+
+                        </div>
                       </div>
 
                       <div className="style-score box">

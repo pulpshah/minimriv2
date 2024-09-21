@@ -143,6 +143,12 @@ html, body {
   color: #ffffff;
 }
 
+.outline-text {
+  color: transparent; /* Make the fill transparent */
+  -webkit-text-stroke: 2px black; /* Outline with a stroke (change color and width as needed) */
+}
+
+
 .feed-text {
   font-size: 1.25rem;
   line-height: 30px;
