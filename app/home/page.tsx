@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import JFile from "@/public/data/dummydata.json";
 import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
+import { useEffect } from "react";
 
 // Define the type for the turn data to include cumulative_score
 type TurnData = {
@@ -69,6 +70,8 @@ const HomePage = () => {
     setTranscriptOpen(!isTranscriptOpen);
   };
 
+  const [searchInput, setSearchInput] = useState("");
+
   // Handle swipe up
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     const clientY = e.targetTouches[0].clientY; // Access clientY correctly
@@ -127,6 +130,17 @@ const HomePage = () => {
       setIsPlaying(!isPlaying);
     }
   };
+
+  useEffect(() => {
+    if (!isSearchMode) {
+      setSearchInput(""); // Clear input
+    }
+  }, [isSearchMode]);
+  
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value);
+  };
+  
 
   // Handle opening the search sliding tab
   const handleSearchClick = () => {
@@ -206,10 +220,13 @@ const HomePage = () => {
           </button>
 
           <input
-            placeholder="search"
-            type="text"
-            className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
-          />
+          placeholder="search"
+          type="text"
+          className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
+          value={searchInput}
+          onChange={handleSearchInputChange}
+        />
+
         </div>
     </div>
 
@@ -268,7 +285,7 @@ const HomePage = () => {
 <div
   className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
     isSearchMode ? "translate-y-0" : "translate-y-full"
-  } w-full h-[91.3vh] bg-white rounded-t-[40px]`}
+  } w-full h-[90.3vh] bg-white rounded-t-[40px]`}
   style={{ transition: "transform 0.4s ease" }}
 >
 </div>
