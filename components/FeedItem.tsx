@@ -28,8 +28,7 @@ const FeedItem: React.FC<{ turn_number: number, title: string, topic: string, }>
         <div className="w-full h-full box">
           <div className="topic-text auth-text !text-black flex flex-col md:flex-row gap-[8px]">
               <div className="w-3/4 mx-auto">
-                this turn is about {turn_number}.
-              </div>
+                this turn is about {topic}
           </div>
         </div>
       </div>
