@@ -164,11 +164,15 @@ const HomePage = () => {
         </div>
 
         <div className="header top-0 px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
-  <div className="search z-[101] gap-2 w-full h-[81px] box !justify-between flex-row !items-center">
+          
+        <div className={`search z-[101] gap-2 w-full h-[81px] box flex flex-row items-center ${
+        isSearchMode ? "justify-center" : "!justify-between"
+      }`}>
+
     
     <button
       className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
-        isSearchMode ? "opacity-0 invisible" : "opacity-100 visible"
+        isSearchMode ? "hidden" : "flex"
       }`}
     >
       <Image
@@ -179,39 +183,68 @@ const HomePage = () => {
       />
     </button>
 
-    <div className="search-bar backdrop-blur-[50px] transition-all z-[101] flex-shrink-0 justify-between w-[65vw] max-w-[600px] h-[35px] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full">
-      <div
-        onClick={handleSearchClick}
-        className="flex items-center gap-[10px] justify-between w-full"
-      >
-        <button className="w-[19px] h-[19px] md:w[50px] flex-shrink-0">
-          <Image
-            className="cursor-pointer"
-            src="icons/search-icon.svg"
-            alt="search"
-            height={19}
-            width={19}
-          />
-        </button>
+    <div className={`flex items-center w-full justify-center ${
+        isSearchMode ? "mx-[20px]" : "mx-0"
+      }`}>
 
-        <input
-          placeholder="search"
-          type="text"
-          className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
+      <div className={`search-bar backdrop-blur-[50px] transition-all z-[101] flex-shrink-0 justify-between w-[65vw] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full ${
+        isSearchMode ? " w-full max-w-[600px] h-[45px]" : "h-[35px] w-[65vw] max-w-[450px]"
+      }`}>
+
+        <div
+          onClick={handleSearchClick}
+          className="flex items-center gap-[10px] justify-between w-full"
+        >
+          <button className="w-[19px] h-[19px] md:w[50px] flex-shrink-0">
+            <Image
+              className="cursor-pointer"
+              src="icons/search-icon.svg"
+              alt="search"
+              height={19}
+              width={19}
+            />
+          </button>
+
+          <input
+            placeholder="search"
+            type="text"
+            className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
+          />
+        </div>
+    </div>
+
+    <div className="">
+      <button
+        className={`cursor-pointer  flex-shrink-0 z-[101] w-[32px] md:w-[32px] transition-opacity ${
+          isSearchMode ? "flex" : "hidden"
+        }`}
+        onClick={isSearchMode ? handleClearSearch : undefined}
+      >
+        <Image
+          src={
+            "icons/close-icon.svg"
+          }
+          alt={"close"}
+          height={45}
+          width={45}
         />
-      </div>
+      </button>
+
+    </div>
+
     </div>
 
     {/* Fetch/Close icon - hide the fetch and show the close button based on search mode */}
     <button
-      className="cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity"
+      className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
+        isSearchMode ? "hidden" : "flex" }`}
       onClick={isSearchMode ? handleClearSearch : undefined}
     >
       <Image
         src={
-          isSearchMode ? "icons/close-icon.svg" : "icons/fetch-icon.svg"
+          "icons/fetch-icon.svg"
         }
-        alt={isSearchMode ? "close" : "fetch"}
+        alt={ "close"}
         height={35}
         width={45}
       />
@@ -233,80 +266,23 @@ const HomePage = () => {
 </div>
 
 <div
-  className={`search-tab z-[50] transition-all text-black fixed bottom-0 ${
+  className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
     isSearchMode ? "translate-y-0" : "translate-y-full"
-  } w-full h-[92vh] bg-white rounded-t-[40px]`}
-  style={{ transition: "transform 0.5s ease" }}
+  } w-full h-[91.3vh] bg-white rounded-t-[40px]`}
+  style={{ transition: "transform 0.4s ease" }}
 >
-  <div className="search-results overflow-y-auto px-[20px] pb-[20px] space-y-[10px]">
-    <div className="justify-start items-center px-[131px] flex flex-col py-[6px] space-y-[10px] w-full h-[17px]"></div>
-    <div className="flex flex-col space-y-2">
-      <div className="flex flex-row space-x-[25px] items-center justify-evenly text-[20px]">
-        <div><button>all</button></div>
-        <div><button>media</button></div>
-        <div><button>topics</button></div>
-        <div><button>phases</button></div>
-      </div>
-
-      {/* Search Options */}
-      <div className="flex flex-row justify-between">
-        <div className="flex flex-row space-x-[10px]">
-        <div className="flex justify-center items-center rounded-[10px] bg-[#070707]/80 p-[10px] w-[48px] h-[48px]">
-          <Image src="/icons/tv-icon-white.svg" alt="tv" width={23} height={21} />
-        </div>
-        <div className="flex flex-col items-start text-left">
-          <div className="font-bold text-[18px]">NBC Nightly News</div>
-          <div>Turn 65</div>
-        </div>
-        </div>
-        <div>
-          <Image src="icons/globe-icon.svg" alt="globe" width={42} height={42}/>
-        </div>
-      </div>
-
-      <div className="flex flex-row justify-between">
-        <div className="flex flex-row space-x-[10px]">
-        <div className="flex justify-center items-center rounded-[10px] bg-[#070707]/80 p-[10px] w-[48px] h-[48px]">
-          <Image src="/icons/tv-icon-white.svg" alt="tv" width={23} height={21} />
-        </div>
-        <div className="flex flex-col items-start text-left">
-          <div className="font-bold text-[18px]">Hysteria Podcast</div>
-          <div>Turn 100</div>
-        </div>
-        </div>
-        <div>
-          <Image src="icons/globe-icon.svg" alt="globe" width={42} height={42}/>
-        </div>
-      </div>
-
-      <div className="flex flex-row justify-between">
-        <div className="flex flex-row space-x-[10px]">
-        <div className="flex justify-center items-center rounded-[10px] bg-[#070707]/80 p-[10px] w-[48px] h-[48px]">
-          <Image src="/icons/tv-icon-white.svg" alt="tv" width={23} height={21} />
-        </div>
-        <div className="flex flex-col items-start text-left">
-          <div className="font-bold text-[18px]">CNN</div>
-          <div>Turn 115</div>
-        </div>
-        </div>
-        <div>
-          <Image src="icons/globe-icon.svg" alt="globe" width={42} height={42}/>
-        </div>
-      </div>
-
-    </div>
-  </div>
 </div>
 
 
 
-        <div
-          className={`transcript z-40 transition-all text-black fixed bottom-0 ${
-            isTranscriptOpen ? "h-[50vh]" : "h-[125px]"
-          } w-full rounded-t-[40px]`}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        >
+          <div
+            className={`transcript z-40 text-black fixed bottom-0 transition-all duration-400 ${
+              isTranscriptOpen ? "h-[50vh]" : "h-[125px]"
+            } w-full rounded-t-[40px]`}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+
           <button
             className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center"
             onClick={toggleTranscript}
@@ -401,7 +377,7 @@ const HomePage = () => {
 
           {/* Transcript content */}
           <div
-            className={`transcript-box flex flex-col p-[25px] gap-[10px] w-full h-full black-opaque !shadow-none rounded-[40px] transitions-all duration-200 ${
+            className={`transcript-box flex flex-col p-[25px] gap-[10px] w-full h-full black-opaque !shadow-none rounded-[40px] transitions-all ${
               isTranscriptOpen ? "flex" : "hidden"
             }`}
           >
