@@ -149,7 +149,6 @@ html, body {
   font-size: 1.25rem;
   line-height: 30px;
   text-align: center;
-  color: #000000;
 }
 
 .text {
@@ -163,6 +162,23 @@ html, body {
   border-radius: 999px;
   max-width: 350px;
 }
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.line-clamp-5 {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 
 .starting-button {
   border-radius: 999px;
@@ -183,9 +199,9 @@ html, body {
 
 
 .white-opaque {
-  background: rgba(255, 255, 255, 0.80);
+  background: rgba(255, 255, 255, 0.8);
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
-  color: blackd;
+  color: black;
 }
 
 .blurry {

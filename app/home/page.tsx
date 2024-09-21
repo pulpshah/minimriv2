@@ -93,6 +93,8 @@ const HomePage = () => {
       return `0:${remainingSeconds.toString().padStart(2, '0')}`;
     }
   };
+
+  
   
 
   
@@ -109,6 +111,7 @@ const HomePage = () => {
         <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
         {turnsData.map((turn, index) => (
         <FeedItem 
+          speaker={turn.speaker_name}
           key={index}
           topic={turn.topic || 'No Topic'} // Make sure to pass topic here
           turn_number={turn.turn_number}
@@ -262,19 +265,18 @@ const HomePage = () => {
                   </div>
 
                   <div className="lines flex box w-full h-full flex-col gap-[15px] px-[10px] py-[10px]">
-                    <div className="turn1 !text-right flex h-fit text text-[1.25rem] w-full justify-end">
-                      <div className="line max-w-[290px] text-white">
-                       {currentTurnText}
-
+                    <div className="turn2 !text-right flex h-fit text text-[1.25rem] text-gray-300 w-full justify-end">
+                      <div className="line max-w-[290px] line-clamp-5">
+                        {nextTurnText}
                       </div>
                     </div>
 
                     <div className="turn2 !text-left flex h-fit text text-[1.25rem] text-gray-300 w-full justify-start">
-                      <div className="line max-w-[290px]">
+                    <div className="line max-w-[290px] line-clamp-2">
                       {nextTurnText}
-
-                      </div>
                     </div>
+                  </div>
+
                     
                   </div>
 

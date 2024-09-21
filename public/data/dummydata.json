@@ -2,7 +2,7 @@
   "analysis":[
      {
         "turn_number":1,
-        "speaker_name":"Donald Trump",
+        "speaker_name":"David Muir",
         "turn_category":"question",
         "timestamp_start":96.84,
         "timestamp_end":119.64,
@@ -11,7 +11,7 @@
         "analysis":{
            "claims":[
               {
-                 "text":"awhdawudiawgkdaw"
+                 "text":"I am actually the only person on this stage who has a plan that is about lifting up the middle class and working people of America."
               }
            ],
            "knowledge_types":[
@@ -27,11 +27,11 @@
      {
         "turn_number":2,
         "speaker_name":"Kamala Harris",
-        "turn_category":"reply",
+        "turn_category":"answer",
         "timestamp_start":120.42,
         "timestamp_end":238.19,
         "talk_time":117.77,
-        "topic": "Immigration",
+        "topic": "Gun Control",
         "analysis":{
            "claims":[
               {
@@ -404,11 +404,11 @@
      {
       "turn_number":3,
       "speaker_name":"Donald Trump",
-      "turn_category":"question",
+      "turn_category":"rebuttal",
       "timestamp_start":96.84,
       "timestamp_end":119.64,
       "talk_time":42.8,
-      "topic": "Voter Rights",
+      "topic": "Gun Control",
       "analysis":{
          "claims":[
             {
@@ -424,6 +424,30 @@
       },
       "cumulative_score":650,
       "score":50
+   },
+   {
+      "turn_number":4,
+      "speaker_name":"Linsey Davis",
+      "turn_category":"question",
+      "timestamp_start":96.84,
+      "timestamp_end":119.64,
+      "talk_time":22.8,
+      "topic": "Uday",
+      "analysis":{
+         "claims":[
+            {
+               "text":"awhdawudiawgkdaw"
+            }
+         ],
+         "knowledge_types":[
+            
+         ],
+         "references":[
+            
+         ]
+      },
+      "cumulative_score":600,
+      "score":100
    }
   ]
 }
