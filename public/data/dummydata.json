@@ -7,7 +7,7 @@
         "timestamp_start":96.84,
         "timestamp_end":119.64,
         "talk_time":22.8,
-        "topic": "guns",
+        "topic": "Gun Control",
         "analysis":{
            "claims":[
               {
@@ -31,7 +31,7 @@
         "timestamp_start":120.42,
         "timestamp_end":238.19,
         "talk_time":117.77,
-        "topic": "guns",
+        "topic": "Immigration",
         "analysis":{
            "claims":[
               {
@@ -408,7 +408,7 @@
       "timestamp_start":96.84,
       "timestamp_end":119.64,
       "talk_time":42.8,
-      "topic": "guns",
+      "topic": "Voter Rights",
       "analysis":{
          "claims":[
             {

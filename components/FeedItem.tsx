@@ -4,7 +4,7 @@ import Image from 'next/image'
 import JFile from "@/public/data/dummydata.json";
 import { title } from 'process';
 
-const FeedItem: React.FC<{ turn_number: number, title: string, topic: string, }> = ({ turn_number, title }) => {
+const FeedItem: React.FC<{ turn_number: number, title: string, topic: string, }> = ({ turn_number, title, topic }) => {
   return (
     <div className="graph box w-full h-fit gap-[25px]">
       <div className="box gap-[25px] flex-col p-[20px] !justify-start white-opaque rounded-[40px] min-h-fit h-full">
@@ -27,12 +27,24 @@ const FeedItem: React.FC<{ turn_number: number, title: string, topic: string, }>
 
         <div className="w-full h-full box">
           <div className="topic-text auth-text !text-black flex flex-col md:flex-row gap-[8px]">
-              <div className="w-3/4 mx-auto">
-                this turn is about {topic}
+              <div className="w-full mx-auto">
+                let's talk about <div className="text-white topic-outline">{topic}.</div>
+              </div>
           </div>
-        </div>
       </div>
+          <div className="candidate">
+            <div className="rounded-[40px] overflow-hidden w-fit border-[5px] black-opaque border-black h-fit">
+            <Image 
+              src="/candidates/trump.png" 
+              alt="Logo" 
+              width={220} 
+              height={41} 
+              className="block mx-auto"
+            />
+            </div>
+          </div>
     </div>
+  </div>
   )
 }
 

@@ -98,7 +98,7 @@ const HomePage = () => {
   
 
   return (
-    <div className="min-h-screen bg-[url('/bg/Bg.webp')] bg-cover bg-center backdrop-blur-[50px]">
+    <div className="min-h-screen bg-[url('')] bg-cover bg-white bg-center backdrop-blur-[50px]">
         <div className="light absolute z-50 inset-0 h-[80px] w-full"></div>
 
 
