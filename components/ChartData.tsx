@@ -1,6 +1,6 @@
-// components/RadarChartData.tsx
 import React from 'react';
 import Plot from 'react-plotly.js';
+import { Data } from 'plotly.js'; // Import the correct Data type from Plotly
 
 interface RadarChartProps {
   ethos: number;
@@ -9,11 +9,11 @@ interface RadarChartProps {
 }
 
 export const RadarChart: React.FC<RadarChartProps> = ({ ethos, pathos, logos }) => {
-  const radarData = [
+  const radarData: Data[] = [
     {
-      type: "scatterpolar",
-      r: [ethos, pathos, logos],  // Dynamic data for each turn
-      theta: ["Ethos", "Pathos", "Logos"],  // Labels for the axes
+      type: "scatterpolar", 
+      r: [ethos, pathos, logos],
+      theta: ["Ethos", "Pathos", "Logos"], 
       fill: "toself",
       name: "Performance"
     },
@@ -26,8 +26,8 @@ export const RadarChart: React.FC<RadarChartProps> = ({ ethos, pathos, logos }) 
         range: [0, 10], // Assuming the scores are between 0 and 10
       },
     },
-    paper_bgcolor: "rgba(0,0,0,0)", // Transparent background
-    plot_bgcolor: "rgba(0,0,0,0)",  // Transparent plot background
+    paper_bgcolor: "rgba(0,0,0,0)",
+    plot_bgcolor: "rgba(0,0,0,0)", 
     autosize: true,
   };
 

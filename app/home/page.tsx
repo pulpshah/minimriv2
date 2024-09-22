@@ -352,15 +352,19 @@ const HomePage = () => {
                   <div className="stats text flex h-fit w-fit gap-[5px] text-base md:text-lg poppins">
                     <div className="time-turn text flex flex-row gap-[4px]">
                       <div className="time text !text-left">
-                        {formatTalkTime(currentData.talk_time)}
+                        {currentData.turn_category} {currentData.turn_number}
                       </div>
                       <div className="text !text-left">•</div>
+                      {/*
                       <div className="turn text !text-left">
                         Turn {currentData.turn_number}
                       </div>
+                      */}
                     </div>
-                    <div className="">,</div>
-                    <div className="sentiment text !text-left">Upset</div>
+                    {/*
+                    <div className="">,</div>*/}
+                    {/*
+                    <div className="sentiment text !text-left">Upset</div> */}
                   </div>
                 </div>
               </div>
@@ -432,7 +436,7 @@ const HomePage = () => {
               </div>
 
               <div className="turn flex w-fit black-opaque !shadow-none text-base h-fit px-[12px] py-[1px] items-center rounded-full text-white">
-                {currentData.turn_category}
+              Turn {currentData.turn_number}
               </div>
             </div>
 
