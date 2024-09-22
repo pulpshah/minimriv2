@@ -117,8 +117,9 @@ const FeedItem: React.FC<{
                       </div>
                     <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit">
                           <div className="chart box p-[24px]">
-                            
-                              
+                          
+                              <RadarChart data={radarData} />
+                      
                           </div>
                           <div className="textual-annotation box p-[24px]">
                             <div className="ethos box poppins">
