@@ -1,6 +1,6 @@
-import React from 'react';
-import Image from 'next/image';
-import { RadarChart } from './ChartData';
+import React from "react";
+import Image from "next/image";
+import { RadarChart } from "./ChartData";
 
 interface FeedItemProps {
   turn_number: number;
@@ -21,67 +21,93 @@ const FeedItem: React.FC<FeedItemProps> = ({
   pathosScore,
   logosScore,
 }) => {
-
   const getSpeakerImage = (speaker: string) => {
     switch (speaker) {
-      case 'Donald Trump':
-        return '/candidates/trump.webp';
-      case 'Kamala Harris':
-        return '/candidates/harris.webp';
-      case 'David Muir':
-        return '/candidates/muir.webp';
-      case 'Linsey Davis':
-        return '/candidates/davis.webp';
+      case "Donald Trump":
+        return "/candidates/trump.webp";
+      case "Kamala Harris":
+        return "/candidates/harris.webp";
+      case "David Muir":
+        return "/candidates/muir.webp";
+      case "Linsey Davis":
+        return "/candidates/davis.webp";
       default:
-        return '/candidates/default.webp';
+        return "/candidates/default.webp";
     }
   };
 
-  // Only show the radar chart for Kamala Harris or Donald Trump
-  const showChart = speaker === 'Kamala Harris' || speaker === 'Donald Trump';
+  const showChart = speaker === "Kamala Harris" || speaker === "Donald Trump";
 
-  const isQuestion = title.toLowerCase() === 'question';
-  const isRebuttal = title.toLowerCase() === 'rebuttal';
+  const isQuestion = title.toLowerCase() === "question";
+  const isRebuttal = title.toLowerCase() === "rebuttal";
 
   return (
-    <div className={`graph box w-full h-fit gap-[25px] ${isQuestion ? 'bg-question-color' : isRebuttal ? 'bg-rebuttal-color' : 'bg-answer-color'}`}>
-      <div className={`box gap-[25px] flex-col p-[20px] !justify-start white-opaque rounded-[40px] min-h-fit h-full ${isQuestion ? 'black-opaque' : 'white-opaque'}`}>
+    <div
+      className={`graph box w-full h-fit gap-[25px] ${
+        isQuestion
+          ? "bg-question-color"
+          : isRebuttal
+          ? "bg-rebuttal-color"
+          : "bg-answer-color"
+      }`}
+    >
+      <div
+        className={`box gap-[25px] flex-col p-[20px] !justify-start white-opaque rounded-[40px] min-h-fit h-full ${
+          isQuestion ? "black-opaque" : "white-opaque"
+        }`}
+      >
         <div className="title-turn-play flex flex-row justify-between items-center h-fit w-full">
-
-          <div className={`feed-text w-fit !text-lg md:!text-xl h-fit flex flex-row items-center justify-start gap-[10px] ${isQuestion ? 'text-white' : 'text-black'}`}>
+          <div
+            className={`feed-text w-fit !text-lg md:!text-xl h-fit flex flex-row items-center justify-start gap-[10px] ${
+              isQuestion ? "text-white" : "text-black"
+            }`}
+          >
             <span>{title}</span>
           </div>
 
           <div className="turn-play w-fit h-fit flex flex-row justify-end items-center gap-[5px]">
-            <div className={`turn flex w-fit !shadow-none text-lg md:text-xl h-fit px-[5px] py-[1px] items-center rounded-full box ${isQuestion ? 'white-opaque' : 'black-opaque'}`}>
+            <div
+              className={`turn flex w-fit !shadow-none text-lg md:text-xl h-fit px-[5px] py-[1px] items-center rounded-full box ${
+                isQuestion ? "white-opaque" : "black-opaque"
+              }`}
+            >
               Turn {turn_number}
             </div>
 
             <button>
-              <Image className={`cursor-pointer ${isQuestion ? 'invert' : ''}`} src='/icons/feed-play.svg' alt='Fetch' height={44} width={47} />
+              <Image
+                className={`cursor-pointer ${isQuestion ? "invert" : ""}`}
+                src="/icons/feed-play.svg"
+                alt="Fetch"
+                height={44}
+                width={47}
+              />
             </button>
           </div>
-
         </div>
 
         <div className="w-full h-full box">
           <div className="topic-text auth-text !text-black flex flex-col md:flex-row gap-[8px]">
-              <div className={`w-full mx-auto ${isQuestion ? 'text-white' : ''}`}>
-                {isQuestion ? "Let's talk about" : isRebuttal ? "My rebuttal On" : "My thoughts on"}
-                <div className="text-white topic-outline">
-                  {isQuestion || isRebuttal ? `${topic}.` : `${topic},`}
-                </div>
+            <div className={`w-full mx-auto ${isQuestion ? "text-white" : ""}`}>
+              {isQuestion
+                ? "Let's talk about"
+                : isRebuttal
+                ? "My rebuttal On"
+                : "My thoughts on"}
+              <div className="text-white topic-outline">
+                {isQuestion || isRebuttal ? `${topic}.` : `${topic},`}
               </div>
+            </div>
           </div>
         </div>
 
         <div className="candidate">
           <div className="rounded-[40px] overflow-hidden w-fit border-[5px] black-opaque border-black h-fit">
-            <Image 
-              src={getSpeakerImage(speaker)} 
-              alt="Speaker Image" 
-              width={220} 
-              height={41} 
+            <Image
+              src={getSpeakerImage(speaker)}
+              alt="Speaker Image"
+              width={180}
+              height={41}
               className="block mx-auto"
             />
           </div>
@@ -90,47 +116,60 @@ const FeedItem: React.FC<FeedItemProps> = ({
           </div>
         </div>
 
-        {isQuestion 
-          ? <div className="question flex"></div>
-          : <div className="analysis lg:mt-[50px] grid grid-cols-1 w-full h-fit gap-[25px]">
+        {isQuestion ? (
+          <div className="question flex"></div>
+        ) : (
+          <div className="analysis grid grid-cols-1 w-full h-fit gap-[25px]">
+
+            <div className="appeal lg:mt-[50px] grid grid-cols-1 w-full h-fit gap-[25px]">
+
               <div className="appeal-score box items-center flex-col lg:!justify-start lg:flex-row gap-[25px] lg:gap-[30px]">
-                  <div className="appeal w-fit h-fit">
-                    <div className="flex gap-2 text-7xl lg:text-9xl w-fit h-fit outline-text">
-                        <div className="flex w-fit md:gap-3 lg:gap-4">appeal</div>
-                    </div>
-                  </div>
-                  <div className="w-fit text-center h-fit lg:text-left lg:w-[682px] flex justify-start text-lg">
-                    The appeal score evaluates a speaker's effectiveness in using ethos, pathos, and logos...
-                  </div>
-              </div>
-              {showChart && (
-                <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit">
-                  <div className="chart box p-[24px] w-full h-[300px] md:h-[400px] lg:h-[500px]">
-                    <div className='w-full h-full'>
-                      <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
-                    </div>
-                  </div>
-                  <div className="textual-annotation box p-[24px]">
-                    <div className="ethos box poppins">                  
-                      Ethos refers to the ethical appeal or credibility of the
-                  speaker, encompassing attributes like trustworthiness,
-                  expertise, and authority. In rhetorical analysis, ethos
-                  assesses how the speaker's cahracter and reputation contribute
-                  to their persuasiveness. A strong ethos enhances the
-                  audience's confidence in the speaker's arguments and increases
-                  the effectiveness of t heir communication.
-                  <br></br>
-                  <br></br>
-                  Users can assess the speaker's ethos to determine how credible
-                  and trustworthy they find the speaker, influencing their
-                  acceptance of the arguments preseneted.</div>
+                <div className="appeal w-fit h-fit">
+                  <div className="flex gap-2 text-7xl lg:text-9xl w-fit h-fit outline-text">
+                    <div className="flex w-fit md:gap-3 lg:gap-4">appeal</div>
                   </div>
                 </div>
-              )}
-            </div>}
+                <div className="w-fit text-center h-fit lg:text-left lg:w-[802px] flex justify-start text-lg">
+                  Appeal Score evaluates the effectiveness of the speaker's use of
+                  rhetorical appeals—ethos (credibility), pathos (emotion), and
+                  logos (logic). It assesses how well the speaker connects with
+                  the audience, persuades through emotional resonance, and
+                  presents logical arguments. A higher appeal score indicates a
+                  stronger persuasive impact on the audience.
+                </div>
+              </div>
+              {showChart && (
+              <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/analysis.webp')] !bg-cover !bg-center">
+                <div className="chart box p-[24px] w-full h-[300px] md:h-[400px] lg:h-[500px">
+                  <div className="w-full h-full"></div>
+                </div>
+                <div className="textual-annotation box p-[24px]">
+                  <div className="ethos box poppins">
+                    Ethos refers to the ethical appeal or credibility of the
+                    speaker, encompassing attributes like trustworthiness,
+                    expertise, and authority. In rhetorical analysis, ethos
+                    assesses how the speaker's cahracter and reputation
+                    contribute to their persuasiveness. A strong ethos enhances
+                    the audience's confidence in the speaker's arguments and
+                    increases the effectiveness of t heir communication.
+                    <br></br>
+                    <br></br>
+                    Users can assess the speaker's ethos to determine how
+                    credible and trustworthy they find the speaker, influencing
+                    their acceptance of the arguments preseneted.
+                  </div>
+                </div>
+              </div>
+               )}
+            </div>
+            
+
+            
+          </div>
+        )}
       </div>
     </div>
   );
-}
+};
 
 export default FeedItem;
