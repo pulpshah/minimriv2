@@ -92,16 +92,20 @@ const FeedItem: React.FC<{
                                 </div>
                               </div>
                           </div>
-                            <div className="w-fit text-center h-fit lg:text-left lg:w-[682px] flex justify-start poppins text-lg">
+                            <div className="w-fit text-center h-fit lg:text-left lg:w-[682px] flex justify-start text-lg">
                               The appeal score evaluates a speaker's effectiveness in using ethos (credibility), pathos (emotional impact), and logos (logical reasoning). Each aspect is scored based on trustworthiness, emotional engagement, and logical soundness.
                             </div>
                       </div>
-                    <div className="analysis-content grid grid-cols-2 w-full rounded-[40px] black-opaque h-fit">
-                          <div className="textual-annotation box">
-                            ssd
-                          </div>
-                          <div className="chart box">
+                    <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit">
+                          <div className="chart box p-[24px]">
                             asda
+                          </div>
+                          <div className="textual-annotation box p-[24px]">
+                            <div className="ethos box poppins">
+                              Ethos refers to the ethical appeal or credibility of the speaker, encompassing attributes like trustworthiness, expertise, and authority. In rhetorical analysis, ethos assesses how the speaker's cahracter and reputation contribute to their persuasiveness. A strong ethos enhances the audience's confidence in the speaker's arguments and increases the effectiveness of t heir communication.
+                              <br></br><br></br>
+                              Users can assess the speaker's ethos to determine how credible and trustworthy they find the speaker, influencing their acceptance of the arguments preseneted.
+                            </div>
                           </div>
                     </div>
                   </div> }
