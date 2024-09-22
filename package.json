@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@observablehq/plot": "^0.6.16",
     "@observablehq/runtime": "^5.9.9",
+    "@types/d3": "^7.4.3",
     "chart.js": "^4.4.4",
     "d3": "^5.16.0",
     "firebase": "^10.13.2",
