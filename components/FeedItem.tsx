@@ -116,6 +116,9 @@ const FeedItem: React.FC<FeedItemProps> = ({
           </div>
         </div>
         
+
+
+        
         {/* Content */}
         {isQuestion ? (
           <div className="question flex"></div>

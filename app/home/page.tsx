@@ -8,6 +8,7 @@ import { useEffect } from "react";
 // Define the type for the turn data to include cumulative_score and ethos, pathos, logos scores
 type TurnData = {
   speaker_name: string;
+
   topic?: string;
   turn_number: number;
   turn_category?: string;
@@ -333,7 +334,7 @@ const HomePage = () => {
             <div className="h-[50px] flex justify-between w-full">
               <div
                 onClick={toggleTranscript}
-                className="speaker cursor-pointer flex w-fit transition-all h-full flex-row items-cen justify-start gap-[10px]"
+                className="speaker cursor-pointer flex w-fit transition-all h-full flex-row items-center justify-start gap-[10px]"
               >
                 <button>
                   <div className="profile flex transition-all items-center justify-center rounded-full">
@@ -352,9 +353,9 @@ const HomePage = () => {
                   <div className="stats text flex h-fit w-fit gap-[5px] text-base md:text-lg poppins">
                     <div className="time-turn text flex flex-row gap-[4px]">
                       <div className="time text !text-left">
-                        {currentData.turn_category} {currentData.turn_number}
+                        {currentData.turn_category}
                       </div>
-                      <div className="text !text-left">•</div>
+                       {/*<div className="text !text-left">•</div>
                       {/*
                       <div className="turn text !text-left">
                         Turn {currentData.turn_number}
