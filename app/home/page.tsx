@@ -5,7 +5,7 @@ import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import { useEffect } from "react";
 
-// Define the type for the turn data to include cumulative_score
+// Define the type for the turn data to include cumulative_score and ethos, pathos, logos scores
 type TurnData = {
   speaker_name: string;
   topic?: string;
@@ -14,7 +14,20 @@ type TurnData = {
   score: number;
   talk_time: number;
   analysis: {
-    claims: { text: string }[];
+    claims: {
+      text: string;
+      scores?: {
+        ethos?: {
+          score: number;
+        };
+        pathos?: {
+          score: number;
+        };
+        logos?: {
+          score: number;
+        };
+      };
+    }[];
   };
   cumulative_score?: number;
 };
@@ -165,15 +178,24 @@ const HomePage = () => {
       >
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
-            {turnsData.map((turn: TurnData, index) => (
-              <FeedItem
-                speaker={turn.speaker_name}
-                key={index}
-                topic={turn.topic || "No Topic"}
-                turn_number={turn.turn_number}
-                title={turn.turn_category || "segment"}
-              />
-            ))}
+            {turnsData.map((turn: TurnData, index) => {
+              const ethosScore = turn.analysis.claims[0]?.scores?.ethos?.score || 0;
+              const pathosScore = turn.analysis.claims[0]?.scores?.pathos?.score || 0;
+              const logosScore = turn.analysis.claims[0]?.scores?.logos?.score || 0;
+
+              return (
+                <FeedItem
+                  key={index}
+                  speaker={turn.speaker_name}
+                  topic={turn.topic || "No Topic"}
+                  turn_number={turn.turn_number}
+                  title={turn.turn_category || "segment"}
+                  ethosScore={ethosScore}
+                  pathosScore={pathosScore}
+                  logosScore={logosScore}
+                />
+              );
+            })}
           </div>
         </div>
 

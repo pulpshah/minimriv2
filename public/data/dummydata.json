@@ -11,7 +11,7 @@
         "analysis":{
            "claims":[
               {
-                 "text":"I am actually the only person on this stage who has a plan that is about lifting up the middle class and working people of America. I am actually the only person on this stage who has a plan that is about lifting up the middle class and working people of America I am actually the only person on this stage who has a plan that is about lifting up the middle class and working people of America I am actually the only person on this stage who has a plan that is about lifting up the middle class and working people of AmericaI am actually the only person on this stage who has a plan that is about lifting up the middle class and working people of America"
+                 "text":"hi i'm david muir, the moderator"
               }
            ],
            "knowledge_types":[
@@ -412,7 +412,61 @@
       "analysis":{
          "claims":[
             {
-               "text":"afdasdasfasgesadgsgf"
+               "text":"they gon eat our cats and dogs!!",
+               "knowledge_type":"Declarative",
+               "scores":{
+                  "ethos":{
+                     "score":2,
+                     "reasoning":{
+                        "ethos":[
+                           "The speaker enhances her credibility by positioning herself as uniquely focused on the middle class.",
+                           "By asserting exclusivity in her plan, she bolsters her authority on economic issues."
+                        ],
+                        "pathos":[
+                           "This claim resonates emotionally with middle-class voters seeking dedicated representation.",
+                           "It evokes feelings of hope and trust among those who feel overlooked by other candidates."
+                        ],
+                        "logos":[
+                           "Logically, the claim suggests that other candidates lack similar plans.",
+                           "However, without evidence, this assertion may be seen as an overgeneralization."
+                        ]
+                     }
+                  },
+                  "pathos":{
+                     "score":1,
+                     "reasoning":{
+                        "ethos":[
+                           "Sharing her middle-class upbringing builds rapport and trust with the audience.",
+                           "Her personal connection enhances her relatability and perceived sincerity."
+                        ],
+                        "pathos":[
+                           "Her story evokes empathy and aligns her with the struggles of average Americans.",
+                           "It fosters an emotional bond with voters who share similar experiences."
+                        ],
+                        "logos":[
+                           "While emotionally compelling, the argument lacks specific data to support its effectiveness.",
+                           "The logical link between her background and policy efficacy is implied but not explicitly stated."
+                        ]
+                     }
+                  },
+                  "logos":{
+                     "score":5,
+                     "reasoning":{
+                        "ethos":[
+                           "She presents a strong claim but does not provide supporting evidence.",
+                           "Her credibility could be enhanced with factual comparisons or data."
+                        ],
+                        "pathos":[
+                           "The lack of logical support may cause skepticism among critical listeners.",
+                           "Emotional appeal may not fully compensate for the logical gaps in her argument."
+                        ],
+                        "logos":[
+                           "The argument lacks concrete evidence to substantiate her exclusivity claim.",
+                           "Without data, the logical strength of her assertion is weakened."
+                        ]
+                     }
+                  }
+               }
             }
          ],
          "knowledge_types":[

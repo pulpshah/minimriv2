@@ -1,31 +1,26 @@
 import React from 'react';
 import Image from 'next/image';
-import RadarChart from './RadarChart';
+import { RadarChart } from './ChartData';
 
-const radarData = [
-  [
-    { axis: "Ethos", value: 0.75 },
-    { axis: "Pathos", value: 0.85 },
-    { axis: "Logos", value: 0.90 }
-  ],
-  [
-    { axis: "Ethos", value: 0.60 },
-    { axis: "Pathos", value: 0.70 },
-    { axis: "Logos", value: 0.80 }
-  ],
-  [
-    { axis: "Ethos", value: 0.80 },
-    { axis: "Pathos", value: 0.75 },
-    { axis: "Logos", value: 0.85 }
-  ]
-];
+interface FeedItemProps {
+  turn_number: number;
+  title: string;
+  topic: string;
+  speaker: string;
+  ethosScore: number;
+  pathosScore: number;
+  logosScore: number;
+}
 
-const FeedItem: React.FC<{ 
-  turn_number: number, 
-  title: string, // Can be "question", "answer", or "rebuttal"
-  topic: string, 
-  speaker: string 
-}> = ({ turn_number, title, topic, speaker }) => {
+const FeedItem: React.FC<FeedItemProps> = ({
+  turn_number,
+  title,
+  topic,
+  speaker,
+  ethosScore,
+  pathosScore,
+  logosScore,
+}) => {
 
   const getSpeakerImage = (speaker: string) => {
     switch (speaker) {
@@ -41,6 +36,9 @@ const FeedItem: React.FC<{
         return '/candidates/default.webp';
     }
   };
+
+  // Only show the radar chart for Kamala Harris or Donald Trump
+  const showChart = speaker === 'Kamala Harris' || speaker === 'Donald Trump';
 
   const isQuestion = title.toLowerCase() === 'question';
   const isRebuttal = title.toLowerCase() === 'rebuttal';
@@ -69,13 +67,7 @@ const FeedItem: React.FC<{
         <div className="w-full h-full box">
           <div className="topic-text auth-text !text-black flex flex-col md:flex-row gap-[8px]">
               <div className={`w-full mx-auto ${isQuestion ? 'text-white' : ''}`}>
-
-                {isQuestion 
-                  ? "Let's talk about" 
-                  : isRebuttal 
-                  ? "My rebuttal On" 
-                  : "My thoughts on"}
-
+                {isQuestion ? "Let's talk about" : isRebuttal ? "My rebuttal On" : "My thoughts on"}
                 <div className="text-white topic-outline">
                   {isQuestion || isRebuttal ? `${topic}.` : `${topic},`}
                 </div>
@@ -99,41 +91,46 @@ const FeedItem: React.FC<{
         </div>
 
         {isQuestion 
-                  ? <div className="question flex">
-
-                  </div>
-                  : <div className="analysis lg:mt-[50px] grid grid-cols-1 w-full h-fit gap-[25px]">
-                      <div className="appeal-score box items-center flex-col lg:!justify-start lg:flex-row gap-[25px] lg:gap-[30px]">
-                          <div className="appeal w-fit h-fit">
-                            <div className="flex gap-2 text-7xl lg:text-9xl w-fit h-fit outline-text">
-                                <div className="flex w-fit md:gap-3 lg:gap-4">
-                                  appeal
-                                </div>
-                              </div>
-                          </div>
-                            <div className="w-fit text-center h-fit lg:text-left lg:w-[682px] flex justify-start text-lg">
-                              The appeal score evaluates a speaker's effectiveness in using ethos (credibility), pathos (emotional impact), and logos (logical reasoning). Each aspect is scored based on trustworthiness, emotional engagement, and logical soundness.
-                            </div>
-                      </div>
-                    <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit">
-                          <div className="chart box p-[24px]">
-                          
-                              <RadarChart data={radarData} />
-                      
-                          </div>
-                          <div className="textual-annotation box p-[24px]">
-                            <div className="ethos box poppins">
-                              Ethos refers to the ethical appeal or credibility of the speaker, encompassing attributes like trustworthiness, expertise, and authority. In rhetorical analysis, ethos assesses how the speaker's cahracter and reputation contribute to their persuasiveness. A strong ethos enhances the audience's confidence in the speaker's arguments and increases the effectiveness of t heir communication.
-                              <br></br><br></br>
-                              Users can assess the speaker's ethos to determine how credible and trustworthy they find the speaker, influencing their acceptance of the arguments preseneted.
-                            </div>
-                          </div>
+          ? <div className="question flex"></div>
+          : <div className="analysis lg:mt-[50px] grid grid-cols-1 w-full h-fit gap-[25px]">
+              <div className="appeal-score box items-center flex-col lg:!justify-start lg:flex-row gap-[25px] lg:gap-[30px]">
+                  <div className="appeal w-fit h-fit">
+                    <div className="flex gap-2 text-7xl lg:text-9xl w-fit h-fit outline-text">
+                        <div className="flex w-fit md:gap-3 lg:gap-4">appeal</div>
                     </div>
-                  </div> }
-
+                  </div>
+                  <div className="w-fit text-center h-fit lg:text-left lg:w-[682px] flex justify-start text-lg">
+                    The appeal score evaluates a speaker's effectiveness in using ethos, pathos, and logos...
+                  </div>
+              </div>
+              {showChart && (
+                <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit">
+                  <div className="chart box p-[24px] w-full h-[300px] md:h-[400px] lg:h-[500px]">
+                    <div className='w-full h-full'>
+                      <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+                    </div>
+                  </div>
+                  <div className="textual-annotation box p-[24px]">
+                    <div className="ethos box poppins">                  
+                      Ethos refers to the ethical appeal or credibility of the
+                  speaker, encompassing attributes like trustworthiness,
+                  expertise, and authority. In rhetorical analysis, ethos
+                  assesses how the speaker's cahracter and reputation contribute
+                  to their persuasiveness. A strong ethos enhances the
+                  audience's confidence in the speaker's arguments and increases
+                  the effectiveness of t heir communication.
+                  <br></br>
+                  <br></br>
+                  Users can assess the speaker's ethos to determine how credible
+                  and trustworthy they find the speaker, influencing their
+                  acceptance of the arguments preseneted.</div>
+                  </div>
+                </div>
+              )}
+            </div>}
       </div>
     </div>
-  )
+  );
 }
 
 export default FeedItem;
