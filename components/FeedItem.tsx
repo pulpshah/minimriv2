@@ -1,5 +1,24 @@
 import React from 'react';
 import Image from 'next/image';
+import RadarChart from './RadarChart';
+
+const radarData = [
+  [
+    { axis: "Ethos", value: 0.75 },
+    { axis: "Pathos", value: 0.85 },
+    { axis: "Logos", value: 0.90 }
+  ],
+  [
+    { axis: "Ethos", value: 0.60 },
+    { axis: "Pathos", value: 0.70 },
+    { axis: "Logos", value: 0.80 }
+  ],
+  [
+    { axis: "Ethos", value: 0.80 },
+    { axis: "Pathos", value: 0.75 },
+    { axis: "Logos", value: 0.85 }
+  ]
+];
 
 const FeedItem: React.FC<{ 
   turn_number: number, 
@@ -98,7 +117,9 @@ const FeedItem: React.FC<{
                       </div>
                     <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit">
                           <div className="chart box p-[24px]">
-                            asda
+                            <div className='w-fit h-fit'>
+                              <RadarChart data={radarData} />
+                            </div>
                           </div>
                           <div className="textual-annotation box p-[24px]">
                             <div className="ethos box poppins">

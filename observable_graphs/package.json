@@ -1,0 +1,14 @@
+{
+  "name": "6dba2606b1b6ac3c",
+  "main": "6dba2606b1b6ac3c@261.js",
+  "version": "261.0.0",
+  "homepage": "https://observablehq.com/d/6dba2606b1b6ac3c",
+  "author": {
+    "name": "Hasib Shaif",
+    "url": "https://observablehq.com/@hasib-shaif"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}
