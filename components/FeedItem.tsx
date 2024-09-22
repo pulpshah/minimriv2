@@ -118,7 +118,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
         
 
 
-        
+
         {/* Content */}
         {isQuestion ? (
           <div className="question flex"></div>
@@ -128,7 +128,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
             {/* Appeal content and score */}
             <div className="appeal lg:mt-[50px] grid grid-cols-1 w-full h-fit gap-[25px]">
 
-              <div className="appeal-score box items-center flex-col lg:!justify-start lg:flex-row gap-[25px] lg:gap-[30px]">
+              <div className="appeal-score box items-center flex-col lg:!justify-between lg:flex-row gap-[25px] lg:gap-[30px]">
                 
                 <div className="appeal w-fit h-fit">
                   <div className="flex gap-2 text-7xl lg:text-9xl w-fit h-fit outline-text">
@@ -145,11 +145,15 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 </div>
               </div>
               {showChart && (
-              <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/analysis.webp')] !bg-cover !bg-center">
-                <div className="chart box p-[24px] w-full h-[300px] md:h-[400px] lg:h-[500px">
-                  <div className="w-full h-full"></div>
+              <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/analysis.webp')] !bg-cover !bg-center  p-[24px]">
+                <div className="chart box w-full h-fit">
+                  <RadarChart 
+                    ethos={ethosScore} 
+                    pathos={pathosScore} 
+                    logos={logosScore} 
+                  />
                 </div>
-                <div className="textual-annotation box p-[24px]">
+                <div className="textual-annotation box">
                   <div className="ethos box poppins">
                     Ethos refers to the ethical appeal or credibility of the
                     speaker, encompassing attributes like trustworthiness,

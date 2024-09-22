@@ -40,7 +40,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({ ethos, pathos, logos }) 
             stroke: "white",
             fill: "white",
             strokeOpacity: 0.2,
-            fillOpacity: 0.02,
+            fillOpacity: 0.2,
             strokeWidth: 0.5,
           }),
 
