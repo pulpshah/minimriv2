@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { RadarChart } from "./ChartData";
+import { RadarChart } from "../ChartData";
 
 interface AnalysisProps {
   ethosScore: number;
@@ -9,7 +9,7 @@ interface AnalysisProps {
   isQuestion: boolean;
 }
 
-const Clarity: React.FC<AnalysisProps> = ({
+const Critical: React.FC<AnalysisProps> = ({
   ethosScore,
   pathosScore,
   logosScore,
@@ -25,7 +25,7 @@ const Clarity: React.FC<AnalysisProps> = ({
         <div className="appeal-score box items-center flex-col lg:!justify-between lg:flex-row gap-[25px] lg:gap-[30px]">
           <div className="appeal w-fit h-fit">
             <div className="flex gap-2 text-7xl lg:text-9xl w-fit h-fit outline-text">
-              <div className="flex w-fit md:gap-3 lg:gap-4">clarity</div>
+              <div className="flex w-fit md:gap-3 lg:gap-4">crtical thinking</div>
             </div>
           </div>
           <div className="w-fit text-center h-fit lg:text-left lg:w-[802px] flex justify-start text-lg">
@@ -38,7 +38,7 @@ const Clarity: React.FC<AnalysisProps> = ({
           </div>
         </div>
         {showChart && (
-          <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/clarity.webp')] !bg-cover !bg-center p-[24px]">
+          <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/critical.webp')] !bg-cover !bg-center p-[24px]">
             <div className="chart box w-full h-fit">
             {activeTab === "summary" && (
               <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
@@ -166,4 +166,4 @@ const Clarity: React.FC<AnalysisProps> = ({
   );
 };
 
-export default Clarity;
+export default Critical;

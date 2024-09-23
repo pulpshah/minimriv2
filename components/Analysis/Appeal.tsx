@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { RadarChart } from "./ChartData";
+import { RadarChart } from "../ChartData";
 
 interface AnalysisProps {
   ethosScore: number;

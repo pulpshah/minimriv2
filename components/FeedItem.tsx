@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { RadarChart } from "./ChartData";
-import Appeal from "@/components/Appeal";  // Import the new component
-import Clarity from "./Clarity";
-import Critical from "./Critical";
-import Style from "./Style";
-import Total from "./Total";
+import Appeal from "./Analysis/Appeal";  // Import the new component
+import Clarity from "./Analysis/Clarity";
+import Critical from "./Analysis/Critical";
+import Style from "./Analysis/Style";
+import Total from "./Analysis/Total";
 
 interface FeedItemProps {
   turn_number: number;
