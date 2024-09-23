@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { RadarChart } from "./ChartData";
 import Appeal from "@/components/Appeal";  // Import the new component
+import Clarity from "./Clarity";
 
 interface FeedItemProps {
   turn_number: number;
@@ -38,7 +39,8 @@ const FeedItem: React.FC<FeedItemProps> = ({
   isPlaying,
   onPlay,
 }) => {
-  const [mainTab, setMainTab] = useState<string>("appeal");
+  const [mainTab, setMainTab] = useState("total");
+
 
   const audioRef = useRef<HTMLAudioElement>(null);
   
@@ -177,28 +179,45 @@ const FeedItem: React.FC<FeedItemProps> = ({
         {isQuestion ? (
           <div className="question flex"></div>
         ) : (
-      <div className="box flex-col">
-        <Appeal
-          ethosScore={ethosScore}
-          pathosScore={pathosScore}
-          logosScore={logosScore}
-          showChart={showChart}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          isQuestion={isQuestion}
-        />
-
-      <div className="tabs flex justify-center gap-4 my-4">
-        <button onClick={() => setMainTab("total")}>Total</button>
-        <button onClick={() => setMainTab("appeal")}>Appeal</button>
-        <button onClick={() => setMainTab("style")}>Style</button>
-        <button onClick={() => setMainTab("clarity")}>Clarity</button>
-        <button onClick={() => setMainTab("criticalThinking")}>Critical Thinking</button>
-      </div>
-
-      </div>
+          <div className="box flex-col">
+        
+          {/* Conditionally render the Appeal component only when the Appeal tab is active */}
+          {mainTab === "appeal" && (
+            <Appeal
+              ethosScore={ethosScore}
+              pathosScore={pathosScore}
+              logosScore={logosScore}
+              showChart={showChart}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              isQuestion={isQuestion}
+            />
+          )}
+        
+          {/* You can add conditional rendering for other tabs here */}
+          {mainTab === "style" && <div>Style content goes here</div>}
+          {mainTab === "clarity" && <div><Clarity
+              ethosScore={ethosScore}
+              pathosScore={pathosScore}
+              logosScore={logosScore}
+              showChart={showChart}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              isQuestion={isQuestion}
+            /></div>}
+          {mainTab === "criticalThinking" && <div>Critical Thinking content goes here</div>}
+        </div>
+        
 
         )}
+          {/* Tab buttons */}
+          <div className="tabs flex justify-center gap-4 my-4">
+            <button onClick={() => setMainTab("total")}>Total</button>
+            <button onClick={() => setMainTab("appeal")}>Appeal</button>
+            <button onClick={() => setMainTab("style")}>Style</button>
+            <button onClick={() => setMainTab("clarity")}>Clarity</button>
+            <button onClick={() => setMainTab("criticalThinking")}>Critical Thinking</button>
+          </div>
       </div>
     </div>
   );
