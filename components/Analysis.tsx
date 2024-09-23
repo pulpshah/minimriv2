@@ -20,6 +20,7 @@ const Analysis: React.FC<AnalysisProps> = ({
 
   return (
     <div className="analysis grid grid-cols-1 w-full h-fit gap-[25px]">
+
       {/* Appeal content and score */}
       <div className="appeal lg:mt-[50px] grid grid-cols-1 w-full h-fit gap-[25px]">
         <div className="appeal-score box items-center flex-col lg:!justify-between lg:flex-row gap-[25px] lg:gap-[30px]">
@@ -160,6 +161,8 @@ const Analysis: React.FC<AnalysisProps> = ({
           </button>
         </div>
       </div>
+      {/* Appeal content and score ends */}
+      {/* Appeal content and score */}
     </div>
   );
 };
