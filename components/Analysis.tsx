@@ -68,42 +68,35 @@ const Analysis: React.FC<AnalysisProps> = ({
               {activeTab === "ethos" && (
                 <div className="ethos grid w-full h-fit grid-cols-1 md:grid-cols-3 poppins gap-[15px]">
 
-                  <div className="score-box black-opaque box rounded-[45px] p-[25px]">
+                  <div className="score-box black-opaque box rounded-[45px] p-[25px] flex-col">
                     <div className="title-score box flex-col gap-[15px]">
                       <div className="title text-base">
-                        Title
+                        Trust Points
                       </div>
                       <div className="score text-2xl">
                         50
                       </div>
+                    </div>
+
+                    <div className="reasoning mt-[15px] box">
+                      Reasoning
                     </div>
                   </div>
 
                   <div className="score-box black-opaque box rounded-[45px] p-[25px] flex-col">
                     <div className="title-score box flex-col gap-[15px]">
                       <div className="title text-base">
-                        Title
+                        Trust Points
                       </div>
                       <div className="score text-2xl">
                         50
                       </div>
                     </div>
-                    <div className="reasoning mt-[15px] box">
-                      adasdadadad
-                    </div>
-                  </div>
 
-                  <div className="score-box black-opaque box rounded-[45px] p-[25px]">
-                    <div className="title-score box flex-col gap-[15px]">
-                      <div className="title text-base">
-                        Title
-                      </div>
-                      <div className="score text-2xl">
-                        50
-                      </div>
+                    <div className="reasoning mt-[15px] box">
+                      Reasoning
                     </div>
                   </div>
-                  
                 </div>
               )}
               {activeTab === "pathos" && (
