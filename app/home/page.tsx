@@ -4,6 +4,7 @@ import JFile from "@/public/data/dummydata.json";
 import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import { useEffect } from "react";
+import SearchBar from "@/components/SearchBar";
 
 type TurnData = {
   speaker_name: string;
@@ -309,93 +310,16 @@ const HomePage = () => {
           </div>
         </div>
 
+        {/* searchbar */}
         <div className="header top-0 px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
-          <div
-            className={`search z-[101] gap-2 w-full h-[81px] box flex flex-row items-center ${
-              isSearchMode ? "justify-center" : "!justify-between"
-            }`}
-          >
-            <button
-              className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
-                isSearchMode ? "hidden" : "flex"
-              }`}
-            >
-              <Image
-                src="icons/inbox-icon.svg"
-                alt="inbox"
-                height={35}
-                width={45}
-              />
-            </button>
+        <SearchBar
+        searchInput={searchInput}
+        onSearchInputChange={handleSearchInputChange}
+        isSearchMode={isSearchMode}
+        handleSearchClick={handleSearchClick}
+        handleClearSearch={handleClearSearch}
+      />
 
-            <div
-              className={`flex items-center w-full justify-center ${
-                isSearchMode ? "mx-[20px]" : "mx-0"
-              }`}
-            >
-              <div
-                className={`search-bar backdrop-blur-[50px] transition-all z-[101] flex-shrink-0 justify-between w-[65vw] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full ${
-                  isSearchMode
-                    ? " w-full max-w-[600px] h-[45px]"
-                    : "h-[35px] w-[65vw] max-w-[450px]"
-                }`}
-              >
-                <div
-                  onClick={() => { handleSearchClick(); toggleTranscript(0); }}
-                  className="flex items-center gap-[10px] justify-between w-full"
-                >
-                  <button className="w-[19px] h-[19px] md:w[50px] flex-shrink-0">
-                    <Image
-                      className="cursor-pointer"
-                      src="icons/search-icon.svg"
-                      alt="search"
-                      height={19}
-                      width={19}
-                    />
-                  </button>
-
-                  <input
-                    placeholder="search"
-                    type="text"
-                    className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
-                    value={searchInput}
-                    onChange={handleSearchInputChange}
-                  />
-                </div>
-              </div>
-
-              <div className="">
-                <button
-                  className={`cursor-pointer  flex-shrink-0 z-[101] w-[32px] md:w-[32px] transition-opacity ${
-                    isSearchMode ? "flex" : "hidden"
-                  }`}
-                  onClick={isSearchMode ? handleClearSearch : undefined}
-                >
-                  <Image
-                    src={"icons/close-icon.svg"}
-                    alt={"close"}
-                    height={45}
-                    width={45}
-                  />
-                </button>
-              </div>
-            </div>
-
-            {/* Fetch/Close icon - hide the fetch and show the close button based on search mode */}
-            <button
-              className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
-                isSearchMode ? "hidden" : "flex"
-              }`}
-              onClick={isSearchMode ? handleClearSearch : undefined}
-            >
-              <Image
-                src={"icons/fetch-icon.svg"}
-                alt={"close"}
-                height={35}
-                width={45}
-              />
-            </button>
-          </div>
 
           {/* Make sure the scores section has a lower z-index than the sliding tab */}
           <div className={`scores-topic z-[10] flex justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full -mt-1.5 transition-opacity ${
