@@ -2,6 +2,10 @@ import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { RadarChart } from "./ChartData";
 
+import { useState } from "react";  
+
+
+
 interface FeedItemProps {
   turn_number: number;
   title: string;
@@ -69,7 +73,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
         return "/candidates/default.webp";
     }
   };
-
+  const [activeTab, setActiveTab] = useState<string>("ethos"); 
   const showChart = speaker === "Kamala Harris" || speaker === "Donald Trump";
 
   const isQuestion = title.toLowerCase() === "question";
@@ -105,7 +109,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 isQuestion ? "white-opaque" : "black-opaque"
               }`}
             >
-              Turn {turn_number}
+              turn {turn_number}
             </div>
 
             <button onClick={handlePlayPause}>
@@ -160,7 +164,9 @@ const FeedItem: React.FC<FeedItemProps> = ({
         ) : (
           <div className="analysis grid grid-cols-1 w-full h-fit gap-[25px]">
             <div className="appeal lg:mt-[50px] grid grid-cols-1 w-full h-fit gap-[25px]">
-              <div className="appeal-score box items-center flex-col lg:!justify-start lg:flex-row gap-[25px] lg:gap-[30px]">
+
+              <div className="appeal-score box items-center flex-col lg:!justify-between lg:flex-row gap-[25px] lg:gap-[30px]">
+                
                 <div className="appeal w-fit h-fit">
                   <div className="flex gap-2 text-7xl lg:text-9xl w-fit h-fit outline-text">
                     <div className="flex w-fit md:gap-3 lg:gap-4">appeal</div>
@@ -176,24 +182,66 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 </div>
               </div>
               {showChart && (
-                <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/analysis.webp')] !bg-cover !bg-center">
-                  <div className="chart box p-[24px] w-full h-[300px] md:h-[400px] lg:h-[500px]">
-                    <div className="w-full h-full"></div>
+                <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/analysis.webp')] !bg-cover !bg-center p-[24px]">
+                  <div className="chart box w-full h-fit">
+
+                      <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
                   </div>
-                  <div className="textual-annotation box p-[24px]">
-                    <div className="ethos box poppins">
-                      Ethos refers to the ethical appeal or credibility of the
-                      speaker, encompassing attributes like trustworthiness,
-                      expertise, and authority. In rhetorical analysis, ethos
-                      assesses how the speaker's character and reputation
-                      contribute to their persuasiveness. A strong ethos
-                      enhances the audience's confidence in the speaker's
-                      arguments and increases the effectiveness of their
-                      communication.
-                    </div>
+                  <div className="textual-annotation box">
+                  {activeTab === "summary" && (
+                      <div className="summary box poppins">
+                        Ethos refers to the ethical appeal or credibility of the speaker, encompassing attributes like trustworthiness, expertise, and authority.
+                      </div>
+                    )}
+                    {activeTab === "ethos" && (
+                      <div className="ethos box poppins">
+                        Ethos refers to the ethical appeal or credibility of the speaker, encompassing attributes like trustworthiness, expertise, and authority.
+                      </div>
+                    )}
+                    {activeTab === "pathos" && (
+                      <div className="pathos box poppins">
+                        Pathos appeals to the emotions of the audience. It involves creating an emotional response to convince the audience of an argument.
+                      </div>
+                    )}
+                    {activeTab === "logos" && (
+                      <div className="logos box poppins">
+                        Logos refers to the logical appeal or the use of reason. It often includes the use of facts and statistics to support arguments.
+                      </div>
+                    )}
                   </div>
                 </div>
-              )}
+)}
+
+                <div className={`tabs flex w-fit !shadow-none text-lg md:text-xl h-fit px-[12px] py-[1px] items-center rounded-full mx-auto gap-2 md:gap-4 !bg-transparent ${
+                  isQuestion ? "white-opaque" : "black-opaque"
+                }`}>
+                  <button
+                    className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${activeTab === "summary" ? "active" : ""}`}
+                    onClick={() => setActiveTab("summary")}
+                  >
+                    all
+                  </button>
+                  <button
+                    className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${activeTab === "ethos" ? "active" : ""}`}
+                    onClick={() => setActiveTab("ethos")}
+                  >
+                    ethos
+                  </button>
+                  <button
+                    className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${activeTab === "pathos" ? "active" : ""}`}
+                    onClick={() => setActiveTab("pathos")}
+                  >
+                    pathos
+                  </button>
+                  <button
+                    className={` px-[10px] py-[1px] rounded-[40px] tab-btn ${activeTab === "logos" ? "active" : ""}`}
+                    onClick={() => setActiveTab("logos")}
+                  >
+                    logos
+                  </button>
+                </div>
+
+
             </div>
           </div>
         )}

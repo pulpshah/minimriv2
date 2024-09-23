@@ -268,3 +268,16 @@ html, body {
 .transcript-box {
   padding: 25 20px;
 }
+
+.tab-btn {
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: black;
+}
+
+.tab-btn.active {
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
+  color: white;
+}

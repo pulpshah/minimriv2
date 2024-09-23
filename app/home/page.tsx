@@ -7,6 +7,7 @@ import { useEffect } from "react";
 
 type TurnData = {
   speaker_name: string;
+
   topic?: string;
   turn_number: number;
   turn_category?: string;
@@ -344,7 +345,7 @@ const HomePage = () => {
             <div className="h-[50px] flex justify-between w-full">
               <div
                 onClick={toggleTranscript}
-                className="speaker cursor-pointer flex w-fit transition-all h-full flex-row items-cen justify-start gap-[10px]"
+                className="speaker cursor-pointer flex w-fit transition-all h-full flex-row items-center justify-start gap-[10px]"
               >
                 <button>
                   <div className="profile flex transition-all items-center justify-center rounded-full">
@@ -364,10 +365,11 @@ const HomePage = () => {
                     <div className="time-turn text flex flex-row gap-[4px]">
                       <div className="time text !text-left">
                         {currentData.turn_category}
+                        {currentData.turn_category}
                       </div>
-                      {/* <div className="text !text-left">•</div> */}
-                      
-                      {/* <div className="turn text !text-left">
+                       {/*<div className="text !text-left">•</div>
+                      {/*
+                      <div className="turn text !text-left">
                         Turn {currentData.turn_number}
                       </div> */}
                      
