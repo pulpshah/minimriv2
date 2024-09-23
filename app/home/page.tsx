@@ -564,9 +564,9 @@ const HomePage = () => {
               </div>
             </div>
 
-            <div className="lines flex box w-full h-full flex-col gap-[15px] px-[10px] py-[10px] overflow-y-auto">
-              <div className="turn2 !text-left flex h-[100px] text text-[1.25rem] text-gray-300 w-full justify-center y-overflow-auto">
-                <div className="line text !text-left">
+            <div className="lines flex box w-full h-full flex-col gap-[15px] px-[10px] py-[10px]">
+              <div className="turn2 !text-left flex h-full text text-[1.25rem] text-gray-300 w-full justify-center">
+                <div className="line text !text-left line-clamp-5">
                   {currentTurnText}
                 </div>
               </div>
