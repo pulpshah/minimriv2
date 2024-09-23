@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { RadarChart } from "./ChartData";
-
+import Analysis from "@/components/Analysis";  // Import the new component
 import { useState } from "react";  
 
 
@@ -14,6 +14,16 @@ interface FeedItemProps {
   ethosScore: number;
   pathosScore: number;
   logosScore: number;
+}
+
+interface AnalysisProps {
+  ethosScore: number;
+  pathosScore: number;
+  logosScore: number;
+  showChart: boolean;
+  activeTab: string; // Add this line
+  setActiveTab: (tab: string) => void;
+  isQuestion: boolean;
 }
 
 const FeedItem: React.FC<FeedItemProps> = ({
@@ -127,91 +137,16 @@ const FeedItem: React.FC<FeedItemProps> = ({
         {isQuestion ? (
           <div className="question flex"></div>
         ) : (
-          <div className="analysis grid grid-cols-1 w-full h-fit gap-[25px]">
-            
-            {/* Appeal content and score */}
-            <div className="appeal lg:mt-[50px] grid grid-cols-1 w-full h-fit gap-[25px]">
+      <Analysis
+        ethosScore={ethosScore}
+        pathosScore={pathosScore}
+        logosScore={logosScore}
+        showChart={showChart}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        isQuestion={isQuestion}
+      />
 
-              <div className="appeal-score box items-center flex-col lg:!justify-between lg:flex-row gap-[25px] lg:gap-[30px]">
-                
-                <div className="appeal w-fit h-fit">
-                  <div className="flex gap-2 text-7xl lg:text-9xl w-fit h-fit outline-text">
-                    <div className="flex w-fit md:gap-3 lg:gap-4">appeal</div>
-                  </div>
-                </div>
-                <div className="w-fit text-center h-fit lg:text-left lg:w-[802px] flex justify-start text-lg">
-                  Appeal Score evaluates the effectiveness of the speaker's use of
-                  rhetorical appeals—ethos (credibility), pathos (emotion), and
-                  logos (logic). It assesses how well the speaker connects with
-                  the audience, persuades through emotional resonance, and
-                  presents logical arguments. A higher appeal score indicates a
-                  stronger persuasive impact on the audience.
-                </div>
-              </div>
-              {showChart && (
-                <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/analysis.webp')] !bg-cover !bg-center p-[24px]">
-                  <div className="chart box w-full h-fit">
-
-                      <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
-                  </div>
-                  <div className="textual-annotation box">
-                  {activeTab === "summary" && (
-                      <div className="summary box poppins">
-                        Ethos refers to the ethical appeal or credibility of the speaker, encompassing attributes like trustworthiness, expertise, and authority.
-                      </div>
-                    )}
-                    {activeTab === "ethos" && (
-                      <div className="ethos box poppins">
-                        Ethos refers to the ethical appeal or credibility of the speaker, encompassing attributes like trustworthiness, expertise, and authority.
-                      </div>
-                    )}
-                    {activeTab === "pathos" && (
-                      <div className="pathos box poppins">
-                        Pathos appeals to the emotions of the audience. It involves creating an emotional response to convince the audience of an argument.
-                      </div>
-                    )}
-                    {activeTab === "logos" && (
-                      <div className="logos box poppins">
-                        Logos refers to the logical appeal or the use of reason. It often includes the use of facts and statistics to support arguments.
-                      </div>
-                    )}
-                  </div>
-                </div>
-)}
-
-                <div className={`tabs flex w-fit !shadow-none text-lg md:text-xl h-fit px-[12px] py-[1px] items-center rounded-full mx-auto gap-2 md:gap-4 !bg-transparent ${
-                  isQuestion ? "white-opaque" : "black-opaque"
-                }`}>
-                  <button
-                    className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${activeTab === "summary" ? "active" : ""}`}
-                    onClick={() => setActiveTab("summary")}
-                  >
-                    all
-                  </button>
-                  <button
-                    className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${activeTab === "ethos" ? "active" : ""}`}
-                    onClick={() => setActiveTab("ethos")}
-                  >
-                    ethos
-                  </button>
-                  <button
-                    className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${activeTab === "pathos" ? "active" : ""}`}
-                    onClick={() => setActiveTab("pathos")}
-                  >
-                    pathos
-                  </button>
-                  <button
-                    className={` px-[10px] py-[1px] rounded-[40px] tab-btn ${activeTab === "logos" ? "active" : ""}`}
-                    onClick={() => setActiveTab("logos")}
-                  >
-                    logos
-                  </button>
-                </div>
-
-
-            </div>
-            
-          </div>
         )}
       </div>
     </div>
