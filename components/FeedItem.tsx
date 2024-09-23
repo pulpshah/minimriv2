@@ -1,10 +1,7 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { RadarChart } from "./ChartData";
 import Analysis from "@/components/Analysis";  // Import the new component
-import { useState } from "react";  
-
-
 
 interface FeedItemProps {
   turn_number: number;
@@ -14,6 +11,9 @@ interface FeedItemProps {
   ethosScore: number;
   pathosScore: number;
   logosScore: number;
+  turn_category: string;
+  isPlaying: boolean;
+  onPlay: (turnNumber: number) => void;
 }
 
 interface AnalysisProps {
@@ -21,7 +21,7 @@ interface AnalysisProps {
   pathosScore: number;
   logosScore: number;
   showChart: boolean;
-  activeTab: string; // Add this line
+  activeTab: string;
   setActiveTab: (tab: string) => void;
   isQuestion: boolean;
 }
@@ -34,7 +34,48 @@ const FeedItem: React.FC<FeedItemProps> = ({
   ethosScore,
   pathosScore,
   logosScore,
+  turn_category,
+  isPlaying,
+  onPlay,
 }) => {
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const getAudioFile = () => {
+    return `/audio/turn${turn_number}.wav`;
+  };
+
+  const handlePlayPause = () => {
+    if (isPlaying) {
+      audioRef.current?.pause();
+      onPlay(null);
+    } else {
+      onPlay(turn_number);
+    }
+  };
+
+  useEffect(() => {
+    if (isPlaying && audioRef.current) {
+      audioRef.current.play();
+    } else if (!isPlaying && audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  }, [isPlaying]);
+
+  useEffect(() => {
+    const audioElement = audioRef.current;
+    if (audioElement) {
+      const handleEnded = () => onPlay(null);
+      audioElement.addEventListener("ended", handleEnded);
+
+      return () => {
+        audioElement.removeEventListener("ended", handleEnded);
+      };
+    }
+  }, [onPlay]);
+
+  const audioFile = getAudioFile();
+
   const getSpeakerImage = (speaker: string) => {
     switch (speaker) {
       case "Donald Trump":
@@ -88,15 +129,16 @@ const FeedItem: React.FC<FeedItemProps> = ({
               turn {turn_number}
             </div>
 
-            <button>
+            <button onClick={handlePlayPause}>
               <Image
                 className={`cursor-pointer ${isQuestion ? "invert" : ""}`}
-                src="/icons/feed-play.svg"
-                alt="Fetch"
+                src={isPlaying ? "/icons/pause-icon.svg" : "/icons/feed-play.svg"} 
+                alt={isPlaying ? "Pause" : "Play"}
                 height={44}
                 width={47}
               />
             </button>
+            <audio ref={audioRef} src={audioFile} preload="auto" />
           </div>
         </div>
 
@@ -129,11 +171,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
             {speaker}
           </div>
         </div>
-        
 
-
-
-        {/* Content */}
         {isQuestion ? (
           <div className="question flex"></div>
         ) : (

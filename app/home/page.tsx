@@ -5,10 +5,8 @@ import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import { useEffect } from "react";
 
-// Define the type for the turn data to include cumulative_score and ethos, pathos, logos scores
 type TurnData = {
   speaker_name: string;
-
   topic?: string;
   turn_number: number;
   turn_category?: string;
@@ -37,16 +35,17 @@ const HomePage = () => {
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-  const [currentTurn, setCurrentTurn] = useState(0);
+  const [currentTurn, setCurrentTurn] = useState<number>(0);
+  const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(null); // Track the currently playing turn
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSearchMode, setSearchMode] = useState(false);
 
   const turnsData: Array<TurnData> = JFile.analysis;
-  const currentData: TurnData = turnsData[currentTurn];
+  const currentData = turnsData[currentTurn] ?? null;
   const nextData: TurnData | null = turnsData[currentTurn + 1] || null;
 
   const currentTurnText =
-    currentData.analysis.claims.length > 0
+    currentData && currentData.analysis && currentData.analysis.claims.length > 0
       ? currentData.analysis.claims[0].text
       : "No text available";
 
@@ -79,6 +78,37 @@ const HomePage = () => {
   const scoreForCurrentTurn = currentData.score;
 
   const audioRef = useRef<HTMLAudioElement>(null);
+  
+  const getAudioFile = (turnNumber: number) => {
+    return `/audio/turn${turnNumber}.wav`;
+  };
+
+  const handlePlayPauseClick = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  useEffect(() => {
+    const audioElement = audioRef.current;
+    if (audioElement) {
+      const handleEnded = () => setIsPlaying(false);
+      audioElement.addEventListener("ended", handleEnded);
+
+      return () => {
+        audioElement.removeEventListener("ended", handleEnded);
+      };
+    }
+  }, [audioRef]);
+
+  const handlePlay = (turnNumber: number) => {
+    setCurrentPlayingTurn(turnNumber);
+  };
 
   const toggleTranscript = () => {
     setTranscriptOpen(!isTranscriptOpen);
@@ -88,33 +118,32 @@ const HomePage = () => {
 
   // Handle swipe up
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    const clientY = e.targetTouches[0].clientY; // Access clientY correctly
+    const clientY = e.targetTouches[0].clientY;
     setTouchStart(clientY);
   };
 
   const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
     setTouchEnd(e.changedTouches[0].clientY);
     if (touchStart - touchEnd > 50) {
-      // Swipe up
       setTranscriptOpen(true);
     } else if (touchEnd - touchStart > 50) {
-      // Swipe down
       setTranscriptOpen(false);
     }
   };
 
   const handleNextClick = (e: { stopPropagation: () => void }) => {
-    e.stopPropagation(); // Prevent the event from propagating
+    e.stopPropagation();
     if (currentTurn < turnsData.length - 1) {
       setCurrentTurn(currentTurn + 1);
+      setIsPlaying(false);
     }
   };
 
-  // Handle back button click
   const handleBackClick = (e: { stopPropagation: () => void }) => {
-    e.stopPropagation(); // Prevent the event from propagating
+    e.stopPropagation();
     if (currentTurn > 0) {
       setCurrentTurn(currentTurn - 1);
+      setIsPlaying(false);
     }
   };
 
@@ -134,34 +163,20 @@ const HomePage = () => {
     }
   };
 
-  const handlePlayPauseClick = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
   useEffect(() => {
     if (!isSearchMode) {
-      setSearchInput(""); // Clear input
+      setSearchInput("");
     }
   }, [isSearchMode]);
-  
+
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
   };
-  
 
-  // Handle opening the search sliding tab
   const handleSearchClick = () => {
-    setSearchMode(true); // Show the sliding search tab
+    setSearchMode(true); 
   };
 
-  // Handle clearing the search bar and hiding the search tab
   const handleClearSearch = () => {
     setSearchMode(false);
   };
@@ -180,9 +195,13 @@ const HomePage = () => {
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
             {turnsData.map((turn: TurnData, index) => {
-              const ethosScore = turn.analysis.claims[0]?.scores?.ethos?.score || 0;
-              const pathosScore = turn.analysis.claims[0]?.scores?.pathos?.score || 0;
-              const logosScore = turn.analysis.claims[0]?.scores?.logos?.score || 0;
+              const ethosScore =
+                turn.analysis.claims[0]?.scores?.ethos?.score || 0;
+              const pathosScore =
+                turn.analysis.claims[0]?.scores?.pathos?.score || 0;
+              const logosScore =
+                turn.analysis.claims[0]?.scores?.logos?.score || 0;
+              const turnCategory = turn.turn_category || "segment";
 
               return (
                 <FeedItem
@@ -190,10 +209,13 @@ const HomePage = () => {
                   speaker={turn.speaker_name}
                   topic={turn.topic || "No Topic"}
                   turn_number={turn.turn_number}
+                  turn_category={turnCategory}
                   title={turn.turn_category || "segment"}
                   ethosScore={ethosScore}
                   pathosScore={pathosScore}
                   logosScore={logosScore}
+                  isPlaying={currentPlayingTurn === turn.turn_number}
+                  onPlay={handlePlay}
                 />
               );
             })}
@@ -201,128 +223,123 @@ const HomePage = () => {
         </div>
 
         <div className="header top-0 px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
-          
-        <div className={`search z-[101] gap-2 w-full h-[81px] box flex flex-row items-center ${
-        isSearchMode ? "justify-center" : "!justify-between"
-      }`}>
+          <div
+            className={`search z-[101] gap-2 w-full h-[81px] box flex flex-row items-center ${
+              isSearchMode ? "justify-center" : "!justify-between"
+            }`}
+          >
+            <button
+              className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
+                isSearchMode ? "hidden" : "flex"
+              }`}
+            >
+              <Image
+                src="icons/inbox-icon.svg"
+                alt="inbox"
+                height={35}
+                width={45}
+              />
+            </button>
 
-    
-    <button
-      className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
-        isSearchMode ? "hidden" : "flex"
-      }`}
-    >
-      <Image
-        src="icons/inbox-icon.svg"
-        alt="inbox"
-        height={35}
-        width={45}
-      />
-    </button>
+            <div
+              className={`flex items-center w-full justify-center ${
+                isSearchMode ? "mx-[20px]" : "mx-0"
+              }`}
+            >
+              <div
+                className={`search-bar backdrop-blur-[50px] transition-all z-[101] flex-shrink-0 justify-between w-[65vw] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full ${
+                  isSearchMode
+                    ? " w-full max-w-[600px] h-[45px]"
+                    : "h-[35px] w-[65vw] max-w-[450px]"
+                }`}
+              >
+                <div
+                  onClick={handleSearchClick}
+                  className="flex items-center gap-[10px] justify-between w-full"
+                >
+                  <button className="w-[19px] h-[19px] md:w[50px] flex-shrink-0">
+                    <Image
+                      className="cursor-pointer"
+                      src="icons/search-icon.svg"
+                      alt="search"
+                      height={19}
+                      width={19}
+                    />
+                  </button>
 
-    <div className={`flex items-center w-full justify-center ${
-        isSearchMode ? "mx-[20px]" : "mx-0"
-      }`}>
+                  <input
+                    placeholder="search"
+                    type="text"
+                    className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
+                    value={searchInput}
+                    onChange={handleSearchInputChange}
+                  />
+                </div>
+              </div>
 
-      <div className={`search-bar backdrop-blur-[50px] transition-all z-[101] flex-shrink-0 justify-between w-[65vw] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full ${
-        isSearchMode ? " w-full max-w-[600px] h-[45px]" : "h-[35px] w-[65vw] max-w-[450px]"
-      }`}>
+              <div className="">
+                <button
+                  className={`cursor-pointer  flex-shrink-0 z-[101] w-[32px] md:w-[32px] transition-opacity ${
+                    isSearchMode ? "flex" : "hidden"
+                  }`}
+                  onClick={isSearchMode ? handleClearSearch : undefined}
+                >
+                  <Image
+                    src={"icons/close-icon.svg"}
+                    alt={"close"}
+                    height={45}
+                    width={45}
+                  />
+                </button>
+              </div>
+            </div>
+
+            {/* Fetch/Close icon - hide the fetch and show the close button based on search mode */}
+            <button
+              className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
+                isSearchMode ? "hidden" : "flex"
+              }`}
+              onClick={isSearchMode ? handleClearSearch : undefined}
+            >
+              <Image
+                src={"icons/fetch-icon.svg"}
+                alt={"close"}
+                height={35}
+                width={45}
+              />
+            </button>
+          </div>
+
+          {/* Make sure the scores section has a lower z-index than the sliding tab */}
+          <div className="scores-topic z-[10] flex justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full">
+            <div className="points-1 w-fit text-base md:text-lg h-fit text-black poppins">
+              KH: {cumulativeScoreKH} pts
+            </div>
+
+            <div className="points-1 w-fit h-fit text-lg md:text-xl text-black">
+              score
+            </div>
+
+            <div className="points-1 w-fit text-base md:text-lg h-fit text-black poppins">
+              DT: {cumulativeScoreDT} pts
+            </div>
+          </div>
+        </div>
 
         <div
-          onClick={handleSearchClick}
-          className="flex items-center gap-[10px] justify-between w-full"
+          className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
+            isSearchMode ? "translate-y-0" : "translate-y-full"
+          } w-full h-[90.3vh] bg-white rounded-t-[40px]`}
+          style={{ transition: "transform 0.4s ease" }}
+        ></div>
+
+        <div
+          className={`transcript z-40 text-black fixed bottom-0 transition-all duration-400 ${
+            isTranscriptOpen ? "h-[50vh]" : "h-[125px]"
+          } w-full rounded-t-[40px]`}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
-          <button className="w-[19px] h-[19px] md:w[50px] flex-shrink-0">
-            <Image
-              className="cursor-pointer"
-              src="icons/search-icon.svg"
-              alt="search"
-              height={19}
-              width={19}
-            />
-          </button>
-
-          <input
-          placeholder="search"
-          type="text"
-          className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
-          value={searchInput}
-          onChange={handleSearchInputChange}
-        />
-
-        </div>
-    </div>
-
-    <div className="">
-      <button
-        className={`cursor-pointer  flex-shrink-0 z-[101] w-[32px] md:w-[32px] transition-opacity ${
-          isSearchMode ? "flex" : "hidden"
-        }`}
-        onClick={isSearchMode ? handleClearSearch : undefined}
-      >
-        <Image
-          src={
-            "icons/close-icon.svg"
-          }
-          alt={"close"}
-          height={45}
-          width={45}
-        />
-      </button>
-
-    </div>
-
-    </div>
-
-    {/* Fetch/Close icon - hide the fetch and show the close button based on search mode */}
-    <button
-      className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
-        isSearchMode ? "hidden" : "flex" }`}
-      onClick={isSearchMode ? handleClearSearch : undefined}
-    >
-      <Image
-        src={
-          "icons/fetch-icon.svg"
-        }
-        alt={ "close"}
-        height={35}
-        width={45}
-      />
-    </button>
-  </div>
-
-  {/* Make sure the scores section has a lower z-index than the sliding tab */}
-  <div className="scores-topic z-[10] flex justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full">
-    <div className="points-1 w-fit text-base md:text-lg h-fit text-black poppins">
-      KH: {cumulativeScoreKH} pts
-    </div>
-
-    <div className="points-1 w-fit h-fit text-lg md:text-xl text-black">score</div>
-
-    <div className="points-1 w-fit text-base md:text-lg h-fit text-black poppins">
-      DT: {cumulativeScoreDT} pts
-    </div>
-  </div>
-</div>
-
-<div
-  className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
-    isSearchMode ? "translate-y-0" : "translate-y-full"
-  } w-full h-[90.3vh] bg-white rounded-t-[40px]`}
-  style={{ transition: "transform 0.4s ease" }}
->
-</div>
-
-
-
-          <div
-            className={`transcript z-40 text-black fixed bottom-0 transition-all duration-400 ${
-              isTranscriptOpen ? "h-[50vh]" : "h-[125px]"
-            } w-full rounded-t-[40px]`}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-          >
-
           <button
             className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center"
             onClick={toggleTranscript}
@@ -359,12 +376,12 @@ const HomePage = () => {
                       {/*
                       <div className="turn text !text-left">
                         Turn {currentData.turn_number}
-                      </div>
-                      */}
+                      </div> */}
+                     
                     </div>
-                    {/*
-                    <div className="">,</div>*/}
-                    {/*
+                    
+                    {/* <div className="">,</div>
+                    
                     <div className="sentiment text !text-left">Upset</div> */}
                   </div>
                 </div>
@@ -389,7 +406,7 @@ const HomePage = () => {
                         isPlaying
                           ? "icons/pause-icon.svg"
                           : "icons/play-icon.svg"
-                      } // Switch icons dynamically
+                      }
                       alt={isPlaying ? "pause" : "play"}
                       height={50}
                       width={50}
@@ -414,7 +431,7 @@ const HomePage = () => {
 
               <audio
                 ref={audioRef}
-                src="https://drive.google.com/file/d/1JSWQkM3eKbHJm7Qht3gyepbgp0T31BTQ/view"
+                src={getAudioFile(currentTurn + 1)}
               />
             </div>
           </div>
@@ -427,8 +444,8 @@ const HomePage = () => {
           >
             <div className="points-phase w-full h-fit flex items-center justify-between flex-row px-[20px]">
               <div className="points flex flex-row gap-[3px] poppins text text-base text-[#79FF80]">
-                <div className="num">{scoreForCurrentTurn}</div>
-                <div className="pts">pts</div>
+              <div className="num">{currentData ? currentData.score : "0"}</div>
+              <div className="pts">pts</div>
 
                 <div className="plus-minus">
                   <div className="minus hidden">-</div>
@@ -437,7 +454,7 @@ const HomePage = () => {
               </div>
 
               <div className="turn flex w-fit black-opaque !shadow-none text-base h-fit px-[12px] py-[1px] items-center rounded-full text-white">
-              Turn {currentData.turn_number}
+                Turn {currentData.turn_number}
               </div>
             </div>
 
