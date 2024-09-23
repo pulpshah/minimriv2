@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { RadarChart } from "./ChartData";
 
@@ -10,6 +10,7 @@ interface FeedItemProps {
   ethosScore: number;
   pathosScore: number;
   logosScore: number;
+  turn_category: string;
 }
 
 const FeedItem: React.FC<FeedItemProps> = ({
@@ -20,7 +21,40 @@ const FeedItem: React.FC<FeedItemProps> = ({
   ethosScore,
   pathosScore,
   logosScore,
+  turn_category,
 }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const getAudioFile = () => {
+    return `/audio/turn${turn_number}.wav`;
+  };
+
+  const handlePlayPause = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  useEffect(() => {
+    const audioElement = audioRef.current;
+    if (audioElement) {
+      const handleEnded = () => setIsPlaying(false);
+      audioElement.addEventListener("ended", handleEnded);
+
+      return () => {
+        audioElement.removeEventListener("ended", handleEnded);
+      };
+    }
+  }, [audioRef]);
+
+  const audioFile = getAudioFile();
+
   const getSpeakerImage = (speaker: string) => {
     switch (speaker) {
       case "Donald Trump":
@@ -74,15 +108,20 @@ const FeedItem: React.FC<FeedItemProps> = ({
               Turn {turn_number}
             </div>
 
-            <button>
+            <button onClick={handlePlayPause}>
               <Image
                 className={`cursor-pointer ${isQuestion ? "invert" : ""}`}
-                src="/icons/feed-play.svg"
-                alt="Fetch"
+                src={isPlaying ? "/icons/pause-icon.svg" : "/icons/feed-play.svg"} 
+                alt={isPlaying ? "Pause" : "Play"}
                 height={44}
                 width={47}
               />
             </button>
+
+            {/* Audio element */}
+            {audioFile && (
+              <audio ref={audioRef} src={audioFile} preload="auto" />
+            )}
           </div>
         </div>
 
@@ -115,58 +154,47 @@ const FeedItem: React.FC<FeedItemProps> = ({
             {speaker}
           </div>
         </div>
-        
-        {/* Content */}
+
         {isQuestion ? (
           <div className="question flex"></div>
         ) : (
           <div className="analysis grid grid-cols-1 w-full h-fit gap-[25px]">
-            
-            {/* Appeal content and score */}
             <div className="appeal lg:mt-[50px] grid grid-cols-1 w-full h-fit gap-[25px]">
-
               <div className="appeal-score box items-center flex-col lg:!justify-start lg:flex-row gap-[25px] lg:gap-[30px]">
-                
                 <div className="appeal w-fit h-fit">
                   <div className="flex gap-2 text-7xl lg:text-9xl w-fit h-fit outline-text">
                     <div className="flex w-fit md:gap-3 lg:gap-4">appeal</div>
                   </div>
                 </div>
                 <div className="w-fit text-center h-fit lg:text-left lg:w-[802px] flex justify-start text-lg">
-                  Appeal Score evaluates the effectiveness of the speaker's use of
-                  rhetorical appeals—ethos (credibility), pathos (emotion), and
-                  logos (logic). It assesses how well the speaker connects with
-                  the audience, persuades through emotional resonance, and
+                  Appeal Score evaluates the effectiveness of the speaker's use
+                  of rhetorical appeals—ethos (credibility), pathos (emotion),
+                  and logos (logic). It assesses how well the speaker connects
+                  with the audience, persuades through emotional resonance, and
                   presents logical arguments. A higher appeal score indicates a
                   stronger persuasive impact on the audience.
                 </div>
               </div>
               {showChart && (
-              <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/analysis.webp')] !bg-cover !bg-center">
-                <div className="chart box p-[24px] w-full h-[300px] md:h-[400px] lg:h-[500px">
-                  <div className="w-full h-full"></div>
-                </div>
-                <div className="textual-annotation box p-[24px]">
-                  <div className="ethos box poppins">
-                    Ethos refers to the ethical appeal or credibility of the
-                    speaker, encompassing attributes like trustworthiness,
-                    expertise, and authority. In rhetorical analysis, ethos
-                    assesses how the speaker's cahracter and reputation
-                    contribute to their persuasiveness. A strong ethos enhances
-                    the audience's confidence in the speaker's arguments and
-                    increases the effectiveness of t heir communication.
-                    <br></br>
-                    <br></br>
-                    Users can assess the speaker's ethos to determine how
-                    credible and trustworthy they find the speaker, influencing
-                    their acceptance of the arguments preseneted.
+                <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/analysis.webp')] !bg-cover !bg-center">
+                  <div className="chart box p-[24px] w-full h-[300px] md:h-[400px] lg:h-[500px]">
+                    <div className="w-full h-full"></div>
+                  </div>
+                  <div className="textual-annotation box p-[24px]">
+                    <div className="ethos box poppins">
+                      Ethos refers to the ethical appeal or credibility of the
+                      speaker, encompassing attributes like trustworthiness,
+                      expertise, and authority. In rhetorical analysis, ethos
+                      assesses how the speaker's character and reputation
+                      contribute to their persuasiveness. A strong ethos
+                      enhances the audience's confidence in the speaker's
+                      arguments and increases the effectiveness of their
+                      communication.
+                    </div>
                   </div>
                 </div>
-              </div>
-               )}
-               <div className="box">hi</div>
+              )}
             </div>
-            
           </div>
         )}
       </div>
