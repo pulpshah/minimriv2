@@ -9,7 +9,7 @@ interface AnalysisProps {
   isQuestion: boolean;
 }
 
-const Analysis: React.FC<AnalysisProps> = ({
+const Appeal: React.FC<AnalysisProps> = ({
   ethosScore,
   pathosScore,
   logosScore,
@@ -57,7 +57,8 @@ const Analysis: React.FC<AnalysisProps> = ({
             )}
 
             </div>
-            <div className="textual-annotation box">
+            <div className="textual-annotation box flex flex-col gap-[20px]">
+              
               {activeTab === "summary" && (
                 <div className="summary box ">
 
@@ -118,10 +119,7 @@ const Analysis: React.FC<AnalysisProps> = ({
                   </div>
                 </div>
               )}
-            </div>
-          </div>
-        )}
-        <div
+              <div
           className={`tabs flex w-fit !shadow-none text-lg md:text-xl h-fit px-[12px] py-[1px] items-center rounded-full mx-auto gap-2 md:gap-4 !bg-transparent ${
             isQuestion ? "white-opaque" : "black-opaque"
           }`}
@@ -159,9 +157,13 @@ const Analysis: React.FC<AnalysisProps> = ({
             logos
           </button>
         </div>
+            </div>
+          </div>
+        )}
+        
       </div>
     </div>
   );
 };
 
-export default Analysis;
+export default Appeal;

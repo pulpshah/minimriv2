@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { RadarChart } from "./ChartData";
-import Analysis from "@/components/Analysis";  // Import the new component
+import Appeal from "@/components/Appeal";  // Import the new component
 
 interface FeedItemProps {
   turn_number: number;
@@ -175,7 +175,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
         {isQuestion ? (
           <div className="question flex"></div>
         ) : (
-      <Analysis
+      <Appeal
         ethosScore={ethosScore}
         pathosScore={pathosScore}
         logosScore={logosScore}
