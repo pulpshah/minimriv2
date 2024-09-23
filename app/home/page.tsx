@@ -32,6 +32,7 @@ type TurnData = {
 };
 
 const HomePage = () => {
+  const [isTranscriptExpanded, setTranscriptExpanded] = useState(false);
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
@@ -62,6 +63,10 @@ const HomePage = () => {
         ?.cumulative_score || 0
     );
   };
+
+  const handleExpandClick = () => {
+    setTranscriptExpanded((prevState) => !prevState);
+  };  
 
   const getCumulativeScoreDT = () => {
     return (
@@ -335,11 +340,16 @@ const HomePage = () => {
 
         <div
           className={`transcript z-40 text-black fixed bottom-0 transition-all duration-400 ${
-            isTranscriptOpen ? "h-[50vh]" : "h-[125px]"
+            isTranscriptOpen
+              ? isTranscriptExpanded
+                ? "h-[90.3vh]"  // Fully expanded state
+                : "h-[50vh]"    // Half-open state
+              : "h-[125px]"      // Collapsed state
           } w-full rounded-t-[40px]`}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
+
           <button
             className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center"
             onClick={toggleTranscript}
@@ -452,9 +462,22 @@ const HomePage = () => {
                   <div className="plus">+</div>
                 </div>
               </div>
-
+              <div className="box !justify-end gap-2">
               <div className="turn flex w-fit black-opaque !shadow-none text-base h-fit px-[12px] py-[1px] items-center rounded-full text-white">
                 Turn {currentData.turn_number}
+              </div>
+
+              <button onClick={handleExpandClick}>
+              <Image
+                src={isTranscriptExpanded ? "icons/on-icon.svg" : "icons/off-icon.svg"}
+                alt={isTranscriptExpanded ? "minus" : "plus"}
+                height={35}
+                width={38}
+              />
+            </button>
+
+
+
               </div>
             </div>
 
