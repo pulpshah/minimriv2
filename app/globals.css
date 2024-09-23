@@ -268,3 +268,14 @@ html, body {
 .transcript-box {
   padding: 25 20px;
 }
+
+.tab-btn {
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.tab-btn.active {
+  background-color: #ffffff; /* Active tab background */
+  color: rgb(0, 0, 0);
+}

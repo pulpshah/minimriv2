@@ -2,6 +2,10 @@ import React from "react";
 import Image from "next/image";
 import { RadarChart } from "./ChartData";
 
+import { useState } from "react";  
+
+
+
 interface FeedItemProps {
   turn_number: number;
   title: string;
@@ -35,7 +39,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
         return "/candidates/default.webp";
     }
   };
-
+  const [activeTab, setActiveTab] = useState<string>("ethos"); 
   const showChart = speaker === "Kamala Harris" || speaker === "Donald Trump";
 
   const isQuestion = title.toLowerCase() === "question";
@@ -71,7 +75,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 isQuestion ? "white-opaque" : "black-opaque"
               }`}
             >
-              Turn {turn_number}
+              turn {turn_number}
             </div>
 
             <button>
@@ -145,33 +149,66 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 </div>
               </div>
               {showChart && (
-              <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/analysis.webp')] !bg-cover !bg-center  p-[24px]">
-                <div className="chart box w-full h-fit">
-                  <RadarChart 
-                    ethos={ethosScore} 
-                    pathos={pathosScore} 
-                    logos={logosScore} 
-                  />
-                </div>
-                <div className="textual-annotation box">
-                  <div className="ethos box poppins">
-                    Ethos refers to the ethical appeal or credibility of the
-                    speaker, encompassing attributes like trustworthiness,
-                    expertise, and authority. In rhetorical analysis, ethos
-                    assesses how the speaker's cahracter and reputation
-                    contribute to their persuasiveness. A strong ethos enhances
-                    the audience's confidence in the speaker's arguments and
-                    increases the effectiveness of t heir communication.
-                    <br></br>
-                    <br></br>
-                    Users can assess the speaker's ethos to determine how
-                    credible and trustworthy they find the speaker, influencing
-                    their acceptance of the arguments preseneted.
+                <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/analysis.webp')] !bg-cover !bg-center p-[24px]">
+                  <div className="chart box w-full h-fit">
+
+                      <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+                  </div>
+                  <div className="textual-annotation box">
+                  {activeTab === "summary" && (
+                      <div className="summary box poppins">
+                        Ethos refers to the ethical appeal or credibility of the speaker, encompassing attributes like trustworthiness, expertise, and authority.
+                      </div>
+                    )}
+                    {activeTab === "ethos" && (
+                      <div className="ethos box poppins">
+                        Ethos refers to the ethical appeal or credibility of the speaker, encompassing attributes like trustworthiness, expertise, and authority.
+                      </div>
+                    )}
+                    {activeTab === "pathos" && (
+                      <div className="pathos box poppins">
+                        Pathos appeals to the emotions of the audience. It involves creating an emotional response to convince the audience of an argument.
+                      </div>
+                    )}
+                    {activeTab === "logos" && (
+                      <div className="logos box poppins">
+                        Logos refers to the logical appeal or the use of reason. It often includes the use of facts and statistics to support arguments.
+                      </div>
+                    )}
                   </div>
                 </div>
-              </div>
-               )}
-               <div className="box">hi</div>
+)}
+
+                <div className={`turn flex w-fit !shadow-none text-lg md:text-xl h-fit px-[12px] py-[1px] items-center rounded-full mx-auto gap-3 ${
+                  isQuestion ? "white-opaque" : "black-opaque"
+                }`}>
+                  <button
+                    className={`px-2 py-[2px] rounded-[40px] tab-btn ${activeTab === "summary" ? "active" : ""}`}
+                    onClick={() => setActiveTab("summary")}
+                  >
+                    All
+                  </button>
+                  <button
+                    className={`px-2 py-[2px] rounded-[40px] tab-btn ${activeTab === "ethos" ? "active" : ""}`}
+                    onClick={() => setActiveTab("ethos")}
+                  >
+                    Ethos
+                  </button>
+                  <button
+                    className={`px-2 py-[2px] rounded-[40px] tab-btn ${activeTab === "pathos" ? "active" : ""}`}
+                    onClick={() => setActiveTab("pathos")}
+                  >
+                    Pathos
+                  </button>
+                  <button
+                    className={` px-2 py-[2px] rounded-[40px] tab-btn ${activeTab === "logos" ? "active" : ""}`}
+                    onClick={() => setActiveTab("logos")}
+                  >
+                    Logos
+                  </button>
+                </div>
+
+
             </div>
             
           </div>
