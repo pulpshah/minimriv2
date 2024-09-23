@@ -206,10 +206,6 @@ const FeedItem: React.FC<FeedItemProps> = ({
               isQuestion={isQuestion}
             /></div>}
           {mainTab === "criticalThinking" && <div>Critical Thinking content goes here</div>}
-        </div>
-        
-
-        )}
           {/* Tab buttons */}
           <div className="tabs flex justify-center gap-4 my-4">
             <button onClick={() => setMainTab("total")}>Total</button>
@@ -218,6 +214,10 @@ const FeedItem: React.FC<FeedItemProps> = ({
             <button onClick={() => setMainTab("clarity")}>Clarity</button>
             <button onClick={() => setMainTab("criticalThinking")}>Critical Thinking</button>
           </div>
+        </div>
+        
+
+        )}
       </div>
     </div>
   );

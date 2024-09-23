@@ -259,7 +259,7 @@ const HomePage = () => {
                 }`}
               >
                 <div
-                  onClick={handleSearchClick}
+                  onClick={() => { handleSearchClick(); toggleTranscript(0); }}
                   className="flex items-center gap-[10px] justify-between w-full"
                 >
                   <button className="w-[19px] h-[19px] md:w[50px] flex-shrink-0">
@@ -399,7 +399,7 @@ const HomePage = () => {
 
               <div className="points-1 w-fit text-[.8rem] h-fit text-black poppins"></div>
               <div className="flex gap-[16px] z-50 items-center justify-center">
-                <button onClick={handleBackClick} disabled={currentTurn === 0}>
+                <button onClick={handleBackClick}>
                   <div className="back hidden md:flex text-white transition-all flex-shrink-0">
                     <Image
                       src="icons/back-icon.svg"
@@ -426,7 +426,6 @@ const HomePage = () => {
 
                 <button
                   onClick={handleNextClick}
-                  disabled={currentTurn === turnsData.length - 1}
                 >
                   <div className="next hidden md:flex text-white transition-all flex-shrink-0">
                     <Image

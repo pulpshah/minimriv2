@@ -38,7 +38,7 @@ const Clarity: React.FC<AnalysisProps> = ({
           </div>
         </div>
         {showChart && (
-          <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/clarity.webp')] !bg-center p-[24px]">
+          <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/clarity.webp')] !bg-cover !bg-center p-[24px]">
             <div className="chart box w-full h-fit">
             {activeTab === "summary" && (
               <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
