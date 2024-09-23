@@ -38,36 +38,84 @@ const Analysis: React.FC<AnalysisProps> = ({
           </div>
         </div>
         {showChart && (
-          <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/analysis.webp')] !bg-cover !bg-center p-[24px]">
+          <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/analysis.webp')] !bg-cover !bg-center p-[24px]">
             <div className="chart box w-full h-fit">
+            {activeTab === "summary" && (
               <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+            )}
+
+            {activeTab === "ethos" && (
+              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+            )}
+
+            {activeTab === "pathos" && (
+              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+            )}
+
+            {activeTab === "logos" && (
+              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+            )}
+
             </div>
             <div className="textual-annotation box">
               {activeTab === "summary" && (
-                <div className="summary box poppins">
-                  Ethos refers to the ethical appeal or credibility of the speaker,
-                  encompassing attributes like trustworthiness, expertise, and
-                  authority.
+                <div className="summary box ">
+
+                  <div className="!justify-start black-opaque box rounded-[45px] p-[25px] flex-col">
+                  <div className="reasoning w-full text-left">
+                    <div className="text-lg text-center md:text-xl">
+                      Summary
+                    </div>
+                    <div className="reasoning poppins text-base md:text-lg">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    </div>
+                  </div>
+                  </div>
                 </div>
               )}
               {activeTab === "ethos" && (
-                <div className="ethos box poppins">
-                  Ethos refers to the ethical appeal or credibility of the speaker,
-                  encompassing attributes like trustworthiness, expertise, and
-                  authority.
+                <div className="ethos box">
+
+                  <div className="!justify-start black-opaque box rounded-[45px] p-[25px] flex-col">
+                  <div className="reasoning w-full text-left">
+                    <div className="text-lg text-center md:text-xl">
+                      Ethos Reasoning
+                    </div>
+                    <div className="reasoning poppins text-base md:text-lg">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    </div>
+                  </div>
+                  </div>
                 </div>
               )}
               {activeTab === "pathos" && (
-                <div className="pathos box poppins">
-                  Pathos appeals to the emotions of the audience. It involves
-                  creating an emotional response to convince the audience of an
-                  argument.
+                <div className="pathos box">
+                  
+                  <div className="!justify-start black-opaque box rounded-[45px] p-[25px] flex-col">
+                  <div className="reasoning w-full text-left">
+                    <div className="text-lg text-center md:text-xl">
+                      Pathos Reasoning
+                    </div>
+                    <div className="reasoning poppins text-base md:text-lg">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    </div>
+                  </div>
+                  </div>
+
                 </div>
               )}
               {activeTab === "logos" && (
-                <div className="logos box poppins">
-                  Logos refers to the logical appeal or the use of reason. It often
-                  includes the use of facts and statistics to support arguments.
+                <div className="logos box">
+                  <div className="!justify-start black-opaque box rounded-[45px] p-[25px] flex-col">
+                  <div className="reasoning w-full text-left">
+                    <div className="text-lg text-center md:text-xl">
+                      Logos Reasoning
+                    </div>
+                    <div className="reasoning poppins text-base md:text-lg">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    </div>
+                  </div>
+                  </div>
                 </div>
               )}
             </div>
