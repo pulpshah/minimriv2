@@ -7,6 +7,8 @@ interface SearchBarProps {
   isSearchMode: boolean;
   handleSearchClick: () => void;
   handleClearSearch: () => void;
+  setInboxOpen: () => void;
+  setFetchOpen: () => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
@@ -15,6 +17,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
   isSearchMode,
   handleSearchClick,
   handleClearSearch,
+  setInboxOpen,  // Correct prop name
+  setFetchOpen,  // Correct prop name
 }) => {
   return (
     <div
@@ -22,13 +26,17 @@ const SearchBar: React.FC<SearchBarProps> = ({
         isSearchMode ? "justify-center" : "!justify-between"
       }`}
     >
-      <button
-        className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
-          isSearchMode ? "hidden" : "flex"
-        }`}
-      >
-        <Image src="icons/inbox-icon.svg" alt="inbox" height={35} width={45} />
-      </button>
+    <button
+    className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
+        isSearchMode ? "hidden" : "flex"
+    }`}
+    onClick={setInboxOpen}
+
+  // Update to trigger inbox
+    >
+    <Image src="icons/inbox-icon.svg" alt="Inbox" height={35} width={45} />
+    </button>
+
 
       <div
         className={`flex items-center w-full justify-center ${
@@ -77,13 +85,16 @@ const SearchBar: React.FC<SearchBarProps> = ({
       </div>
 
       <button
-        className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
-          isSearchMode ? "hidden" : "flex"
-        }`}
-        onClick={isSearchMode ? handleClearSearch : undefined}
-      >
-        <Image src={"icons/fetch-icon.svg"} alt={"close"} height={35} width={45} />
-      </button>
+    className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
+        isSearchMode ? "hidden" : "flex"
+    }`}
+
+    onClick={setFetchOpen}
+  // Update to trigger fetch
+    >
+    <Image src={"icons/fetch-icon.svg"} alt="Fetch" height={35} width={45} />
+    </button>
+
     </div>
   );
 };

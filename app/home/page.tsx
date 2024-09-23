@@ -33,6 +33,8 @@ type TurnData = {
 };
 
 const HomePage = () => {
+  const [isInboxOpen, setInboxOpen] = useState(false);
+  const [isFetchOpen, setFetchOpen] = useState(false);
   const [isTranscriptExpanded, setTranscriptExpanded] = useState(false);
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
@@ -214,8 +216,6 @@ const HomePage = () => {
     setTouchEnd(e.changedTouches[0].clientY);
     if (touchStart - touchEnd > 50) {
       setTranscriptOpen(true);
-    } else if (touchEnd - touchStart > 50) {
-      setTranscriptOpen(false);
     }
   };
 
@@ -251,6 +251,18 @@ const HomePage = () => {
     }
   };
 
+  const handleToggleInbox = () => {
+    setInboxOpen((prev) => !prev);
+    setFetchOpen(false); // Close fetch when inbox is opened
+    setSearchMode(false);
+  };
+  
+  const handleToggleFetch = () => {
+    setFetchOpen((prev) => !prev);
+    setInboxOpen(false); // Close inbox when fetch is opened
+    setSearchMode(false);
+  };
+
   useEffect(() => {
     if (!isSearchMode) {
       setSearchInput("");
@@ -263,6 +275,8 @@ const HomePage = () => {
 
   const handleSearchClick = () => {
     setSearchMode(true); 
+    setInboxOpen(false);
+    setFetchOpen(false);
   };
 
   const handleClearSearch = () => {
@@ -318,13 +332,22 @@ const HomePage = () => {
         isSearchMode={isSearchMode}
         handleSearchClick={handleSearchClick}
         handleClearSearch={handleClearSearch}
+        setInboxOpen={handleToggleInbox}  // Pass the inbox toggle function
+        setFetchOpen={handleToggleFetch}  // Pass the fetch toggle function
       />
 
 
+
           {/* Make sure the scores section has a lower z-index than the sliding tab */}
-          <div className={`scores-topic z-[10] flex justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full -mt-1.5 transition-opacity ${
+          <div className={`scores-topic hidden z-[10] flex justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full -mt-1.5 transition-opacity ${
                 isSearchMode ? "opacity-0" : ""
-              }`}>
+              } ${
+                isInboxOpen ? "opacity-0" : ""
+              }
+              ${
+                isFetchOpen ? "opacity-0" : ""
+              }`
+              }>
             <div className="points-1 w-fit text-base md:text-lg h-fit text-black poppins">
               KH: {cumulativeScoreKH} pts
             </div>
@@ -342,6 +365,20 @@ const HomePage = () => {
         <div
           className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
             isSearchMode ? "translate-y-0" : "translate-y-full"
+          } w-full h-[90.3vh] bg-white rounded-t-[40px]`}
+          style={{ transition: "transform 0.4s ease" }}
+        ></div>
+
+        <div
+          className={`other-tabs z-[50] transition-all duration-200 w-full text-black fixed top-[70px] right-0 ${
+            isFetchOpen ? "-translate-x-[20px]" : "translate-x-full"
+          } !w-[280px] h-[70.3vh] bg-white rounded-[40px]`}
+          style={{ transition: "transform 0.4s ease" }}
+        ></div>
+
+<div
+          className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
+            isInboxOpen ? "translate-y-0" : "translate-y-full"
           } w-full h-[90.3vh] bg-white rounded-t-[40px]`}
           style={{ transition: "transform 0.4s ease" }}
         ></div>
