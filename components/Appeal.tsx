@@ -112,15 +112,15 @@ const Appeal: React.FC<AnalysisProps> = ({
                     <div className="text-lg text-center md:text-xl">
                       Logos Reasoning
                     </div>
-                    <div className="reasoning poppins text-base md:text-lg">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    <div className="reasoning poppins text-base w-full h-fit md:text-lg">
+                    Sed ut perspic unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi archi beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia volqui nesciunt.
                     </div>
                   </div>
                   </div>
                 </div>
               )}
               <div
-          className={`tabs flex w-fit !shadow-none text-lg md:text-xl h-fit px-[12px] py-[1px] items-center rounded-full mx-auto gap-2 md:gap-4 !bg-transparent ${
+          className={`tabs flex w-fit !shadow-none text-lg md:text-xl h-fit px-[12px] py-[1px] items-center rounded-full mx-auto gap-2 !bg-transparent ${
             isQuestion ? "white-opaque" : "black-opaque"
           }`}
         >
@@ -130,7 +130,7 @@ const Appeal: React.FC<AnalysisProps> = ({
             }`}
             onClick={() => setActiveTab("summary")}
           >
-            all
+            1
           </button>
           <button
             className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${
@@ -138,7 +138,7 @@ const Appeal: React.FC<AnalysisProps> = ({
             }`}
             onClick={() => setActiveTab("ethos")}
           >
-            ethos
+            2
           </button>
           <button
             className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${
@@ -146,7 +146,7 @@ const Appeal: React.FC<AnalysisProps> = ({
             }`}
             onClick={() => setActiveTab("pathos")}
           >
-            pathos
+            3
           </button>
           <button
             className={` px-[10px] py-[1px] rounded-[40px] tab-btn ${
@@ -154,7 +154,7 @@ const Appeal: React.FC<AnalysisProps> = ({
             }`}
             onClick={() => setActiveTab("logos")}
           >
-            logos
+            4
           </button>
         </div>
             </div>

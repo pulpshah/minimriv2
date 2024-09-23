@@ -280,6 +280,8 @@ html, body {
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
   color: rgb(0, 0, 0);
+  transition: all;
+  scale: 110%;
 }
 
 

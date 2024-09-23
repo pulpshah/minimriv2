@@ -3,6 +3,8 @@ import Image from "next/image";
 import { RadarChart } from "./ChartData";
 import Appeal from "@/components/Appeal";  // Import the new component
 import Clarity from "./Clarity";
+import Critical from "./Critical";
+import Style from "./Style";
 
 interface FeedItemProps {
   turn_number: number;
@@ -39,7 +41,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
   isPlaying,
   onPlay,
 }) => {
-  const [mainTab, setMainTab] = useState("total");
+  const [mainTab, setMainTab] = useState("appeal");
 
 
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -195,8 +197,19 @@ const FeedItem: React.FC<FeedItemProps> = ({
           )}
         
           {/* You can add conditional rendering for other tabs here */}
-          {mainTab === "style" && <div>Style content goes here</div>}
-          {mainTab === "clarity" && <div><Clarity
+          {mainTab === "style" && <div>
+            <Style
+              ethosScore={ethosScore}
+              pathosScore={pathosScore}
+              logosScore={logosScore}
+              showChart={showChart}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              isQuestion={isQuestion}
+            />
+          </div>}
+          {mainTab === "clarity" && <div>
+            <Clarity
               ethosScore={ethosScore}
               pathosScore={pathosScore}
               logosScore={logosScore}
@@ -205,14 +218,57 @@ const FeedItem: React.FC<FeedItemProps> = ({
               setActiveTab={setActiveTab}
               isQuestion={isQuestion}
             /></div>}
-          {mainTab === "criticalThinking" && <div>Critical Thinking content goes here</div>}
+          {mainTab === "criticalThinking" && <div>
+            <Critical
+              ethosScore={ethosScore}
+              pathosScore={pathosScore}
+              logosScore={logosScore}
+              showChart={showChart}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              isQuestion={isQuestion}
+            />
+            </div>}
           {/* Tab buttons */}
-          <div className="tabs flex justify-center gap-4 my-4">
+          <div className="tabs flex justify-center gap-5 my-4 text-xl !items-center">
             <button onClick={() => setMainTab("total")}>Total</button>
-            <button onClick={() => setMainTab("appeal")}>Appeal</button>
-            <button onClick={() => setMainTab("style")}>Style</button>
-            <button onClick={() => setMainTab("clarity")}>Clarity</button>
-            <button onClick={() => setMainTab("criticalThinking")}>Critical Thinking</button>
+            <button onClick={() => setMainTab("appeal")}>
+              <Image
+              src="/icons/hearts-icon.svg"
+              alt="clarity"
+              width={28}
+              height={28}
+              className="block mx-auto"
+              />
+              </button>
+            <button onClick={() => setMainTab("style")}>
+            <Image
+              src="/icons/star-icon.svg"
+              alt="clarity"
+              width={28}
+              height={28}
+              className="block mx-auto"
+              />
+            </button>
+
+            <button onClick={() => setMainTab("clarity")}>
+              <Image
+              src="/icons/target-icon.svg"
+              alt="clarity"
+              width={28}
+              height={28}
+              className="block mx-auto"
+              />
+            </button>
+
+            <button onClick={() => setMainTab("criticalThinking")}>
+              <Image
+              src="/icons/zap-icon.svg"
+              alt="clarity"
+              width={28}
+              height={28}
+              className="block mx-auto"
+              /></button>
           </div>
         </div>
         
