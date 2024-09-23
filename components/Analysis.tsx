@@ -59,57 +59,63 @@ const Analysis: React.FC<AnalysisProps> = ({
             </div>
             <div className="textual-annotation box">
               {activeTab === "summary" && (
-                <div className="summary box poppins">
-                  Ethos refers to the ethical appeal or credibility of the speaker,
-                  encompassing attributes like trustworthiness, expertise, and
-                  authority.
+                <div className="summary box ">
+
+                  <div className="!justify-start black-opaque box rounded-[45px] p-[25px] flex-col">
+                  <div className="reasoning w-full text-left">
+                    <div className="text-lg text-center md:text-xl">
+                      Summary
+                    </div>
+                    <div className="reasoning poppins text-base md:text-lg">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    </div>
+                  </div>
+                  </div>
                 </div>
               )}
               {activeTab === "ethos" && (
-                <div className="ethos grid w-full h-fit grid-cols-1 md:grid-cols-3 poppins gap-[15px]">
+                <div className="ethos box">
 
-                  <div className="score-box black-opaque box rounded-[45px] p-[25px] flex-col">
-                    <div className="title-score box flex-col gap-[15px]">
-                      <div className="title text-base">
-                        Trust Points
-                      </div>
-                      <div className="score text-2xl">
-                        50
-                      </div>
+                  <div className="!justify-start black-opaque box rounded-[45px] p-[25px] flex-col">
+                  <div className="reasoning w-full text-left">
+                    <div className="text-lg text-center md:text-xl">
+                      Ethos Reasoning
                     </div>
-
-                    <div className="reasoning mt-[15px] box">
-                      Reasoning
+                    <div className="reasoning poppins text-base md:text-lg">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
                     </div>
                   </div>
-
-                  <div className="score-box black-opaque box rounded-[45px] p-[25px] flex-col">
-                    <div className="title-score box flex-col gap-[15px]">
-                      <div className="title text-base">
-                        Trust Points
-                      </div>
-                      <div className="score text-2xl">
-                        50
-                      </div>
-                    </div>
-
-                    <div className="reasoning mt-[15px] box">
-                      Reasoning
-                    </div>
                   </div>
                 </div>
               )}
               {activeTab === "pathos" && (
-                <div className="pathos box poppins">
-                  Pathos appeals to the emotions of the audience. It involves
-                  creating an emotional response to convince the audience of an
-                  argument.
+                <div className="pathos box">
+                  
+                  <div className="!justify-start black-opaque box rounded-[45px] p-[25px] flex-col">
+                  <div className="reasoning w-full text-left">
+                    <div className="text-lg text-center md:text-xl">
+                      Pathos Reasoning
+                    </div>
+                    <div className="reasoning poppins text-base md:text-lg">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    </div>
+                  </div>
+                  </div>
+
                 </div>
               )}
               {activeTab === "logos" && (
-                <div className="logos box poppins">
-                  Logos refers to the logical appeal or the use of reason. It often
-                  includes the use of facts and statistics to support arguments.
+                <div className="logos box">
+                  <div className="!justify-start black-opaque box rounded-[45px] p-[25px] flex-col">
+                  <div className="reasoning w-full text-left">
+                    <div className="text-lg text-center md:text-xl">
+                      Logos Reasoning
+                    </div>
+                    <div className="reasoning poppins text-base md:text-lg">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    </div>
+                  </div>
+                  </div>
                 </div>
               )}
             </div>
