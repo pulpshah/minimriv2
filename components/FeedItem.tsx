@@ -1,7 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { RadarChart } from "./ChartData";
-import Analysis from "@/components/Analysis";  // Import the new component
+import Appeal from "@/components/Appeal";  // Import the new component
+import Clarity from "./Clarity";
+import Critical from "./Critical";
+import Style from "./Style";
+import Total from "./Total";
 
 interface FeedItemProps {
   turn_number: number;
@@ -38,8 +42,11 @@ const FeedItem: React.FC<FeedItemProps> = ({
   isPlaying,
   onPlay,
 }) => {
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const [mainTab, setMainTab] = useState("total");
 
+
+  const audioRef = useRef<HTMLAudioElement>(null);
+  
   const getAudioFile = () => {
     return `/audio/turn${turn_number}.wav`;
   };
@@ -126,7 +133,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 isQuestion ? "white-opaque" : "black-opaque"
               }`}
             >
-              turn {turn_number}
+              Turn {turn_number}
             </div>
 
             <button onClick={handlePlayPause}>
@@ -175,15 +182,140 @@ const FeedItem: React.FC<FeedItemProps> = ({
         {isQuestion ? (
           <div className="question flex"></div>
         ) : (
-      <Analysis
-        ethosScore={ethosScore}
-        pathosScore={pathosScore}
-        logosScore={logosScore}
-        showChart={showChart}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        isQuestion={isQuestion}
+          <div className="box flex-col">
+        
+          {/* Conditionally render the Appeal component only when the Appeal tab is active */}
+          {mainTab === "appeal" && (
+            <Appeal
+              ethosScore={ethosScore}
+              pathosScore={pathosScore}
+              logosScore={logosScore}
+              showChart={showChart}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              isQuestion={isQuestion}
+            />
+          )}
+        
+          {/* You can add conditional rendering for other tabs here */}
+          {mainTab === "total" && <div>
+            <Total
+              ethosScore={ethosScore}
+              pathosScore={pathosScore}
+              logosScore={logosScore}
+              showChart={showChart}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              isQuestion={isQuestion}
+            />
+          </div>}
+          {mainTab === "style" && <div>
+            <Style
+              ethosScore={ethosScore}
+              pathosScore={pathosScore}
+              logosScore={logosScore}
+              showChart={showChart}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              isQuestion={isQuestion}
+            />
+          </div>}
+          {mainTab === "clarity" && <div>
+            <Clarity
+              ethosScore={ethosScore}
+              pathosScore={pathosScore}
+              logosScore={logosScore}
+              showChart={showChart}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              isQuestion={isQuestion}
+            /></div>}
+          {mainTab === "criticalThinking" && <div>
+            <Critical
+              ethosScore={ethosScore}
+              pathosScore={pathosScore}
+              logosScore={logosScore}
+              showChart={showChart}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              isQuestion={isQuestion}
+            />
+            </div>}
+          {/* Tab buttons */}
+          <div className="tabs flex justify-center gap-5 md:gap-6 my-4 text-xl items-center">
+      <button
+        className={`flex gap-2 transition-all ${mainTab === "total" ? "opacity-100" : "opacity-50"}`}
+        onClick={() => setMainTab("total")}
+      >
+        <div className="hidden md:flex">Total</div>
+        <Image
+          src="/icons/arrow-user.svg"
+          alt=""
+          width={28}
+          height={28}
+          className="block mx-auto"
+        />
+      </button>
+
+      <button
+        className={`flex items-center transition-all gap-2 ${mainTab === "appeal" ? "opacity-100" : "opacity-50"}`}
+        onClick={() => setMainTab("appeal")}
+      >
+        <div className="hidden md:flex">Appeal</div>
+        <Image
+          src="/icons/hearts-icon.svg"
+          alt=""
+          width={28}
+          height={28}
+          className="block mx-auto"
+        />
+      </button>
+
+    <button
+      className={`flex gap-2 items-center transition-all ${mainTab === "style" ? "opacity-100" : "opacity-50"}`}
+      onClick={() => setMainTab("style")}
+    >
+      <div className="hidden md:flex">Style</div>
+      <Image
+        src="/icons/star-icon.svg"
+        alt=""
+        width={28}
+        height={28}
+        className="block mx-auto"
       />
+    </button>
+
+    <button
+      className={`flex gap-2 items-center transition-all ${mainTab === "clarity" ? "opacity-100" : "opacity-50"}`}
+      onClick={() => setMainTab("clarity")}
+    >
+      <div className="hidden md:flex">Clarity</div>
+      <Image
+        src="/icons/target-icon.svg"
+        alt=""
+        width={28}
+        height={28}
+        className="block mx-auto"
+      />
+    </button>
+
+    <button
+      className={`flex gap-2 items-center transition-all ${mainTab === "criticalThinking" ? "opacity-100" : "opacity-50"}`}
+      onClick={() => setMainTab("criticalThinking")}
+    >
+      <div className="hidden md:flex">Critical Thinking</div>
+      <Image
+        src="/icons/zap-icon.svg"
+        alt="clarity"
+        width={28}
+        height={28}
+        className="block mx-auto"
+      />
+    </button>
+  </div>
+
+        </div>
+        
 
         )}
       </div>

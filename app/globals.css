@@ -41,7 +41,7 @@ html, body {
 }
 
 .search-tab {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.7);
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
   color: black;
   backdrop-filter: blur(50px);
@@ -55,7 +55,7 @@ html, body {
   align-items: center;
   padding-inline: 20px;
   padding-bottom: 20px;
-  background: rgba(255, 255, 255, .8);
+  background: rgba(255, 255, 255, .7);
 
   box-shadow: 0px -4px 15px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(50px);
@@ -251,7 +251,7 @@ html, body {
 }
 
 .search-bar {
-  background: rgba(7, 7, 7, 0.80);
+  background: rgba(7, 7, 7, 0.70);
   color: white;
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
 
@@ -284,11 +284,61 @@ html, body {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .tab-btn.active {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.25);
-  color: white;
+  color: rgb(0, 0, 0);
+  transition: all;
+  scale: 110%;
 }
+
+
+.feed-item-tabs {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.feed-item-tab-slider {
+  position: absolute;
+  bottom: 0;
+  height: 4px;
+  background-color: white;
+  transition: transform 0.5s ease, width 0.5s ease;
+}
+
+.feed-item-tab-btn {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+  transition: color 0.5s ease;
+}
+
+.feed-item-tab-btn.feed-item-tab-active {
+  color: black; /* Change the color for the active tab */
+}
+
+.feed-item-tab-btn:hover {
+  color: gray; /* Change the hover color */
+}
+
+/* Additional custom classes (if needed) */
+.feed-item-black-opaque {
+  background-color: rgba(0, 0, 0, 0.8); /* Example of a black opaque color */
+}
+
+.feed-item-rounded-b-full {
+  border-radius: 0 0 9999px 9999px;
+}
+
+.feed-item-box {
+  display: flex;
+  justify-content: space-between;
+}
+

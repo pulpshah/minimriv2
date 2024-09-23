@@ -32,6 +32,7 @@ type TurnData = {
 };
 
 const HomePage = () => {
+  const [isTranscriptExpanded, setTranscriptExpanded] = useState(false);
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
@@ -76,6 +77,10 @@ const HomePage = () => {
         ?.cumulative_score || 0
     );
   };
+
+  const handleExpandClick = () => {
+    setTranscriptExpanded((prevState) => !prevState);
+  };  
 
   const getCumulativeScoreDT = () => {
     return (
@@ -336,7 +341,7 @@ const HomePage = () => {
                 }`}
               >
                 <div
-                  onClick={handleSearchClick}
+                  onClick={() => { handleSearchClick(); toggleTranscript(0); }}
                   className="flex items-center gap-[10px] justify-between w-full"
                 >
                   <button className="w-[19px] h-[19px] md:w[50px] flex-shrink-0">
@@ -393,13 +398,15 @@ const HomePage = () => {
           </div>
 
           {/* Make sure the scores section has a lower z-index than the sliding tab */}
-          <div className="scores-topic z-[10] flex justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full">
+          <div className={`scores-topic z-[10] flex justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full -mt-1.5 transition-opacity ${
+                isSearchMode ? "opacity-0" : ""
+              }`}>
             <div className="points-1 w-fit text-base md:text-lg h-fit text-black poppins">
               KH: {cumulativeScoreKH} pts
             </div>
 
             <div className="points-1 w-fit h-fit text-lg md:text-xl text-black">
-              score
+              scores
             </div>
 
             <div className="points-1 w-fit text-base md:text-lg h-fit text-black poppins">
@@ -417,11 +424,16 @@ const HomePage = () => {
 
         <div
           className={`transcript z-40 text-black fixed bottom-0 transition-all duration-400 ${
-            isTranscriptOpen ? "h-[50vh]" : "h-[125px]"
+            isTranscriptOpen
+              ? isTranscriptExpanded
+                ? "h-[90.3vh]"  // Fully expanded state
+                : "h-[50vh]"    // Half-open state
+              : "h-[125px]"      // Collapsed state
           } w-full rounded-t-[40px]`}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
+
           <button
             className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center"
             onClick={toggleTranscript}
@@ -471,7 +483,7 @@ const HomePage = () => {
 
               <div className="points-1 w-fit text-[.8rem] h-fit text-black poppins"></div>
               <div className="flex gap-[16px] z-50 items-center justify-center">
-                <button onClick={handleBackClick} disabled={currentTurn === 0}>
+                <button onClick={handleBackClick}>
                   <div className="back hidden md:flex text-white transition-all flex-shrink-0">
                     <Image
                       src="icons/back-icon.svg"
@@ -498,7 +510,6 @@ const HomePage = () => {
 
                 <button
                   onClick={handleNextClick}
-                  disabled={currentTurn === turnsData.length - 1}
                 >
                   <div className="next hidden md:flex text-white transition-all flex-shrink-0">
                     <Image
@@ -534,9 +545,22 @@ const HomePage = () => {
                   <div className="plus">+</div>
                 </div>
               </div>
-
+              <div className="box !justify-end gap-2">
               <div className="turn flex w-fit black-opaque !shadow-none text-base h-fit px-[12px] py-[1px] items-center rounded-full text-white">
                 Turn {currentData.turn_number}
+              </div>
+
+              <button onClick={handleExpandClick}>
+              <Image
+                src={isTranscriptExpanded ? "icons/on-icon.svg" : "icons/off-icon.svg"}
+                alt={isTranscriptExpanded ? "minus" : "plus"}
+                height={35}
+                width={38}
+              />
+            </button>
+
+
+
               </div>
             </div>
 
