@@ -37,17 +37,31 @@ const HomePage = () => {
   const [touchEnd, setTouchEnd] = useState(0);
   const [currentTurn, setCurrentTurn] = useState<number>(0);
   const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(null); // Track the currently playing turn
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isSearchMode, setSearchMode] = useState(false);
+  const [wordData, setWordData] = useState<any[]>([]);
+  const [sentencesData, setSentencesData] = useState<any[]>([]); // Store sentences
+  const [highlightedWordIndex, setHighlightedWordIndex] = useState<number | null>(null);
+  const [currentSentenceIndex, setCurrentSentenceIndex] = useState<number>(0); // Track which sentence set is being displayed
+
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const turnsData: Array<TurnData> = JFile.analysis;
   const currentData = turnsData[currentTurn] ?? null;
   const nextData: TurnData | null = turnsData[currentTurn + 1] || null;
 
-  const currentTurnText =
-    currentData && currentData.analysis && currentData.analysis.claims.length > 0
-      ? currentData.analysis.claims[0].text
-      : "No text available";
+  const currentTurnText = wordData.map((word: any, index: number) => {
+    const isHighlighted = index === highlightedWordIndex;
+    return (
+      <span
+        key={index}
+        style={{ color: isHighlighted ? "yellow" : "white", cursor: "pointer" }}
+        onClick={() => handleWordClick(word.start)} 
+      >
+        {word.punctuated_word}{" "}
+      </span>
+    );
+  });
 
   const nextTurnText =
     nextData && nextData.analysis.claims.length > 0
@@ -76,8 +90,6 @@ const HomePage = () => {
   const cumulativeScoreDT = getCumulativeScoreDT();
 
   const scoreForCurrentTurn = currentData.score;
-
-  const audioRef = useRef<HTMLAudioElement>(null);
   
   const getAudioFile = (turnNumber: number) => {
     return `/audio/turn${turnNumber}.wav`;
@@ -115,6 +127,76 @@ const HomePage = () => {
   };
 
   const [searchInput, setSearchInput] = useState("");
+
+  useEffect(() => {
+    const loadWordAndSentenceData = async () => {
+      const response = await fetch(`/audio/audio_data/turn${currentTurn + 1}.json`);
+      const data = await response.json();
+      setWordData(data.results.channels[0].alternatives[0].words);
+      setSentencesData(data.results.channels[0].alternatives[0].paragraphs.paragraphs[0].sentences);
+    };
+
+    loadWordAndSentenceData();
+  }, [currentTurn]);
+
+  const currentSentences = sentencesData.slice(currentSentenceIndex, currentSentenceIndex + 2);
+
+  useEffect(() => {
+    const audioElement = audioRef.current;
+    if (audioElement && wordData.length > 0) {
+      const handleTimeUpdate = () => {
+        const currentTime = audioElement.currentTime;
+
+        // Highlight the current word
+        const currentWordIndex = wordData.findIndex(
+          (word: any) => currentTime >= word.start && currentTime <= word.end
+        );
+        setHighlightedWordIndex(currentWordIndex !== -1 ? currentWordIndex : null);
+
+        // Check if the current two sentences are done being spoken
+        if (currentSentences.length === 2) {
+          const secondSentenceEnd = currentSentences[1]?.end;
+          if (currentTime >= secondSentenceEnd) {
+            // Scroll to the next two sentences
+            setCurrentSentenceIndex((prevIndex) => prevIndex + 2);
+          }
+        }
+      };
+
+      audioElement.addEventListener("timeupdate", handleTimeUpdate);
+
+      return () => {
+        audioElement.removeEventListener("timeupdate", handleTimeUpdate);
+      };
+    }
+  }, [wordData, currentSentences]);
+
+  useEffect(() => {
+    const audioElement = audioRef.current;
+
+    if (audioElement) {
+      const handlePlay = () => setIsPlaying(true);
+      const handlePause = () => setIsPlaying(false);
+      const handleEnded = () => setIsPlaying(false);
+
+      audioElement.addEventListener("play", handlePlay);
+      audioElement.addEventListener("pause", handlePause);
+      audioElement.addEventListener("ended", handleEnded);
+
+      return () => {
+        audioElement.removeEventListener("play", handlePlay);
+        audioElement.removeEventListener("pause", handlePause);
+        audioElement.removeEventListener("ended", handleEnded);
+      };
+    }
+  }, []);
+
+  const handleWordClick = (start: number) => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = start;
+      audioRef.current.play(); // Play the audio after seeking
+    }
+  };
 
   // Handle swipe up
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -431,7 +513,7 @@ const HomePage = () => {
 
               <audio
                 ref={audioRef}
-                src={getAudioFile(currentTurn + 1)}
+                src={`/audio/turn${currentTurn + 1}.wav`} 
               />
             </div>
           </div>
@@ -460,7 +542,7 @@ const HomePage = () => {
 
             <div className="lines flex box w-full h-full flex-col gap-[15px] px-[10px] py-[10px] overflow-y-auto">
               <div className="turn2 !text-left flex h-fit text text-[1.25rem] text-gray-300 w-full justify-center">
-                <div className="line text !text-left line-clamp-5">
+                <div className="line text !text-left y-overflow-auto">
                   {currentTurnText}
                 </div>
               </div>
