@@ -339,13 +339,19 @@ const HomePage = () => {
 
 
           {/* Make sure the scores section has a lower z-index than the sliding tab */}
-          <div className={`scores-topic hidden z-[10] flex justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full -mt-1.5 transition-opacity ${
+          <div className={`scores-topic z-[10] flex justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full -mt-1.5 transition-opacity ${
                 isSearchMode ? "opacity-0" : ""
               } ${
                 isInboxOpen ? "opacity-0" : ""
               }
               ${
                 isFetchOpen ? "opacity-0" : ""
+              }
+              ${
+                isTranscriptExpanded ? "!opacity-0" : ""
+              }
+              ${
+                isTranscriptOpen ? "opacity-100" : ""
               }`
               }>
             <div className="points-1 w-fit text-base md:text-lg h-fit text-black poppins">
