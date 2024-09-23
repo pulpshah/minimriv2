@@ -38,7 +38,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({ ethos, pathos, logos }) 
           Plot.geo([1.0, 0.8, 0.6, 0.4, 0.2], {
             geometry: (r) => d3.geoCircle().center([0, 90]).radius(r)(),
             stroke: "white",
-            fill: "white",
+            fill: "black",
             strokeOpacity: 0.2,
             fillOpacity: 0.2,
             strokeWidth: 0.5,
