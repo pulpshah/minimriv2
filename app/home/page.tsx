@@ -370,9 +370,9 @@ const HomePage = () => {
         ></div>
 
         <div
-          className={`other-tabs z-[50] transition-all duration-200 w-full text-black fixed top-[70px] right-0 ${
+          className={`other-tabs z-[40] transition-all duration-200 w-full text-black fixed top-[70px] right-0 ${
             isFetchOpen ? "-translate-x-[20px]" : "translate-x-full"
-          } !w-[280px] h-[70.3vh] bg-white rounded-[40px]`}
+          } !w-[250px] h-full bg-white rounded-[40px]`}
           style={{ transition: "transform 0.4s ease" }}
         ></div>
 
