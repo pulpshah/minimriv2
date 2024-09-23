@@ -38,8 +38,10 @@ const FeedItem: React.FC<FeedItemProps> = ({
   isPlaying,
   onPlay,
 }) => {
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const [mainTab, setMainTab] = useState<string>("appeal");
 
+  const audioRef = useRef<HTMLAudioElement>(null);
+  
   const getAudioFile = () => {
     return `/audio/turn${turn_number}.wav`;
   };
@@ -126,7 +128,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 isQuestion ? "white-opaque" : "black-opaque"
               }`}
             >
-              turn {turn_number}
+              Turn {turn_number}
             </div>
 
             <button onClick={handlePlayPause}>
@@ -175,15 +177,26 @@ const FeedItem: React.FC<FeedItemProps> = ({
         {isQuestion ? (
           <div className="question flex"></div>
         ) : (
-      <Appeal
-        ethosScore={ethosScore}
-        pathosScore={pathosScore}
-        logosScore={logosScore}
-        showChart={showChart}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        isQuestion={isQuestion}
-      />
+      <div className="box flex-col">
+        <Appeal
+          ethosScore={ethosScore}
+          pathosScore={pathosScore}
+          logosScore={logosScore}
+          showChart={showChart}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          isQuestion={isQuestion}
+        />
+
+      <div className="tabs flex justify-center gap-4 my-4">
+        <button onClick={() => setMainTab("total")}>Total</button>
+        <button onClick={() => setMainTab("appeal")}>Appeal</button>
+        <button onClick={() => setMainTab("style")}>Style</button>
+        <button onClick={() => setMainTab("clarity")}>Clarity</button>
+        <button onClick={() => setMainTab("criticalThinking")}>Critical Thinking</button>
+      </div>
+
+      </div>
 
         )}
       </div>

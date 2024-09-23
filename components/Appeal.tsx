@@ -25,7 +25,7 @@ const Appeal: React.FC<AnalysisProps> = ({
         <div className="appeal-score box items-center flex-col lg:!justify-between lg:flex-row gap-[25px] lg:gap-[30px]">
           <div className="appeal w-fit h-fit">
             <div className="flex gap-2 text-7xl lg:text-9xl w-fit h-fit outline-text">
-              <div className="flex w-fit md:gap-3 lg:gap-4">score</div>
+              <div className="flex w-fit md:gap-3 lg:gap-4">appeal</div>
             </div>
           </div>
           <div className="w-fit text-center h-fit lg:text-left lg:w-[802px] flex justify-start text-lg">
