@@ -2,9 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { RadarChart } from "./ChartData";
 import Analysis from "@/components/Analysis";  // Import the new component
-import { useState } from "react";  
-
-
 
 interface FeedItemProps {
   turn_number: number;
@@ -14,6 +11,9 @@ interface FeedItemProps {
   ethosScore: number;
   pathosScore: number;
   logosScore: number;
+  turn_category: string;
+  isPlaying: boolean;
+  onPlay: (turnNumber: number) => void;
 }
 
 interface AnalysisProps {
@@ -21,7 +21,7 @@ interface AnalysisProps {
   pathosScore: number;
   logosScore: number;
   showChart: boolean;
-  activeTab: string; // Add this line
+  activeTab: string;
   setActiveTab: (tab: string) => void;
   isQuestion: boolean;
 }
@@ -35,8 +35,9 @@ const FeedItem: React.FC<FeedItemProps> = ({
   pathosScore,
   logosScore,
   turn_category,
+  isPlaying,
+  onPlay,
 }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const getAudioFile = () => {
@@ -44,27 +45,34 @@ const FeedItem: React.FC<FeedItemProps> = ({
   };
 
   const handlePlayPause = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
+    if (isPlaying) {
+      audioRef.current?.pause();
+      onPlay(null);
+    } else {
+      onPlay(turn_number);
     }
   };
 
   useEffect(() => {
+    if (isPlaying && audioRef.current) {
+      audioRef.current.play();
+    } else if (!isPlaying && audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  }, [isPlaying]);
+
+  useEffect(() => {
     const audioElement = audioRef.current;
     if (audioElement) {
-      const handleEnded = () => setIsPlaying(false);
+      const handleEnded = () => onPlay(null);
       audioElement.addEventListener("ended", handleEnded);
 
       return () => {
         audioElement.removeEventListener("ended", handleEnded);
       };
     }
-  }, [audioRef]);
+  }, [onPlay]);
 
   const audioFile = getAudioFile();
 
@@ -130,11 +138,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 width={47}
               />
             </button>
-
-            {/* Audio element */}
-            {audioFile && (
-              <audio ref={audioRef} src={audioFile} preload="auto" />
-            )}
+            <audio ref={audioRef} src={audioFile} preload="auto" />
           </div>
         </div>
 

@@ -7,7 +7,6 @@ import { useEffect } from "react";
 
 type TurnData = {
   speaker_name: string;
-
   topic?: string;
   turn_number: number;
   turn_category?: string;
@@ -36,16 +35,17 @@ const HomePage = () => {
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-  const [currentTurn, setCurrentTurn] = useState(0);
+  const [currentTurn, setCurrentTurn] = useState<number>(0);
+  const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(null); // Track the currently playing turn
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSearchMode, setSearchMode] = useState(false);
 
   const turnsData: Array<TurnData> = JFile.analysis;
-  const currentData: TurnData = turnsData[currentTurn];
+  const currentData = turnsData[currentTurn] ?? null;
   const nextData: TurnData | null = turnsData[currentTurn + 1] || null;
 
   const currentTurnText =
-    currentData.analysis.claims.length > 0
+    currentData && currentData.analysis && currentData.analysis.claims.length > 0
       ? currentData.analysis.claims[0].text
       : "No text available";
 
@@ -105,6 +105,10 @@ const HomePage = () => {
       };
     }
   }, [audioRef]);
+
+  const handlePlay = (turnNumber: number) => {
+    setCurrentPlayingTurn(turnNumber);
+  };
 
   const toggleTranscript = () => {
     setTranscriptOpen(!isTranscriptOpen);
@@ -210,6 +214,8 @@ const HomePage = () => {
                   ethosScore={ethosScore}
                   pathosScore={pathosScore}
                   logosScore={logosScore}
+                  isPlaying={currentPlayingTurn === turn.turn_number}
+                  onPlay={handlePlay}
                 />
               );
             })}
@@ -365,7 +371,6 @@ const HomePage = () => {
                     <div className="time-turn text flex flex-row gap-[4px]">
                       <div className="time text !text-left">
                         {currentData.turn_category}
-                        {currentData.turn_category}
                       </div>
                        {/*<div className="text !text-left">•</div>
                       {/*
@@ -439,8 +444,8 @@ const HomePage = () => {
           >
             <div className="points-phase w-full h-fit flex items-center justify-between flex-row px-[20px]">
               <div className="points flex flex-row gap-[3px] poppins text text-base text-[#79FF80]">
-                <div className="num">{scoreForCurrentTurn}</div>
-                <div className="pts">pts</div>
+              <div className="num">{currentData ? currentData.score : "0"}</div>
+              <div className="pts">pts</div>
 
                 <div className="plus-minus">
                   <div className="minus hidden">-</div>
