@@ -61,6 +61,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({ ethos, pathos, logos }) 
             y: 90 - 1,
             text: Plot.identity,
             lineWidth: 5,
+            fontSize:23,
           }),
 
           // Areas
@@ -95,7 +96,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({ ethos, pathos, logos }) 
               fill: "#4269D0",
               stroke: "white",
               maxRadius: 10,
-              fontSize: 12,
+              fontSize: 23,
             })
           )
         ],

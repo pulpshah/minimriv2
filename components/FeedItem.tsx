@@ -179,32 +179,32 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 </div>
 )}
 
-                <div className={`turn flex w-fit !shadow-none text-lg md:text-xl h-fit px-[12px] py-[1px] items-center rounded-full mx-auto gap-3 ${
+                <div className={`tabs flex w-fit !shadow-none text-lg md:text-xl h-fit px-[12px] py-[1px] items-center rounded-full mx-auto gap-2 md:gap-4 !bg-transparent ${
                   isQuestion ? "white-opaque" : "black-opaque"
                 }`}>
                   <button
-                    className={`px-2 py-[2px] rounded-[40px] tab-btn ${activeTab === "summary" ? "active" : ""}`}
+                    className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${activeTab === "summary" ? "active" : ""}`}
                     onClick={() => setActiveTab("summary")}
                   >
-                    All
+                    all
                   </button>
                   <button
-                    className={`px-2 py-[2px] rounded-[40px] tab-btn ${activeTab === "ethos" ? "active" : ""}`}
+                    className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${activeTab === "ethos" ? "active" : ""}`}
                     onClick={() => setActiveTab("ethos")}
                   >
-                    Ethos
+                    ethos
                   </button>
                   <button
-                    className={`px-2 py-[2px] rounded-[40px] tab-btn ${activeTab === "pathos" ? "active" : ""}`}
+                    className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${activeTab === "pathos" ? "active" : ""}`}
                     onClick={() => setActiveTab("pathos")}
                   >
-                    Pathos
+                    pathos
                   </button>
                   <button
-                    className={` px-2 py-[2px] rounded-[40px] tab-btn ${activeTab === "logos" ? "active" : ""}`}
+                    className={` px-[10px] py-[1px] rounded-[40px] tab-btn ${activeTab === "logos" ? "active" : ""}`}
                     onClick={() => setActiveTab("logos")}
                   >
-                    Logos
+                    logos
                   </button>
                 </div>
 
