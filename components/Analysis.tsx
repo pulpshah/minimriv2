@@ -38,9 +38,24 @@ const Analysis: React.FC<AnalysisProps> = ({
           </div>
         </div>
         {showChart && (
-          <div className="analysis-content grid grid-cols-1 lg:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/analysis.webp')] !bg-cover !bg-center p-[24px]">
+          <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/analysis.webp')] !bg-cover !bg-center p-[24px]">
             <div className="chart box w-full h-fit">
+            {activeTab === "summary" && (
               <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+            )}
+
+            {activeTab === "ethos" && (
+              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+            )}
+
+            {activeTab === "pathos" && (
+              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+            )}
+
+            {activeTab === "logos" && (
+              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+            )}
+
             </div>
             <div className="textual-annotation box">
               {activeTab === "summary" && (
@@ -51,10 +66,44 @@ const Analysis: React.FC<AnalysisProps> = ({
                 </div>
               )}
               {activeTab === "ethos" && (
-                <div className="ethos box poppins">
-                  Ethos refers to the ethical appeal or credibility of the speaker,
-                  encompassing attributes like trustworthiness, expertise, and
-                  authority.
+                <div className="ethos grid w-full h-fit grid-cols-1 md:grid-cols-3 poppins gap-[15px]">
+
+                  <div className="score-box black-opaque box rounded-[45px] p-[25px]">
+                    <div className="title-score box flex-col gap-[15px]">
+                      <div className="title text-base">
+                        Title
+                      </div>
+                      <div className="score text-2xl">
+                        50
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="score-box black-opaque box rounded-[45px] p-[25px] flex-col">
+                    <div className="title-score box flex-col gap-[15px]">
+                      <div className="title text-base">
+                        Title
+                      </div>
+                      <div className="score text-2xl">
+                        50
+                      </div>
+                    </div>
+                    <div className="reasoning mt-[15px] box">
+                      adasdadadad
+                    </div>
+                  </div>
+
+                  <div className="score-box black-opaque box rounded-[45px] p-[25px]">
+                    <div className="title-score box flex-col gap-[15px]">
+                      <div className="title text-base">
+                        Title
+                      </div>
+                      <div className="score text-2xl">
+                        50
+                      </div>
+                    </div>
+                  </div>
+                  
                 </div>
               )}
               {activeTab === "pathos" && (
