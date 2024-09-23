@@ -5,6 +5,7 @@ import Appeal from "@/components/Appeal";  // Import the new component
 import Clarity from "./Clarity";
 import Critical from "./Critical";
 import Style from "./Style";
+import Total from "./Total";
 
 interface FeedItemProps {
   turn_number: number;
@@ -41,7 +42,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
   isPlaying,
   onPlay,
 }) => {
-  const [mainTab, setMainTab] = useState("appeal");
+  const [mainTab, setMainTab] = useState("total");
 
 
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -197,6 +198,17 @@ const FeedItem: React.FC<FeedItemProps> = ({
           )}
         
           {/* You can add conditional rendering for other tabs here */}
+          {mainTab === "total" && <div>
+            <Total
+              ethosScore={ethosScore}
+              pathosScore={pathosScore}
+              logosScore={logosScore}
+              showChart={showChart}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              isQuestion={isQuestion}
+            />
+          </div>}
           {mainTab === "style" && <div>
             <Style
               ethosScore={ethosScore}
@@ -230,38 +242,53 @@ const FeedItem: React.FC<FeedItemProps> = ({
             />
             </div>}
           {/* Tab buttons */}
-          <div className="tabs flex justify-center gap-5 my-4 text-xl !items-center">
-            <button onClick={() => setMainTab("total")}>Total</button>
-            <button onClick={() => setMainTab("appeal")}>
+          <div className="tabs flex justify-center gap-5 md:gap-6 my-4 text-xl items-center">
+            <button className="flex gap-2" onClick={() => setMainTab("total")}>
+            <div className="hidden md:flex">Total</div>
               <Image
               src="/icons/hearts-icon.svg"
-              alt="clarity"
+              alt=""
               width={28}
               height={28}
               className="block mx-auto"
               />
-              </button>
-            <button onClick={() => setMainTab("style")}>
+
+            </button>
+            <button className="flex items-center gap-2" onClick={() => setMainTab("appeal")}>
+             <div className="hidden md:flex">Clarity</div>
+              <Image
+              src="/icons/hearts-icon.svg"
+              alt=""
+              width={28}
+              height={28}
+              className="block mx-auto"
+              />
+            </button>
+
+            <button className="flex gap-2 items-center" onClick={() => setMainTab("style")}>
+              <div className="hidden md:flex">Style</div>
             <Image
               src="/icons/star-icon.svg"
-              alt="clarity"
+              alt=""
               width={28}
               height={28}
               className="block mx-auto"
               />
             </button>
 
-            <button onClick={() => setMainTab("clarity")}>
+            <button className="flex gap-2 items-center" onClick={() => setMainTab("clarity")}>
+              <div className="hidden md:flex">Clarity</div>
               <Image
               src="/icons/target-icon.svg"
-              alt="clarity"
+              alt=""
               width={28}
               height={28}
               className="block mx-auto"
               />
             </button>
 
-            <button onClick={() => setMainTab("criticalThinking")}>
+            <button className="flex gap-2 items-center" onClick={() => setMainTab("criticalThinking")}>
+              <div className="hidden md:flex">Critical Thinking</div>
               <Image
               src="/icons/zap-icon.svg"
               alt="clarity"
