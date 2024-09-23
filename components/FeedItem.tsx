@@ -243,60 +243,77 @@ const FeedItem: React.FC<FeedItemProps> = ({
             </div>}
           {/* Tab buttons */}
           <div className="tabs flex justify-center gap-5 md:gap-6 my-4 text-xl items-center">
-            <button className="flex gap-2" onClick={() => setMainTab("total")}>
-            <div className="hidden md:flex">Total</div>
-              <Image
-              src="/icons/hearts-icon.svg"
-              alt=""
-              width={28}
-              height={28}
-              className="block mx-auto"
-              />
+      <button
+        className={`flex gap-2 transition-all ${mainTab === "total" ? "opacity-100" : "opacity-50"}`}
+        onClick={() => setMainTab("total")}
+      >
+        <div className="hidden md:flex">Total</div>
+        <Image
+          src="/icons/arrow-user.svg"
+          alt=""
+          width={28}
+          height={28}
+          className="block mx-auto"
+        />
+      </button>
 
-            </button>
-            <button className="flex items-center gap-2" onClick={() => setMainTab("appeal")}>
-             <div className="hidden md:flex">Clarity</div>
-              <Image
-              src="/icons/hearts-icon.svg"
-              alt=""
-              width={28}
-              height={28}
-              className="block mx-auto"
-              />
-            </button>
+      <button
+        className={`flex items-center transition-all gap-2 ${mainTab === "appeal" ? "opacity-100" : "opacity-50"}`}
+        onClick={() => setMainTab("appeal")}
+      >
+        <div className="hidden md:flex">Appeal</div>
+        <Image
+          src="/icons/hearts-icon.svg"
+          alt=""
+          width={28}
+          height={28}
+          className="block mx-auto"
+        />
+      </button>
 
-            <button className="flex gap-2 items-center" onClick={() => setMainTab("style")}>
-              <div className="hidden md:flex">Style</div>
-            <Image
-              src="/icons/star-icon.svg"
-              alt=""
-              width={28}
-              height={28}
-              className="block mx-auto"
-              />
-            </button>
+    <button
+      className={`flex gap-2 items-center transition-all ${mainTab === "style" ? "opacity-100" : "opacity-50"}`}
+      onClick={() => setMainTab("style")}
+    >
+      <div className="hidden md:flex">Style</div>
+      <Image
+        src="/icons/star-icon.svg"
+        alt=""
+        width={28}
+        height={28}
+        className="block mx-auto"
+      />
+    </button>
 
-            <button className="flex gap-2 items-center" onClick={() => setMainTab("clarity")}>
-              <div className="hidden md:flex">Clarity</div>
-              <Image
-              src="/icons/target-icon.svg"
-              alt=""
-              width={28}
-              height={28}
-              className="block mx-auto"
-              />
-            </button>
+    <button
+      className={`flex gap-2 items-center transition-all ${mainTab === "clarity" ? "opacity-100" : "opacity-50"}`}
+      onClick={() => setMainTab("clarity")}
+    >
+      <div className="hidden md:flex">Clarity</div>
+      <Image
+        src="/icons/target-icon.svg"
+        alt=""
+        width={28}
+        height={28}
+        className="block mx-auto"
+      />
+    </button>
 
-            <button className="flex gap-2 items-center" onClick={() => setMainTab("criticalThinking")}>
-              <div className="hidden md:flex">Critical Thinking</div>
-              <Image
-              src="/icons/zap-icon.svg"
-              alt="clarity"
-              width={28}
-              height={28}
-              className="block mx-auto"
-              /></button>
-          </div>
+    <button
+      className={`flex gap-2 items-center transition-all ${mainTab === "criticalThinking" ? "opacity-100" : "opacity-50"}`}
+      onClick={() => setMainTab("criticalThinking")}
+    >
+      <div className="hidden md:flex">Critical Thinking</div>
+      <Image
+        src="/icons/zap-icon.svg"
+        alt="clarity"
+        width={28}
+        height={28}
+        className="block mx-auto"
+      />
+    </button>
+  </div>
+
         </div>
         
 
