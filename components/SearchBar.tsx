@@ -9,6 +9,8 @@ interface SearchBarProps {
   handleClearSearch: () => void;
   setInboxOpen: () => void;
   setFetchOpen: () => void;
+  isInboxOpen: boolean;
+  isFetchOpen: boolean;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
@@ -19,6 +21,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
   handleClearSearch,
   setInboxOpen,  // Correct prop name
   setFetchOpen,  // Correct prop name
+  isInboxOpen,
+  isFetchOpen,
 }) => {
   return (
     <div
@@ -34,7 +38,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
   // Update to trigger inbox
     >
-    <Image src="icons/inbox-icon.svg" alt="Inbox" height={35} width={45} />
+    <Image src={isInboxOpen ? "icons/close-icon.svg" : "icons/inbox-icon.svg"} alt="Inbox" height={35} width={45} />
     </button>
 
 
@@ -92,7 +96,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
     onClick={setFetchOpen}
   // Update to trigger fetch
     >
-    <Image src={"icons/fetch-icon.svg"} alt="Fetch" height={35} width={45} />
+    <Image src={isFetchOpen ? "icons/close-icon.svg" : "icons/fetch-icon.svg"} alt="Fetch" height={35} width={45} />
     </button>
 
     </div>

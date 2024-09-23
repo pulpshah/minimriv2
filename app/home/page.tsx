@@ -334,6 +334,8 @@ const HomePage = () => {
         handleClearSearch={handleClearSearch}
         setInboxOpen={handleToggleInbox}  // Pass the inbox toggle function
         setFetchOpen={handleToggleFetch}  // Pass the fetch toggle function
+        isFetchOpen={isFetchOpen}
+        isInboxOpen={isInboxOpen}
       />
 
 
