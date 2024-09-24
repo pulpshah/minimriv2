@@ -14,7 +14,7 @@ export default function Home() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    if (enteredPin === "pulpdemo") {
+    if (enteredPin === "correctPin") {
       router.push("/auth");
     } else {
       setError('Incorrect PIN. Please try again.');
