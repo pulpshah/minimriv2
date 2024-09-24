@@ -47,7 +47,12 @@ const HomePage = () => {
   const [sentencesData, setSentencesData] = useState<any[]>([]); // Store sentences
   const [highlightedWordIndex, setHighlightedWordIndex] = useState<number | null>(null);
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState<number>(0); // Track which sentence set is being displayed
+  const [selectedButton, setSelectedButton] = useState("All"); // Default selected button
 
+  const handleButtonClick = (buttonName: React.SetStateAction<string>) => {
+    setSelectedButton(buttonName);
+  };
+  
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const turnsData: Array<TurnData> = JFile.analysis;
@@ -383,13 +388,40 @@ const HomePage = () => {
           } !w-full h-[90.3vh] bg-white rounded-[40px]`}
           style={{ transition: "transform 0.4s ease" }}
         ></div>
-
 <div
-          className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
-            isInboxOpen ? "translate-y-0" : "translate-y-full"
-          } w-full h-[90.3vh] bg-white rounded-t-[40px]`}
-          style={{ transition: "transform 0.4s ease" }}
-        ></div>
+  className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
+    isSearchMode ? "translate-y-0" : "translate-y-full"
+  } w-full h-[90.3vh] bg-white rounded-t-[40px]`}
+  style={{ transition: "transform 0.4s ease" }}
+>
+<div className="button-container flex justify-center gap-4 mt-4">
+  <button 
+    className={`border border-black text-black p-3 rounded w-[120px] ${selectedButton === "All" ? "bg-black text-white" : "bg-transparent"} hover:bg-black hover:text-white transition duration-200`}
+    onClick={() => handleButtonClick("All")}
+  >
+    All
+  </button>
+  <button 
+    className={`border border-black text-black p-3 rounded w-[120px] ${selectedButton === "Media" ? "bg-black text-white" : "bg-transparent"} hover:bg-black hover:text-white transition duration-200`}
+    onClick={() => handleButtonClick("Media")}
+  >
+    Media
+  </button>
+  <button 
+    className={`border border-black text-black p-3 rounded w-[120px] ${selectedButton === "Topics" ? "bg-black text-white" : "bg-transparent"} hover:bg-black hover:text-white transition duration-200`}
+    onClick={() => handleButtonClick("Topics")}
+  >
+    Topics
+  </button>
+  <button 
+    className={`border border-black text-black p-3 rounded w-[120px] ${selectedButton === "Phases" ? "bg-black text-white" : "bg-transparent"} hover:bg-black hover:text-white transition duration-200`}
+    onClick={() => handleButtonClick("Phases")}
+  >
+    Phases
+  </button>
+</div>
+</div>
+
 
         <div
           className={`transcript z-40 text-black fixed bottom-0 transition-all duration-400 ${
