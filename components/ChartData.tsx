@@ -15,7 +15,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({ ethos, pathos, logos }) 
   points.push({"key":"pathos", "value":pathos/10})
   points.push({"key":"logos", "value":logos/10})
 
-  const plotRef = useRef(null);
+  const plotRef = useRef<HTMLDivElement | null>(null); // Specify the type
 
   useEffect(() => {
     if (points && points.length > 0) {
