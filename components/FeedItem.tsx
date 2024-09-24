@@ -26,7 +26,7 @@ interface AnalysisProps {
   pathosScore: number;
   logosScore: number;
   showChart: boolean;
-  activeTab: string; // Ensure this is defined
+  activeTab: string; // Add this line to the interface
   setActiveTab: Dispatch<SetStateAction<string>>;
   isQuestion: boolean;
 }
@@ -192,8 +192,6 @@ const FeedItem: React.FC<FeedItemProps> = ({
               pathosScore={pathosScore}
               logosScore={logosScore}
               showChart={showChart}
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
               isQuestion={isQuestion}
             />
           )}
@@ -205,8 +203,6 @@ const FeedItem: React.FC<FeedItemProps> = ({
               pathosScore={pathosScore}
               logosScore={logosScore}
               showChart={showChart}
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
               isQuestion={isQuestion}
             />
           </div>}
@@ -216,8 +212,6 @@ const FeedItem: React.FC<FeedItemProps> = ({
               pathosScore={pathosScore}
               logosScore={logosScore}
               showChart={showChart}
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
               isQuestion={isQuestion}
             />
           </div>}
@@ -227,8 +221,6 @@ const FeedItem: React.FC<FeedItemProps> = ({
               pathosScore={pathosScore}
               logosScore={logosScore}
               showChart={showChart}
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
               isQuestion={isQuestion}
             /></div>}
           {mainTab === "criticalThinking" && <div>
@@ -237,8 +229,6 @@ const FeedItem: React.FC<FeedItemProps> = ({
               pathosScore={pathosScore}
               logosScore={logosScore}
               showChart={showChart}
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
               isQuestion={isQuestion}
             />
             </div>}
