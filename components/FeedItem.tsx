@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { RadarChart } from "./ChartData";
-import Appeal from "./Analysis/Appeal";  // Import the new component
+import Appeal from "./Analysis/Appeal"; 
+import { Dispatch, SetStateAction } from 'react';
 import Clarity from "./Analysis/Clarity";
 import Critical from "./Analysis/Critical";
 import Style from "./Analysis/Style";
@@ -17,7 +18,7 @@ interface FeedItemProps {
   logosScore: number;
   turn_category: string;
   isPlaying: boolean;
-  onPlay: (turnNumber: number) => void;
+  onPlay: (turnNumber: number | null) => void; // Updated type to allow null
 }
 
 interface AnalysisProps {
@@ -25,8 +26,8 @@ interface AnalysisProps {
   pathosScore: number;
   logosScore: number;
   showChart: boolean;
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
+  activeTab: string; // Ensure this is defined
+  setActiveTab: Dispatch<SetStateAction<string>>;
   isQuestion: boolean;
 }
 
