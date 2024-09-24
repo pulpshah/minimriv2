@@ -49,9 +49,55 @@ const HomePage = () => {
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState<number>(0); // Track which sentence set is being displayed
   const [selectedButton, setSelectedButton] = useState("All"); // Default selected button
 
+  // Define a type for topics
+type TopicData = {
+  title: string;
+  audioFiles: string[]; // Array of audio file paths
+};
+  const [currentTopic, setCurrentTopic] = useState<TopicData | null>(null);
+
   const handleButtonClick = (buttonName: React.SetStateAction<string>) => {
     setSelectedButton(buttonName);
+
+    if (buttonName === "Topics") {
+      setCurrentTopic(topicsData.find(topic => topic.title === "Gun Control") || null);
+    } else {
+      setCurrentTopic(null);
+    }
   };
+
+  const MediaResult = () => (
+    <div className="media-result flex items-center justify-between p-4 bg-gray-200 rounded">
+      <div className="flex items-center">
+        <Image 
+          src="icons/tv-icon-white.svg" 
+          alt="TV Icon" 
+          height={24} 
+          width={24} 
+          className="mr-2" // Adds margin to the right of the TV icon
+        />
+        <div className="text-center">
+          <span className="text-lg font-bold text-black">CNN</span>
+          <span className="text-sm text-gray-600">Turn 2</span>
+        </div>
+      </div>
+      <a 
+        href="https://www.cnn.com" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="flex items-center"
+      >
+        <Image 
+          src="icons/globe-icon.svg" 
+          alt="Globe Icon" 
+          height={24} 
+          width={24} 
+        />
+      </a>
+    </div>
+  );
+  
+  
   
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -107,6 +153,35 @@ const HomePage = () => {
   const getAudioFile = (turnNumber: number) => {
     return `/audio/turn${turnNumber}.wav`;
   };
+
+    // Sample topic data
+const topicsData: TopicData[] = [
+  {
+    title: "Gun Control",
+    audioFiles: [getAudioFile(1), getAudioFile(2), getAudioFile(3)], // Add relevant audio files
+  },
+  // Add more topics as needed
+];
+
+// Topic Result Component
+const TopicResult = () => (
+  <div className="topic-result flex flex-col items-center p-4 bg-gray-200 rounded">
+    <span className="text-lg font-bold text-black">{currentTopic?.title}</span>
+    <div className="audio-files mt-2">
+      {currentTopic?.audioFiles.map((file, index) => (
+        <div key={index} className="audio-file flex items-center justify-between p-2 bg-white rounded my-2">
+          <span>Turn {index + 1}</span>
+          <button onClick={() => {
+            audioRef.current.src = file; // Set audio source to the selected file
+            audioRef.current.play(); // Play the audio
+          }} className="text-blue-500 hover:underline">
+            Play
+          </button>
+        </div>
+      ))}
+    </div>
+  </div>
+);
 
   const handlePlayPauseClick = () => {
     if (audioRef.current) {
@@ -420,6 +495,8 @@ const HomePage = () => {
     Phases
   </button>
 </div>
+{selectedButton === "Media" && <MediaResult />}
+{selectedButton === "Topics" && currentTopic && <TopicResult />}
 </div>
 
 
