@@ -126,7 +126,7 @@ const HomePage = () => {
     }
   }, [audioRef]);
 
-  const handlePlay = (turnNumber: number) => {
+  const handlePlay = (turnNumber: number | null) => {
     setCurrentPlayingTurn(turnNumber);
   };
 
