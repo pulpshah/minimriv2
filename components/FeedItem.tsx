@@ -115,7 +115,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
       }`}
     >
       <div
-        className={`box gap-[25px] flex-col p-[10px] md:px-[20px] !justify-start white-opaque rounded-[40px] min-h-fit h-full ${
+        className={`box gap-[15px] md:gap-[25px] flex-col p-[10px] md:px-[20px] !justify-start white-opaque rounded-[40px] min-h-fit h-full ${
           isQuestion ? "black-opaque" : "white-opaque"
         }`}
       >

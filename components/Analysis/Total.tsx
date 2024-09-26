@@ -21,7 +21,7 @@ const Total: React.FC<AnalysisProps> = ({
   return (
     <div className="analysis grid grid-cols-1 w-full h-fit gap-[25px]">
       {/* Appeal content and score */}
-      <div className="appeal lg:mt-[50px] grid grid-cols-1 w-full h-fit gap-[25px]">
+      <div className="appeal lg:mt-[50px] grid grid-cols-1 w-full h-fit gap-[20px] md:gap-[25px]">
         <div className="appeal-score box items-center flex-col lg:!justify-between lg:flex-row gap-[5px] lg:gap-[30px]">
           <div className="appeal w-fit h-fit">
             <div className="flex gap-2 text-6xl lg:text-8xl w-fit h-fit outline-text">
