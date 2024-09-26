@@ -115,11 +115,11 @@ const FeedItem: React.FC<FeedItemProps> = ({
       }`}
     >
       <div
-        className={`box gap-[25px] flex-col p-[20px] !justify-start white-opaque rounded-[40px] min-h-fit h-full ${
+        className={`box gap-[25px] flex-col p-[10px] md:px-[20px] !justify-start white-opaque rounded-[40px] min-h-fit h-full ${
           isQuestion ? "black-opaque" : "white-opaque"
         }`}
       >
-        <div className="title-turn-play flex flex-row justify-between items-center h-fit w-full">
+        <div className="title-turn-play px-2 md:px-0 flex flex-row justify-between items-center h-fit w-full">
           <div
             className={`feed-text w-fit !text-lg md:!text-xl h-fit flex flex-row items-center justify-start gap-[10px] ${
               isQuestion ? "text-white" : "text-black"
@@ -130,7 +130,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
 
           <div className="turn-play w-fit h-fit flex flex-row justify-end items-center gap-[5px]">
             <div
-              className={`turn flex w-fit !shadow-none text-lg md:text-xl h-fit px-[5px] py-[1px] items-center rounded-full box ${
+              className={`turn flex w-fit !shadow-none text-base md:text-lg h-fit px-[3px] max-sm:px-[1px] py-[1px] items-center rounded-full box ${
                 isQuestion ? "white-opaque" : "black-opaque"
               }`}
             >
@@ -152,7 +152,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
 
         <div className="w-full h-full box">
           <div className="topic-text auth-text !text-black flex flex-col md:flex-row gap-[8px]">
-            <div className={`w-full mx-auto ${isQuestion ? "text-white" : ""}`}>
+            <div className={`w-full max-sm:text-3xl max-sm:!leading-none mx-auto ${isQuestion ? "text-white" : ""}`}>
               {isQuestion
                 ? "Let's talk about"
                 : isRebuttal
@@ -166,7 +166,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
         </div>
 
         <div className="candidate">
-          <div className="rounded-[40px] overflow-hidden w-fit border-[5px] black-opaque border-black h-fit">
+          <div className="rounded-[40px] overflow-hidden w-3/4 md:w-fit mx-auto border-[5px] black-opaque border-black h-fit">
             <Image
               src={getSpeakerImage(speaker)}
               alt="Speaker Image"

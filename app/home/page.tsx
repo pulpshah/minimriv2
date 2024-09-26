@@ -290,7 +290,7 @@ const HomePage = () => {
       <div className="overlay bg-white bg-opacity-20 absolute z-0 inset-0 backdrop-blur-[200px] opacity-100"></div>
 
       <div
-        className={`mainbody h-screen w-full pt-[125px] pb-[150px] bg-none overflow-y-auto scroll-smooth ${
+        className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[96px] pb-[150px] bg-none overflow-y-auto scroll-smooth ${
           isTranscriptOpen ? "pb-[54vh]" : "pb-[150px]"
         }`}
       >
@@ -325,7 +325,7 @@ const HomePage = () => {
         </div>
 
         {/* searchbar */}
-        <div className="header top-0 px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
+        <div className="header top-0 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
         <SearchBar
         searchInput={searchInput}
         onSearchInputChange={handleSearchInputChange}
@@ -341,7 +341,7 @@ const HomePage = () => {
 
 
           {/* Make sure the scores section has a lower z-index than the sliding tab */}
-          <div className={`scores-topic z-[10] flex justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full -mt-1.5 transition-opacity ${
+          <div className={`scores-topic hidden z-[10] justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full -mt-1.5 transition-opacity ${
                 isSearchMode ? "opacity-0" : ""
               } ${
                 isInboxOpen ? "opacity-0" : ""
@@ -515,7 +515,7 @@ const HomePage = () => {
                 </div>
               </div>
               <div className="box !justify-end gap-2">
-              <div className="turn flex w-fit black-opaque !shadow-none text-base h-fit px-[12px] py-[1px] items-center rounded-full text-white">
+              <div className="turn flex w-fit black-opaque !shadow-none text-base md:text-lg h-fit px-[10px] py-[1px] items-center rounded-full text-white max-sm:px-[10px]">
                 Turn {currentData.turn_number}
               </div>
 

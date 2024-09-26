@@ -89,7 +89,6 @@ html, body {
 
 .mainbody {
   display: flex;
-  padding-inline: 20px;
   align-items: center;
   justify-content: start;
   flex-direction: column;
