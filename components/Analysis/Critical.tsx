@@ -38,7 +38,7 @@ const Critical: React.FC<AnalysisProps> = ({
           </div>
         </div>
         {showChart && (
-          <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/critical.webp')] !bg-cover !bg-center p-[0px] py-4 md:p-[20px]">
+          <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[40px] black-opaque h-fit !bg-[url('/bg/critical.webp')] !bg-cover !bg-center p-[10px] py-4 md:p-[20px]">
             <div className="chart box w-full h-fit px-[10%]">
             {activeTab === "summary" && (
               <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
@@ -62,7 +62,7 @@ const Critical: React.FC<AnalysisProps> = ({
               {activeTab === "summary" && (
                 <div className="summary box ">
 
-                  <div className="!justify-start black-opaque box rounded-[0px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
+                  <div className="!justify-start black-opaque box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
                       Summary
@@ -77,7 +77,7 @@ const Critical: React.FC<AnalysisProps> = ({
               {activeTab === "ethos" && (
                 <div className="ethos box">
 
-                  <div className="!justify-start black-opaque box rounded-[0px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
+                  <div className="!justify-start black-opaque box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
                       Ethos Reasoning
@@ -92,7 +92,7 @@ const Critical: React.FC<AnalysisProps> = ({
               {activeTab === "pathos" && (
                 <div className="pathos box">
                   
-                  <div className="!justify-start black-opaque box rounded-[0px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
+                  <div className="!justify-start black-opaque box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
                       Pathos Reasoning
@@ -107,7 +107,7 @@ const Critical: React.FC<AnalysisProps> = ({
               )}
               {activeTab === "logos" && (
                 <div className="logos box">
-                  <div className="!justify-start black-opaque box rounded-[0px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
+                  <div className="!justify-start black-opaque box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
                       Logos Reasoning
