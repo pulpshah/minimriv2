@@ -326,9 +326,14 @@ const HomePage = () => {
         </div>
 
         {/* searchbar */}
-      <div className="header top-0 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
+      <div  onClick={() => setTranscriptOpen(!isTranscriptOpen)} className="header top-0 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
 
-          <div className="top-pill w-full max-w-[500px] white-opaque backdrop-blur-[200px] h-[64px] mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between !items-center">
+            <div
+            onClick={() => setTranscriptOpen(!isTranscriptOpen)}
+            className={`top-pill w-full max-w-[500px] white-opaque backdrop-blur-[200px] mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
+              isTranscriptOpen ? 'h-[50vh] !items-start' : 'h-[64px]'
+            }`}
+          >
 
             <div className="flex gap-3">
               <div className="box current-speaker !w-[40px] !h-[40px] shadow shadow-[#cae7ff] border border-[#cae7ff] justify-center items-center inline-flex rounded-full"
@@ -358,7 +363,8 @@ const HomePage = () => {
             </div>
               
             <div className="speakers flex gap-3">
-              <div className="secondary-speaker black-opaque rounded-full">
+
+              <div className="secondary-speaker flex-shrink-0 black-opaque rounded-full">
               <Image
                 src="/candidates/trump.webp"
                 alt=""
@@ -368,12 +374,31 @@ const HomePage = () => {
               />
               </div>
               <div className="secondary-speaker">
-                <div className="w-[40px] h-[40px] black-opaque rounded-full flex justify-center items-center text-base">
+                <div className="w-[40px] h-[40px] flex-shrink-0 black-opaque rounded-full flex justify-center items-center text-base">
                   +2
                 </div>
               </div>
+            
+            <button onClick={handlePlayPauseClick}>
+                  <div className="play text-white transition-all flex-shrink-0 w-[40px] h-[40px]">
+                    <Image
+                      src={
+                        isPlaying
+                          ? "icons/pause-icon.svg"
+                          : "icons/play-icon.svg"
+                      }
+                      alt={isPlaying ? "pause" : "play"}
+                      height={40}
+                      width={40}
+                    />
+                  </div>
+                </button>
+
             </div>
+
           </div>
+
+
       </div>
 
       <div
