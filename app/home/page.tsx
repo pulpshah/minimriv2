@@ -326,24 +326,57 @@ const HomePage = () => {
         </div>
 
         {/* searchbar */}
-        <div className="header top-0 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
-        </div>
+      <div className="header top-0 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
 
-        <div
-          className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
-            isSearchMode ? "translate-y-0" : "translate-y-full"
-          } w-full h-[90.3vh] bg-white rounded-t-[40px]`}
-          style={{ transition: "transform 0.4s ease" }}
-        ></div>
+          <div className="top-pill w-full max-w-[500px] white-opaque backdrop-blur-[200px] h-[64px] mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between !items-center">
 
-        <div
-          className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
-            isFetchOpen ? "translate-x-y" : "translate-y-full"
-          } !w-full h-[90.3vh] bg-white rounded-[40px]`}
-          style={{ transition: "transform 0.4s ease" }}
-        ></div>
+            <div className="flex gap-3">
+              <div className="box current-speaker !w-[40px] !h-[40px] shadow shadow-[#cae7ff] border border-[#cae7ff] justify-center items-center inline-flex rounded-full"
+              style={{
+                boxShadow: '0px 0px 11.7px 0px rgba(0, 140, 255, 0.91)',
+              }}
+              >
+              <Image
+              src="/candidates/harris.webp"
+              alt=""
+              width={40}
+              height={40}
+              className="block mx-auto rounded-full"
+            />
+            </div>
 
-        <div
+            <div className="flex flex-col">
+              <div className="current-name text-sm md:text-base">
+                Kamala Harris
+              </div>
+              <div className="poppins text-xs md:text-sm -mt-1.5">
+                Happy
+              </div>
+
+            </div>
+
+            </div>
+              
+            <div className="speakers flex gap-3">
+              <div className="secondary-speaker black-opaque rounded-full">
+              <Image
+                src="/candidates/trump.webp"
+                alt=""
+                width={40}
+                height={40}
+                className="block mx-auto rounded-full"
+              />
+              </div>
+              <div className="secondary-speaker">
+                <div className="w-[40px] h-[40px] black-opaque rounded-full flex justify-center items-center text-base">
+                  +2
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div
           className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
             isInboxOpen ? "translate-y-0" : "translate-y-full"
           } w-full h-[90.3vh] bg-white rounded-t-[40px]`}
