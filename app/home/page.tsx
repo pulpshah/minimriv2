@@ -5,6 +5,7 @@ import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import { useEffect } from "react";
 import SearchBar from "@/components/SearchBar";
+import { NavBar } from "@/components/NavBar";
 
 type TurnData = {
   speaker_name: string;
@@ -402,6 +403,7 @@ const HomePage = () => {
           </button>
 
           <div className="meta transition-all w-full h-full">
+
             <div className="h-[50px] flex justify-between w-full">
               <div
                 onClick={toggleTranscript}
