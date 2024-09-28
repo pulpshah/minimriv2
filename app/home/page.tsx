@@ -321,16 +321,17 @@ const HomePage = () => {
         </div>
 
         {/* searchbar */}
-      <div  onClick={() => setTranscriptOpen(!isTranscriptOpen)} className="header top-0 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
+      <div className="header top-0 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
 
             <div
             onClick={() => setTranscriptOpen(!isTranscriptOpen)}
-            className={`top-pill w-full max-w-[500px] white-opaque backdrop-blur-[200px] mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
-              isTranscriptOpen ? 'h-[50vh] !items-start' : 'h-[64px]'
+            className={`top-pill cursor-pointer w-full max-w-[500px] white-opaque transition-all backdrop-blur-[200px] mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
+              isTranscriptOpen ? 'h-[45vh] max-w-full' : 'h-[57px]'
             }`}
           >
 
-            <div className="flex gap-3">
+            <div className="flex gap-3"
+             >
               <div
                 className="box current-speaker !w-[40px] !h-[40px] shadow shadow-[#cae7ff] border border-[#cae7ff] justify-center items-center inline-flex rounded-full"
                 style={{
@@ -343,20 +344,21 @@ const HomePage = () => {
                   width={40}
                   height={40}
                   className="block mx-auto rounded-full"
-                />
+                  onClick={(e) => e.stopPropagation()}></Image>
+                
               </div>
 
               <div className="flex flex-col">
-                <div className="current-name text-sm md:text-base">
+                <div className="current-name text-sm md:text-base" >
                   Kamala Harris
                 </div>
                 <div className="poppins text-xs md:text-sm -mt-1.5">Happy</div>
               </div>
             </div>
 
-            <div className="speakers flex gap-3">
-
-              <div className="secondary-speaker flex-shrink-0 black-opaque rounded-full">
+            <div className="speakers flex gap-3"
+            >
+              <div className="secondary-speaker flex-shrink-0 black-opaque rounded-full" onClick={(e) => e.stopPropagation()}>
               <Image
                 src="/candidates/trump.webp"
                 alt=""
@@ -371,20 +373,24 @@ const HomePage = () => {
                 </div>
               </div>
             
-            <button onClick={handlePlayPauseClick}>
-                  <div className="play text-white transition-all flex-shrink-0 w-[40px] h-[40px]">
-                    <Image
-                      src={
-                        isPlaying
-                          ? "icons/pause-icon.svg"
-                          : "icons/play-icon.svg"
-                      }
-                      alt={isPlaying ? "pause" : "play"}
-                      height={40}
-                      width={40}
-                    />
-                  </div>
-                </button>
+              <button
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent event from bubbling up
+                handlePlayPauseClick(); // Call your play/pause handler
+              }}
+            >
+              <div className="play text-white transition-all flex-shrink-0 w-[40px] h-[40px]">
+                <Image
+                  src={
+                    isPlaying ? "icons/pause-icon.svg" : "icons/play-icon.svg"
+                  }
+                  alt={isPlaying ? "pause" : "play"}
+                  height={40}
+                  width={40}
+                />
+              </div>
+            </button>
+
 
             </div>
 
