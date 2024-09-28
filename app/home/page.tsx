@@ -1,9 +1,8 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import JFile from "@/public/data/dummydata.json";
 import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
-import { useEffect } from "react";
 import SearchBar from "@/components/SearchBar";
 import { NavBar } from "@/components/NavBar";
 
@@ -34,82 +33,103 @@ type TurnData = {
 };
 
 const HomePage = () => {
+  // State variables
   const [isTranscriptExpanded, setTranscriptExpanded] = useState(false);
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [currentTurn, setCurrentTurn] = useState<number>(0);
-  const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(null); // Track the currently playing turn
+  const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isSearchMode, setSearchMode] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [isInboxOpen, setInboxOpen] = useState(false);
   const [isFetchOpen, setFetchOpen] = useState(false);
   const [wordData, setWordData] = useState<any[]>([]);
-  const [sentencesData, setSentencesData] = useState<any[]>([]); // Store sentences
+  const [sentencesData, setSentencesData] = useState<any[]>([]);
   const [highlightedWordIndex, setHighlightedWordIndex] = useState<number | null>(null);
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState<number>(0);
   const [isSearchBarExpanded, setSearchBarExpanded] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  // Data and derived variables
   const turnsData: Array<TurnData> = JFile.analysis;
   const currentData = turnsData[currentTurn] ?? null;
   const nextData: TurnData | null = turnsData[currentTurn + 1] || null;
+  const cumulativeScoreKH = getCumulativeScoreKH();
+  const cumulativeScoreDT = getCumulativeScoreDT();
+  const scoreForCurrentTurn = currentData.score;
+  const nextTurnText = nextData && nextData.analysis.claims.length > 0
+    ? nextData.analysis.claims[0].text
+    : "No next turn text available";
 
-  const currentTurnText = wordData.map((word: any, index: number) => {
-    const isHighlighted = index === highlightedWordIndex;
-    return (
-      <span
-        key={index}
-        style={{ color: isHighlighted ? "yellow" : "white", cursor: "pointer" }}
-        onClick={() => handleWordClick(word.start)} 
-      >
-        {word.punctuated_word}{" "}
-      </span>
-    );
-  });
-
-  const toggleSearchTab = () => {
-    setInboxOpen(!isInboxOpen);
-};
-
-  const nextTurnText =
-    nextData && nextData.analysis.claims.length > 0
-      ? nextData.analysis.claims[0].text
-      : "No next turn text available";
-
-  const getCumulativeScoreKH = () => {
+  // Functions to calculate scores
+  function getCumulativeScoreKH() {
     return (
       turnsData
         .filter((turn) => turn.speaker_name === "Kamala Harris")
         .find((turn) => turn.turn_number === currentData.turn_number)
         ?.cumulative_score || 0
     );
-  };
+  }
 
-  const handleExpandClick = () => {
-    setTranscriptExpanded((prevState) => !prevState);
-  };  
-
-  const handleSearchBarClick = () => {
-    setSearchBarExpanded(true);
-  };
-
-  const getCumulativeScoreDT = () => {
+  function getCumulativeScoreDT() {
     return (
       turnsData
         .filter((turn) => turn.speaker_name === "Donald Trump")
         .find((turn) => turn.turn_number === currentData.turn_number)
         ?.cumulative_score || 0
     );
+  }
+
+  // UI Handlers
+  const handleExpandClick = () => {
+    setTranscriptExpanded((prevState) => !prevState);
   };
 
-  const cumulativeScoreKH = getCumulativeScoreKH();
-  const cumulativeScoreDT = getCumulativeScoreDT();
+  const handleSearchBarClick = () => {
+    setSearchBarExpanded(true);
+  };
 
-  const scoreForCurrentTurn = currentData.score;
-  
+  const handleClearSearch = () => {
+    setSearchInput("");
+    setSearchMode(false);
+    setSearchBarExpanded(false);
+  };
+
+  const toggleSearchTab = () => {
+    setInboxOpen(!isInboxOpen);
+  };
+
+  const toggleTranscript = () => {
+    setTranscriptOpen(!isTranscriptOpen);
+  };
+
+  // Search Handlers
+  const handleToggleInbox = () => {
+    setInboxOpen((prev) => !prev);
+    setFetchOpen(false); // Close fetch when inbox is opened
+    setSearchMode(false);
+  };
+
+  const handleToggleFetch = () => {
+    setFetchOpen((prev) => !prev);
+    setInboxOpen(false); // Close inbox when fetch is opened
+    setSearchMode(false);
+  };
+
+  const handleSearchClick = () => {
+    setSearchMode(true);
+    setInboxOpen(false);
+    setFetchOpen(false);
+  };
+
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value);
+  };
+
+  // Audio Handlers
   const getAudioFile = (turnNumber: number) => {
     return `/audio/turn${turnNumber}.wav`;
   };
@@ -125,6 +145,75 @@ const HomePage = () => {
     }
   };
 
+  const handlePlay = (turnNumber: number | null) => {
+    setCurrentPlayingTurn(turnNumber);
+  };
+
+  const handleWordClick = (start: number) => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = start;
+      audioRef.current.play(); // Play the audio after seeking
+    }
+  };
+
+  const handleNextClick = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+    if (currentTurn < turnsData.length - 1) {
+      setCurrentTurn(currentTurn + 1);
+      setIsPlaying(false);
+    }
+  };
+
+  const handleBackClick = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+    if (currentTurn > 0) {
+      setCurrentTurn(currentTurn - 1);
+      setIsPlaying(false);
+    }
+  };
+
+  // Touch Handlers for Swipe Gestures
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    const clientY = e.targetTouches[0].clientY;
+    setTouchStart(clientY);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchEnd(e.changedTouches[0].clientY);
+    if (touchStart - touchEnd > 50) {
+      setTranscriptOpen(true);
+    }
+  };
+
+  // Formatting Functions
+  const formatTalkTime = (seconds: number) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+
+    if (hours > 0) {
+      return `${hours}:${minutes.toString().padStart(2, "0")}:${remainingSeconds
+        .toString()
+        .padStart(2, "0")}`;
+    } else if (minutes > 0) {
+      return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
+    } else {
+      return `0:${remainingSeconds.toString().padStart(2, "0")}`;
+    }
+  };
+
+  // Effects
+  useEffect(() => {
+    const loadWordAndSentenceData = async () => {
+      const response = await fetch(`/audio/audio_data/turn${currentTurn + 1}.json`);
+      const data = await response.json();
+      setWordData(data.results.channels[0].alternatives[0].words);
+      setSentencesData(data.results.channels[0].alternatives[0].paragraphs.paragraphs[0].sentences);
+    };
+
+    loadWordAndSentenceData();
+  }, [currentTurn]);
+
   useEffect(() => {
     const audioElement = audioRef.current;
     if (audioElement) {
@@ -136,25 +225,6 @@ const HomePage = () => {
       };
     }
   }, [audioRef]);
-
-  const handlePlay = (turnNumber: number | null) => {
-    setCurrentPlayingTurn(turnNumber);
-  };
-
-  const toggleTranscript = () => {
-    setTranscriptOpen(!isTranscriptOpen);
-  };
-
-  useEffect(() => {
-    const loadWordAndSentenceData = async () => {
-      const response = await fetch(`/audio/audio_data/turn${currentTurn + 1}.json`);
-      const data = await response.json();
-      setWordData(data.results.channels[0].alternatives[0].words);
-      setSentencesData(data.results.channels[0].alternatives[0].paragraphs.paragraphs[0].sentences);
-    };
-
-    loadWordAndSentenceData();
-  }, [currentTurn]);
 
   const currentSentences = sentencesData.slice(currentSentenceIndex, currentSentenceIndex + 2);
 
@@ -179,18 +249,16 @@ const HomePage = () => {
           }
         }
       };
-
       audioElement.addEventListener("timeupdate", handleTimeUpdate);
 
       return () => {
         audioElement.removeEventListener("timeupdate", handleTimeUpdate);
       };
     }
-  }, [wordData, currentSentences]);
+  }, [wordData, currentSentenceIndex]);
 
   useEffect(() => {
     const audioElement = audioRef.current;
-
     if (audioElement) {
       const handlePlay = () => setIsPlaying(true);
       const handlePause = () => setIsPlaying(false);
@@ -208,90 +276,11 @@ const HomePage = () => {
     }
   }, []);
 
-  const handleWordClick = (start: number) => {
-    if (audioRef.current) {
-      audioRef.current.currentTime = start;
-      audioRef.current.play(); // Play the audio after seeking
-    }
-  };
-
-  // Handle swipe up
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    const clientY = e.targetTouches[0].clientY;
-    setTouchStart(clientY);
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
-    setTouchEnd(e.changedTouches[0].clientY);
-    if (touchStart - touchEnd > 50) {
-      setTranscriptOpen(true);
-    }
-  };
-
-  const handleNextClick = (e: { stopPropagation: () => void }) => {
-    e.stopPropagation();
-    if (currentTurn < turnsData.length - 1) {
-      setCurrentTurn(currentTurn + 1);
-      setIsPlaying(false);
-    }
-  };
-
-  const handleBackClick = (e: { stopPropagation: () => void }) => {
-    e.stopPropagation();
-    if (currentTurn > 0) {
-      setCurrentTurn(currentTurn - 1);
-      setIsPlaying(false);
-    }
-  };
-
-  const formatTalkTime = (seconds: number) => {
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    const remainingSeconds = Math.floor(seconds % 60);
-
-    if (hours > 0) {
-      return `${hours}:${minutes.toString().padStart(2, "0")}:${remainingSeconds
-        .toString()
-        .padStart(2, "0")}`;
-    } else if (minutes > 0) {
-      return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
-    } else {
-      return `0:${remainingSeconds.toString().padStart(2, "0")}`;
-    }
-  };
-
-  const handleToggleInbox = () => {
-    setInboxOpen((prev) => !prev);
-    setFetchOpen(false); // Close fetch when inbox is opened
-    setSearchMode(false);
-  };
-  
-  const handleToggleFetch = () => {
-    setFetchOpen((prev) => !prev);
-    setInboxOpen(false); // Close inbox when fetch is opened
-    setSearchMode(false);
-  };
-
   useEffect(() => {
     if (!isSearchMode) {
       setSearchInput("");
     }
   }, [isSearchMode]);
-
-  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
-  };
-
-  const handleSearchClick = () => {
-    setSearchMode(true); 
-    setInboxOpen(false);
-    setFetchOpen(false);
-  };
-
-  const handleClearSearch = () => {
-    setSearchMode(false);
-    setSearchBarExpanded(false);
-  };
 
   return (
     <div className="min-h-screen bg-[url('')] bg-cover bg-white bg-center backdrop-blur-[50px]">
@@ -307,12 +296,9 @@ const HomePage = () => {
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
             {turnsData.map((turn: TurnData, index) => {
-              const ethosScore =
-                turn.analysis.claims[0]?.scores?.ethos?.score || 0;
-              const pathosScore =
-                turn.analysis.claims[0]?.scores?.pathos?.score || 0;
-              const logosScore =
-                turn.analysis.claims[0]?.scores?.logos?.score || 0;
+              const ethosScore = turn.analysis.claims[0]?.scores?.ethos?.score || 0;
+              const pathosScore = turn.analysis.claims[0]?.scores?.pathos?.score || 0;
+              const logosScore = turn.analysis.claims[0]?.scores?.logos?.score || 0;
               const turnCategory = turn.turn_category || "segment";
 
               return (
@@ -334,47 +320,42 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* searchbar */}
-      <div className="header top-0 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
-
+        {/* Search bar */}
+        <div className="header top-0 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
           <div className="top-pill w-full max-w-[500px] white-opaque backdrop-blur-[200px] h-[64px] mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between !items-center">
-
             <div className="flex gap-3">
-              <div className="box current-speaker !w-[40px] !h-[40px] shadow shadow-[#cae7ff] border border-[#cae7ff] justify-center items-center inline-flex rounded-full"
-              style={{
-                boxShadow: '0px 0px 11.7px 0px rgba(0, 140, 255, 0.91)',
-              }}
+              <div
+                className="box current-speaker !w-[40px] !h-[40px] shadow shadow-[#cae7ff] border border-[#cae7ff] justify-center items-center inline-flex rounded-full"
+                style={{
+                  boxShadow: "0px 0px 11.7px 0px rgba(0, 140, 255, 0.91)",
+                }}
               >
-              <Image
-              src="/candidates/harris.webp"
-              alt=""
-              width={40}
-              height={40}
-              className="block mx-auto rounded-full"
-            />
-            </div>
-
-            <div className="flex flex-col">
-              <div className="current-name text-sm md:text-base">
-                Kamala Harris
-              </div>
-              <div className="poppins text-xs md:text-sm -mt-1.5">
-                Happy
+                <Image
+                  src="/candidates/harris.webp"
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="block mx-auto rounded-full"
+                />
               </div>
 
+              <div className="flex flex-col">
+                <div className="current-name text-sm md:text-base">
+                  Kamala Harris
+                </div>
+                <div className="poppins text-xs md:text-sm -mt-1.5">Happy</div>
+              </div>
             </div>
 
-            </div>
-              
             <div className="speakers flex gap-3">
               <div className="secondary-speaker black-opaque rounded-full">
-              <Image
-                src="/candidates/trump.webp"
-                alt=""
-                width={40}
-                height={40}
-                className="block mx-auto rounded-full"
-              />
+                <Image
+                  src="/candidates/trump.webp"
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="block mx-auto rounded-full"
+                />
               </div>
               <div className="secondary-speaker">
                 <div className="w-[40px] h-[40px] black-opaque rounded-full flex justify-center items-center text-base">
@@ -383,32 +364,33 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-      </div>
+        </div>
 
-      <div className="navbar fixed bottom-5 w-full max-w-[500px] z-40">
-        <NavBar onSearchClick={handleSearchClick} />
-      </div>
-      <div
-        className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
-          isSearchMode ? "translate-y-0" : "translate-y-full"
-        } h-[100vh] bg-white rounded-t-[40px]`}
-        style={{ transition: "transform 0.4s ease" }}
-      >
-      <SearchBar
-        searchInput={searchInput}
-        onSearchInputChange={handleSearchInputChange}
-        isSearchMode={isSearchMode}
-        handleSearchClick={handleSearchClick}
-        handleClearSearch={handleClearSearch}
-        setInboxOpen={handleToggleInbox}
-        setFetchOpen={handleToggleFetch}
-        isFetchOpen={isFetchOpen}
-        isInboxOpen={isInboxOpen}
-        isSearchBarExpanded={isSearchBarExpanded}
-        onSearchBarClick={handleSearchBarClick}
-        setSearchBarExpanded={setSearchBarExpanded}
-      />
-      </div>
+        <div className="navbar fixed bottom-5 w-full max-w-[500px] z-40">
+          <NavBar onSearchClick={handleSearchClick} />
+        </div>
+
+        <div
+          className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
+            isSearchMode ? "translate-y-0" : "translate-y-full"
+          } h-[100vh] bg-white rounded-t-[40px]`}
+          style={{ transition: "transform 0.4s ease" }}
+        >
+          <SearchBar
+            searchInput={searchInput}
+            onSearchInputChange={handleSearchInputChange}
+            isSearchMode={isSearchMode}
+            handleSearchClick={handleSearchClick}
+            handleClearSearch={handleClearSearch}
+            setInboxOpen={handleToggleInbox}
+            setFetchOpen={handleToggleFetch}
+            isFetchOpen={isFetchOpen}
+            isInboxOpen={isInboxOpen}
+            isSearchBarExpanded={isSearchBarExpanded}
+            onSearchBarClick={handleSearchBarClick}
+            setSearchBarExpanded={setSearchBarExpanded}
+          />
+        </div>
 
 
 

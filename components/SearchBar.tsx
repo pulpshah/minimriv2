@@ -42,10 +42,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
       }
     };
 
-    // Attach the event listener to detect clicks outside of the search bar
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Clean up the event listener when the component is unmounted
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -78,7 +76,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         }`}
       >
         <div
-          className={`search-bar backdrop-blur-[50px] transition-all z-[101] flex-shrink-0 justify-between w-[65vw] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full ${
+          className={`search-bar relative backdrop-blur-[50px] transition-all z-[101] flex-shrink-0 justify-between w-[65vw] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full ${
             isSearchBarExpanded
               ? "w-full max-w-[600px] h-[45px]"
               : "h-[35px] w-[65vw] max-w-[450px]"
@@ -107,6 +105,15 @@ const SearchBar: React.FC<SearchBarProps> = ({
               onClick={onSearchBarClick}
               onBlur={() => setSearchBarExpanded(false)}
             />
+
+            {searchInput && (
+              <button
+                className="absolute right-[10px] text-white cursor-pointer"
+                onClick={handleClearSearch}
+              >
+                clear
+              </button>
+            )}
           </div>
         </div>
 
