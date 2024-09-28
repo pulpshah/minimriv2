@@ -376,13 +376,18 @@ const HomePage = () => {
           </div>
       </div>
 
-      <div
+      <div className="navbar fixed bottom-5 w-full max-w-[500px] z-40">
+        <NavBar />
+      </div>
+
+
+
+      {/* <div
           className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
             isInboxOpen ? "translate-y-0" : "translate-y-full"
           } w-full h-[90.3vh] bg-white rounded-t-[40px]`}
           style={{ transition: "transform 0.4s ease" }}
         ></div>
-.
         <div
           className={`transcript z-40 text-black fixed bottom-0 transition-all duration-400 ${
             isTranscriptOpen
@@ -393,9 +398,7 @@ const HomePage = () => {
           } w-full rounded-t-[40px]`}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
-        >
-          <NavBar />
-
+        > */}
           {/* <button
             className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center"
             onClick={toggleTranscript}
@@ -404,8 +407,6 @@ const HomePage = () => {
           </button>
 
           <div className="meta transition-all w-full h-full">
-          <NavBar />
-
             <div className="h-[50px] flex justify-between w-full">
               <div
                 onClick={toggleTranscript}
@@ -536,7 +537,7 @@ const HomePage = () => {
               {/* </div> */}
             {/* </div> */}
           {/* </div> */}
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );
