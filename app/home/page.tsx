@@ -329,7 +329,7 @@ const HomePage = () => {
               isTranscriptOpen ? 'h-[45vh] max-w-full' : 'h-[57px]'
             }`}
           >
-
+            
             <div className="flex gap-3"
              >
               <div
