@@ -116,7 +116,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
     >
       <div
         className={`box gap-[15px] md:gap-[25px] flex-col p-[10px] md:px-[20px] !justify-start white-opaque rounded-[40px] min-h-fit h-full ${
-          isQuestion ? "black-opaque" : "white-opaque"
+          isQuestion ? "black-card" : "white-opaque"
         }`}
       >
         <div className="title-turn-play px-2 md:px-0 flex flex-row justify-between items-center h-fit w-full">
@@ -131,7 +131,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
           <div className="turn-play w-fit h-fit flex flex-row justify-end items-center gap-[5px]">
             <div
               className={`turn flex w-fit !shadow-none text-base md:text-lg h-fit px-[3px] max-sm:px-[1px] py-[1px] items-center rounded-full box ${
-                isQuestion ? "white-opaque" : "black-opaque"
+                isQuestion ? "white-opaque" : "black-card"
               }`}
             >
               Turn {turn_number}
