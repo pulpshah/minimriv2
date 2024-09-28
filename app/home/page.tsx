@@ -397,7 +397,7 @@ const HomePage = () => {
               ? isTranscriptExpanded
                 ? "h-[90.3vh]"  // Fully expanded state
                 : "h-[50vh]"    // Half-open state
-              : "h-[125px]"      // Collapsed state
+              : "h-[90px]"      // Collapsed state
           } w-full rounded-t-[40px]`}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
