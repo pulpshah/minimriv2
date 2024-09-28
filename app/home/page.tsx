@@ -34,8 +34,6 @@ type TurnData = {
 };
 
 const HomePage = () => {
-  const [isInboxOpen, setInboxOpen] = useState(false);
-  const [isFetchOpen, setFetchOpen] = useState(false);
   const [isTranscriptExpanded, setTranscriptExpanded] = useState(false);
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
@@ -44,10 +42,14 @@ const HomePage = () => {
   const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(null); // Track the currently playing turn
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isSearchMode, setSearchMode] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const [isInboxOpen, setInboxOpen] = useState(false);
+  const [isFetchOpen, setFetchOpen] = useState(false);
   const [wordData, setWordData] = useState<any[]>([]);
   const [sentencesData, setSentencesData] = useState<any[]>([]); // Store sentences
   const [highlightedWordIndex, setHighlightedWordIndex] = useState<number | null>(null);
-  const [currentSentenceIndex, setCurrentSentenceIndex] = useState<number>(0); // Track which sentence set is being displayed
+  const [currentSentenceIndex, setCurrentSentenceIndex] = useState<number>(0);
+  const [isSearchBarExpanded, setSearchBarExpanded] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -89,6 +91,10 @@ const HomePage = () => {
   const handleExpandClick = () => {
     setTranscriptExpanded((prevState) => !prevState);
   };  
+
+  const handleSearchBarClick = () => {
+    setSearchBarExpanded(true);
+  };
 
   const getCumulativeScoreDT = () => {
     return (
@@ -138,8 +144,6 @@ const HomePage = () => {
   const toggleTranscript = () => {
     setTranscriptOpen(!isTranscriptOpen);
   };
-
-  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     const loadWordAndSentenceData = async () => {
@@ -286,6 +290,7 @@ const HomePage = () => {
 
   const handleClearSearch = () => {
     setSearchMode(false);
+    setSearchBarExpanded(false);
   };
 
   return (
@@ -381,15 +386,29 @@ const HomePage = () => {
       </div>
 
       <div className="navbar fixed bottom-5 w-full max-w-[500px] z-40">
-        <NavBar onSearchClick={toggleSearchTab} />
+        <NavBar onSearchClick={handleSearchClick} />
       </div>
-
       <div
-          className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
-            isInboxOpen ? "translate-y-0" : "translate-y-full"
-          } w-full h-[90.3vh] bg-white rounded-t-[40px]`}
-          style={{ transition: "transform 0.4s ease" }}
-        ></div>
+        className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
+          isSearchMode ? "translate-y-0" : "translate-y-full"
+        } h-[100vh] bg-white rounded-t-[40px]`}
+        style={{ transition: "transform 0.4s ease" }}
+      >
+      <SearchBar
+        searchInput={searchInput}
+        onSearchInputChange={handleSearchInputChange}
+        isSearchMode={isSearchMode}
+        handleSearchClick={handleSearchClick}
+        handleClearSearch={handleClearSearch}
+        setInboxOpen={handleToggleInbox}
+        setFetchOpen={handleToggleFetch}
+        isFetchOpen={isFetchOpen}
+        isInboxOpen={isInboxOpen}
+        isSearchBarExpanded={isSearchBarExpanded}
+        onSearchBarClick={handleSearchBarClick}
+        setSearchBarExpanded={setSearchBarExpanded}
+      />
+      </div>
 
 
 

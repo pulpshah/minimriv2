@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 
 interface SearchBarProps {
@@ -11,6 +11,9 @@ interface SearchBarProps {
   setFetchOpen: () => void;
   isInboxOpen: boolean;
   isFetchOpen: boolean;
+  isSearchBarExpanded: boolean;
+  onSearchBarClick: () => void;
+  setSearchBarExpanded: (expanded: boolean) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
@@ -19,28 +22,55 @@ const SearchBar: React.FC<SearchBarProps> = ({
   isSearchMode,
   handleSearchClick,
   handleClearSearch,
-  setInboxOpen,  // Correct prop name
-  setFetchOpen,  // Correct prop name
+  setInboxOpen,
+  setFetchOpen,
   isInboxOpen,
   isFetchOpen,
+  isSearchBarExpanded,
+  onSearchBarClick,
+  setSearchBarExpanded,
 }) => {
+  const searchBarRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        searchBarRef.current &&
+        !searchBarRef.current.contains(event.target as Node)
+      ) {
+        setSearchBarExpanded(false);
+      }
+    };
+
+    // Attach the event listener to detect clicks outside of the search bar
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [setSearchBarExpanded]);
+
   return (
     <div
       className={`search z-[101] gap-2 w-full h-[81px] box flex flex-row items-center ${
         isSearchMode ? "justify-center" : "!justify-between"
       }`}
+      ref={searchBarRef}
     >
-    <button
-    className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
-        isSearchMode ? "hidden" : "flex"
-    }`}
-    onClick={setInboxOpen}
-
-  // Update to trigger inbox
-    >
-    <Image src={isInboxOpen ? "icons/close-icon.svg" : "icons/inbox-icon.svg"} alt="Inbox" height={35} width={45} />
-    </button>
-
+      <button
+        className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
+          isSearchMode ? "hidden" : "flex"
+        }`}
+        onClick={setInboxOpen}
+      >
+        <Image
+          src={isInboxOpen ? "icons/close-icon.svg" : "icons/inbox-icon.svg"}
+          alt="Inbox"
+          height={35}
+          width={45}
+        />
+      </button>
 
       <div
         className={`flex items-center w-full justify-center ${
@@ -49,7 +79,9 @@ const SearchBar: React.FC<SearchBarProps> = ({
       >
         <div
           className={`search-bar backdrop-blur-[50px] transition-all z-[101] flex-shrink-0 justify-between w-[65vw] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full ${
-            isSearchMode ? " w-full max-w-[600px] h-[45px]" : "h-[35px] w-[65vw] max-w-[450px]"
+            isSearchBarExpanded
+              ? "w-full max-w-[600px] h-[45px]"
+              : "h-[35px] w-[65vw] max-w-[450px]"
           }`}
         >
           <div
@@ -72,6 +104,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
               className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
               value={searchInput}
               onChange={onSearchInputChange}
+              onClick={onSearchBarClick}
+              onBlur={() => setSearchBarExpanded(false)}
             />
           </div>
         </div>
@@ -83,22 +117,29 @@ const SearchBar: React.FC<SearchBarProps> = ({
             }`}
             onClick={handleClearSearch}
           >
-            <Image src={"icons/close-icon.svg"} alt={"close"} height={45} width={45} />
+            <Image
+              src={"icons/close-icon.svg"}
+              alt={"close"}
+              height={45}
+              width={45}
+            />
           </button>
         </div>
       </div>
 
       <button
-    className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
-        isSearchMode ? "hidden" : "flex"
-    }`}
-
-    onClick={setFetchOpen}
-  // Update to trigger fetch
-    >
-    <Image src={isFetchOpen ? "icons/close-icon.svg" : "icons/fetch-icon.svg"} alt="Fetch" height={35} width={45} />
-    </button>
-
+        className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
+          isSearchMode ? "hidden" : "flex"
+        }`}
+        onClick={setFetchOpen}
+      >
+        <Image
+          src={isFetchOpen ? "icons/close-icon.svg" : "icons/fetch-icon.svg"}
+          alt="Fetch"
+          height={35}
+          width={45}
+        />
+      </button>
     </div>
   );
 };
