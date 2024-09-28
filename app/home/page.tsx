@@ -343,13 +343,13 @@ const HomePage = () => {
           style={{ transition: "transform 0.4s ease" }}
         ></div>
 
-<div
+        <div
           className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
             isInboxOpen ? "translate-y-0" : "translate-y-full"
           } w-full h-[90.3vh] bg-white rounded-t-[40px]`}
           style={{ transition: "transform 0.4s ease" }}
         ></div>
-
+.
         <div
           className={`transcript z-40 text-black fixed bottom-0 transition-all duration-400 ${
             isTranscriptOpen
@@ -361,8 +361,9 @@ const HomePage = () => {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
+          <NavBar />
 
-          <button
+          {/* <button
             className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center"
             onClick={toggleTranscript}
           >
@@ -370,6 +371,7 @@ const HomePage = () => {
           </button>
 
           <div className="meta transition-all w-full h-full">
+          <NavBar />
 
             <div className="h-[50px] flex justify-between w-full">
               <div
@@ -394,23 +396,23 @@ const HomePage = () => {
                     <div className="time-turn text flex flex-row gap-[4px]">
                       <div className="time text !text-left">
                         {currentData.turn_category}
-                      </div>
+                      </div> */}
                        {/*<div className="text !text-left">•</div>
                       {/*
                       <div className="turn text !text-left">
                         Turn {currentData.turn_number}
                       </div> */}
                      
-                    </div>
+                    {/* </div> */}
                     
                     {/* <div className="">,</div>
                     
                     <div className="sentiment text !text-left">Upset</div> */}
-                  </div>
+                  {/* </div>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="points-1 w-fit text-[.8rem] h-fit text-black poppins"></div>
+              {/* <div className="points-1 w-fit text-[.8rem] h-fit text-black poppins"></div>
               <div className="flex gap-[16px] z-50 items-center justify-center">
                 <button onClick={handleBackClick}>
                   <div className="back hidden md:flex text-white transition-all flex-shrink-0">
@@ -449,17 +451,17 @@ const HomePage = () => {
                     />
                   </div>
                 </button>
-              </div>
+              </div> */}
 
-              <audio
+              {/* <audio
                 ref={audioRef}
                 src={`/audio/turn${currentTurn + 1}.wav`} 
               />
             </div>
-          </div>
+          </div> */}
 
           {/* Transcript content */}
-          <div
+          {/* <div
             className={`transcript-box flex flex-col p-[25px] gap-[10px] w-full h-full black-opaque !shadow-none rounded-[40px] transitions-all ${
               isTranscriptOpen ? "flex" : "hidden"
             }`}
@@ -497,10 +499,10 @@ const HomePage = () => {
               <div className="turn2 !text-left flex h-full text text-[1.25rem] text-gray-300 w-full justify-center">
                 <div className="line text !text-left line-clamp-5">
                   {currentTurnText}
-                </div>
-              </div>
-            </div>
-          </div>
+                </div> */}
+              {/* </div> */}
+            {/* </div> */}
+          {/* </div> */}
         </div>
       </div>
     </div>
