@@ -5,6 +5,7 @@ import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import { useEffect } from "react";
 import SearchBar from "@/components/SearchBar";
+import { NavBar } from "@/components/NavBar";
 
 type TurnData = {
   speaker_name: string;
@@ -326,48 +327,6 @@ const HomePage = () => {
 
         {/* searchbar */}
         <div className="header top-0 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
-        <SearchBar
-        searchInput={searchInput}
-        onSearchInputChange={handleSearchInputChange}
-        isSearchMode={isSearchMode}
-        handleSearchClick={handleSearchClick}
-        handleClearSearch={handleClearSearch}
-        setInboxOpen={handleToggleInbox}  // Pass the inbox toggle function
-        setFetchOpen={handleToggleFetch}  // Pass the fetch toggle function
-        isFetchOpen={isFetchOpen}
-        isInboxOpen={isInboxOpen}
-      />
-
-
-
-          {/* Make sure the scores section has a lower z-index than the sliding tab */}
-          <div className={`scores-topic hidden z-[10] justify-between items-center white-opaque backdrop-blur-[50px] w-full max-w-[400px] h-fit px-[20px] py-[1px] rounded-full -mt-1.5 transition-opacity ${
-                isSearchMode ? "opacity-0" : ""
-              } ${
-                isInboxOpen ? "opacity-0" : ""
-              }
-              ${
-                isFetchOpen ? "opacity-0" : ""
-              }
-              ${
-                isTranscriptExpanded ? "!opacity-0" : ""
-              }
-              ${
-                isTranscriptOpen ? "opacity-100" : ""
-              }`
-              }>
-            <div className="points-1 w-fit text-base md:text-lg h-fit text-black poppins">
-              KH: {cumulativeScoreKH} pts
-            </div>
-
-            <div className="points-1 w-fit h-fit text-lg md:text-xl text-black">
-              scores
-            </div>
-
-            <div className="points-1 w-fit text-base md:text-lg h-fit text-black poppins">
-              DT: {cumulativeScoreDT} pts
-            </div>
-          </div>
         </div>
 
         <div
@@ -411,6 +370,7 @@ const HomePage = () => {
           </button>
 
           <div className="meta transition-all w-full h-full">
+
             <div className="h-[50px] flex justify-between w-full">
               <div
                 onClick={toggleTranscript}
