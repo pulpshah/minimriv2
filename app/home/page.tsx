@@ -68,6 +68,10 @@ const HomePage = () => {
     );
   });
 
+  const toggleSearchTab = () => {
+    setInboxOpen(!isInboxOpen);
+};
+
   const nextTurnText =
     nextData && nextData.analysis.claims.length > 0
       ? nextData.analysis.claims[0].text
@@ -377,8 +381,15 @@ const HomePage = () => {
       </div>
 
       <div className="navbar fixed bottom-5 w-full max-w-[500px] z-40">
-        <NavBar />
+        <NavBar onSearchClick={toggleSearchTab} />
       </div>
+
+      <div
+          className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
+            isInboxOpen ? "translate-y-0" : "translate-y-full"
+          } w-full h-[90.3vh] bg-white rounded-t-[40px]`}
+          style={{ transition: "transform 0.4s ease" }}
+        ></div>
 
 
 
