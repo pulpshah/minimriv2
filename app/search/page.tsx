@@ -94,9 +94,8 @@ const SearchPage = () => {
 
   const handleClearSearch = () => {
     setSearchInput("");
-    setSearchMode(false);
-    setSearchBarExpanded(false);
   };
+  
 
   const toggleSearchTab = () => {
     setInboxOpen(!isInboxOpen);
@@ -297,22 +296,7 @@ const SearchPage = () => {
         {/* searchbar */}
       <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
 
-
-
-
-      </div>
-
-      <div className="navbar fixed bottom-2 w-full max-w-[500px] z-40 px-[10px] md:px-[20px]">
-        <NavBar onSearchClick={toggleSearchTab} />
-      </div>
-
-        <div
-          className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
-            isSearchMode ? "translate-y-0" : "translate-y-full"
-          } h-[100vh] bg-white rounded-t-[40px]`}
-          style={{ transition: "transform 0.4s ease" }}
-        >
-          <SearchBar
+      <SearchBar
             searchInput={searchInput}
             onSearchInputChange={handleSearchInputChange}
             isSearchMode={isSearchMode}
@@ -326,7 +310,15 @@ const SearchPage = () => {
             onSearchBarClick={handleSearchBarClick}
             setSearchBarExpanded={setSearchBarExpanded}
           />
-        </div>
+
+
+      </div>
+
+      <div className="navbar fixed bottom-2 w-full max-w-[500px] z-40 px-[10px] md:px-[20px]">
+        <NavBar onSearchClick={toggleSearchTab} />
+      </div>
+
+    
 
 
 

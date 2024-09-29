@@ -1,0 +1,197 @@
+{
+  "metadata": {
+    "transaction_key": "deprecated",
+    "request_id": "77b6c22e-b544-441d-9990-a87601904521",
+    "sha256": "ddcfd7c6a3864228f153867afff49b39f2dfce888ff00ab7fb39a596780b6292",
+    "created": "2024-09-24T04:41:37.301Z",
+    "duration": 2.06875,
+    "channels": 1,
+    "models": [
+      "6f548761-c9c0-429a-9315-11a1d28499c8"
+    ],
+    "model_info": {
+      "6f548761-c9c0-429a-9315-11a1d28499c8": {
+        "name": "general-enhanced",
+        "version": "2023-07-13.28732",
+        "arch": "polaris"
+      }
+    },
+    "summary_info": {
+      "model_uuid": "67875a7f-c9c4-48a0-aa55-5bdb8a91c34a",
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "sentiment_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 10,
+      "output_tokens": 10
+    },
+    "topics_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 10,
+      "output_tokens": 8
+    },
+    "intents_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 10,
+      "output_tokens": 11
+    }
+  },
+  "results": {
+    "channels": [
+      {
+        "alternatives": [
+          {
+            "transcript": "President Harris, I'll let you respond.",
+            "confidence": 0.875,
+            "words": [
+              {
+                "word": "president",
+                "start": 0.03998,
+                "end": 0.3998,
+                "confidence": 0.6401367,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "President",
+                "sentiment": "neutral",
+                "sentiment_score": -0.03369140625
+              },
+              {
+                "word": "harris",
+                "start": 0.41596153,
+                "end": 0.69326925,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "Harris,",
+                "sentiment": "neutral",
+                "sentiment_score": 0.134521484375
+              },
+              {
+                "word": "i'll",
+                "start": 0.71964,
+                "end": 0.87956005,
+                "confidence": 0.7546387,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "I'll",
+                "sentiment": "neutral",
+                "sentiment_score": 0.0931396484375
+              },
+              {
+                "word": "let",
+                "start": 0.87956005,
+                "end": 0.95952004,
+                "confidence": 0.9790039,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "let",
+                "sentiment": "neutral",
+                "sentiment_score": 0.1043701171875
+              },
+              {
+                "word": "you",
+                "start": 0.95952004,
+                "end": 1.0394801,
+                "confidence": 0.875,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "you",
+                "sentiment": "neutral",
+                "sentiment_score": 0.172607421875
+              },
+              {
+                "word": "respond",
+                "start": 1.0394801,
+                "end": 1.5394801,
+                "confidence": 0.9963379,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "respond.",
+                "sentiment": "neutral",
+                "sentiment_score": 0.09918212890625
+              }
+            ],
+            "paragraphs": {
+              "transcript": "\nSpeaker 0: President Harris, I'll let you respond.",
+              "paragraphs": [
+                {
+                  "sentences": [
+                    {
+                      "text": "President Harris, I'll let you respond.",
+                      "start": 0.03998,
+                      "end": 1.5394801,
+                      "sentiment": "neutral",
+                      "sentiment_score": 0.09502156575520833
+                    }
+                  ],
+                  "speaker": 0,
+                  "sentiment": "neutral",
+                  "sentiment_score": 0.09502156575520833,
+                  "num_words": 6,
+                  "start": 0.03998,
+                  "end": 1.5394801
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "result": "success",
+      "short": "[Speaker 0:] President Harris, I'll let you respond."
+    },
+    "topics": {
+      "segments": [
+        {
+          "text": "President Harris, I'll let you respond.",
+          "start_word": 1,
+          "end_word": 6,
+          "topics": [
+            {
+              "topic": "President harrison",
+              "confidence_score": 0.3420901
+            },
+            {
+              "topic": "Response",
+              "confidence_score": 0.83634424
+            }
+          ]
+        }
+      ]
+    },
+    "intents": {
+      "segments": [
+        {
+          "text": "President Harris, I'll let you respond.",
+          "start_word": 1,
+          "end_word": 6,
+          "intents": [
+            {
+              "intent": "Respond to president harris' request",
+              "confidence_score": 0.0024501043
+            }
+          ]
+        }
+      ]
+    },
+    "sentiments": {
+      "segments": [
+        {
+          "text": "President Harris, I'll let you respond.",
+          "start_word": 0,
+          "end_word": 5,
+          "sentiment": "neutral",
+          "sentiment_score": 0.109619140625
+        }
+      ],
+      "average": {
+        "sentiment": "neutral",
+        "sentiment_score": 0.1095703125
+      }
+    }
+  },
+  "category": "David Muir",
+  "speaker": "follow-up"
+}

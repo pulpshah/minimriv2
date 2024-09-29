@@ -44,19 +44,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
       }`}
       ref={searchBarRef}
     >
-      <button
-        className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
-          isSearchMode ? "hidden" : "flex"
-        }`}
-        onClick={setInboxOpen}
-      >
-        <Image
-          src={isInboxOpen ? "icons/close-icon.svg" : "icons/inbox-icon.svg"}
-          alt="Inbox"
-          height={35}
-          width={45}
-        />
-      </button>
 
       <div
         className={`flex items-center w-full justify-center ${
@@ -94,47 +81,25 @@ const SearchBar: React.FC<SearchBarProps> = ({
             />
 
             {searchInput && (
-              <button
-                ref={clearButtonRef}
-                className="absolute right-[10px] text-white cursor-pointer"
-                onClick={handleClearSearch}
-              >
-                clear
-              </button>
+              // ... existing code ...
+          <button
+            onClick={(e) => {
+              e.stopPropagation(); // Prevents the event from propagating and triggering other listeners
+              handleClearSearch(); // Clears the search input but keeps the bar expanded
+            }}
+            className="absolute right-[10px] text-white cursor-pointer"
+          >
+            clear
+          </button>
+
+
             )}
           </div>
         </div>
 
-        <div className="">
-          <button
-            className={`cursor-pointer flex-shrink-0 z-[101] w-[32px] md:w-[32px] transition-opacity ${
-              isSearchMode ? "flex" : "hidden"
-            }`}
-            onClick={handleClearSearch}
-          >
-            <Image
-              src={"icons/close-icon.svg"}
-              alt={"close"}
-              height={45}
-              width={45}
-            />
-          </button>
-        </div>
+ 
       </div>
 
-      <button
-        className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
-          isSearchMode ? "hidden" : "flex"
-        }`}
-        onClick={setFetchOpen}
-      >
-        <Image
-          src={isFetchOpen ? "icons/close-icon.svg" : "icons/fetch-icon.svg"}
-          alt="Fetch"
-          height={35}
-          width={45}
-        />
-      </button>
     </div>
   );
 };

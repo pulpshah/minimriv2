@@ -1,0 +1,417 @@
+{
+  "metadata": {
+    "transaction_key": "deprecated",
+    "request_id": "74c0676b-d5e0-4d9f-ae92-14629dbefdc4",
+    "sha256": "aa0895d8b8cec33acaa47367b2f8995642eaa0d57f98ffb0c5a1669db2097329",
+    "created": "2024-09-24T04:38:54.225Z",
+    "duration": 7.07375,
+    "channels": 1,
+    "models": [
+      "6f548761-c9c0-429a-9315-11a1d28499c8"
+    ],
+    "model_info": {
+      "6f548761-c9c0-429a-9315-11a1d28499c8": {
+        "name": "general-enhanced",
+        "version": "2023-07-13.28732",
+        "arch": "polaris"
+      }
+    },
+    "summary_info": {
+      "model_uuid": "67875a7f-c9c4-48a0-aa55-5bdb8a91c34a",
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "sentiment_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 29,
+      "output_tokens": 29
+    },
+    "topics_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 29,
+      "output_tokens": 6
+    },
+    "intents_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 29,
+      "output_tokens": 6
+    }
+  },
+  "results": {
+    "channels": [
+      {
+        "alternatives": [
+          {
+            "transcript": "We are gonna get to immigration and border security during this debate, but I would like to let vice president Harris respond on the economy here.",
+            "confidence": 0.9980469,
+            "words": [
+              {
+                "word": "we",
+                "start": 0.03998,
+                "end": 0.1999,
+                "confidence": 0.65527344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "We",
+                "sentiment": "neutral",
+                "sentiment_score": -0.117431640625
+              },
+              {
+                "word": "are",
+                "start": 0.1999,
+                "end": 0.35982,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "are",
+                "sentiment": "neutral",
+                "sentiment_score": -0.076904296875
+              },
+              {
+                "word": "gonna",
+                "start": 0.35982,
+                "end": 0.63968,
+                "confidence": 0.91064453,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "gonna",
+                "sentiment": "neutral",
+                "sentiment_score": -0.02545166015625
+              },
+              {
+                "word": "get",
+                "start": 0.63968,
+                "end": 0.7996,
+                "confidence": 0.99658203,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "get",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0386962890625
+              },
+              {
+                "word": "to",
+                "start": 0.7996,
+                "end": 0.91954005,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "to",
+                "sentiment": "neutral",
+                "sentiment_score": -0.10211181640625
+              },
+              {
+                "word": "immigration",
+                "start": 0.91954005,
+                "end": 1.41954,
+                "confidence": 0.99658203,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "immigration",
+                "sentiment": "neutral",
+                "sentiment_score": -0.089599609375
+              },
+              {
+                "word": "and",
+                "start": 1.43928,
+                "end": 1.5992,
+                "confidence": 0.99560547,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "and",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1199951171875
+              },
+              {
+                "word": "border",
+                "start": 1.5992,
+                "end": 1.9190401,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "border",
+                "sentiment": "neutral",
+                "sentiment_score": -0.11993408203125
+              },
+              {
+                "word": "security",
+                "start": 1.9190401,
+                "end": 2.4190402,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "security",
+                "sentiment": "neutral",
+                "sentiment_score": -0.11126708984375
+              },
+              {
+                "word": "during",
+                "start": 2.43878,
+                "end": 2.71864,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "during",
+                "sentiment": "neutral",
+                "sentiment_score": -0.07073974609375
+              },
+              {
+                "word": "this",
+                "start": 2.71864,
+                "end": 2.9185402,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "this",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0369873046875
+              },
+              {
+                "word": "debate",
+                "start": 2.9185402,
+                "end": 3.31834,
+                "confidence": 0.94091797,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "debate,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0654296875
+              },
+              {
+                "word": "but",
+                "start": 3.31834,
+                "end": 3.81834,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "but",
+                "sentiment": "neutral",
+                "sentiment_score": 0.00830078125
+              },
+              {
+                "word": "i",
+                "start": 3.9180403,
+                "end": 3.9980001,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "I",
+                "sentiment": "neutral",
+                "sentiment_score": 0.112548828125
+              },
+              {
+                "word": "would",
+                "start": 3.9980001,
+                "end": 4.1979003,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "would",
+                "sentiment": "neutral",
+                "sentiment_score": 0.27099609375
+              },
+              {
+                "word": "like",
+                "start": 4.1979003,
+                "end": 4.3978,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "like",
+                "sentiment": "neutral",
+                "sentiment_score": 0.292724609375
+              },
+              {
+                "word": "to",
+                "start": 4.3978,
+                "end": 4.5177402,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "to",
+                "sentiment": "neutral",
+                "sentiment_score": 0.240966796875
+              },
+              {
+                "word": "let",
+                "start": 4.5177402,
+                "end": 4.7576203,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "let",
+                "sentiment": "neutral",
+                "sentiment_score": 0.2822265625
+              },
+              {
+                "word": "vice",
+                "start": 4.7576203,
+                "end": 4.95752,
+                "confidence": 0.8881836,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "vice",
+                "sentiment": "neutral",
+                "sentiment_score": 0.1336669921875
+              },
+              {
+                "word": "president",
+                "start": 4.95752,
+                "end": 5.3973002,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "president",
+                "sentiment": "neutral",
+                "sentiment_score": 0.2578125
+              },
+              {
+                "word": "harris",
+                "start": 5.3973002,
+                "end": 5.71714,
+                "confidence": 0.9692383,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "Harris",
+                "sentiment": "positive",
+                "sentiment_score": 0.447021484375
+              },
+              {
+                "word": "respond",
+                "start": 5.71714,
+                "end": 6.03698,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "respond",
+                "sentiment": "neutral",
+                "sentiment_score": 0.27734375
+              },
+              {
+                "word": "on",
+                "start": 6.03698,
+                "end": 6.1969004,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "on",
+                "sentiment": "positive",
+                "sentiment_score": 0.33935546875
+              },
+              {
+                "word": "the",
+                "start": 6.1969004,
+                "end": 6.31684,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "the",
+                "sentiment": "positive",
+                "sentiment_score": 0.40185546875
+              },
+              {
+                "word": "economy",
+                "start": 6.31684,
+                "end": 6.7166405,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "economy",
+                "sentiment": "positive",
+                "sentiment_score": 0.353271484375
+              },
+              {
+                "word": "here",
+                "start": 6.7166405,
+                "end": 7.07375,
+                "confidence": 0.99316406,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "here.",
+                "sentiment": "neutral",
+                "sentiment_score": 0.204833984375
+              }
+            ],
+            "paragraphs": {
+              "transcript": "\nSpeaker 0: We are gonna get to immigration and border security during this debate, but I would like to let vice president Harris respond on the economy here.",
+              "paragraphs": [
+                {
+                  "sentences": [
+                    {
+                      "text": "We are gonna get to immigration and border security during this debate, but I would like to let vice president Harris respond on the economy here.",
+                      "start": 0.03998,
+                      "end": 7.07375,
+                      "sentiment": "neutral",
+                      "sentiment_score": 0.10186063326322116
+                    }
+                  ],
+                  "speaker": 0,
+                  "sentiment": "neutral",
+                  "sentiment_score": 0.10186063326322116,
+                  "num_words": 26,
+                  "start": 0.03998,
+                  "end": 7.07375
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "result": "success",
+      "short": "[Speaker 0:] We are gonna get to immigration and border security during this debate, but I would like to let vice president Harris respond on the economy here."
+    },
+    "topics": {
+      "segments": [
+        {
+          "text": "We are gonna get to immigration and border security during this debate, but I would like to let vice president Harris respond on the economy here.",
+          "start_word": 1,
+          "end_word": 26,
+          "topics": [
+            {
+              "topic": "Immigration",
+              "confidence_score": 0.8820996
+            },
+            {
+              "topic": "Border security",
+              "confidence_score": 0.6723535
+            }
+          ]
+        }
+      ]
+    },
+    "intents": {
+      "segments": [
+        {
+          "text": "We are gonna get to immigration and border security during this debate, but I would like to let vice president Harris respond on the economy here.",
+          "start_word": 1,
+          "end_word": 26,
+          "intents": [
+            {
+              "intent": "Provide response on economy",
+              "confidence_score": 0.0093279965
+            }
+          ]
+        }
+      ]
+    },
+    "sentiments": {
+      "segments": [
+        {
+          "text": "We are gonna get to immigration and border security during this debate, but I would like to let vice president Harris respond on the economy here.",
+          "start_word": 0,
+          "end_word": 25,
+          "sentiment": "neutral",
+          "sentiment_score": 0.1025390625
+        }
+      ],
+      "average": {
+        "sentiment": "neutral",
+        "sentiment_score": 0.10250538793103448
+      }
+    }
+  },
+  "category": "follow-up",
+  "speaker": "David Muir"
+}
