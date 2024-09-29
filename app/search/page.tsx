@@ -290,7 +290,7 @@ const SearchPage = () => {
       <div className="overlay bg-white bg-opacity-20 absolute z-0 inset-0 backdrop-blur-[200px] opacity-100"></div>
 
       <div
-        className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[60px] pb-[150px] bg-none overflow-y-auto scroll-smooth ${
+        className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[65px] pb-[150px] bg-none overflow-y-auto scroll-smooth ${
           isTranscriptOpen ? "pb-[54vh]" : "pb-[150px]"
         }`}
       >

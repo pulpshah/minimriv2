@@ -84,29 +84,39 @@ const SearchBar: React.FC<SearchBarProps> = ({
             </button>
 
             <input
-              placeholder="search"
-              type="text"
-              className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
-              value={searchInput}
-              onChange={onSearchInputChange}
-              onClick={onSearchBarClick}
-              onBlur={() => setSearchBarExpanded(false)}
-            />
-
-            {searchInput && (
-              // ... existing code ...
-          <button
-            onClick={(e) => {
-              e.stopPropagation(); // Prevents the event from propagating and triggering other listeners
-              handleClearSearch(); // Clears the search input but keeps the bar expanded
+            placeholder="search"
+            type="text"
+            className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
+            value={searchInput}
+            onChange={(e) => {
+              onSearchInputChange(e);    
+              setSearchBarExpanded(true);
             }}
-            className="absolute right-[10px] text-white cursor-pointer"
-          >
-            clear
-          </button>
+            onClick={onSearchBarClick}
+            onBlur={() => setSearchBarExpanded(false)}
+            
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleSearchClick();       
+                setSearchBarExpanded(false); 
+              }
+            }}
+          />
 
 
-            )}
+      {searchInput && (
+        <button
+          onMouseDown={(e) => {
+            e.preventDefault(); // Prevents input blur from happening
+            handleClearSearch(); // Clears the search input but keeps the bar expanded
+          }}
+          className="absolute right-[10px] text-lg text-white cursor-pointer"
+        >
+          clear
+        </button>
+      )}
+
+
           </div>
         </div>
 
