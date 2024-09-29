@@ -289,7 +289,7 @@ const HomePage = () => {
       <div className="overlay bg-white bg-opacity-20 absolute z-0 inset-0 backdrop-blur-[200px] opacity-100"></div>
 
       <div
-        className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[96px] pb-[150px] bg-none overflow-y-auto scroll-smooth ${
+        className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[90px] pb-[150px] bg-none overflow-y-auto scroll-smooth ${
           isTranscriptOpen ? "pb-[54vh]" : "pb-[150px]"
         }`}
       >
@@ -321,11 +321,11 @@ const HomePage = () => {
         </div>
 
         {/* searchbar */}
-      <div className="header top-0 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
+      <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
 
             <div
             onClick={() => setTranscriptOpen(!isTranscriptOpen)}
-            className={`top-pill cursor-pointer w-full max-w-[500px] white-opaque transition-all backdrop-blur-[200px] mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
+            className={`top-pill cursor-pointer w-full max-w-[600px] white-opaque transition-all backdrop-blur-[200px] mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
               isTranscriptOpen ? 'h-[45vh] max-w-full' : 'h-[57px]'
             }`}
           >
@@ -352,7 +352,11 @@ const HomePage = () => {
                 <div className="current-name text-sm md:text-base" >
                   Kamala Harris
                 </div>
+                <div className="flex gap-1">
+                  <div className="poppins text-xs md:text-sm -mt-1.5">200 pts</div>
+                  <div className="poppins text-xs md:text-sm -mt-1.5">•</div>
                 <div className="poppins text-xs md:text-sm -mt-1.5">Happy</div>
+                </div>
               </div>
             </div>
 
@@ -399,7 +403,7 @@ const HomePage = () => {
 
       </div>
 
-      <div className="navbar fixed bottom-3 w-full max-w-[500px] z-40 px-[10px] md:px-[20px]">
+      <div className="navbar fixed bottom-2 w-full max-w-[500px] z-40 px-[10px] md:px-[20px]">
         <NavBar onSearchClick={toggleSearchTab} />
       </div>
 
