@@ -87,6 +87,14 @@ html, body {
   height: 80px;
 }
 
+.highlighted-sentence {
+  background-color: rgba(213, 147, 71, 0.5); /* Light orange highlight */
+}
+
+.highlighted-word {
+  background-color: rgba(195, 203, 107, 0.822); /* Light red highlight */
+}
+
 .mainbody {
   display: flex;
   align-items: center;

@@ -311,24 +311,33 @@ const HomePage = () => {
     if (audioElement) {
       const handleTimeUpdate = () => {
         const currentTime = audioElement.currentTime;
-
+  
+        // Find the current word based on the current time
+        const foundWordIndex = wordData.findIndex(
+          (word) => currentTime >= word.start && currentTime <= word.end
+        );
+  
+        if (foundWordIndex !== -1 && foundWordIndex !== highlightedWordIndex) {
+          setHighlightedWordIndex(foundWordIndex);
+        }
+  
         // Find the current sentence based on the current time
-        const currentSentenceIndex = sentencesData.findIndex(
+        const foundSentenceIndex = sentencesData.findIndex(
           (sentence) => currentTime >= sentence.start && currentTime <= sentence.end
         );
-
-        if (currentSentenceIndex !== -1) {
-          setCurrentSentenceIndex(currentSentenceIndex);
+  
+        if (foundSentenceIndex !== -1 && foundSentenceIndex !== currentSentenceIndex) {
+          setCurrentSentenceIndex(foundSentenceIndex);
         }
       };
-
+  
       audioElement.addEventListener("timeupdate", handleTimeUpdate);
-
+  
       return () => {
         audioElement.removeEventListener("timeupdate", handleTimeUpdate);
       };
     }
-  }, [sentencesData]);
+  }, [wordData, sentencesData, highlightedWordIndex, currentSentenceIndex]);
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -488,21 +497,39 @@ const HomePage = () => {
 
   {/* Transcript Section */}
   {isTranscriptOpen && (
-  <div className="transcript-content h-full w-full rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col w-full mt-3">
+  <div className="transcript-content h-full w-full rounded-[20px] bg-[#070707]/80 px-[15px] pt-[15px] pb-[10px] flex flex-col w-full mt-3 text-left">
     <div className="flex flex-row justify-between w-full">
-      <p>transcript</p>
+      <p className="text-white">transcript</p>
       <p className="poppins text-[#79FF89]">20 pts+</p>
       <div className="rounded-[20px] black-opaque px-[10px]">
         {turnCategory || 'No Category'}
       </div>
     </div>
-    {sentencesData.map((sentence, index) => (
-      <div className="box">
+    {sentencesData.map((sentence, sentenceIndex) => (
+      <div className="box" key={sentenceIndex}>
         <div
-          key={index}
-          className={`${highlightedWordIndex === index ? 'highlighted' : ''} !text-left text-sm md:text-base overflow-auto`}
+          className={`${
+            currentSentenceIndex === sentenceIndex ? 'highlighted-sentence' : ''
+          } text-left text-white text-sm md:text-base overflow-auto`}
         >
-          {sentence.text}
+          {sentence.text.split(' ').map((word, wordIndex) => {
+            // Find the absolute index of the word
+            const absoluteWordIndex = wordData.findIndex(
+              (w) =>
+                w.start >= sentence.start &&
+                w.end <= sentence.end &&
+                w.punctuated_word.toLowerCase() === word.toLowerCase()
+            );
+
+            return (
+              <span
+                key={`${sentenceIndex}-${wordIndex}`}
+                className={highlightedWordIndex === absoluteWordIndex ? 'highlighted-word' : ''}
+              >
+                {word + ' '}
+              </span>
+            );
+          })}
         </div>
       </div>
     ))}
