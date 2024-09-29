@@ -398,10 +398,12 @@ const HomePage = () => {
 
       <div
   onClick={() => setTranscriptOpen(!isTranscriptOpen)}
-  className={`top-pill cursor-pointer w-full max-w-[600px] white-opaque transition-all backdrop-blur-[200px] mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
+  className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] white-opaque transition-all backdrop-blur-[200px] mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
     isTranscriptOpen ? 'h-[45vh] max-w-full' : 'h-[57px]'
   }`}
 >
+  <div className="box">
+
   <div className="flex flex-row justify-between items-center gap-3 w-full">
     {/* Speaker Information */}
     <div className="flex flex-row items-center gap-3">
@@ -482,24 +484,30 @@ const HomePage = () => {
       </button>
     </div>
   </div>
+  </div>
 
   {/* Transcript Section */}
   {isTranscriptOpen && (
-    <div className="transcript-content rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col w-full mt-3">
-      <div className="flex flex-row justify-between">
-        <p>transcript</p>
-        <p className="poppins text-[#79FF89]">20 pts+</p>
-        <div className="rounded-[20px] black-opaque px-[10px]">
-          {turnCategory || 'No Category'}
+  <div className="transcript-content h-full w-full rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col w-full mt-3">
+    <div className="flex flex-row justify-between w-full">
+      <p>transcript</p>
+      <p className="poppins text-[#79FF89]">20 pts+</p>
+      <div className="rounded-[20px] black-opaque px-[10px]">
+        {turnCategory || 'No Category'}
+      </div>
+    </div>
+    {sentencesData.map((sentence, index) => (
+      <div className="box">
+        <div
+          key={index}
+          className={`${highlightedWordIndex === index ? 'highlighted' : ''} !text-left text-sm md:text-base overflow-auto`}
+        >
+          {sentence.text}
         </div>
       </div>
-      {sentencesData.map((sentence, index) => (
-        <p key={index} className={highlightedWordIndex === index ? 'highlighted' : ''}>
-          {sentence.text}
-        </p>
-      ))}
-    </div>
-  )}
+    ))}
+  </div>
+)}
 </div>
 
 
