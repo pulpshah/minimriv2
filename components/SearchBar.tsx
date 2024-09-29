@@ -51,7 +51,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
   return (
     <div
-      className={`search z-[101] gap-2 w-full h-[81px] box flex flex-row items-center ${
+      className={`search z-[101] gap-2 w-full h-fit box flex flex-row items-center ${
         isSearchMode ? "justify-center" : "!justify-between"
       }`}
       ref={searchBarRef}
@@ -59,11 +59,11 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
       <div
         className={`flex items-center w-full justify-center ${
-          isSearchMode ? "mx-[20px]" : "mx-0"
+          isSearchMode ? "" : "mx-0"
         }`}
       >
         <div
-          className={`search-bar relative backdrop-blur-[50px] transition-all z-[101] flex-shrink-0 justify-between w-[65vw] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full ${
+          className={`search-bar relative backdrop-blur-[50px] mt-2.5 transition-all z-[101] flex-shrink-0 justify-between w-[65vw] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full ${
             isSearchBarExpanded
               ? "w-full max-w-[600px] h-[45px]"
               : "h-[35px] w-[65vw] max-w-[450px]"

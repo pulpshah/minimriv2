@@ -403,7 +403,7 @@ const HomePage = () => {
 
       </div>
 
-      <div className="navbar fixed bottom-2 w-full max-w-[500px] z-40 px-[10px] md:px-[20px]">
+      <div className="navbar fixed bottom-0 sm:bottom-2.5 w-full sm:max-w-[500px] z-40 px-[0px] sm:px-[20px]">
         <NavBar onSearchClick={toggleSearchTab} />
       </div>
 
