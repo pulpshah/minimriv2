@@ -1,0 +1,226 @@
+{
+  "metadata": {
+    "transaction_key": "deprecated",
+    "request_id": "00ffbfd9-a228-45c7-9756-005ee8999882",
+    "sha256": "250b391b89895405812d9381f2caf2d1d6494762a4c903d28507ca3d3d5b7f29",
+    "created": "2024-09-24T05:02:20.140Z",
+    "duration": 2.3690624,
+    "channels": 1,
+    "models": [
+      "6f548761-c9c0-429a-9315-11a1d28499c8"
+    ],
+    "model_info": {
+      "6f548761-c9c0-429a-9315-11a1d28499c8": {
+        "name": "general-enhanced",
+        "version": "2023-07-13.28732",
+        "arch": "polaris"
+      }
+    },
+    "summary_info": {
+      "model_uuid": "67875a7f-c9c4-48a0-aa55-5bdb8a91c34a",
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "sentiment_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 11,
+      "output_tokens": 11
+    },
+    "topics_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 11,
+      "output_tokens": 6
+    },
+    "intents_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 11,
+      "output_tokens": 11
+    }
+  },
+  "results": {
+    "channels": [
+      {
+        "alternatives": [
+          {
+            "transcript": "Vice president Excuse me. I have to respond.",
+            "confidence": 0.9526367,
+            "words": [
+              {
+                "word": "vice",
+                "start": 0.27986002,
+                "end": 0.55972004,
+                "confidence": 0.70166016,
+                "speaker": 0,
+                "speaker_confidence": 0.42773438,
+                "punctuated_word": "Vice",
+                "sentiment": "neutral",
+                "sentiment_score": -0.232177734375
+              },
+              {
+                "word": "president",
+                "start": 0.55972004,
+                "end": 0.91954005,
+                "confidence": 0.99072266,
+                "speaker": 0,
+                "speaker_confidence": 0.42773438,
+                "punctuated_word": "president",
+                "sentiment": "neutral",
+                "sentiment_score": -0.313232421875
+              },
+              {
+                "word": "excuse",
+                "start": 0.95952004,
+                "end": 1.27936,
+                "confidence": 0.9526367,
+                "speaker": 0,
+                "speaker_confidence": 0.42773438,
+                "punctuated_word": "Excuse",
+                "sentiment": "negative",
+                "sentiment_score": -0.6826171875
+              },
+              {
+                "word": "me",
+                "start": 1.27936,
+                "end": 1.4792601,
+                "confidence": 0.8808594,
+                "speaker": 0,
+                "speaker_confidence": 0.52001953,
+                "punctuated_word": "me.",
+                "sentiment": "negative",
+                "sentiment_score": -0.7490234375
+              },
+              {
+                "word": "i",
+                "start": 1.4792601,
+                "end": 1.51924,
+                "confidence": 0.90234375,
+                "speaker": 0,
+                "speaker_confidence": 0.50341797,
+                "punctuated_word": "I",
+                "sentiment": "negative",
+                "sentiment_score": -0.72802734375
+              },
+              {
+                "word": "have",
+                "start": 1.51924,
+                "end": 1.6791601,
+                "confidence": 0.9790039,
+                "speaker": 0,
+                "speaker_confidence": 0.50341797,
+                "punctuated_word": "have",
+                "sentiment": "negative",
+                "sentiment_score": -0.802734375
+              },
+              {
+                "word": "to",
+                "start": 1.6791601,
+                "end": 1.7991,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.50341797,
+                "punctuated_word": "to",
+                "sentiment": "negative",
+                "sentiment_score": -0.77392578125
+              },
+              {
+                "word": "respond",
+                "start": 1.7991,
+                "end": 2.2991,
+                "confidence": 0.95532227,
+                "speaker": 0,
+                "speaker_confidence": 0.50341797,
+                "punctuated_word": "respond.",
+                "sentiment": "negative",
+                "sentiment_score": -0.40380859375
+              }
+            ],
+            "paragraphs": {
+              "transcript": "\nSpeaker 0: Vice president Excuse me. I have to respond.",
+              "paragraphs": [
+                {
+                  "sentences": [
+                    {
+                      "text": "Vice president Excuse me.",
+                      "start": 0.27986002,
+                      "end": 1.4792601,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.4942626953125
+                    },
+                    {
+                      "text": "I have to respond.",
+                      "start": 1.4792601,
+                      "end": 2.2991,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.6771240234375
+                    }
+                  ],
+                  "speaker": 0,
+                  "sentiment": "negative",
+                  "sentiment_score": -0.585693359375,
+                  "num_words": 8,
+                  "start": 0.27986002,
+                  "end": 2.2991
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "result": "success",
+      "short": "[Speaker 0:] Vice president Excuse me. I have to respond."
+    },
+    "topics": {
+      "segments": [
+        {
+          "text": "I have to respond.",
+          "start_word": 4,
+          "end_word": 7,
+          "topics": [
+            {
+              "topic": "Vice president",
+              "confidence_score": 0.17878032
+            },
+            {
+              "topic": "Response",
+              "confidence_score": 0.9626241
+            }
+          ]
+        }
+      ]
+    },
+    "intents": {
+      "segments": [
+        {
+          "text": "I have to respond.",
+          "start_word": 4,
+          "end_word": 7,
+          "intents": [
+            {
+              "intent": "Exclaim obligation enumerate purpose",
+              "confidence_score": 9.086613e-15
+            }
+          ]
+        }
+      ]
+    },
+    "sentiments": {
+      "segments": [
+        {
+          "text": "Vice president Excuse me. I have to respond.",
+          "start_word": 0,
+          "end_word": 7,
+          "sentiment": "negative",
+          "sentiment_score": -0.6279296875
+        }
+      ],
+      "average": {
+        "sentiment": "negative",
+        "sentiment_score": -0.6278409090909091
+      }
+    }
+  },
+  "category": "follow-up_08",
+  "speaker": "davis-trump interruption"
+}

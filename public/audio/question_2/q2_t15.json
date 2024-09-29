@@ -1,0 +1,137 @@
+{
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "9a3bad73-ebb0-459c-b84a-f669dd500f1a",
+      "sha256": "3a26d7d16d35ed4bd911979937b41621a1938d596ed637b19b8772c963bb2a33",
+      "created": "2024-09-24T05:05:06.430Z",
+      "duration": 0.634,
+      "channels": 1,
+      "models": [
+        "6f548761-c9c0-429a-9315-11a1d28499c8"
+      ],
+      "model_info": {
+        "6f548761-c9c0-429a-9315-11a1d28499c8": {
+          "name": "general-enhanced",
+          "version": "2023-07-13.28732",
+          "arch": "polaris"
+        }
+      },
+      "summary_info": {
+        "model_uuid": "67875a7f-c9c4-48a0-aa55-5bdb8a91c34a",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "sentiment_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 3,
+        "output_tokens": 3
+      },
+      "topics_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 3,
+        "output_tokens": 3
+      },
+      "intents_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 3,
+        "output_tokens": 2
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Come on.",
+              "confidence": 0.7524414,
+              "words": [
+                {
+                  "word": "come",
+                  "start": 0.03998,
+                  "end": 0.23988001,
+                  "confidence": 0.70654297,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "Come",
+                  "sentiment": "positive",
+                  "sentiment_score": 0.51025390625
+                },
+                {
+                  "word": "on",
+                  "start": 0.23988001,
+                  "end": 0.634,
+                  "confidence": 0.7524414,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "on.",
+                  "sentiment": "neutral",
+                  "sentiment_score": 0.29931640625
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Come on.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Come on.",
+                        "start": 0.03998,
+                        "end": 0.634,
+                        "sentiment": "positive",
+                        "sentiment_score": 0.40478515625
+                      }
+                    ],
+                    "speaker": 0,
+                    "sentiment": "positive",
+                    "sentiment_score": 0.40478515625,
+                    "num_words": 2,
+                    "start": 0.03998,
+                    "end": 0.634
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "result": "success",
+        "short": "[Speaker 0:] Come on."
+      },
+      "topics": {
+        "segments": [
+          {
+            "text": "Come on.",
+            "start_word": 1,
+            "end_word": 2,
+            "topics": [
+              {
+                "topic": "Communication",
+                "confidence_score": 0.1142512
+              }
+            ]
+          }
+        ]
+      },
+      "intents": {
+        "segments": []
+      },
+      "sentiments": {
+        "segments": [
+          {
+            "text": "Come on.",
+            "start_word": 0,
+            "end_word": 1,
+            "sentiment": "positive",
+            "sentiment_score": 0.471435546875
+          }
+        ],
+        "average": {
+          "sentiment": "positive",
+          "sentiment_score": 0.4713541666666667
+        }
+      }
+    },
+    "category": "follow-up_10",
+    "speaker": "harris-interruption-continued"
+}

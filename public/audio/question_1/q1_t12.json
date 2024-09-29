@@ -1,0 +1,1681 @@
+{
+  "metadata": {
+    "transaction_key": "deprecated",
+    "request_id": "1fd69644-1b31-4d1a-a7ea-7d76c02b087a",
+    "sha256": "a0785ddd6fb50b01f1dc1c874ff041408dced06554f3e1fb3c53b22b2a6b49d3",
+    "created": "2024-09-24T04:44:17.477Z",
+    "duration": 38.972313,
+    "channels": 1,
+    "models": [
+      "6f548761-c9c0-429a-9315-11a1d28499c8"
+    ],
+    "model_info": {
+      "6f548761-c9c0-429a-9315-11a1d28499c8": {
+        "name": "general-enhanced",
+        "version": "2023-07-13.28732",
+        "arch": "polaris"
+      }
+    },
+    "summary_info": {
+      "model_uuid": "67875a7f-c9c4-48a0-aa55-5bdb8a91c34a",
+      "input_tokens": 159,
+      "output_tokens": 42
+    },
+    "sentiment_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 167,
+      "output_tokens": 167
+    },
+    "topics_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 167,
+      "output_tokens": 18
+    },
+    "intents_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 167,
+      "output_tokens": 5
+    }
+  },
+  "results": {
+    "channels": [
+      {
+        "alternatives": [
+          {
+            "transcript": "President, I do wanna drill down on something you both brought up. The vice president brought up your tariffs. You responded, and let's drill down on this because your plan is what she calls. It's essentially a national sales tax. Your proposal calls for tariffs as you pointed out here. On foreign imports across the board. You recently said that you might double your plan imposing tariffs up to 20% on goods coming into this country. As you know, many economists say that with tariffs at that level cost are then passed on to the consumer. Vice president Harris has argued it'll mean higher prices on gas, food, clothing, medication, arguing it costs the typical family nearly $4000 a year. Do you believe Americans can afford higher prices because of tariff",
+            "confidence": 0.9980469,
+            "words": [
+              {
+                "word": "president",
+                "start": 0.03998,
+                "end": 0.43978003,
+                "confidence": 0.6849365,
+                "speaker": 0,
+                "speaker_confidence": 0.6035156,
+                "punctuated_word": "President,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0305633544921875
+              },
+              {
+                "word": "i",
+                "start": 0.43978003,
+                "end": 0.55972004,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.6035156,
+                "punctuated_word": "I",
+                "sentiment": "neutral",
+                "sentiment_score": -0.046630859375
+              },
+              {
+                "word": "do",
+                "start": 0.55972004,
+                "end": 0.67966,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "do",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0181884765625
+              },
+              {
+                "word": "wanna",
+                "start": 0.67966,
+                "end": 0.95952004,
+                "confidence": 0.90771484,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "wanna",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0264129638671875
+              },
+              {
+                "word": "drill",
+                "start": 0.95952004,
+                "end": 1.15942,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "drill",
+                "sentiment": "neutral",
+                "sentiment_score": -0.028900146484375
+              },
+              {
+                "word": "down",
+                "start": 1.15942,
+                "end": 1.35932,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "down",
+                "sentiment": "neutral",
+                "sentiment_score": -0.033477783203125
+              },
+              {
+                "word": "on",
+                "start": 1.35932,
+                "end": 1.4792601,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "on",
+                "sentiment": "neutral",
+                "sentiment_score": -0.011260986328125
+              },
+              {
+                "word": "something",
+                "start": 1.4792601,
+                "end": 1.7991,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "something",
+                "sentiment": "neutral",
+                "sentiment_score": 0.002227783203125
+              },
+              {
+                "word": "you",
+                "start": 1.7991,
+                "end": 1.9590201,
+                "confidence": 0.99658203,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "you",
+                "sentiment": "neutral",
+                "sentiment_score": -0.016571044921875
+              },
+              {
+                "word": "both",
+                "start": 1.9590201,
+                "end": 2.1989,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "both",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0684814453125
+              },
+              {
+                "word": "brought",
+                "start": 2.1989,
+                "end": 2.47876,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "brought",
+                "sentiment": "neutral",
+                "sentiment_score": -0.029571533203125
+              },
+              {
+                "word": "up",
+                "start": 2.47876,
+                "end": 2.9585202,
+                "confidence": 0.9902344,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "up.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.019866943359375
+              },
+              {
+                "word": "the",
+                "start": 2.9585202,
+                "end": 3.0784602,
+                "confidence": 0.98339844,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "The",
+                "sentiment": "neutral",
+                "sentiment_score": -0.05584716796875
+              },
+              {
+                "word": "vice",
+                "start": 3.0784602,
+                "end": 3.31834,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "vice",
+                "sentiment": "neutral",
+                "sentiment_score": -0.08953857421875
+              },
+              {
+                "word": "president",
+                "start": 3.31834,
+                "end": 3.75812,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "president",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0882568359375
+              },
+              {
+                "word": "brought",
+                "start": 3.75812,
+                "end": 3.9580202,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "brought",
+                "sentiment": "neutral",
+                "sentiment_score": -0.038360595703125
+              },
+              {
+                "word": "up",
+                "start": 3.9580202,
+                "end": 4.31784,
+                "confidence": 0.9902344,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "up",
+                "sentiment": "neutral",
+                "sentiment_score": -0.044830322265625
+              },
+              {
+                "word": "your",
+                "start": 4.31784,
+                "end": 4.55772,
+                "confidence": 0.9916992,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "your",
+                "sentiment": "neutral",
+                "sentiment_score": -0.10968017578125
+              },
+              {
+                "word": "tariffs",
+                "start": 4.55772,
+                "end": 5.0374804,
+                "confidence": 0.7644043,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "tariffs.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.08367919921875
+              },
+              {
+                "word": "you",
+                "start": 5.0374804,
+                "end": 5.15742,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "You",
+                "sentiment": "neutral",
+                "sentiment_score": -0.013153076171875
+              },
+              {
+                "word": "responded",
+                "start": 5.15742,
+                "end": 5.65742,
+                "confidence": 0.8178711,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "responded,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0185546875
+              },
+              {
+                "word": "and",
+                "start": 5.71714,
+                "end": 5.8770604,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "and",
+                "sentiment": "neutral",
+                "sentiment_score": -0.00714111328125
+              },
+              {
+                "word": "let's",
+                "start": 5.8770604,
+                "end": 6.1169405,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "let's",
+                "sentiment": "neutral",
+                "sentiment_score": -0.010223388671875
+              },
+              {
+                "word": "drill",
+                "start": 6.1169405,
+                "end": 6.35682,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "drill",
+                "sentiment": "neutral",
+                "sentiment_score": 0.01177978515625
+              },
+              {
+                "word": "down",
+                "start": 6.35682,
+                "end": 6.5567203,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.9213867,
+                "punctuated_word": "down",
+                "sentiment": "neutral",
+                "sentiment_score": 0.01800537109375
+              },
+              {
+                "word": "on",
+                "start": 6.5567203,
+                "end": 6.67666,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.85791016,
+                "punctuated_word": "on",
+                "sentiment": "neutral",
+                "sentiment_score": 0.002532958984375
+              },
+              {
+                "word": "this",
+                "start": 6.67666,
+                "end": 6.95652,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.85791016,
+                "punctuated_word": "this",
+                "sentiment": "neutral",
+                "sentiment_score": -0.01953125
+              },
+              {
+                "word": "because",
+                "start": 6.95652,
+                "end": 7.45652,
+                "confidence": 0.515625,
+                "speaker": 0,
+                "speaker_confidence": 0.85791016,
+                "punctuated_word": "because",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0142822265625
+              },
+              {
+                "word": "your",
+                "start": 7.6761603,
+                "end": 7.9560204,
+                "confidence": 0.99609375,
+                "speaker": 0,
+                "speaker_confidence": 0.85791016,
+                "punctuated_word": "your",
+                "sentiment": "neutral",
+                "sentiment_score": -0.05096435546875
+              },
+              {
+                "word": "plan",
+                "start": 7.9560204,
+                "end": 8.355821,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.85791016,
+                "punctuated_word": "plan",
+                "sentiment": "neutral",
+                "sentiment_score": -0.08245849609375
+              },
+              {
+                "word": "is",
+                "start": 8.355821,
+                "end": 8.55572,
+                "confidence": 0.9848633,
+                "speaker": 0,
+                "speaker_confidence": 0.85791016,
+                "punctuated_word": "is",
+                "sentiment": "neutral",
+                "sentiment_score": -0.02105712890625
+              },
+              {
+                "word": "what",
+                "start": 8.55572,
+                "end": 8.7956,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.85791016,
+                "punctuated_word": "what",
+                "sentiment": "neutral",
+                "sentiment_score": -0.032470703125
+              },
+              {
+                "word": "she",
+                "start": 8.7956,
+                "end": 8.995501,
+                "confidence": 0.99658203,
+                "speaker": 0,
+                "speaker_confidence": 0.85791016,
+                "punctuated_word": "she",
+                "sentiment": "neutral",
+                "sentiment_score": -0.043731689453125
+              },
+              {
+                "word": "calls",
+                "start": 8.995501,
+                "end": 9.31534,
+                "confidence": 0.701416,
+                "speaker": 0,
+                "speaker_confidence": 0.85791016,
+                "punctuated_word": "calls.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.056121826171875
+              },
+              {
+                "word": "it's",
+                "start": 9.31534,
+                "end": 9.475261,
+                "confidence": 0.9772949,
+                "speaker": 0,
+                "speaker_confidence": 0.85791016,
+                "punctuated_word": "It's",
+                "sentiment": "neutral",
+                "sentiment_score": -0.036834716796875
+              },
+              {
+                "word": "essentially",
+                "start": 9.475261,
+                "end": 9.975261,
+                "confidence": 0.98339844,
+                "speaker": 0,
+                "speaker_confidence": 0.85791016,
+                "punctuated_word": "essentially",
+                "sentiment": "neutral",
+                "sentiment_score": -0.04742431640625
+              },
+              {
+                "word": "a",
+                "start": 9.995001,
+                "end": 10.074961,
+                "confidence": 0.99658203,
+                "speaker": 0,
+                "speaker_confidence": 0.85791016,
+                "punctuated_word": "a",
+                "sentiment": "neutral",
+                "sentiment_score": -0.066162109375
+              },
+              {
+                "word": "national",
+                "start": 10.074961,
+                "end": 10.51474,
+                "confidence": 0.99365234,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "national",
+                "sentiment": "neutral",
+                "sentiment_score": -0.06365966796875
+              },
+              {
+                "word": "sales",
+                "start": 10.51474,
+                "end": 10.83458,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "sales",
+                "sentiment": "neutral",
+                "sentiment_score": -0.06982421875
+              },
+              {
+                "word": "tax",
+                "start": 10.83458,
+                "end": 11.154421,
+                "confidence": 0.9851074,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "tax.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.06158447265625
+              },
+              {
+                "word": "your",
+                "start": 11.154421,
+                "end": 11.274361,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "Your",
+                "sentiment": "neutral",
+                "sentiment_score": -0.07421875
+              },
+              {
+                "word": "proposal",
+                "start": 11.274361,
+                "end": 11.714141,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "proposal",
+                "sentiment": "neutral",
+                "sentiment_score": -0.08782958984375
+              },
+              {
+                "word": "calls",
+                "start": 11.714141,
+                "end": 11.914041,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "calls",
+                "sentiment": "neutral",
+                "sentiment_score": -0.06304931640625
+              },
+              {
+                "word": "for",
+                "start": 11.914041,
+                "end": 12.07396,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "for",
+                "sentiment": "neutral",
+                "sentiment_score": -0.068115234375
+              },
+              {
+                "word": "tariffs",
+                "start": 12.07396,
+                "end": 12.353821,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "tariffs",
+                "sentiment": "neutral",
+                "sentiment_score": -0.06866455078125
+              },
+              {
+                "word": "as",
+                "start": 12.353821,
+                "end": 12.513741,
+                "confidence": 0.921875,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "as",
+                "sentiment": "neutral",
+                "sentiment_score": -0.04443359375
+              },
+              {
+                "word": "you",
+                "start": 12.513741,
+                "end": 12.63368,
+                "confidence": 0.9604492,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "you",
+                "sentiment": "neutral",
+                "sentiment_score": -0.03057861328125
+              },
+              {
+                "word": "pointed",
+                "start": 12.63368,
+                "end": 12.993501,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "pointed",
+                "sentiment": "neutral",
+                "sentiment_score": -0.005767822265625
+              },
+              {
+                "word": "out",
+                "start": 12.993501,
+                "end": 13.1134405,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "out",
+                "sentiment": "neutral",
+                "sentiment_score": -0.019134521484375
+              },
+              {
+                "word": "here",
+                "start": 13.1134405,
+                "end": 13.455,
+                "confidence": 0.87939453,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "here.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.041900634765625
+              },
+              {
+                "word": "on",
+                "start": 13.53496,
+                "end": 13.734859,
+                "confidence": 0.9863281,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "On",
+                "sentiment": "neutral",
+                "sentiment_score": -0.08489990234375
+              },
+              {
+                "word": "foreign",
+                "start": 13.734859,
+                "end": 14.0547,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "foreign",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0472412109375
+              },
+              {
+                "word": "imports",
+                "start": 14.0547,
+                "end": 14.4545,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "imports",
+                "sentiment": "neutral",
+                "sentiment_score": -0.08203125
+              },
+              {
+                "word": "across",
+                "start": 14.4545,
+                "end": 14.81432,
+                "confidence": 0.9848633,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "across",
+                "sentiment": "neutral",
+                "sentiment_score": -0.05169677734375
+              },
+              {
+                "word": "the",
+                "start": 14.81432,
+                "end": 14.93426,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "the",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0867919921875
+              },
+              {
+                "word": "board",
+                "start": 14.93426,
+                "end": 15.21412,
+                "confidence": 0.8972168,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "board.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.07672119140625
+              },
+              {
+                "word": "you",
+                "start": 15.21412,
+                "end": 15.33406,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "You",
+                "sentiment": "neutral",
+                "sentiment_score": -0.07000732421875
+              },
+              {
+                "word": "recently",
+                "start": 15.33406,
+                "end": 15.83406,
+                "confidence": 0.99609375,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "recently",
+                "sentiment": "neutral",
+                "sentiment_score": -0.04339599609375
+              },
+              {
+                "word": "said",
+                "start": 15.8538,
+                "end": 16.01372,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "said",
+                "sentiment": "neutral",
+                "sentiment_score": -0.104248046875
+              },
+              {
+                "word": "that",
+                "start": 16.01372,
+                "end": 16.21362,
+                "confidence": 0.99316406,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "that",
+                "sentiment": "neutral",
+                "sentiment_score": -0.132568359375
+              },
+              {
+                "word": "you",
+                "start": 16.21362,
+                "end": 16.37354,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "you",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1729736328125
+              },
+              {
+                "word": "might",
+                "start": 16.37354,
+                "end": 16.53346,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "might",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1612548828125
+              },
+              {
+                "word": "double",
+                "start": 16.53346,
+                "end": 16.89328,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "double",
+                "sentiment": "neutral",
+                "sentiment_score": -0.08416748046875
+              },
+              {
+                "word": "your",
+                "start": 16.89328,
+                "end": 17.09318,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "your",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2227783203125
+              },
+              {
+                "word": "plan",
+                "start": 17.09318,
+                "end": 17.33306,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "plan",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1439208984375
+              },
+              {
+                "word": "imposing",
+                "start": 17.33306,
+                "end": 17.83306,
+                "confidence": 0.9658203,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "imposing",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1854248046875
+              },
+              {
+                "word": "tariffs",
+                "start": 18.0527,
+                "end": 18.41252,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "tariffs",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1826171875
+              },
+              {
+                "word": "up",
+                "start": 18.41252,
+                "end": 18.53246,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "up",
+                "sentiment": "neutral",
+                "sentiment_score": -0.05828857421875
+              },
+              {
+                "word": "to",
+                "start": 18.53246,
+                "end": 18.692379,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "to",
+                "sentiment": "neutral",
+                "sentiment_score": -0.12225341796875
+              },
+              {
+                "word": "20%",
+                "start": 18.692379,
+                "end": 19.192379,
+                "confidence": 0.96240234,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "20%",
+                "sentiment": "neutral",
+                "sentiment_score": -0.04400634765625
+              },
+              {
+                "word": "on",
+                "start": 19.37204,
+                "end": 19.49198,
+                "confidence": 0.99658203,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "on",
+                "sentiment": "neutral",
+                "sentiment_score": -0.107177734375
+              },
+              {
+                "word": "goods",
+                "start": 19.49198,
+                "end": 19.77184,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "goods",
+                "sentiment": "neutral",
+                "sentiment_score": -0.12298583984375
+              },
+              {
+                "word": "coming",
+                "start": 19.77184,
+                "end": 20.09168,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "coming",
+                "sentiment": "neutral",
+                "sentiment_score": -0.08123779296875
+              },
+              {
+                "word": "into",
+                "start": 20.09168,
+                "end": 20.37154,
+                "confidence": 0.99365234,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "into",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0753173828125
+              },
+              {
+                "word": "this",
+                "start": 20.37154,
+                "end": 20.57144,
+                "confidence": 0.9946289,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "this",
+                "sentiment": "neutral",
+                "sentiment_score": -0.107421875
+              },
+              {
+                "word": "country",
+                "start": 20.57144,
+                "end": 21.07144,
+                "confidence": 0.9963379,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "country.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.12322998046875
+              },
+              {
+                "word": "as",
+                "start": 21.21112,
+                "end": 21.41102,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "As",
+                "sentiment": "neutral",
+                "sentiment_score": -0.220458984375
+              },
+              {
+                "word": "you",
+                "start": 21.41102,
+                "end": 21.53096,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "you",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2205810546875
+              },
+              {
+                "word": "know",
+                "start": 21.53096,
+                "end": 21.730862,
+                "confidence": 0.97094727,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "know,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2216796875
+              },
+              {
+                "word": "many",
+                "start": 21.730862,
+                "end": 21.970741,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "many",
+                "sentiment": "neutral",
+                "sentiment_score": -0.32568359375
+              },
+              {
+                "word": "economists",
+                "start": 21.970741,
+                "end": 22.470741,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "economists",
+                "sentiment": "neutral",
+                "sentiment_score": -0.3017578125
+              },
+              {
+                "word": "say",
+                "start": 22.53046,
+                "end": 22.73036,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "say",
+                "sentiment": "negative",
+                "sentiment_score": -0.33349609375
+              },
+              {
+                "word": "that",
+                "start": 22.73036,
+                "end": 22.93026,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "that",
+                "sentiment": "neutral",
+                "sentiment_score": -0.306640625
+              },
+              {
+                "word": "with",
+                "start": 22.93026,
+                "end": 23.130161,
+                "confidence": 0.5644531,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "with",
+                "sentiment": "negative",
+                "sentiment_score": -0.387939453125
+              },
+              {
+                "word": "tariffs",
+                "start": 23.130161,
+                "end": 23.45,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "tariffs",
+                "sentiment": "negative",
+                "sentiment_score": -0.411376953125
+              },
+              {
+                "word": "at",
+                "start": 23.45,
+                "end": 23.60992,
+                "confidence": 0.9897461,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "at",
+                "sentiment": "negative",
+                "sentiment_score": -0.40185546875
+              },
+              {
+                "word": "that",
+                "start": 23.60992,
+                "end": 23.80982,
+                "confidence": 0.99609375,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "that",
+                "sentiment": "negative",
+                "sentiment_score": -0.380615234375
+              },
+              {
+                "word": "level",
+                "start": 23.80982,
+                "end": 24.16964,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "level",
+                "sentiment": "negative",
+                "sentiment_score": -0.35693359375
+              },
+              {
+                "word": "cost",
+                "start": 24.16964,
+                "end": 24.40952,
+                "confidence": 0.39819336,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "cost",
+                "sentiment": "negative",
+                "sentiment_score": -0.453369140625
+              },
+              {
+                "word": "are",
+                "start": 24.40952,
+                "end": 24.52946,
+                "confidence": 0.95214844,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "are",
+                "sentiment": "negative",
+                "sentiment_score": -0.342041015625
+              },
+              {
+                "word": "then",
+                "start": 24.52946,
+                "end": 24.76934,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "then",
+                "sentiment": "neutral",
+                "sentiment_score": -0.31884765625
+              },
+              {
+                "word": "passed",
+                "start": 24.76934,
+                "end": 25.00922,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "passed",
+                "sentiment": "negative",
+                "sentiment_score": -0.422607421875
+              },
+              {
+                "word": "on",
+                "start": 25.00922,
+                "end": 25.209122,
+                "confidence": 0.93408203,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "on",
+                "sentiment": "neutral",
+                "sentiment_score": -0.31640625
+              },
+              {
+                "word": "to",
+                "start": 25.209122,
+                "end": 25.369041,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "to",
+                "sentiment": "negative",
+                "sentiment_score": -0.369873046875
+              },
+              {
+                "word": "the",
+                "start": 25.369041,
+                "end": 25.528961,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "the",
+                "sentiment": "negative",
+                "sentiment_score": -0.43017578125
+              },
+              {
+                "word": "consumer",
+                "start": 25.528961,
+                "end": 26.028961,
+                "confidence": 0.99121094,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "consumer.",
+                "sentiment": "negative",
+                "sentiment_score": -0.390869140625
+              },
+              {
+                "word": "vice",
+                "start": 26.448502,
+                "end": 26.688381,
+                "confidence": 0.93652344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "Vice",
+                "sentiment": "negative",
+                "sentiment_score": -0.428466796875
+              },
+              {
+                "word": "president",
+                "start": 26.688381,
+                "end": 27.16814,
+                "confidence": 0.79296875,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "president",
+                "sentiment": "negative",
+                "sentiment_score": -0.515625
+              },
+              {
+                "word": "harris",
+                "start": 27.16814,
+                "end": 27.448002,
+                "confidence": 0.9628906,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "Harris",
+                "sentiment": "negative",
+                "sentiment_score": -0.43017578125
+              },
+              {
+                "word": "has",
+                "start": 27.448002,
+                "end": 27.6479,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "has",
+                "sentiment": "negative",
+                "sentiment_score": -0.62353515625
+              },
+              {
+                "word": "argued",
+                "start": 27.6479,
+                "end": 28.00772,
+                "confidence": 0.9926758,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "argued",
+                "sentiment": "negative",
+                "sentiment_score": -0.658203125
+              },
+              {
+                "word": "it'll",
+                "start": 28.00772,
+                "end": 28.20762,
+                "confidence": 0.8161621,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "it'll",
+                "sentiment": "negative",
+                "sentiment_score": -0.703125
+              },
+              {
+                "word": "mean",
+                "start": 28.20762,
+                "end": 28.35,
+                "confidence": 0.953125,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "mean",
+                "sentiment": "negative",
+                "sentiment_score": -0.6728515625
+              },
+              {
+                "word": "higher",
+                "start": 28.38998,
+                "end": 28.62986,
+                "confidence": 0.9658203,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "higher",
+                "sentiment": "negative",
+                "sentiment_score": -0.703125
+              },
+              {
+                "word": "prices",
+                "start": 28.62986,
+                "end": 28.989681,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "prices",
+                "sentiment": "negative",
+                "sentiment_score": -0.7119140625
+              },
+              {
+                "word": "on",
+                "start": 28.989681,
+                "end": 29.22956,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "on",
+                "sentiment": "negative",
+                "sentiment_score": -0.701171875
+              },
+              {
+                "word": "gas",
+                "start": 29.22956,
+                "end": 29.72956,
+                "confidence": 0.9838867,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "gas,",
+                "sentiment": "negative",
+                "sentiment_score": -0.546875
+              },
+              {
+                "word": "food",
+                "start": 29.86924,
+                "end": 30.269041,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "food,",
+                "sentiment": "negative",
+                "sentiment_score": -0.58349609375
+              },
+              {
+                "word": "clothing",
+                "start": 30.269041,
+                "end": 30.7488,
+                "confidence": 0.95288086,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "clothing,",
+                "sentiment": "negative",
+                "sentiment_score": -0.461669921875
+              },
+              {
+                "word": "medication",
+                "start": 30.7488,
+                "end": 31.2488,
+                "confidence": 0.904541,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "medication,",
+                "sentiment": "negative",
+                "sentiment_score": -0.46337890625
+              },
+              {
+                "word": "arguing",
+                "start": 31.78828,
+                "end": 32.18808,
+                "confidence": 0.97265625,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "arguing",
+                "sentiment": "negative",
+                "sentiment_score": -0.65283203125
+              },
+              {
+                "word": "it",
+                "start": 32.18808,
+                "end": 32.30802,
+                "confidence": 0.99072266,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "it",
+                "sentiment": "negative",
+                "sentiment_score": -0.64453125
+              },
+              {
+                "word": "costs",
+                "start": 32.30802,
+                "end": 32.58788,
+                "confidence": 0.60302734,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "costs",
+                "sentiment": "negative",
+                "sentiment_score": -0.591796875
+              },
+              {
+                "word": "the",
+                "start": 32.58788,
+                "end": 32.66784,
+                "confidence": 0.99316406,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "the",
+                "sentiment": "negative",
+                "sentiment_score": -0.7158203125
+              },
+              {
+                "word": "typical",
+                "start": 32.66784,
+                "end": 33.067642,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "typical",
+                "sentiment": "negative",
+                "sentiment_score": -0.53662109375
+              },
+              {
+                "word": "family",
+                "start": 33.067642,
+                "end": 33.42746,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "family",
+                "sentiment": "negative",
+                "sentiment_score": -0.669921875
+              },
+              {
+                "word": "nearly",
+                "start": 33.42746,
+                "end": 33.78728,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "nearly",
+                "sentiment": "negative",
+                "sentiment_score": -0.62890625
+              },
+              {
+                "word": "$4000",
+                "start": 33.78728,
+                "end": 34.28728,
+                "confidence": 0.998291,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "$4000",
+                "sentiment": "negative",
+                "sentiment_score": -0.505859375
+              },
+              {
+                "word": "a",
+                "start": 35.02666,
+                "end": 35.1466,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "a",
+                "sentiment": "negative",
+                "sentiment_score": -0.58154296875
+              },
+              {
+                "word": "year",
+                "start": 35.1466,
+                "end": 35.6466,
+                "confidence": 0.9729004,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "year.",
+                "sentiment": "negative",
+                "sentiment_score": -0.6064453125
+              },
+              {
+                "word": "do",
+                "start": 35.7463,
+                "end": 35.86624,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "Do",
+                "sentiment": "negative",
+                "sentiment_score": -0.6005859375
+              },
+              {
+                "word": "you",
+                "start": 35.86624,
+                "end": 36.02616,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "you",
+                "sentiment": "negative",
+                "sentiment_score": -0.66796875
+              },
+              {
+                "word": "believe",
+                "start": 36.02616,
+                "end": 36.346,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "believe",
+                "sentiment": "negative",
+                "sentiment_score": -0.70654296875
+              },
+              {
+                "word": "americans",
+                "start": 36.346,
+                "end": 36.846,
+                "confidence": 0.99658203,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "Americans",
+                "sentiment": "negative",
+                "sentiment_score": -0.353759765625
+              },
+              {
+                "word": "can",
+                "start": 36.90572,
+                "end": 37.10562,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "can",
+                "sentiment": "negative",
+                "sentiment_score": -0.49267578125
+              },
+              {
+                "word": "afford",
+                "start": 37.10562,
+                "end": 37.50542,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "afford",
+                "sentiment": "negative",
+                "sentiment_score": -0.5810546875
+              },
+              {
+                "word": "higher",
+                "start": 37.50542,
+                "end": 37.785282,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "higher",
+                "sentiment": "negative",
+                "sentiment_score": -0.5390625
+              },
+              {
+                "word": "prices",
+                "start": 37.785282,
+                "end": 38.22506,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "prices",
+                "sentiment": "negative",
+                "sentiment_score": -0.5126953125
+              },
+              {
+                "word": "because",
+                "start": 38.22506,
+                "end": 38.58488,
+                "confidence": 0.99365234,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "because",
+                "sentiment": "negative",
+                "sentiment_score": -0.4384765625
+              },
+              {
+                "word": "of",
+                "start": 38.58488,
+                "end": 38.70482,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "of",
+                "sentiment": "negative",
+                "sentiment_score": -0.494384765625
+              },
+              {
+                "word": "tariff",
+                "start": 38.70482,
+                "end": 38.972313,
+                "confidence": 0.87597656,
+                "speaker": 0,
+                "speaker_confidence": 0.9267578,
+                "punctuated_word": "tariff",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1729736328125
+              }
+            ],
+            "paragraphs": {
+              "transcript": "\nSpeaker 0: President, I do wanna drill down on something you both brought up. The vice president brought up your tariffs. You responded, and let's drill down on this because your plan is what she calls. It's essentially a national sales tax. Your proposal calls for tariffs as you pointed out here.\n\nOn foreign imports across the board. You recently said that you might double your plan imposing tariffs up to 20% on goods coming into this country. As you know, many economists say that with tariffs at that level cost are then passed on to the consumer. Vice president Harris has argued it'll mean higher prices on gas, food, clothing, medication, arguing it costs the typical family nearly $4000 a year. Do you believe Americans can afford higher prices because of tariff",
+              "paragraphs": [
+                {
+                  "sentences": [
+                    {
+                      "text": "President, I do wanna drill down on something you both brought up.",
+                      "start": 0.03998,
+                      "end": 2.9585202,
+                      "sentiment": "neutral",
+                      "sentiment_score": -0.027308146158854168
+                    },
+                    {
+                      "text": "The vice president brought up your tariffs.",
+                      "start": 2.9585202,
+                      "end": 5.0374804,
+                      "sentiment": "neutral",
+                      "sentiment_score": -0.07288469587053571
+                    },
+                    {
+                      "text": "You responded, and let's drill down on this because your plan is what she calls.",
+                      "start": 5.0374804,
+                      "end": 9.31534,
+                      "sentiment": "neutral",
+                      "sentiment_score": -0.022491455078125
+                    },
+                    {
+                      "text": "It's essentially a national sales tax.",
+                      "start": 9.31534,
+                      "end": 11.154421,
+                      "sentiment": "neutral",
+                      "sentiment_score": -0.057581583658854164
+                    },
+                    {
+                      "text": "Your proposal calls for tariffs as you pointed out here.",
+                      "start": 11.154421,
+                      "end": 13.455,
+                      "sentiment": "neutral",
+                      "sentiment_score": -0.0503692626953125
+                    }
+                  ],
+                  "speaker": 0,
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.0404888916015625,
+                  "num_words": 50,
+                  "start": 0.03998,
+                  "end": 13.455
+                },
+                {
+                  "sentences": [
+                    {
+                      "text": "On foreign imports across the board.",
+                      "start": 13.53496,
+                      "end": 15.21412,
+                      "sentiment": "neutral",
+                      "sentiment_score": -0.071563720703125
+                    },
+                    {
+                      "text": "You recently said that you might double your plan imposing tariffs up to 20% on goods coming into this country.",
+                      "start": 15.21412,
+                      "end": 21.07144,
+                      "sentiment": "neutral",
+                      "sentiment_score": -0.1172637939453125
+                    },
+                    {
+                      "text": "As you know, many economists say that with tariffs at that level cost are then passed on to the consumer.",
+                      "start": 21.21112,
+                      "end": 26.028961,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.345660400390625
+                    },
+                    {
+                      "text": "Vice president Harris has argued it'll mean higher prices on gas, food, clothing, medication, arguing it costs the typical family nearly $4000 a year.",
+                      "start": 26.448502,
+                      "end": 35.6466,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.597412109375
+                    },
+                    {
+                      "text": "Do you believe Americans can afford higher prices because of tariff",
+                      "start": 35.7463,
+                      "end": 38.972313,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.5054709694602273
+                    }
+                  ],
+                  "speaker": 0,
+                  "sentiment": "negative",
+                  "sentiment_score": -0.365258487654321,
+                  "num_words": 81,
+                  "start": 13.53496,
+                  "end": 38.972313
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "result": "success",
+      "short": "Speaker 0 addresses President Trump's recent comments about tariffs and introduces Vice President Harris's proposal for a national sales tax to address foreign imports. They question if Americans can afford higher prices due to tariff increases."
+    },
+    "topics": {
+      "segments": [
+        {
+          "text": "It's essentially a national sales tax.",
+          "start_word": 34,
+          "end_word": 39,
+          "topics": [
+            {
+              "topic": "National sales tax",
+              "confidence_score": 0.15501139
+            }
+          ]
+        },
+        {
+          "text": "Your proposal calls for tariffs as you pointed out here. On foreign imports across the board. You recently said that you might double your plan imposing tariffs up to 20% on goods coming into this country.",
+          "start_word": 40,
+          "end_word": 75,
+          "topics": [
+            {
+              "topic": "Tariffs",
+              "confidence_score": 0.88674426
+            }
+          ]
+        },
+        {
+          "text": "You recently said that you might double your plan imposing tariffs up to 20% on goods coming into this country.",
+          "start_word": 56,
+          "end_word": 75,
+          "topics": [
+            {
+              "topic": "Extending tariffs",
+              "confidence_score": 0.013315242
+            }
+          ]
+        },
+        {
+          "text": "Vice president Harris has argued it'll mean higher prices on gas, food, clothing, medication, arguing it costs the typical family nearly $4000 a year.",
+          "start_word": 96,
+          "end_word": 119,
+          "topics": [
+            {
+              "topic": "Price increases",
+              "confidence_score": 0.008179988
+            }
+          ]
+        }
+      ]
+    },
+    "intents": {
+      "segments": [
+        {
+          "text": "You recently said that you might double your plan imposing tariffs up to 20% on goods coming into this country.",
+          "start_word": 56,
+          "end_word": 75,
+          "intents": [
+            {
+              "intent": "Explain plan impact",
+              "confidence_score": 0.001388424
+            }
+          ]
+        }
+      ]
+    },
+    "sentiments": {
+      "segments": [
+        {
+          "text": "President, I do wanna drill down on something you both brought up. The vice president brought up your tariffs. You responded, and let's drill down on this because your plan is what she calls. It's essentially a national sales tax. Your proposal calls for tariffs as you pointed out here. On foreign imports across the board. You recently said that you might double your plan imposing tariffs up to 20% on goods coming into this country.",
+          "start_word": 0,
+          "end_word": 75,
+          "sentiment": "neutral",
+          "sentiment_score": -0.0633544921875
+        },
+        {
+          "text": "As you know, many economists say that with tariffs at that level cost are then passed on to the consumer. Vice president Harris has argued it'll mean higher prices on gas, food, clothing, medication, arguing it costs the typical family nearly $4000 a year. Do you believe Americans can afford higher prices because of tariff",
+          "start_word": 76,
+          "end_word": 130,
+          "sentiment": "negative",
+          "sentiment_score": -0.49658203125
+        }
+      ],
+      "average": {
+        "sentiment": "neutral",
+        "sentiment_score": -0.24494760479041916
+      }
+    }
+  },
+  "category": "follow-up",
+  "speaker": "muir"
+}

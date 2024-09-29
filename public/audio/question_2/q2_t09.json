@@ -1,0 +1,477 @@
+{
+  "metadata": {
+    "transaction_key": "deprecated",
+    "request_id": "24ac2297-a198-4813-a751-df01cd7f336b",
+    "sha256": "4f395550fbc3a9d8fa82dad52bb00cddf89a974822d380b2aa6f39a5649c0dbf",
+    "created": "2024-09-24T05:00:18.517Z",
+    "duration": 6.70675,
+    "channels": 1,
+    "models": [
+      "6f548761-c9c0-429a-9315-11a1d28499c8"
+    ],
+    "model_info": {
+      "6f548761-c9c0-429a-9315-11a1d28499c8": {
+        "name": "general-enhanced",
+        "version": "2023-07-13.28732",
+        "arch": "polaris"
+      }
+    },
+    "summary_info": {
+      "model_uuid": "67875a7f-c9c4-48a0-aa55-5bdb8a91c34a",
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "sentiment_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 56,
+      "output_tokens": 56
+    },
+    "topics_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 56,
+      "output_tokens": 3
+    },
+    "intents_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 56,
+      "output_tokens": 2
+    }
+  },
+  "results": {
+    "channels": [
+      {
+        "alternatives": [
+          {
+            "transcript": "BUT IF I COULD Just GET A YES OR No BECAUSE YOU'RE RUNNING ME J. D. V. Vance Harris SAID THAT YOU WOULD VETO IF YOU DID COME TO YOUR DEATH.",
+            "confidence": 0.95654297,
+            "words": [
+              {
+                "word": "but",
+                "start": 0.03998,
+                "end": 0.23988001,
+                "confidence": 0.34423828,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "BUT",
+                "sentiment": "negative",
+                "sentiment_score": -0.341064453125
+              },
+              {
+                "word": "if",
+                "start": 0.23988001,
+                "end": 0.35982,
+                "confidence": 0.9838867,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "IF",
+                "sentiment": "negative",
+                "sentiment_score": -0.5986328125
+              },
+              {
+                "word": "i",
+                "start": 0.35982,
+                "end": 0.47976002,
+                "confidence": 0.9863281,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "I",
+                "sentiment": "negative",
+                "sentiment_score": -0.669921875
+              },
+              {
+                "word": "could",
+                "start": 0.47976002,
+                "end": 0.67966,
+                "confidence": 0.99780273,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "COULD",
+                "sentiment": "negative",
+                "sentiment_score": -0.6513671875
+              },
+              {
+                "word": "just",
+                "start": 0.67966,
+                "end": 0.83958006,
+                "confidence": 0.95654297,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "Just",
+                "sentiment": "negative",
+                "sentiment_score": -0.51025390625
+              },
+              {
+                "word": "get",
+                "start": 0.83958006,
+                "end": 1.0394801,
+                "confidence": 0.99609375,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "GET",
+                "sentiment": "negative",
+                "sentiment_score": -0.630859375
+              },
+              {
+                "word": "a",
+                "start": 1.0394801,
+                "end": 1.1194401,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "A",
+                "sentiment": "negative",
+                "sentiment_score": -0.482666015625
+              },
+              {
+                "word": "yes",
+                "start": 1.1194401,
+                "end": 1.35932,
+                "confidence": 0.99365234,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "YES",
+                "sentiment": "negative",
+                "sentiment_score": -0.3671875
+              },
+              {
+                "word": "or",
+                "start": 1.35932,
+                "end": 1.51924,
+                "confidence": 0.92089844,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "OR",
+                "sentiment": "negative",
+                "sentiment_score": -0.501953125
+              },
+              {
+                "word": "no",
+                "start": 1.51924,
+                "end": 1.6391801,
+                "confidence": 0.86328125,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "No",
+                "sentiment": "negative",
+                "sentiment_score": -0.7919921875
+              },
+              {
+                "word": "because",
+                "start": 1.6391801,
+                "end": 1.87906,
+                "confidence": 0.8727214,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "BECAUSE",
+                "sentiment": "negative",
+                "sentiment_score": -0.72998046875
+              },
+              {
+                "word": "you're",
+                "start": 1.87906,
+                "end": 2.0789602,
+                "confidence": 0.95410156,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "YOU'RE",
+                "sentiment": "negative",
+                "sentiment_score": -0.8828125
+              },
+              {
+                "word": "running",
+                "start": 2.0789602,
+                "end": 2.3588202,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "RUNNING",
+                "sentiment": "negative",
+                "sentiment_score": -0.8603515625
+              },
+              {
+                "word": "me",
+                "start": 2.3588202,
+                "end": 2.8588202,
+                "confidence": 0.62060547,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "ME",
+                "sentiment": "negative",
+                "sentiment_score": -0.88916015625
+              },
+              {
+                "word": "j",
+                "start": 2.9985,
+                "end": 3.15842,
+                "confidence": 0.6645508,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "J.",
+                "sentiment": "negative",
+                "sentiment_score": -0.708984375
+              },
+              {
+                "word": "d",
+                "start": 3.15842,
+                "end": 3.31834,
+                "confidence": 0.99609375,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "D.",
+                "sentiment": "negative",
+                "sentiment_score": -0.466796875
+              },
+              {
+                "word": "v",
+                "start": 3.31834,
+                "end": 3.47826,
+                "confidence": 0.9250488,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "V.",
+                "sentiment": "negative",
+                "sentiment_score": -0.49169921875
+              },
+              {
+                "word": "vance",
+                "start": 3.47826,
+                "end": 3.7687502,
+                "confidence": 0.34521484,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "Vance",
+                "sentiment": "negative",
+                "sentiment_score": -0.55078125
+              },
+              {
+                "word": "harris",
+                "start": 3.7687502,
+                "end": 4.03798,
+                "confidence": 0.6875,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "Harris",
+                "sentiment": "negative",
+                "sentiment_score": -0.469482421875
+              },
+              {
+                "word": "said",
+                "start": 4.03798,
+                "end": 4.35782,
+                "confidence": 0.9958496,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "SAID",
+                "sentiment": "negative",
+                "sentiment_score": -0.689453125
+              },
+              {
+                "word": "that",
+                "start": 4.35782,
+                "end": 4.55772,
+                "confidence": 0.9243164,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "THAT",
+                "sentiment": "negative",
+                "sentiment_score": -0.78125
+              },
+              {
+                "word": "you",
+                "start": 4.55772,
+                "end": 4.7576203,
+                "confidence": 0.9921875,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "YOU",
+                "sentiment": "negative",
+                "sentiment_score": -0.8291015625
+              },
+              {
+                "word": "would",
+                "start": 4.7576203,
+                "end": 5.0774603,
+                "confidence": 0.99609375,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "WOULD",
+                "sentiment": "negative",
+                "sentiment_score": -0.8330078125
+              },
+              {
+                "word": "veto",
+                "start": 5.0774603,
+                "end": 5.47726,
+                "confidence": 0.5708008,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "VETO",
+                "sentiment": "negative",
+                "sentiment_score": -0.806640625
+              },
+              {
+                "word": "if",
+                "start": 5.47726,
+                "end": 5.6371803,
+                "confidence": 0.93066406,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "IF",
+                "sentiment": "negative",
+                "sentiment_score": -0.83251953125
+              },
+              {
+                "word": "you",
+                "start": 5.6371803,
+                "end": 5.7971,
+                "confidence": 0.96191406,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "YOU",
+                "sentiment": "negative",
+                "sentiment_score": -0.86181640625
+              },
+              {
+                "word": "did",
+                "start": 5.7971,
+                "end": 6.03698,
+                "confidence": 0.9892578,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "DID",
+                "sentiment": "negative",
+                "sentiment_score": -0.8505859375
+              },
+              {
+                "word": "come",
+                "start": 6.03698,
+                "end": 6.2368803,
+                "confidence": 0.9916992,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "COME",
+                "sentiment": "negative",
+                "sentiment_score": -0.861328125
+              },
+              {
+                "word": "to",
+                "start": 6.2368803,
+                "end": 6.31684,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "TO",
+                "sentiment": "negative",
+                "sentiment_score": -0.8701171875
+              },
+              {
+                "word": "your",
+                "start": 6.31684,
+                "end": 6.5167403,
+                "confidence": 0.89697266,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "YOUR",
+                "sentiment": "negative",
+                "sentiment_score": -0.8515625
+              },
+              {
+                "word": "death",
+                "start": 6.5167403,
+                "end": 6.70675,
+                "confidence": 0.6788737,
+                "speaker": 0,
+                "speaker_confidence": 0.90625,
+                "punctuated_word": "DEATH.",
+                "sentiment": "negative",
+                "sentiment_score": -0.59716796875
+              }
+            ],
+            "paragraphs": {
+              "transcript": "\nSpeaker 0: BUT IF I COULD Just GET A YES OR No BECAUSE YOU'RE RUNNING ME J. D. V. Vance Harris SAID THAT YOU WOULD VETO IF YOU DID COME TO YOUR DEATH.",
+              "paragraphs": [
+                {
+                  "sentences": [
+                    {
+                      "text": "BUT IF I COULD Just GET A YES OR No BECAUSE YOU'RE RUNNING ME J.",
+                      "start": 0.03998,
+                      "end": 3.15842,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.6411458333333333
+                    },
+                    {
+                      "text": "D.",
+                      "start": 3.15842,
+                      "end": 3.31834,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.466796875
+                    },
+                    {
+                      "text": "V.",
+                      "start": 3.31834,
+                      "end": 3.47826,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.49169921875
+                    },
+                    {
+                      "text": "Vance Harris SAID THAT YOU WOULD VETO IF YOU DID COME TO YOUR DEATH.",
+                      "start": 3.47826,
+                      "end": 6.70675,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.7632010323660714
+                    }
+                  ],
+                  "speaker": 0,
+                  "sentiment": "negative",
+                  "sentiment_score": -0.685822517641129,
+                  "num_words": 31,
+                  "start": 0.03998,
+                  "end": 6.70675
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "result": "success",
+      "short": "[Speaker 0:] BUT IF I COULD Just GET A YES OR No BECAUSE YOU'RE RUNNING ME J. D. V. Vance Harris SAID THAT YOU WOULD VETO IF YOU DID COME TO YOUR DEATH."
+    },
+    "topics": {
+      "segments": [
+        {
+          "text": "Vance Harris SAID THAT YOU WOULD VETO IF YOU DID COME TO YOUR DEATH.",
+          "start_word": 17,
+          "end_word": 30,
+          "topics": [
+            {
+              "topic": "Violence",
+              "confidence_score": 0.7912173
+            }
+          ]
+        }
+      ]
+    },
+    "intents": {
+      "segments": []
+    },
+    "sentiments": {
+      "segments": [
+        {
+          "text": "BUT IF I COULD Just GET A YES OR No BECAUSE YOU'RE RUNNING ME J. D. V. Vance Harris SAID THAT YOU WOULD VETO IF YOU DID COME TO YOUR DEATH.",
+          "start_word": 0,
+          "end_word": 30,
+          "sentiment": "negative",
+          "sentiment_score": -0.70263671875
+        }
+      ],
+      "average": {
+        "sentiment": "negative",
+        "sentiment_score": -0.7025669642857143
+      }
+    }
+  },
+  "category": "follow up_04",
+  "speaker": "davis"
+}

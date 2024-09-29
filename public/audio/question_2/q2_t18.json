@@ -1,0 +1,235 @@
+{
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "29d26257-1ea4-42d5-8481-858d2a3885fd",
+      "sha256": "a7bc04274ab254375508fe26f00e919bebaa123ef89cc4a9cad16dbccdbeb169",
+      "created": "2024-09-24T05:06:02.404Z",
+      "duration": 4.037375,
+      "channels": 1,
+      "models": [
+        "6f548761-c9c0-429a-9315-11a1d28499c8"
+      ],
+      "model_info": {
+        "6f548761-c9c0-429a-9315-11a1d28499c8": {
+          "name": "general-enhanced",
+          "version": "2023-07-13.28732",
+          "arch": "polaris"
+        }
+      },
+      "summary_info": {
+        "model_uuid": "67875a7f-c9c4-48a0-aa55-5bdb8a91c34a",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "sentiment_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 19,
+        "output_tokens": 19
+      },
+      "topics_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 19,
+        "output_tokens": 5
+      },
+      "intents_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 19,
+        "output_tokens": 5
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Could do abortions in the 7th month, the 8th month, 9th month,",
+              "confidence": 0.99438477,
+              "words": [
+                {
+                  "word": "could",
+                  "start": 0.03998,
+                  "end": 0.31984,
+                  "confidence": 0.9633789,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "Could",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.8056640625
+                },
+                {
+                  "word": "do",
+                  "start": 0.31984,
+                  "end": 0.55972004,
+                  "confidence": 0.99902344,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "do",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.81884765625
+                },
+                {
+                  "word": "abortions",
+                  "start": 0.55972004,
+                  "end": 1.05972,
+                  "confidence": 0.9980469,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "abortions",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.72412109375
+                },
+                {
+                  "word": "in",
+                  "start": 1.27936,
+                  "end": 1.43928,
+                  "confidence": 0.99853516,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "in",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.7138671875
+                },
+                {
+                  "word": "the",
+                  "start": 1.43928,
+                  "end": 1.6391801,
+                  "confidence": 0.8491211,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "the",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.72998046875
+                },
+                {
+                  "word": "7th",
+                  "start": 1.6391801,
+                  "end": 2.11894,
+                  "confidence": 0.9963379,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "7th",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.677734375
+                },
+                {
+                  "word": "month",
+                  "start": 2.11894,
+                  "end": 2.5187402,
+                  "confidence": 0.9885254,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "month,",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.472900390625
+                },
+                {
+                  "word": "the",
+                  "start": 2.5187402,
+                  "end": 2.6786602,
+                  "confidence": 0.98339844,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "the",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.412353515625
+                },
+                {
+                  "word": "8th",
+                  "start": 2.6786602,
+                  "end": 3.03848,
+                  "confidence": 0.99560547,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "8th",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.43212890625
+                },
+                {
+                  "word": "month",
+                  "start": 3.03848,
+                  "end": 3.47826,
+                  "confidence": 0.99438477,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "month,",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.341064453125
+                },
+                {
+                  "word": "9th",
+                  "start": 3.47826,
+                  "end": 3.87806,
+                  "confidence": 0.59020996,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "9th",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.31591796875
+                },
+                {
+                  "word": "month",
+                  "start": 3.87806,
+                  "end": 4.037375,
+                  "confidence": 0.8527832,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "month,",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.318359375
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Could do abortions in the 7th month, the 8th month, 9th month,",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Could do abortions in the 7th month, the 8th month, 9th month,",
+                        "start": 0.03998,
+                        "end": 4.037375,
+                        "sentiment": "negative",
+                        "sentiment_score": -0.5635782877604166
+                      }
+                    ],
+                    "speaker": 0,
+                    "sentiment": "negative",
+                    "sentiment_score": -0.5635782877604166,
+                    "num_words": 12,
+                    "start": 0.03998,
+                    "end": 4.037375
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "result": "success",
+        "short": "[Speaker 0:] Could do abortions in the 7th month, the 8th month, 9th month,"
+      },
+      "topics": {
+        "segments": []
+      },
+      "intents": {
+        "segments": []
+      },
+      "sentiments": {
+        "segments": [
+          {
+            "text": "Could do abortions in the 7th month, the 8th month, 9th month,",
+            "start_word": 0,
+            "end_word": 11,
+            "sentiment": "negative",
+            "sentiment_score": -0.544921875
+          }
+        ],
+        "average": {
+          "sentiment": "negative",
+          "sentiment_score": -0.5448190789473685
+        }
+      }
+    },
+    "category": "follow-up_13",
+    "speaker": "trump-harris-crosstalk-interruption-continued"  
+}

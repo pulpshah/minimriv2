@@ -1,0 +1,417 @@
+{
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "bc633096-6289-4e8d-a12f-8c0414874fa0",
+      "sha256": "93ad99e4dd3afebec932ddafc7d6e42f5c3884a58b6d0584692336d40bd421f4",
+      "created": "2024-09-24T05:01:13.871Z",
+      "duration": 7.107125,
+      "channels": 1,
+      "models": [
+        "6f548761-c9c0-429a-9315-11a1d28499c8"
+      ],
+      "model_info": {
+        "6f548761-c9c0-429a-9315-11a1d28499c8": {
+          "name": "general-enhanced",
+          "version": "2023-07-13.28732",
+          "arch": "polaris"
+        }
+      },
+      "summary_info": {
+        "model_uuid": "67875a7f-c9c4-48a0-aa55-5bdb8a91c34a",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "sentiment_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 35,
+        "output_tokens": 35
+      },
+      "topics_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 35,
+        "output_tokens": 6
+      },
+      "intents_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 35,
+        "output_tokens": 8
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Vice president Harris wanna give you your time to respond, but I do wanna ask, would you support any restrictions on a woman's right toe portion?",
+              "confidence": 0.99658203,
+              "words": [
+                {
+                  "word": "vice",
+                  "start": 0.15992,
+                  "end": 0.3998,
+                  "confidence": 0.64208984,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "Vice",
+                  "sentiment": "neutral",
+                  "sentiment_score": 0.01123046875
+                },
+                {
+                  "word": "president",
+                  "start": 0.3998,
+                  "end": 0.83958006,
+                  "confidence": 0.9946289,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "president",
+                  "sentiment": "neutral",
+                  "sentiment_score": 0.0015869140625
+                },
+                {
+                  "word": "harris",
+                  "start": 0.83958006,
+                  "end": 1.1194401,
+                  "confidence": 0.99121094,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "Harris",
+                  "sentiment": "neutral",
+                  "sentiment_score": 0.2386474609375
+                },
+                {
+                  "word": "wanna",
+                  "start": 1.1194401,
+                  "end": 1.35932,
+                  "confidence": 0.77197266,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "wanna",
+                  "sentiment": "neutral",
+                  "sentiment_score": 0.1322021484375
+                },
+                {
+                  "word": "give",
+                  "start": 1.35932,
+                  "end": 1.51924,
+                  "confidence": 0.99902344,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "give",
+                  "sentiment": "neutral",
+                  "sentiment_score": 0.26416015625
+                },
+                {
+                  "word": "you",
+                  "start": 1.51924,
+                  "end": 1.6391801,
+                  "confidence": 0.99560547,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "you",
+                  "sentiment": "neutral",
+                  "sentiment_score": 0.11279296875
+                },
+                {
+                  "word": "your",
+                  "start": 1.6391801,
+                  "end": 1.7991,
+                  "confidence": 0.99658203,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "your",
+                  "sentiment": "neutral",
+                  "sentiment_score": 0.17333984375
+                },
+                {
+                  "word": "time",
+                  "start": 1.7991,
+                  "end": 1.9990001,
+                  "confidence": 1,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "time",
+                  "sentiment": "neutral",
+                  "sentiment_score": 0.205322265625
+                },
+                {
+                  "word": "to",
+                  "start": 1.9990001,
+                  "end": 2.15892,
+                  "confidence": 0.9970703,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "to",
+                  "sentiment": "neutral",
+                  "sentiment_score": 0.20556640625
+                },
+                {
+                  "word": "respond",
+                  "start": 2.15892,
+                  "end": 2.3988001,
+                  "confidence": 0.8137207,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "respond,",
+                  "sentiment": "neutral",
+                  "sentiment_score": 0.12054443359375
+                },
+                {
+                  "word": "but",
+                  "start": 2.3988001,
+                  "end": 2.55872,
+                  "confidence": 0.99853516,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "but",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.016357421875
+                },
+                {
+                  "word": "i",
+                  "start": 2.55872,
+                  "end": 2.71864,
+                  "confidence": 0.9975586,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "I",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.1085205078125
+                },
+                {
+                  "word": "do",
+                  "start": 2.71864,
+                  "end": 2.8385801,
+                  "confidence": 0.9970703,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "do",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.185546875
+                },
+                {
+                  "word": "wanna",
+                  "start": 2.8385801,
+                  "end": 3.1184402,
+                  "confidence": 0.9277344,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "wanna",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.08984375
+                },
+                {
+                  "word": "ask",
+                  "start": 3.1184402,
+                  "end": 3.3983002,
+                  "confidence": 0.89038086,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "ask,",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.153564453125
+                },
+                {
+                  "word": "would",
+                  "start": 3.3983002,
+                  "end": 3.5982,
+                  "confidence": 0.96435547,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "would",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.424560546875
+                },
+                {
+                  "word": "you",
+                  "start": 3.5982,
+                  "end": 3.8380802,
+                  "confidence": 0.9995117,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "you",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.30126953125
+                },
+                {
+                  "word": "support",
+                  "start": 3.8380802,
+                  "end": 4.3380804,
+                  "confidence": 0.9995117,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "support",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.408203125
+                },
+                {
+                  "word": "any",
+                  "start": 4.3978,
+                  "end": 4.7176404,
+                  "confidence": 1,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "any",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.5625
+                },
+                {
+                  "word": "restrictions",
+                  "start": 4.7176404,
+                  "end": 5.2176404,
+                  "confidence": 1,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "restrictions",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.40576171875
+                },
+                {
+                  "word": "on",
+                  "start": 5.43728,
+                  "end": 5.5972004,
+                  "confidence": 1,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "on",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.65869140625
+                },
+                {
+                  "word": "a",
+                  "start": 5.5972004,
+                  "end": 5.6771603,
+                  "confidence": 0.9951172,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "a",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.74560546875
+                },
+                {
+                  "word": "woman's",
+                  "start": 5.6771603,
+                  "end": 6.07696,
+                  "confidence": 0.98950195,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "woman's",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.473388671875
+                },
+                {
+                  "word": "right",
+                  "start": 6.07696,
+                  "end": 6.27686,
+                  "confidence": 0.9970703,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "right",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.52587890625
+                },
+                {
+                  "word": "toe",
+                  "start": 6.27686,
+                  "end": 6.5167403,
+                  "confidence": 0.11553955,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "toe",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.44384765625
+                },
+                {
+                  "word": "portion",
+                  "start": 6.5167403,
+                  "end": 7.0167403,
+                  "confidence": 0.93359375,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "portion?",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.22802734375
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Vice president Harris wanna give you your time to respond, but I do wanna ask, would you support any restrictions on a woman's right toe portion?",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Vice president Harris wanna give you your time to respond, but I do wanna ask, would you support any restrictions on a woman's right toe portion?",
+                        "start": 0.15992,
+                        "end": 7.0167403,
+                        "sentiment": "neutral",
+                        "sentiment_score": -0.16408362755408654
+                      }
+                    ],
+                    "speaker": 0,
+                    "sentiment": "neutral",
+                    "sentiment_score": -0.16408362755408654,
+                    "num_words": 26,
+                    "start": 0.15992,
+                    "end": 7.0167403
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "result": "success",
+        "short": "[Speaker 0:] Vice president Harris wanna give you your time to respond, but I do wanna ask, would you support any restrictions on a woman's right toe portion?"
+      },
+      "topics": {
+        "segments": [
+          {
+            "text": "Vice president Harris wanna give you your time to respond, but I do wanna ask, would you support any restrictions on a woman's right toe portion?",
+            "start_word": 1,
+            "end_word": 26,
+            "topics": [
+              {
+                "topic": "Women's rights",
+                "confidence_score": 0.65283
+              }
+            ]
+          }
+        ]
+      },
+      "intents": {
+        "segments": [
+          {
+            "text": "Vice president Harris wanna give you your time to respond, but I do wanna ask, would you support any restrictions on a woman's right toe portion?",
+            "start_word": 1,
+            "end_word": 26,
+            "intents": [
+              {
+                "intent": "Request response",
+                "confidence_score": 0.17001387
+              },
+              {
+                "intent": "Ask for support",
+                "confidence_score": 0.07588365
+              }
+            ]
+          }
+        ]
+      },
+      "sentiments": {
+        "segments": [
+          {
+            "text": "Vice president Harris wanna give you your time to respond, but I do wanna ask, would you support any restrictions on a woman's right toe portion?",
+            "start_word": 0,
+            "end_word": 25,
+            "sentiment": "neutral",
+            "sentiment_score": -0.1954345703125
+          }
+        ],
+        "average": {
+          "sentiment": "neutral",
+          "sentiment_score": -0.19542410714285716
+        }
+      }
+    },
+    "category": "follow-up_06",
+    "speaker": "davis"
+  }

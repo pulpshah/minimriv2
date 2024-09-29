@@ -1,0 +1,457 @@
+{
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "22fe9b65-63e4-4813-8fb6-562524b671e7",
+      "sha256": "d106b4fd57e15ae5d0de9e8635443744f1ef38ea298c5d447acbc2990ae30e53",
+      "created": "2024-09-24T04:56:17.704Z",
+      "duration": 7.3073125,
+      "channels": 1,
+      "models": [
+        "6f548761-c9c0-429a-9315-11a1d28499c8"
+      ],
+      "model_info": {
+        "6f548761-c9c0-429a-9315-11a1d28499c8": {
+          "name": "general-enhanced",
+          "version": "2023-07-13.28732",
+          "arch": "polaris"
+        }
+      },
+      "summary_info": {
+        "model_uuid": "67875a7f-c9c4-48a0-aa55-5bdb8a91c34a",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "sentiment_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 35,
+        "output_tokens": 35
+      },
+      "topics_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 35,
+        "output_tokens": 13
+      },
+      "intents_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 35,
+        "output_tokens": 10
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "There is no state in this country where it is legal to kill a baby after it's born. Man of vice president wanna get your response to President Trump.",
+              "confidence": 0.99658203,
+              "words": [
+                {
+                  "word": "there",
+                  "start": 0.07996,
+                  "end": 0.27986002,
+                  "confidence": 0.34057617,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "There",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.71142578125
+                },
+                {
+                  "word": "is",
+                  "start": 0.27986002,
+                  "end": 0.47976002,
+                  "confidence": 0.99658203,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "is",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.80810546875
+                },
+                {
+                  "word": "no",
+                  "start": 0.47976002,
+                  "end": 0.71964,
+                  "confidence": 1,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "no",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.79541015625
+                },
+                {
+                  "word": "state",
+                  "start": 0.71964,
+                  "end": 0.99950004,
+                  "confidence": 0.9980469,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "state",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.68896484375
+                },
+                {
+                  "word": "in",
+                  "start": 0.99950004,
+                  "end": 1.15942,
+                  "confidence": 0.99902344,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "in",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.67626953125
+                },
+                {
+                  "word": "this",
+                  "start": 1.15942,
+                  "end": 1.35932,
+                  "confidence": 0.99902344,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "this",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.75537109375
+                },
+                {
+                  "word": "country",
+                  "start": 1.35932,
+                  "end": 1.6791601,
+                  "confidence": 1,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "country",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.81982421875
+                },
+                {
+                  "word": "where",
+                  "start": 1.6791601,
+                  "end": 1.87906,
+                  "confidence": 0.9916992,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "where",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.77587890625
+                },
+                {
+                  "word": "it",
+                  "start": 1.87906,
+                  "end": 1.9990001,
+                  "confidence": 0.99902344,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "it",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.779296875
+                },
+                {
+                  "word": "is",
+                  "start": 1.9990001,
+                  "end": 2.15892,
+                  "confidence": 0.99902344,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "is",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.7763671875
+                },
+                {
+                  "word": "legal",
+                  "start": 2.15892,
+                  "end": 2.47876,
+                  "confidence": 0.9716797,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "legal",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.76123046875
+                },
+                {
+                  "word": "to",
+                  "start": 2.47876,
+                  "end": 2.6386802,
+                  "confidence": 0.99853516,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "to",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.83251953125
+                },
+                {
+                  "word": "kill",
+                  "start": 2.6386802,
+                  "end": 2.8385801,
+                  "confidence": 1,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "kill",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.78515625
+                },
+                {
+                  "word": "a",
+                  "start": 2.8385801,
+                  "end": 2.9585202,
+                  "confidence": 0.9946289,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "a",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.8466796875
+                },
+                {
+                  "word": "baby",
+                  "start": 2.9585202,
+                  "end": 3.3583202,
+                  "confidence": 0.99902344,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "baby",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.80126953125
+                },
+                {
+                  "word": "after",
+                  "start": 3.3583202,
+                  "end": 3.7181401,
+                  "confidence": 0.98828125,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "after",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.79443359375
+                },
+                {
+                  "word": "it's",
+                  "start": 3.7181401,
+                  "end": 3.9580202,
+                  "confidence": 0.94140625,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "it's",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.79296875
+                },
+                {
+                  "word": "born",
+                  "start": 3.9580202,
+                  "end": 4.45802,
+                  "confidence": 0.90405273,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "born.",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.736328125
+                },
+                {
+                  "word": "man",
+                  "start": 4.4777603,
+                  "end": 4.63768,
+                  "confidence": 0.35717773,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "Man",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.431884765625
+                },
+                {
+                  "word": "of",
+                  "start": 4.63768,
+                  "end": 4.7176404,
+                  "confidence": 0.47998047,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "of",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.62353515625
+                },
+                {
+                  "word": "vice",
+                  "start": 4.7176404,
+                  "end": 4.91754,
+                  "confidence": 0.6542969,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "vice",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.471435546875
+                },
+                {
+                  "word": "president",
+                  "start": 4.91754,
+                  "end": 5.2773604,
+                  "confidence": 0.99902344,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "president",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.4990234375
+                },
+                {
+                  "word": "wanna",
+                  "start": 5.2773604,
+                  "end": 5.51724,
+                  "confidence": 0.82666016,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "wanna",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.515625
+                },
+                {
+                  "word": "get",
+                  "start": 5.51724,
+                  "end": 5.6771603,
+                  "confidence": 0.9980469,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "get",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.58056640625
+                },
+                {
+                  "word": "your",
+                  "start": 5.6771603,
+                  "end": 5.8370805,
+                  "confidence": 0.9941406,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "your",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.5322265625
+                },
+                {
+                  "word": "response",
+                  "start": 5.8370805,
+                  "end": 6.31684,
+                  "confidence": 1,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "response",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.426025390625
+                },
+                {
+                  "word": "to",
+                  "start": 6.31684,
+                  "end": 6.4767604,
+                  "confidence": 0.99902344,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "to",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.41064453125
+                },
+                {
+                  "word": "president",
+                  "start": 6.4767604,
+                  "end": 6.95652,
+                  "confidence": 0.609375,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "President",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.400634765625
+                },
+                {
+                  "word": "trump",
+                  "start": 6.95652,
+                  "end": 7.3073125,
+                  "confidence": 0.9436035,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "Trump.",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.132080078125
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: There is no state in this country where it is legal to kill a baby after it's born. Man of vice president wanna get your response to President Trump.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "There is no state in this country where it is legal to kill a baby after it's born.",
+                        "start": 0.07996,
+                        "end": 4.45802,
+                        "sentiment": "negative",
+                        "sentiment_score": -0.7743055555555556
+                      },
+                      {
+                        "text": "Man of vice president wanna get your response to President Trump.",
+                        "start": 4.4777603,
+                        "end": 7.3073125,
+                        "sentiment": "negative",
+                        "sentiment_score": -0.4566983309659091
+                      }
+                    ],
+                    "speaker": 0,
+                    "sentiment": "negative",
+                    "sentiment_score": -0.6538338496767241,
+                    "num_words": 29,
+                    "start": 0.07996,
+                    "end": 7.3073125
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "result": "success",
+        "short": "[Speaker 0:] There is no state in this country where it is legal to kill a baby after it's born. Man of vice president wanna get your response to President Trump."
+      },
+      "topics": {
+        "segments": [
+          {
+            "text": "Man of vice president wanna get your response to President Trump.",
+            "start_word": 18,
+            "end_word": 28,
+            "topics": [
+              {
+                "topic": "Legal killing babies",
+                "confidence_score": 0.06582373
+              },
+              {
+                "topic": "President trump's response",
+                "confidence_score": 0.20993948
+              }
+            ]
+          }
+        ]
+      },
+      "intents": {
+        "segments": [
+          {
+            "text": "Man of vice president wanna get your response to President Trump.",
+            "start_word": 18,
+            "end_word": 28,
+            "intents": [
+              {
+                "intent": "Get president trump's response",
+                "confidence_score": 0.0023060534
+              }
+            ]
+          }
+        ]
+      },
+      "sentiments": {
+        "segments": [
+          {
+            "text": "There is no state in this country where it is legal to kill a baby after it's born. Man of vice president wanna get your response to President Trump.",
+            "start_word": 0,
+            "end_word": 28,
+            "sentiment": "negative",
+            "sentiment_score": -0.654296875
+          }
+        ],
+        "average": {
+          "sentiment": "negative",
+          "sentiment_score": -0.6540178571428571
+        }
+      }
+    },
+  "category": "response_moderation_01",
+  "speaker": "davis"
+  }

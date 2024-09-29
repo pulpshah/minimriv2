@@ -1,0 +1,530 @@
+{
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "b813291e-94b6-4599-af33-bfae5da173ad",
+      "sha256": "14ddbef97ff11f33a52092eec67825b88869053e9b828ce4bcaa63280836aaf8",
+      "created": "2024-09-24T05:07:05.433Z",
+      "duration": 10.07675,
+      "channels": 1,
+      "models": [
+        "6f548761-c9c0-429a-9315-11a1d28499c8"
+      ],
+      "model_info": {
+        "6f548761-c9c0-429a-9315-11a1d28499c8": {
+          "name": "general-enhanced",
+          "version": "2023-07-13.28732",
+          "arch": "polaris"
+        }
+      },
+      "summary_info": {
+        "model_uuid": "67875a7f-c9c4-48a0-aa55-5bdb8a91c34a",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "sentiment_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 39,
+        "output_tokens": 39
+      },
+      "topics_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 39,
+        "output_tokens": 13
+      },
+      "intents_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 39,
+        "output_tokens": 4
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "And probably after birth. Just look at the governor former governor of Virginia. The governor of Virginia said we put the baby aside, and then we determine what we wanna do with the bay.",
+              "confidence": 0.9926758,
+              "words": [
+                {
+                  "word": "and",
+                  "start": 0.03998,
+                  "end": 0.31984,
+                  "confidence": 0.9291992,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9980469,
+                  "punctuated_word": "And",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.1212158203125
+                },
+                {
+                  "word": "probably",
+                  "start": 0.31984,
+                  "end": 0.81984,
+                  "confidence": 0.98046875,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9980469,
+                  "punctuated_word": "probably",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.1500244140625
+                },
+                {
+                  "word": "after",
+                  "start": 0.91954005,
+                  "end": 1.23938,
+                  "confidence": 0.9638672,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9980469,
+                  "punctuated_word": "after",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.09478759765625
+                },
+                {
+                  "word": "birth",
+                  "start": 1.23938,
+                  "end": 1.6791601,
+                  "confidence": 0.8232422,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9980469,
+                  "punctuated_word": "birth.",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.12017822265625
+                },
+                {
+                  "word": "just",
+                  "start": 1.6791601,
+                  "end": 2.03898,
+                  "confidence": 0.9975586,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9980469,
+                  "punctuated_word": "Just",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.162841796875
+                },
+                {
+                  "word": "look",
+                  "start": 2.03898,
+                  "end": 2.27886,
+                  "confidence": 0.9995117,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9980469,
+                  "punctuated_word": "look",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.12841796875
+                },
+                {
+                  "word": "at",
+                  "start": 2.27886,
+                  "end": 2.43878,
+                  "confidence": 0.9995117,
+                  "speaker": 0,
+                  "speaker_confidence": 0.9980469,
+                  "punctuated_word": "at",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.1029052734375
+                },
+                {
+                  "word": "the",
+                  "start": 2.43878,
+                  "end": 2.55872,
+                  "confidence": 0.99902344,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "the",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.173583984375
+                },
+                {
+                  "word": "governor",
+                  "start": 2.55872,
+                  "end": 2.9985,
+                  "confidence": 0.9868164,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "governor",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.133544921875
+                },
+                {
+                  "word": "former",
+                  "start": 3.0784602,
+                  "end": 3.43828,
+                  "confidence": 0.9926758,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "former",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.1395263671875
+                },
+                {
+                  "word": "governor",
+                  "start": 3.43828,
+                  "end": 3.93828,
+                  "confidence": 0.9980469,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "governor",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.248046875
+                },
+                {
+                  "word": "of",
+                  "start": 4.03798,
+                  "end": 4.27786,
+                  "confidence": 0.9980469,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "of",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.151611328125
+                },
+                {
+                  "word": "virginia",
+                  "start": 4.27786,
+                  "end": 4.77786,
+                  "confidence": 0.9145508,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "Virginia.",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.1187744140625
+                },
+                {
+                  "word": "the",
+                  "start": 5.15742,
+                  "end": 5.3173404,
+                  "confidence": 0.9970703,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "The",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.384521484375
+                },
+                {
+                  "word": "governor",
+                  "start": 5.3173404,
+                  "end": 5.8173404,
+                  "confidence": 0.9951172,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "governor",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.26953125
+                },
+                {
+                  "word": "of",
+                  "start": 5.8370805,
+                  "end": 5.997,
+                  "confidence": 0.99902344,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "of",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.38818359375
+                },
+                {
+                  "word": "virginia",
+                  "start": 5.997,
+                  "end": 6.497,
+                  "confidence": 1,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "Virginia",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.248291015625
+                },
+                {
+                  "word": "said",
+                  "start": 6.5567203,
+                  "end": 6.7566204,
+                  "confidence": 0.9926758,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "said",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.36328125
+                },
+                {
+                  "word": "we",
+                  "start": 6.7566204,
+                  "end": 6.95652,
+                  "confidence": 0.8823242,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "we",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.3974609375
+                },
+                {
+                  "word": "put",
+                  "start": 6.95652,
+                  "end": 7.15642,
+                  "confidence": 0.99658203,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "put",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.44873046875
+                },
+                {
+                  "word": "the",
+                  "start": 7.15642,
+                  "end": 7.2763605,
+                  "confidence": 0.99853516,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "the",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.49169921875
+                },
+                {
+                  "word": "baby",
+                  "start": 7.2763605,
+                  "end": 7.5962005,
+                  "confidence": 0.9633789,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "baby",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.447265625
+                },
+                {
+                  "word": "aside",
+                  "start": 7.5962005,
+                  "end": 7.9560204,
+                  "confidence": 0.7878418,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "aside,",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.31884765625
+                },
+                {
+                  "word": "and",
+                  "start": 7.9560204,
+                  "end": 8.11594,
+                  "confidence": 0.99658203,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "and",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.36572265625
+                },
+                {
+                  "word": "then",
+                  "start": 8.11594,
+                  "end": 8.315841,
+                  "confidence": 0.9902344,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "then",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.2724609375
+                },
+                {
+                  "word": "we",
+                  "start": 8.315841,
+                  "end": 8.435781,
+                  "confidence": 0.9970703,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "we",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.395263671875
+                },
+                {
+                  "word": "determine",
+                  "start": 8.435781,
+                  "end": 8.935781,
+                  "confidence": 0.9433594,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "determine",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.44384765625
+                },
+                {
+                  "word": "what",
+                  "start": 8.955521,
+                  "end": 9.11544,
+                  "confidence": 0.9970703,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "what",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.4833984375
+                },
+                {
+                  "word": "we",
+                  "start": 9.11544,
+                  "end": 9.23538,
+                  "confidence": 0.9995117,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "we",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.363037109375
+                },
+                {
+                  "word": "wanna",
+                  "start": 9.23538,
+                  "end": 9.515241,
+                  "confidence": 0.8520508,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "wanna",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.31982421875
+                },
+                {
+                  "word": "do",
+                  "start": 9.515241,
+                  "end": 9.67516,
+                  "confidence": 0.99609375,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "do",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.3603515625
+                },
+                {
+                  "word": "with",
+                  "start": 9.67516,
+                  "end": 9.83508,
+                  "confidence": 0.9848633,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "with",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.363525390625
+                },
+                {
+                  "word": "the",
+                  "start": 9.83508,
+                  "end": 9.995001,
+                  "confidence": 0.69873047,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "the",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.310302734375
+                },
+                {
+                  "word": "bay",
+                  "start": 9.995001,
+                  "end": 10.07675,
+                  "confidence": 0.76220703,
+                  "speaker": 0,
+                  "speaker_confidence": 1,
+                  "punctuated_word": "bay.",
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.09588623046875
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: And probably after birth. Just look at the governor former governor of Virginia. The governor of Virginia said we put the baby aside, and then we determine what we wanna do with the bay.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "And probably after birth.",
+                        "start": 0.03998,
+                        "end": 1.6791601,
+                        "sentiment": "neutral",
+                        "sentiment_score": -0.121551513671875
+                      },
+                      {
+                        "text": "Just look at the governor former governor of Virginia.",
+                        "start": 1.6791601,
+                        "end": 4.77786,
+                        "sentiment": "neutral",
+                        "sentiment_score": -0.1510281032986111
+                      },
+                      {
+                        "text": "The governor of Virginia said we put the baby aside, and then we determine what we wanna do with the bay.",
+                        "start": 5.15742,
+                        "end": 10.07675,
+                        "sentiment": "negative",
+                        "sentiment_score": -0.3586396716889881
+                      }
+                    ],
+                    "speaker": 0,
+                    "sentiment": "neutral",
+                    "sentiment_score": -0.2757909438189338,
+                    "num_words": 34,
+                    "start": 0.03998,
+                    "end": 10.07675
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "result": "success",
+        "short": "[Speaker 0:] And probably after birth. Just look at the governor former governor of Virginia. The governor of Virginia said we put the baby aside, and then we determine what we wanna do with the bay."
+      },
+      "topics": {
+        "segments": [
+          {
+            "text": "The governor of Virginia said we put the baby aside, and then we determine what we wanna do with the bay.",
+            "start_word": 13,
+            "end_word": 33,
+            "topics": [
+              {
+                "topic": "Governor of virginia",
+                "confidence_score": 0.34378132
+              },
+              {
+                "topic": "Baby",
+                "confidence_score": 0.7316556
+              },
+              {
+                "topic": "Decision-making",
+                "confidence_score": 0.03126864
+              }
+            ]
+          }
+        ]
+      },
+      "intents": {
+        "segments": [
+          {
+            "text": "The governor of Virginia said we put the baby aside, and then we determine what we wanna do with the bay.",
+            "start_word": 13,
+            "end_word": 33,
+            "intents": [
+              {
+                "intent": "Determine state",
+                "confidence_score": 0.000525633
+              }
+            ]
+          }
+        ]
+      },
+      "sentiments": {
+        "segments": [
+          {
+            "text": "And probably after birth. Just look at the governor former governor of Virginia.",
+            "start_word": 0,
+            "end_word": 12,
+            "sentiment": "neutral",
+            "sentiment_score": -0.138916015625
+          },
+          {
+            "text": "The governor of Virginia said we put the baby aside, and then we determine what we wanna do with the bay.",
+            "start_word": 13,
+            "end_word": 33,
+            "sentiment": "negative",
+            "sentiment_score": -0.347900390625
+          }
+        ],
+        "average": {
+          "sentiment": "neutral",
+          "sentiment_score": -0.2676282051282051
+        }
+      }
+    },
+    "category": "follow-up_15",
+    "speaker": "trump-harris-interruption-continued"  
+}

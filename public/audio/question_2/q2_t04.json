@@ -1,0 +1,4293 @@
+{
+  "metadata": {
+    "transaction_key": "deprecated",
+    "request_id": "9bafc57e-b6fe-451e-b310-8ab290952b1c",
+    "sha256": "c35cac3ae8188920f4733112cbbdc717ce92a357e7ab97b2ed295d2ba81c76a7",
+    "created": "2024-09-24T04:57:36.513Z",
+    "duration": 133.90044,
+    "channels": 1,
+    "models": [
+      "6f548761-c9c0-429a-9315-11a1d28499c8"
+    ],
+    "model_info": {
+      "6f548761-c9c0-429a-9315-11a1d28499c8": {
+        "name": "general-enhanced",
+        "version": "2023-07-13.28732",
+        "arch": "polaris"
+      }
+    },
+    "summary_info": {
+      "model_uuid": "67875a7f-c9c4-48a0-aa55-5bdb8a91c34a",
+      "input_tokens": 414,
+      "output_tokens": 80
+    },
+    "sentiment_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 463,
+      "output_tokens": 463
+    },
+    "topics_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 463,
+      "output_tokens": 11
+    },
+    "intents_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 463,
+      "output_tokens": 101
+    }
+  },
+  "results": {
+    "channels": [
+      {
+        "alternatives": [
+          {
+            "transcript": "As I said, you're gonna hear a bunch of lies, and that's not actually a surprising fact. Let's understand how we got here. Donald Trump hand selected 3 members of the United States Supreme Court with the intention that they would undo the protections of Roe V Wade, and they did exactly as he intended. And now in over 20 states, there are Trump abortion bans, which make it criminal for a doctor or nurse to provide health care in one state it provides prison for life. Trump abortion bans that make no exception even for rape and incest, which understand what that means. A survivor of a crime of violation to their body does not have the right to make a decision about what happens to their body next. That is immoral. And one does not have to abandon their faith. Or deeply held beliefs to agree. The government and Donald Trump certainly should not be telling a woman what to do with her body. I have talked with women around our country. You wanna talk about this is what people wanted, Pregnant women who want to carry a pregnancy to term suffering from a miscarriage being denied care in an emergency room because the health care providers are afraid they might go to jail, and she's bleeding out in a car in the parking lot. She didn't want that. Her husband didn't want that. A twelve or thirteen year old survivor of incest being forced to carry a pregnancy to term. They don't want that. And I pledged to you when Congress passes a bill to put back in place the protections of Roe v Wade. As president of the United States, I will proudly sign it into law. But understand if Donald Trump were to be reelected, he will sign a national abortion ban. Understand in his project 2025, there would be a national abortion a monitor that would be monitoring your pregnancies, your miscarriages, I think the American people believe that certain freedoms, in particular, the freedom to make decisions about one's own body, should not be made by the government.",
+            "confidence": 0.99853516,
+            "words": [
+              {
+                "word": "as",
+                "start": 0.119940005,
+                "end": 0.27986002,
+                "confidence": 0.9682617,
+                "speaker": 0,
+                "speaker_confidence": 0.09472656,
+                "punctuated_word": "As",
+                "sentiment": "negative",
+                "sentiment_score": -0.4287109375
+              },
+              {
+                "word": "i",
+                "start": 0.27986002,
+                "end": 0.3998,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.09472656,
+                "punctuated_word": "I",
+                "sentiment": "negative",
+                "sentiment_score": -0.38525390625
+              },
+              {
+                "word": "said",
+                "start": 0.3998,
+                "end": 0.59970003,
+                "confidence": 0.9543457,
+                "speaker": 0,
+                "speaker_confidence": 0.09472656,
+                "punctuated_word": "said,",
+                "sentiment": "negative",
+                "sentiment_score": -0.388671875
+              },
+              {
+                "word": "you're",
+                "start": 0.59970003,
+                "end": 0.75962,
+                "confidence": 0.99365234,
+                "speaker": 0,
+                "speaker_confidence": 0.09472656,
+                "punctuated_word": "you're",
+                "sentiment": "negative",
+                "sentiment_score": -0.69482421875
+              },
+              {
+                "word": "gonna",
+                "start": 0.75962,
+                "end": 0.99950004,
+                "confidence": 0.8642578,
+                "speaker": 0,
+                "speaker_confidence": 0.09472656,
+                "punctuated_word": "gonna",
+                "sentiment": "negative",
+                "sentiment_score": -0.7763671875
+              },
+              {
+                "word": "hear",
+                "start": 0.99950004,
+                "end": 1.15942,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 0.09472656,
+                "punctuated_word": "hear",
+                "sentiment": "negative",
+                "sentiment_score": -0.83056640625
+              },
+              {
+                "word": "a",
+                "start": 1.15942,
+                "end": 1.1994001,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "a",
+                "sentiment": "negative",
+                "sentiment_score": -0.841796875
+              },
+              {
+                "word": "bunch",
+                "start": 1.1994001,
+                "end": 1.43928,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "bunch",
+                "sentiment": "negative",
+                "sentiment_score": -0.8681640625
+              },
+              {
+                "word": "of",
+                "start": 1.43928,
+                "end": 1.5992,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "of",
+                "sentiment": "negative",
+                "sentiment_score": -0.86083984375
+              },
+              {
+                "word": "lies",
+                "start": 1.5992,
+                "end": 2.0992,
+                "confidence": 0.8251953,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "lies,",
+                "sentiment": "negative",
+                "sentiment_score": -0.6796875
+              },
+              {
+                "word": "and",
+                "start": 2.15892,
+                "end": 2.3988001,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "and",
+                "sentiment": "negative",
+                "sentiment_score": -0.48828125
+              },
+              {
+                "word": "that's",
+                "start": 2.3988001,
+                "end": 2.6786602,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "that's",
+                "sentiment": "negative",
+                "sentiment_score": -0.63525390625
+              },
+              {
+                "word": "not",
+                "start": 2.6786602,
+                "end": 2.9585202,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "not",
+                "sentiment": "negative",
+                "sentiment_score": -0.39306640625
+              },
+              {
+                "word": "actually",
+                "start": 2.9585202,
+                "end": 3.43828,
+                "confidence": 0.99365234,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "actually",
+                "sentiment": "negative",
+                "sentiment_score": -0.51416015625
+              },
+              {
+                "word": "a",
+                "start": 3.43828,
+                "end": 3.5582201,
+                "confidence": 0.98779297,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "a",
+                "sentiment": "negative",
+                "sentiment_score": -0.58203125
+              },
+              {
+                "word": "surprising",
+                "start": 3.5582201,
+                "end": 4.05822,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "surprising",
+                "sentiment": "negative",
+                "sentiment_score": -0.483642578125
+              },
+              {
+                "word": "fact",
+                "start": 4.1979003,
+                "end": 4.6979003,
+                "confidence": 0.9892578,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "fact.",
+                "sentiment": "negative",
+                "sentiment_score": -0.57958984375
+              },
+              {
+                "word": "let's",
+                "start": 5.51724,
+                "end": 5.7971,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "Let's",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1776123046875
+              },
+              {
+                "word": "understand",
+                "start": 5.7971,
+                "end": 6.27686,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "understand",
+                "sentiment": "neutral",
+                "sentiment_score": -0.16455078125
+              },
+              {
+                "word": "how",
+                "start": 6.27686,
+                "end": 6.4367805,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "how",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1937255859375
+              },
+              {
+                "word": "we",
+                "start": 6.4367805,
+                "end": 6.5967,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "we",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1943359375
+              },
+              {
+                "word": "got",
+                "start": 6.5967,
+                "end": 6.7966003,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "got",
+                "sentiment": "neutral",
+                "sentiment_score": -0.181884765625
+              },
+              {
+                "word": "here",
+                "start": 6.7966003,
+                "end": 7.2966003,
+                "confidence": 0.99658203,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "here.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.151123046875
+              },
+              {
+                "word": "donald",
+                "start": 7.8760605,
+                "end": 8.3760605,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "Donald",
+                "sentiment": "neutral",
+                "sentiment_score": -0.3125
+              },
+              {
+                "word": "trump",
+                "start": 8.395801,
+                "end": 8.895801,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "Trump",
+                "sentiment": "negative",
+                "sentiment_score": -0.353515625
+              },
+              {
+                "word": "hand",
+                "start": 9.435281,
+                "end": 9.7951,
+                "confidence": 0.67626953,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "hand",
+                "sentiment": "negative",
+                "sentiment_score": -0.33349609375
+              },
+              {
+                "word": "selected",
+                "start": 9.7951,
+                "end": 10.2951,
+                "confidence": 0.99121094,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "selected",
+                "sentiment": "negative",
+                "sentiment_score": -0.3544921875
+              },
+              {
+                "word": "3",
+                "start": 10.3948,
+                "end": 10.594701,
+                "confidence": 0.93652344,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "3",
+                "sentiment": "neutral",
+                "sentiment_score": -0.289794921875
+              },
+              {
+                "word": "members",
+                "start": 10.594701,
+                "end": 10.95452,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "members",
+                "sentiment": "neutral",
+                "sentiment_score": -0.237548828125
+              },
+              {
+                "word": "of",
+                "start": 10.95452,
+                "end": 11.07446,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "of",
+                "sentiment": "neutral",
+                "sentiment_score": -0.189453125
+              },
+              {
+                "word": "the",
+                "start": 11.07446,
+                "end": 11.194401,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "the",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2060546875
+              },
+              {
+                "word": "united",
+                "start": 11.194401,
+                "end": 11.55422,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "United",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0863037109375
+              },
+              {
+                "word": "states",
+                "start": 11.55422,
+                "end": 11.874061,
+                "confidence": 0.99365234,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "States",
+                "sentiment": "neutral",
+                "sentiment_score": -0.095458984375
+              },
+              {
+                "word": "supreme",
+                "start": 11.874061,
+                "end": 12.233881,
+                "confidence": 0.94189453,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "Supreme",
+                "sentiment": "neutral",
+                "sentiment_score": -0.059722900390625
+              },
+              {
+                "word": "court",
+                "start": 12.233881,
+                "end": 12.513741,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "Court",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1005859375
+              },
+              {
+                "word": "with",
+                "start": 12.513741,
+                "end": 12.67366,
+                "confidence": 0.76464844,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "with",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1439208984375
+              },
+              {
+                "word": "the",
+                "start": 12.67366,
+                "end": 12.7936,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "the",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2158203125
+              },
+              {
+                "word": "intention",
+                "start": 12.7936,
+                "end": 13.2936,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "intention",
+                "sentiment": "neutral",
+                "sentiment_score": -0.029296875
+              },
+              {
+                "word": "that",
+                "start": 13.513241,
+                "end": 13.7131405,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "that",
+                "sentiment": "negative",
+                "sentiment_score": -0.354736328125
+              },
+              {
+                "word": "they",
+                "start": 13.7131405,
+                "end": 13.87306,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "they",
+                "sentiment": "negative",
+                "sentiment_score": -0.4208984375
+              },
+              {
+                "word": "would",
+                "start": 13.87306,
+                "end": 14.085,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "would",
+                "sentiment": "negative",
+                "sentiment_score": -0.45703125
+              },
+              {
+                "word": "undo",
+                "start": 14.12498,
+                "end": 14.4848,
+                "confidence": 0.9736328,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "undo",
+                "sentiment": "negative",
+                "sentiment_score": -0.4150390625
+              },
+              {
+                "word": "the",
+                "start": 14.4848,
+                "end": 14.60474,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "the",
+                "sentiment": "negative",
+                "sentiment_score": -0.488525390625
+              },
+              {
+                "word": "protections",
+                "start": 14.60474,
+                "end": 15.10474,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "protections",
+                "sentiment": "negative",
+                "sentiment_score": -0.3662109375
+              },
+              {
+                "word": "of",
+                "start": 15.16446,
+                "end": 15.2844,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "of",
+                "sentiment": "negative",
+                "sentiment_score": -0.361328125
+              },
+              {
+                "word": "roe",
+                "start": 15.2844,
+                "end": 15.484301,
+                "confidence": 0.9638672,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "Roe",
+                "sentiment": "neutral",
+                "sentiment_score": -0.26904296875
+              },
+              {
+                "word": "v",
+                "start": 15.484301,
+                "end": 15.60424,
+                "confidence": 0.6821289,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "V",
+                "sentiment": "neutral",
+                "sentiment_score": -0.173095703125
+              },
+              {
+                "word": "wade",
+                "start": 15.60424,
+                "end": 16.10424,
+                "confidence": 0.50183105,
+                "speaker": 0,
+                "speaker_confidence": 0.7036133,
+                "punctuated_word": "Wade,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.259765625
+              },
+              {
+                "word": "and",
+                "start": 16.6837,
+                "end": 16.8836,
+                "confidence": 0.99316406,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "and",
+                "sentiment": "neutral",
+                "sentiment_score": -0.134765625
+              },
+              {
+                "word": "they",
+                "start": 16.8836,
+                "end": 17.04352,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "they",
+                "sentiment": "negative",
+                "sentiment_score": -0.357177734375
+              },
+              {
+                "word": "did",
+                "start": 17.04352,
+                "end": 17.36336,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "did",
+                "sentiment": "neutral",
+                "sentiment_score": -0.317138671875
+              },
+              {
+                "word": "exactly",
+                "start": 17.36336,
+                "end": 17.86336,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "exactly",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1685791015625
+              },
+              {
+                "word": "as",
+                "start": 18.04302,
+                "end": 18.20294,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "as",
+                "sentiment": "neutral",
+                "sentiment_score": -0.158447265625
+              },
+              {
+                "word": "he",
+                "start": 18.20294,
+                "end": 18.40284,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "he",
+                "sentiment": "neutral",
+                "sentiment_score": -0.30029296875
+              },
+              {
+                "word": "intended",
+                "start": 18.40284,
+                "end": 18.90284,
+                "confidence": 0.96728516,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "intended.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.25
+              },
+              {
+                "word": "and",
+                "start": 19.2824,
+                "end": 19.4823,
+                "confidence": 0.9692383,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "And",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2529296875
+              },
+              {
+                "word": "now",
+                "start": 19.4823,
+                "end": 19.762161,
+                "confidence": 0.9868164,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "now",
+                "sentiment": "negative",
+                "sentiment_score": -0.33642578125
+              },
+              {
+                "word": "in",
+                "start": 19.762161,
+                "end": 20.082,
+                "confidence": 0.74560547,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "in",
+                "sentiment": "neutral",
+                "sentiment_score": -0.275390625
+              },
+              {
+                "word": "over",
+                "start": 20.082,
+                "end": 20.56176,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "over",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2218017578125
+              },
+              {
+                "word": "20",
+                "start": 20.56176,
+                "end": 21.06176,
+                "confidence": 0.97021484,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "20",
+                "sentiment": "neutral",
+                "sentiment_score": -0.248046875
+              },
+              {
+                "word": "states",
+                "start": 21.16146,
+                "end": 21.66146,
+                "confidence": 0.94140625,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "states,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.22412109375
+              },
+              {
+                "word": "there",
+                "start": 21.84112,
+                "end": 22.081001,
+                "confidence": 0.9921875,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "there",
+                "sentiment": "negative",
+                "sentiment_score": -0.419921875
+              },
+              {
+                "word": "are",
+                "start": 22.081001,
+                "end": 22.52078,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "are",
+                "sentiment": "negative",
+                "sentiment_score": -0.406005859375
+              },
+              {
+                "word": "trump",
+                "start": 22.52078,
+                "end": 22.8806,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "Trump",
+                "sentiment": "negative",
+                "sentiment_score": -0.37060546875
+              },
+              {
+                "word": "abortion",
+                "start": 22.8806,
+                "end": 23.3806,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "abortion",
+                "sentiment": "negative",
+                "sentiment_score": -0.489990234375
+              },
+              {
+                "word": "bans",
+                "start": 23.44032,
+                "end": 23.94032,
+                "confidence": 0.8288574,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "bans,",
+                "sentiment": "negative",
+                "sentiment_score": -0.51904296875
+              },
+              {
+                "word": "which",
+                "start": 24.51978,
+                "end": 24.83962,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "which",
+                "sentiment": "negative",
+                "sentiment_score": -0.52978515625
+              },
+              {
+                "word": "make",
+                "start": 24.83962,
+                "end": 25.11948,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "make",
+                "sentiment": "negative",
+                "sentiment_score": -0.498046875
+              },
+              {
+                "word": "it",
+                "start": 25.11948,
+                "end": 25.61948,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "it",
+                "sentiment": "negative",
+                "sentiment_score": -0.521484375
+              },
+              {
+                "word": "criminal",
+                "start": 26.35886,
+                "end": 26.82,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "criminal",
+                "sentiment": "negative",
+                "sentiment_score": -0.564453125
+              },
+              {
+                "word": "for",
+                "start": 27.0199,
+                "end": 27.379719,
+                "confidence": 0.80908203,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "for",
+                "sentiment": "negative",
+                "sentiment_score": -0.58642578125
+              },
+              {
+                "word": "a",
+                "start": 27.379719,
+                "end": 27.57962,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "a",
+                "sentiment": "negative",
+                "sentiment_score": -0.5546875
+              },
+              {
+                "word": "doctor",
+                "start": 27.57962,
+                "end": 28.07962,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "doctor",
+                "sentiment": "negative",
+                "sentiment_score": -0.52099609375
+              },
+              {
+                "word": "or",
+                "start": 28.09936,
+                "end": 28.29926,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "or",
+                "sentiment": "negative",
+                "sentiment_score": -0.5244140625
+              },
+              {
+                "word": "nurse",
+                "start": 28.29926,
+                "end": 28.69906,
+                "confidence": 0.98535156,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "nurse",
+                "sentiment": "negative",
+                "sentiment_score": -0.490478515625
+              },
+              {
+                "word": "to",
+                "start": 28.69906,
+                "end": 28.85898,
+                "confidence": 0.99609375,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "to",
+                "sentiment": "negative",
+                "sentiment_score": -0.517578125
+              },
+              {
+                "word": "provide",
+                "start": 28.85898,
+                "end": 29.29876,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "provide",
+                "sentiment": "negative",
+                "sentiment_score": -0.474609375
+              },
+              {
+                "word": "health",
+                "start": 29.29876,
+                "end": 29.578619,
+                "confidence": 0.7207031,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "health",
+                "sentiment": "negative",
+                "sentiment_score": -0.409912109375
+              },
+              {
+                "word": "care",
+                "start": 29.578619,
+                "end": 29.89846,
+                "confidence": 0.99609375,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "care",
+                "sentiment": "negative",
+                "sentiment_score": -0.45947265625
+              },
+              {
+                "word": "in",
+                "start": 29.89846,
+                "end": 30.13834,
+                "confidence": 0.99560547,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "in",
+                "sentiment": "negative",
+                "sentiment_score": -0.40576171875
+              },
+              {
+                "word": "one",
+                "start": 30.13834,
+                "end": 30.4182,
+                "confidence": 0.9350586,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "one",
+                "sentiment": "negative",
+                "sentiment_score": -0.369384765625
+              },
+              {
+                "word": "state",
+                "start": 30.4182,
+                "end": 30.818,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "state",
+                "sentiment": "negative",
+                "sentiment_score": -0.3798828125
+              },
+              {
+                "word": "it",
+                "start": 30.818,
+                "end": 30.97792,
+                "confidence": 0.7006836,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "it",
+                "sentiment": "negative",
+                "sentiment_score": -0.533203125
+              },
+              {
+                "word": "provides",
+                "start": 30.97792,
+                "end": 31.47792,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "provides",
+                "sentiment": "negative",
+                "sentiment_score": -0.489501953125
+              },
+              {
+                "word": "prison",
+                "start": 31.49766,
+                "end": 31.937439,
+                "confidence": 0.9926758,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "prison",
+                "sentiment": "negative",
+                "sentiment_score": -0.55126953125
+              },
+              {
+                "word": "for",
+                "start": 31.937439,
+                "end": 32.2173,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "for",
+                "sentiment": "negative",
+                "sentiment_score": -0.499755859375
+              },
+              {
+                "word": "life",
+                "start": 32.2173,
+                "end": 32.7173,
+                "confidence": 0.9658203,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "life.",
+                "sentiment": "negative",
+                "sentiment_score": -0.455078125
+              },
+              {
+                "word": "trump",
+                "start": 33.656578,
+                "end": 33.93644,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "Trump",
+                "sentiment": "negative",
+                "sentiment_score": -0.3623046875
+              },
+              {
+                "word": "abortion",
+                "start": 33.93644,
+                "end": 34.43644,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "abortion",
+                "sentiment": "negative",
+                "sentiment_score": -0.362060546875
+              },
+              {
+                "word": "bans",
+                "start": 34.45618,
+                "end": 34.69606,
+                "confidence": 0.9169922,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "bans",
+                "sentiment": "negative",
+                "sentiment_score": -0.39892578125
+              },
+              {
+                "word": "that",
+                "start": 34.69606,
+                "end": 34.85598,
+                "confidence": 0.9765625,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "that",
+                "sentiment": "negative",
+                "sentiment_score": -0.374755859375
+              },
+              {
+                "word": "make",
+                "start": 34.85598,
+                "end": 35.09586,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "make",
+                "sentiment": "neutral",
+                "sentiment_score": -0.310546875
+              },
+              {
+                "word": "no",
+                "start": 35.09586,
+                "end": 35.29576,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "no",
+                "sentiment": "neutral",
+                "sentiment_score": -0.265625
+              },
+              {
+                "word": "exception",
+                "start": 35.29576,
+                "end": 35.79576,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "exception",
+                "sentiment": "negative",
+                "sentiment_score": -0.4501953125
+              },
+              {
+                "word": "even",
+                "start": 35.8155,
+                "end": 36.135338,
+                "confidence": 0.97802734,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "even",
+                "sentiment": "neutral",
+                "sentiment_score": -0.280029296875
+              },
+              {
+                "word": "for",
+                "start": 36.135338,
+                "end": 36.33524,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "for",
+                "sentiment": "negative",
+                "sentiment_score": -0.55029296875
+              },
+              {
+                "word": "rape",
+                "start": 36.33524,
+                "end": 36.6151,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "rape",
+                "sentiment": "negative",
+                "sentiment_score": -0.5068359375
+              },
+              {
+                "word": "and",
+                "start": 36.6151,
+                "end": 36.815002,
+                "confidence": 0.9916992,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "and",
+                "sentiment": "negative",
+                "sentiment_score": -0.51806640625
+              },
+              {
+                "word": "incest",
+                "start": 36.815002,
+                "end": 37.315002,
+                "confidence": 0.9260254,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "incest,",
+                "sentiment": "negative",
+                "sentiment_score": -0.440673828125
+              },
+              {
+                "word": "which",
+                "start": 37.37472,
+                "end": 37.65458,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "which",
+                "sentiment": "neutral",
+                "sentiment_score": -0.27294921875
+              },
+              {
+                "word": "understand",
+                "start": 37.65458,
+                "end": 38.15458,
+                "confidence": 0.99560547,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "understand",
+                "sentiment": "neutral",
+                "sentiment_score": -0.298828125
+              },
+              {
+                "word": "what",
+                "start": 38.214302,
+                "end": 38.454178,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "what",
+                "sentiment": "neutral",
+                "sentiment_score": -0.24609375
+              },
+              {
+                "word": "that",
+                "start": 38.454178,
+                "end": 38.69406,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "that",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2724609375
+              },
+              {
+                "word": "means",
+                "start": 38.69406,
+                "end": 39.19406,
+                "confidence": 0.9831543,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "means.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.3203125
+              },
+              {
+                "word": "a",
+                "start": 39.50486,
+                "end": 39.624798,
+                "confidence": 0.6826172,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "A",
+                "sentiment": "negative",
+                "sentiment_score": -0.60302734375
+              },
+              {
+                "word": "survivor",
+                "start": 39.624798,
+                "end": 40.124798,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "survivor",
+                "sentiment": "negative",
+                "sentiment_score": -0.60986328125
+              },
+              {
+                "word": "of",
+                "start": 40.30446,
+                "end": 40.50436,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "of",
+                "sentiment": "negative",
+                "sentiment_score": -0.63525390625
+              },
+              {
+                "word": "a",
+                "start": 40.50436,
+                "end": 40.74424,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "a",
+                "sentiment": "negative",
+                "sentiment_score": -0.6767578125
+              },
+              {
+                "word": "crime",
+                "start": 40.74424,
+                "end": 41.224,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "crime",
+                "sentiment": "negative",
+                "sentiment_score": -0.67724609375
+              },
+              {
+                "word": "of",
+                "start": 41.224,
+                "end": 41.423897,
+                "confidence": 0.8852539,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "of",
+                "sentiment": "negative",
+                "sentiment_score": -0.6025390625
+              },
+              {
+                "word": "violation",
+                "start": 41.423897,
+                "end": 41.923897,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "violation",
+                "sentiment": "negative",
+                "sentiment_score": -0.5986328125
+              },
+              {
+                "word": "to",
+                "start": 42.343437,
+                "end": 42.54334,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "to",
+                "sentiment": "negative",
+                "sentiment_score": -0.65087890625
+              },
+              {
+                "word": "their",
+                "start": 42.54334,
+                "end": 42.8232,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "their",
+                "sentiment": "negative",
+                "sentiment_score": -0.6279296875
+              },
+              {
+                "word": "body",
+                "start": 42.8232,
+                "end": 43.3232,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "body",
+                "sentiment": "negative",
+                "sentiment_score": -0.6474609375
+              },
+              {
+                "word": "does",
+                "start": 43.6228,
+                "end": 43.86268,
+                "confidence": 0.91748047,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "does",
+                "sentiment": "negative",
+                "sentiment_score": -0.61572265625
+              },
+              {
+                "word": "not",
+                "start": 43.86268,
+                "end": 44.10256,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "not",
+                "sentiment": "negative",
+                "sentiment_score": -0.6494140625
+              },
+              {
+                "word": "have",
+                "start": 44.10256,
+                "end": 44.342438,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "have",
+                "sentiment": "negative",
+                "sentiment_score": -0.6513671875
+              },
+              {
+                "word": "the",
+                "start": 44.342438,
+                "end": 44.46238,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "the",
+                "sentiment": "negative",
+                "sentiment_score": -0.68798828125
+              },
+              {
+                "word": "right",
+                "start": 44.46238,
+                "end": 44.70226,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "right",
+                "sentiment": "negative",
+                "sentiment_score": -0.6318359375
+              },
+              {
+                "word": "to",
+                "start": 44.70226,
+                "end": 44.822197,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "to",
+                "sentiment": "negative",
+                "sentiment_score": -0.73095703125
+              },
+              {
+                "word": "make",
+                "start": 44.822197,
+                "end": 45.06208,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "make",
+                "sentiment": "negative",
+                "sentiment_score": -0.70751953125
+              },
+              {
+                "word": "a",
+                "start": 45.06208,
+                "end": 45.10206,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "a",
+                "sentiment": "negative",
+                "sentiment_score": -0.7021484375
+              },
+              {
+                "word": "decision",
+                "start": 45.10206,
+                "end": 45.54184,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "decision",
+                "sentiment": "negative",
+                "sentiment_score": -0.64697265625
+              },
+              {
+                "word": "about",
+                "start": 45.54184,
+                "end": 45.821697,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "about",
+                "sentiment": "negative",
+                "sentiment_score": -0.64208984375
+              },
+              {
+                "word": "what",
+                "start": 45.821697,
+                "end": 46.061577,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "what",
+                "sentiment": "negative",
+                "sentiment_score": -0.60400390625
+              },
+              {
+                "word": "happens",
+                "start": 46.061577,
+                "end": 46.561577,
+                "confidence": 0.99658203,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "happens",
+                "sentiment": "negative",
+                "sentiment_score": -0.5712890625
+              },
+              {
+                "word": "to",
+                "start": 46.661278,
+                "end": 46.821198,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "to",
+                "sentiment": "negative",
+                "sentiment_score": -0.6318359375
+              },
+              {
+                "word": "their",
+                "start": 46.821198,
+                "end": 47.0211,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "their",
+                "sentiment": "negative",
+                "sentiment_score": -0.62060546875
+              },
+              {
+                "word": "body",
+                "start": 47.0211,
+                "end": 47.38092,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "body",
+                "sentiment": "negative",
+                "sentiment_score": -0.6337890625
+              },
+              {
+                "word": "next",
+                "start": 47.38092,
+                "end": 47.740738,
+                "confidence": 0.9460449,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "next.",
+                "sentiment": "negative",
+                "sentiment_score": -0.59375
+              },
+              {
+                "word": "that",
+                "start": 47.740738,
+                "end": 47.980618,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "That",
+                "sentiment": "negative",
+                "sentiment_score": -0.86181640625
+              },
+              {
+                "word": "is",
+                "start": 47.980618,
+                "end": 48.30046,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "is",
+                "sentiment": "negative",
+                "sentiment_score": -0.89697265625
+              },
+              {
+                "word": "immoral",
+                "start": 48.30046,
+                "end": 48.80046,
+                "confidence": 0.9199219,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "immoral.",
+                "sentiment": "negative",
+                "sentiment_score": -0.810546875
+              },
+              {
+                "word": "and",
+                "start": 49.93964,
+                "end": 50.4194,
+                "confidence": 0.9848633,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "And",
+                "sentiment": "negative",
+                "sentiment_score": -0.61181640625
+              },
+              {
+                "word": "one",
+                "start": 50.4194,
+                "end": 50.699257,
+                "confidence": 0.84472656,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "one",
+                "sentiment": "negative",
+                "sentiment_score": -0.55029296875
+              },
+              {
+                "word": "does",
+                "start": 50.699257,
+                "end": 50.97912,
+                "confidence": 0.99560547,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "does",
+                "sentiment": "negative",
+                "sentiment_score": -0.5400390625
+              },
+              {
+                "word": "not",
+                "start": 50.97912,
+                "end": 51.218998,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "not",
+                "sentiment": "negative",
+                "sentiment_score": -0.4814453125
+              },
+              {
+                "word": "have",
+                "start": 51.218998,
+                "end": 51.458878,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "have",
+                "sentiment": "negative",
+                "sentiment_score": -0.419189453125
+              },
+              {
+                "word": "to",
+                "start": 51.458878,
+                "end": 51.618797,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "to",
+                "sentiment": "negative",
+                "sentiment_score": -0.6044921875
+              },
+              {
+                "word": "abandon",
+                "start": 51.618797,
+                "end": 52.118797,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "abandon",
+                "sentiment": "negative",
+                "sentiment_score": -0.61669921875
+              },
+              {
+                "word": "their",
+                "start": 52.29846,
+                "end": 52.538338,
+                "confidence": 0.9189453,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "their",
+                "sentiment": "negative",
+                "sentiment_score": -0.5732421875
+              },
+              {
+                "word": "faith",
+                "start": 52.538338,
+                "end": 53.038338,
+                "confidence": 0.8312988,
+                "speaker": 0,
+                "speaker_confidence": 0.72998047,
+                "punctuated_word": "faith.",
+                "sentiment": "negative",
+                "sentiment_score": -0.63916015625
+              },
+              {
+                "word": "or",
+                "start": 53.6198,
+                "end": 53.819702,
+                "confidence": 0.9746094,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "Or",
+                "sentiment": "negative",
+                "sentiment_score": -0.48388671875
+              },
+              {
+                "word": "deeply",
+                "start": 53.819702,
+                "end": 54.29946,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "deeply",
+                "sentiment": "negative",
+                "sentiment_score": -0.397705078125
+              },
+              {
+                "word": "held",
+                "start": 54.29946,
+                "end": 54.579323,
+                "confidence": 0.99072266,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "held",
+                "sentiment": "negative",
+                "sentiment_score": -0.364501953125
+              },
+              {
+                "word": "beliefs",
+                "start": 54.579323,
+                "end": 55.079323,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "beliefs",
+                "sentiment": "negative",
+                "sentiment_score": -0.477783203125
+              },
+              {
+                "word": "to",
+                "start": 55.33894,
+                "end": 55.578823,
+                "confidence": 0.9736328,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "to",
+                "sentiment": "negative",
+                "sentiment_score": -0.432861328125
+              },
+              {
+                "word": "agree",
+                "start": 55.578823,
+                "end": 56.078823,
+                "confidence": 0.8342285,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "agree.",
+                "sentiment": "negative",
+                "sentiment_score": -0.4677734375
+              },
+              {
+                "word": "the",
+                "start": 56.45838,
+                "end": 56.69826,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "The",
+                "sentiment": "negative",
+                "sentiment_score": -0.61279296875
+              },
+              {
+                "word": "government",
+                "start": 56.69826,
+                "end": 57.19826,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "government",
+                "sentiment": "negative",
+                "sentiment_score": -0.53515625
+              },
+              {
+                "word": "and",
+                "start": 57.49786,
+                "end": 57.69776,
+                "confidence": 0.8300781,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "and",
+                "sentiment": "negative",
+                "sentiment_score": -0.72509765625
+              },
+              {
+                "word": "donald",
+                "start": 57.69776,
+                "end": 58.17752,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "Donald",
+                "sentiment": "negative",
+                "sentiment_score": -0.59814453125
+              },
+              {
+                "word": "trump",
+                "start": 58.17752,
+                "end": 58.49736,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "Trump",
+                "sentiment": "negative",
+                "sentiment_score": -0.53662109375
+              },
+              {
+                "word": "certainly",
+                "start": 58.49736,
+                "end": 58.97712,
+                "confidence": 0.9892578,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "certainly",
+                "sentiment": "negative",
+                "sentiment_score": -0.62451171875
+              },
+              {
+                "word": "should",
+                "start": 58.97712,
+                "end": 59.217003,
+                "confidence": 0.99609375,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "should",
+                "sentiment": "negative",
+                "sentiment_score": -0.74365234375
+              },
+              {
+                "word": "not",
+                "start": 59.217003,
+                "end": 59.49686,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "not",
+                "sentiment": "negative",
+                "sentiment_score": -0.71484375
+              },
+              {
+                "word": "be",
+                "start": 59.49686,
+                "end": 59.65678,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "be",
+                "sentiment": "negative",
+                "sentiment_score": -0.77490234375
+              },
+              {
+                "word": "telling",
+                "start": 59.65678,
+                "end": 60.0166,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "telling",
+                "sentiment": "negative",
+                "sentiment_score": -0.7939453125
+              },
+              {
+                "word": "a",
+                "start": 60.0166,
+                "end": 60.09656,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "a",
+                "sentiment": "negative",
+                "sentiment_score": -0.76318359375
+              },
+              {
+                "word": "woman",
+                "start": 60.09656,
+                "end": 60.49636,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "woman",
+                "sentiment": "negative",
+                "sentiment_score": -0.75390625
+              },
+              {
+                "word": "what",
+                "start": 60.49636,
+                "end": 60.73624,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "what",
+                "sentiment": "negative",
+                "sentiment_score": -0.79248046875
+              },
+              {
+                "word": "to",
+                "start": 60.73624,
+                "end": 60.936142,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "to",
+                "sentiment": "negative",
+                "sentiment_score": -0.77734375
+              },
+              {
+                "word": "do",
+                "start": 60.936142,
+                "end": 61.436142,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "do",
+                "sentiment": "negative",
+                "sentiment_score": -0.7236328125
+              },
+              {
+                "word": "with",
+                "start": 61.535843,
+                "end": 61.97562,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "with",
+                "sentiment": "negative",
+                "sentiment_score": -0.65283203125
+              },
+              {
+                "word": "her",
+                "start": 61.97562,
+                "end": 62.47562,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "her",
+                "sentiment": "negative",
+                "sentiment_score": -0.6669921875
+              },
+              {
+                "word": "body",
+                "start": 62.49536,
+                "end": 62.97512,
+                "confidence": 0.9963379,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "body.",
+                "sentiment": "negative",
+                "sentiment_score": -0.55419921875
+              },
+              {
+                "word": "i",
+                "start": 62.97512,
+                "end": 63.13504,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "I",
+                "sentiment": "neutral",
+                "sentiment_score": -0.22705078125
+              },
+              {
+                "word": "have",
+                "start": 63.13504,
+                "end": 63.4149,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "have",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1973876953125
+              },
+              {
+                "word": "talked",
+                "start": 63.4149,
+                "end": 63.73474,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "talked",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2147216796875
+              },
+              {
+                "word": "with",
+                "start": 63.73474,
+                "end": 63.934643,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "with",
+                "sentiment": "neutral",
+                "sentiment_score": -0.242919921875
+              },
+              {
+                "word": "women",
+                "start": 63.934643,
+                "end": 64.43465,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "women",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1746826171875
+              },
+              {
+                "word": "around",
+                "start": 64.6143,
+                "end": 65.1143,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "around",
+                "sentiment": "neutral",
+                "sentiment_score": -0.17822265625
+              },
+              {
+                "word": "our",
+                "start": 65.13404,
+                "end": 65.45388,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "our",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1119384765625
+              },
+              {
+                "word": "country",
+                "start": 65.45388,
+                "end": 65.95388,
+                "confidence": 0.99609375,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "country.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.054168701171875
+              },
+              {
+                "word": "you",
+                "start": 66.25348,
+                "end": 66.4134,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "You",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1053466796875
+              },
+              {
+                "word": "wanna",
+                "start": 66.4134,
+                "end": 66.773224,
+                "confidence": 0.83496094,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "wanna",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1109619140625
+              },
+              {
+                "word": "talk",
+                "start": 66.773224,
+                "end": 67.0131,
+                "confidence": 0.9863281,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "talk",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0845947265625
+              },
+              {
+                "word": "about",
+                "start": 67.0131,
+                "end": 67.213005,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "about",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1009521484375
+              },
+              {
+                "word": "this",
+                "start": 67.213005,
+                "end": 67.45288,
+                "confidence": 0.7714844,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "this",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1239013671875
+              },
+              {
+                "word": "is",
+                "start": 67.45288,
+                "end": 67.6128,
+                "confidence": 0.9506836,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "is",
+                "sentiment": "neutral",
+                "sentiment_score": -0.16162109375
+              },
+              {
+                "word": "what",
+                "start": 67.6128,
+                "end": 67.852684,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "what",
+                "sentiment": "neutral",
+                "sentiment_score": -0.271240234375
+              },
+              {
+                "word": "people",
+                "start": 67.852684,
+                "end": 68.25248,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "people",
+                "sentiment": "neutral",
+                "sentiment_score": -0.185302734375
+              },
+              {
+                "word": "wanted",
+                "start": 68.25248,
+                "end": 68.75248,
+                "confidence": 0.7092285,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "wanted,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.24658203125
+              },
+              {
+                "word": "pregnant",
+                "start": 69.374756,
+                "end": 69.874756,
+                "confidence": 0.94905597,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "Pregnant",
+                "sentiment": "negative",
+                "sentiment_score": -0.461181640625
+              },
+              {
+                "word": "women",
+                "start": 69.97446,
+                "end": 70.47446,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "women",
+                "sentiment": "negative",
+                "sentiment_score": -0.50390625
+              },
+              {
+                "word": "who",
+                "start": 70.494194,
+                "end": 70.6941,
+                "confidence": 0.9741211,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "who",
+                "sentiment": "negative",
+                "sentiment_score": -0.48876953125
+              },
+              {
+                "word": "want",
+                "start": 70.6941,
+                "end": 70.933975,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "want",
+                "sentiment": "negative",
+                "sentiment_score": -0.457763671875
+              },
+              {
+                "word": "to",
+                "start": 70.933975,
+                "end": 71.093895,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "to",
+                "sentiment": "negative",
+                "sentiment_score": -0.4853515625
+              },
+              {
+                "word": "carry",
+                "start": 71.093895,
+                "end": 71.593895,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "carry",
+                "sentiment": "negative",
+                "sentiment_score": -0.471923828125
+              },
+              {
+                "word": "a",
+                "start": 71.81354,
+                "end": 71.93348,
+                "confidence": 0.97558594,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "a",
+                "sentiment": "negative",
+                "sentiment_score": -0.427734375
+              },
+              {
+                "word": "pregnancy",
+                "start": 71.93348,
+                "end": 72.43348,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "pregnancy",
+                "sentiment": "neutral",
+                "sentiment_score": -0.300048828125
+              },
+              {
+                "word": "to",
+                "start": 72.57316,
+                "end": 72.73308,
+                "confidence": 0.97802734,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "to",
+                "sentiment": "negative",
+                "sentiment_score": -0.335693359375
+              },
+              {
+                "word": "term",
+                "start": 72.73308,
+                "end": 73.23308,
+                "confidence": 0.9892578,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "term",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2568359375
+              },
+              {
+                "word": "suffering",
+                "start": 73.29279,
+                "end": 73.732574,
+                "confidence": 0.8959961,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "suffering",
+                "sentiment": "negative",
+                "sentiment_score": -0.50048828125
+              },
+              {
+                "word": "from",
+                "start": 73.732574,
+                "end": 74.012436,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "from",
+                "sentiment": "negative",
+                "sentiment_score": -0.51025390625
+              },
+              {
+                "word": "a",
+                "start": 74.012436,
+                "end": 74.0924,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "a",
+                "sentiment": "negative",
+                "sentiment_score": -0.433837890625
+              },
+              {
+                "word": "miscarriage",
+                "start": 74.0924,
+                "end": 74.5924,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "miscarriage",
+                "sentiment": "negative",
+                "sentiment_score": -0.42822265625
+              },
+              {
+                "word": "being",
+                "start": 74.812035,
+                "end": 75.131874,
+                "confidence": 0.6430664,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "being",
+                "sentiment": "negative",
+                "sentiment_score": -0.509765625
+              },
+              {
+                "word": "denied",
+                "start": 75.131874,
+                "end": 75.631874,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "denied",
+                "sentiment": "negative",
+                "sentiment_score": -0.556640625
+              },
+              {
+                "word": "care",
+                "start": 75.65162,
+                "end": 76.13138,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "care",
+                "sentiment": "negative",
+                "sentiment_score": -0.49853515625
+              },
+              {
+                "word": "in",
+                "start": 76.13138,
+                "end": 76.331276,
+                "confidence": 0.99560547,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "in",
+                "sentiment": "negative",
+                "sentiment_score": -0.603515625
+              },
+              {
+                "word": "an",
+                "start": 76.331276,
+                "end": 76.491196,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "an",
+                "sentiment": "negative",
+                "sentiment_score": -0.55322265625
+              },
+              {
+                "word": "emergency",
+                "start": 76.491196,
+                "end": 76.991196,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "emergency",
+                "sentiment": "negative",
+                "sentiment_score": -0.44140625
+              },
+              {
+                "word": "room",
+                "start": 77.05092,
+                "end": 77.25082,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "room",
+                "sentiment": "negative",
+                "sentiment_score": -0.51318359375
+              },
+              {
+                "word": "because",
+                "start": 77.25082,
+                "end": 77.570656,
+                "confidence": 0.93652344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "because",
+                "sentiment": "negative",
+                "sentiment_score": -0.484130859375
+              },
+              {
+                "word": "the",
+                "start": 77.570656,
+                "end": 77.730576,
+                "confidence": 0.97998047,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "the",
+                "sentiment": "negative",
+                "sentiment_score": -0.58837890625
+              },
+              {
+                "word": "health",
+                "start": 77.730576,
+                "end": 77.97046,
+                "confidence": 0.5073242,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "health",
+                "sentiment": "negative",
+                "sentiment_score": -0.662109375
+              },
+              {
+                "word": "care",
+                "start": 77.97046,
+                "end": 78.210335,
+                "confidence": 0.9951172,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "care",
+                "sentiment": "negative",
+                "sentiment_score": -0.65869140625
+              },
+              {
+                "word": "providers",
+                "start": 78.210335,
+                "end": 78.710335,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "providers",
+                "sentiment": "negative",
+                "sentiment_score": -0.669921875
+              },
+              {
+                "word": "are",
+                "start": 78.89,
+                "end": 79.0899,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "are",
+                "sentiment": "negative",
+                "sentiment_score": -0.58203125
+              },
+              {
+                "word": "afraid",
+                "start": 79.0899,
+                "end": 79.40974,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "afraid",
+                "sentiment": "negative",
+                "sentiment_score": -0.5693359375
+              },
+              {
+                "word": "they",
+                "start": 79.40974,
+                "end": 79.609634,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "they",
+                "sentiment": "negative",
+                "sentiment_score": -0.65185546875
+              },
+              {
+                "word": "might",
+                "start": 79.609634,
+                "end": 79.80954,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "might",
+                "sentiment": "negative",
+                "sentiment_score": -0.626953125
+              },
+              {
+                "word": "go",
+                "start": 79.80954,
+                "end": 80.049416,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "go",
+                "sentiment": "negative",
+                "sentiment_score": -0.66064453125
+              },
+              {
+                "word": "to",
+                "start": 80.049416,
+                "end": 80.209335,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "to",
+                "sentiment": "negative",
+                "sentiment_score": -0.67041015625
+              },
+              {
+                "word": "jail",
+                "start": 80.209335,
+                "end": 80.64912,
+                "confidence": 0.75439453,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "jail,",
+                "sentiment": "negative",
+                "sentiment_score": -0.6142578125
+              },
+              {
+                "word": "and",
+                "start": 80.64912,
+                "end": 80.889,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "and",
+                "sentiment": "negative",
+                "sentiment_score": -0.493408203125
+              },
+              {
+                "word": "she's",
+                "start": 80.889,
+                "end": 81.16885,
+                "confidence": 0.99731445,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "she's",
+                "sentiment": "negative",
+                "sentiment_score": -0.578125
+              },
+              {
+                "word": "bleeding",
+                "start": 81.16885,
+                "end": 81.56866,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "bleeding",
+                "sentiment": "negative",
+                "sentiment_score": -0.5498046875
+              },
+              {
+                "word": "out",
+                "start": 81.56866,
+                "end": 81.768555,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "out",
+                "sentiment": "negative",
+                "sentiment_score": -0.60791015625
+              },
+              {
+                "word": "in",
+                "start": 81.768555,
+                "end": 81.928474,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "in",
+                "sentiment": "negative",
+                "sentiment_score": -0.55859375
+              },
+              {
+                "word": "a",
+                "start": 81.928474,
+                "end": 82.088394,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "a",
+                "sentiment": "negative",
+                "sentiment_score": -0.4921875
+              },
+              {
+                "word": "car",
+                "start": 82.088394,
+                "end": 82.32828,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "car",
+                "sentiment": "negative",
+                "sentiment_score": -0.358154296875
+              },
+              {
+                "word": "in",
+                "start": 82.32828,
+                "end": 82.4882,
+                "confidence": 0.8730469,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "in",
+                "sentiment": "negative",
+                "sentiment_score": -0.47900390625
+              },
+              {
+                "word": "the",
+                "start": 82.4882,
+                "end": 82.64812,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "the",
+                "sentiment": "negative",
+                "sentiment_score": -0.444091796875
+              },
+              {
+                "word": "parking",
+                "start": 82.64812,
+                "end": 83.04792,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "parking",
+                "sentiment": "neutral",
+                "sentiment_score": -0.320068359375
+              },
+              {
+                "word": "lot",
+                "start": 83.04792,
+                "end": 83.52,
+                "confidence": 0.8293457,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "lot.",
+                "sentiment": "negative",
+                "sentiment_score": -0.390625
+              },
+              {
+                "word": "she",
+                "start": 83.75988,
+                "end": 83.9198,
+                "confidence": 0.81103516,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "She",
+                "sentiment": "negative",
+                "sentiment_score": -0.64453125
+              },
+              {
+                "word": "didn't",
+                "start": 83.9198,
+                "end": 84.19965,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "didn't",
+                "sentiment": "negative",
+                "sentiment_score": -0.62744140625
+              },
+              {
+                "word": "want",
+                "start": 84.19965,
+                "end": 84.479515,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "want",
+                "sentiment": "negative",
+                "sentiment_score": -0.7001953125
+              },
+              {
+                "word": "that",
+                "start": 84.479515,
+                "end": 84.979515,
+                "confidence": 0.79956055,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "that.",
+                "sentiment": "negative",
+                "sentiment_score": -0.6220703125
+              },
+              {
+                "word": "her",
+                "start": 85.03924,
+                "end": 85.239136,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "Her",
+                "sentiment": "negative",
+                "sentiment_score": -0.6484375
+              },
+              {
+                "word": "husband",
+                "start": 85.239136,
+                "end": 85.63894,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "husband",
+                "sentiment": "negative",
+                "sentiment_score": -0.634765625
+              },
+              {
+                "word": "didn't",
+                "start": 85.63894,
+                "end": 85.95878,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "didn't",
+                "sentiment": "negative",
+                "sentiment_score": -0.60986328125
+              },
+              {
+                "word": "want",
+                "start": 85.95878,
+                "end": 86.23864,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "want",
+                "sentiment": "negative",
+                "sentiment_score": -0.6533203125
+              },
+              {
+                "word": "that",
+                "start": 86.23864,
+                "end": 86.73864,
+                "confidence": 0.95947266,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "that.",
+                "sentiment": "negative",
+                "sentiment_score": -0.59765625
+              },
+              {
+                "word": "a",
+                "start": 87.118195,
+                "end": 87.3181,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "A",
+                "sentiment": "negative",
+                "sentiment_score": -0.59716796875
+              },
+              {
+                "word": "twelve",
+                "start": 87.3181,
+                "end": 87.67792,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "twelve",
+                "sentiment": "negative",
+                "sentiment_score": -0.58251953125
+              },
+              {
+                "word": "or",
+                "start": 87.67792,
+                "end": 87.83784,
+                "confidence": 0.9716797,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "or",
+                "sentiment": "negative",
+                "sentiment_score": -0.6337890625
+              },
+              {
+                "word": "thirteen",
+                "start": 87.83784,
+                "end": 88.27762,
+                "confidence": 0.9941406,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "thirteen",
+                "sentiment": "negative",
+                "sentiment_score": -0.58447265625
+              },
+              {
+                "word": "year",
+                "start": 88.27762,
+                "end": 88.43754,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "year",
+                "sentiment": "negative",
+                "sentiment_score": -0.5966796875
+              },
+              {
+                "word": "old",
+                "start": 88.43754,
+                "end": 88.637436,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "old",
+                "sentiment": "negative",
+                "sentiment_score": -0.55810546875
+              },
+              {
+                "word": "survivor",
+                "start": 88.637436,
+                "end": 89.137436,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "survivor",
+                "sentiment": "negative",
+                "sentiment_score": -0.52197265625
+              },
+              {
+                "word": "of",
+                "start": 89.23714,
+                "end": 89.39706,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "of",
+                "sentiment": "negative",
+                "sentiment_score": -0.51123046875
+              },
+              {
+                "word": "incest",
+                "start": 89.39706,
+                "end": 89.89706,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "incest",
+                "sentiment": "negative",
+                "sentiment_score": -0.6240234375
+              },
+              {
+                "word": "being",
+                "start": 90.59646,
+                "end": 90.87632,
+                "confidence": 0.69384766,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "being",
+                "sentiment": "negative",
+                "sentiment_score": -0.580078125
+              },
+              {
+                "word": "forced",
+                "start": 90.87632,
+                "end": 91.23614,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "forced",
+                "sentiment": "negative",
+                "sentiment_score": -0.65185546875
+              },
+              {
+                "word": "to",
+                "start": 91.23614,
+                "end": 91.39606,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "to",
+                "sentiment": "negative",
+                "sentiment_score": -0.5927734375
+              },
+              {
+                "word": "carry",
+                "start": 91.39606,
+                "end": 91.7159,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "carry",
+                "sentiment": "negative",
+                "sentiment_score": -0.65576171875
+              },
+              {
+                "word": "a",
+                "start": 91.7159,
+                "end": 91.83584,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "a",
+                "sentiment": "negative",
+                "sentiment_score": -0.57373046875
+              },
+              {
+                "word": "pregnancy",
+                "start": 91.83584,
+                "end": 92.33584,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "pregnancy",
+                "sentiment": "negative",
+                "sentiment_score": -0.4462890625
+              },
+              {
+                "word": "to",
+                "start": 92.515495,
+                "end": 92.75538,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "to",
+                "sentiment": "negative",
+                "sentiment_score": -0.470947265625
+              },
+              {
+                "word": "term",
+                "start": 92.75538,
+                "end": 93.25538,
+                "confidence": 0.89624023,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "term.",
+                "sentiment": "negative",
+                "sentiment_score": -0.42333984375
+              },
+              {
+                "word": "they",
+                "start": 93.754875,
+                "end": 93.95477,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "They",
+                "sentiment": "negative",
+                "sentiment_score": -0.6611328125
+              },
+              {
+                "word": "don't",
+                "start": 93.95477,
+                "end": 94.3146,
+                "confidence": 0.99975586,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "don't",
+                "sentiment": "negative",
+                "sentiment_score": -0.671875
+              },
+              {
+                "word": "want",
+                "start": 94.3146,
+                "end": 94.63444,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "want",
+                "sentiment": "negative",
+                "sentiment_score": -0.72265625
+              },
+              {
+                "word": "that",
+                "start": 94.63444,
+                "end": 95.13444,
+                "confidence": 0.9633789,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "that.",
+                "sentiment": "negative",
+                "sentiment_score": -0.61572265625
+              },
+              {
+                "word": "and",
+                "start": 96.12496,
+                "end": 96.36484,
+                "confidence": 0.36645508,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "And",
+                "sentiment": "neutral",
+                "sentiment_score": -0.05255126953125
+              },
+              {
+                "word": "i",
+                "start": 96.36484,
+                "end": 96.52476,
+                "confidence": 0.9716797,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "I",
+                "sentiment": "neutral",
+                "sentiment_score": 0.0010986328125
+              },
+              {
+                "word": "pledged",
+                "start": 96.52476,
+                "end": 97.00452,
+                "confidence": 0.6508789,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "pledged",
+                "sentiment": "neutral",
+                "sentiment_score": 0.095703125
+              },
+              {
+                "word": "to",
+                "start": 97.00452,
+                "end": 97.16444,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "to",
+                "sentiment": "neutral",
+                "sentiment_score": 0.16943359375
+              },
+              {
+                "word": "you",
+                "start": 97.16444,
+                "end": 97.66444,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "you",
+                "sentiment": "neutral",
+                "sentiment_score": 0.13671875
+              },
+              {
+                "word": "when",
+                "start": 97.964035,
+                "end": 98.32386,
+                "confidence": 0.5473633,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "when",
+                "sentiment": "neutral",
+                "sentiment_score": 0.20751953125
+              },
+              {
+                "word": "congress",
+                "start": 98.32386,
+                "end": 98.82386,
+                "confidence": 0.49609375,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "Congress",
+                "sentiment": "neutral",
+                "sentiment_score": 0.2509765625
+              },
+              {
+                "word": "passes",
+                "start": 98.96354,
+                "end": 99.40332,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "passes",
+                "sentiment": "neutral",
+                "sentiment_score": 0.24658203125
+              },
+              {
+                "word": "a",
+                "start": 99.40332,
+                "end": 99.56324,
+                "confidence": 0.9248047,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "a",
+                "sentiment": "neutral",
+                "sentiment_score": 0.2001953125
+              },
+              {
+                "word": "bill",
+                "start": 99.56324,
+                "end": 100.06324,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "bill",
+                "sentiment": "neutral",
+                "sentiment_score": 0.17822265625
+              },
+              {
+                "word": "to",
+                "start": 100.282875,
+                "end": 100.52276,
+                "confidence": 0.86816406,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "to",
+                "sentiment": "neutral",
+                "sentiment_score": 0.14013671875
+              },
+              {
+                "word": "put",
+                "start": 100.52276,
+                "end": 100.76264,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "put",
+                "sentiment": "neutral",
+                "sentiment_score": 0.11639404296875
+              },
+              {
+                "word": "back",
+                "start": 100.76264,
+                "end": 101.00252,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "back",
+                "sentiment": "neutral",
+                "sentiment_score": 0.10272216796875
+              },
+              {
+                "word": "in",
+                "start": 101.00252,
+                "end": 101.202415,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "in",
+                "sentiment": "neutral",
+                "sentiment_score": 0.131103515625
+              },
+              {
+                "word": "place",
+                "start": 101.202415,
+                "end": 101.522255,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "place",
+                "sentiment": "neutral",
+                "sentiment_score": 0.169677734375
+              },
+              {
+                "word": "the",
+                "start": 101.522255,
+                "end": 101.682175,
+                "confidence": 0.9814453,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "the",
+                "sentiment": "neutral",
+                "sentiment_score": 0.0919189453125
+              },
+              {
+                "word": "protections",
+                "start": 101.682175,
+                "end": 102.182175,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "protections",
+                "sentiment": "neutral",
+                "sentiment_score": 0.1434326171875
+              },
+              {
+                "word": "of",
+                "start": 102.32186,
+                "end": 102.52176,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "of",
+                "sentiment": "neutral",
+                "sentiment_score": 0.15771484375
+              },
+              {
+                "word": "roe",
+                "start": 102.52176,
+                "end": 102.76164,
+                "confidence": 0.95947266,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "Roe",
+                "sentiment": "neutral",
+                "sentiment_score": 0.01654052734375
+              },
+              {
+                "word": "v",
+                "start": 102.76164,
+                "end": 103.00152,
+                "confidence": 0.5234375,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "v",
+                "sentiment": "neutral",
+                "sentiment_score": 0.041595458984375
+              },
+              {
+                "word": "wade",
+                "start": 103.00152,
+                "end": 103.48128,
+                "confidence": 0.65734863,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "Wade.",
+                "sentiment": "neutral",
+                "sentiment_score": 0.055908203125
+              },
+              {
+                "word": "as",
+                "start": 103.48128,
+                "end": 103.72116,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "As",
+                "sentiment": "neutral",
+                "sentiment_score": 0.1927490234375
+              },
+              {
+                "word": "president",
+                "start": 103.72116,
+                "end": 104.20092,
+                "confidence": 0.9350586,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "president",
+                "sentiment": "neutral",
+                "sentiment_score": 0.281005859375
+              },
+              {
+                "word": "of",
+                "start": 104.20092,
+                "end": 104.36084,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "of",
+                "sentiment": "neutral",
+                "sentiment_score": 0.289306640625
+              },
+              {
+                "word": "the",
+                "start": 104.36084,
+                "end": 104.52076,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "the",
+                "sentiment": "neutral",
+                "sentiment_score": 0.28564453125
+              },
+              {
+                "word": "united",
+                "start": 104.52076,
+                "end": 104.92056,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "United",
+                "sentiment": "neutral",
+                "sentiment_score": 0.278564453125
+              },
+              {
+                "word": "states",
+                "start": 104.92056,
+                "end": 105.2404,
+                "confidence": 0.98779297,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "States,",
+                "sentiment": "neutral",
+                "sentiment_score": 0.30859375
+              },
+              {
+                "word": "i",
+                "start": 105.2404,
+                "end": 105.32036,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "I",
+                "sentiment": "positive",
+                "sentiment_score": 0.35302734375
+              },
+              {
+                "word": "will",
+                "start": 105.32036,
+                "end": 105.60022,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "will",
+                "sentiment": "neutral",
+                "sentiment_score": 0.26513671875
+              },
+              {
+                "word": "proudly",
+                "start": 105.60022,
+                "end": 106.10022,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "proudly",
+                "sentiment": "positive",
+                "sentiment_score": 0.341796875
+              },
+              {
+                "word": "sign",
+                "start": 106.6397,
+                "end": 106.95954,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "sign",
+                "sentiment": "neutral",
+                "sentiment_score": 0.260986328125
+              },
+              {
+                "word": "it",
+                "start": 106.95954,
+                "end": 107.45954,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "it",
+                "sentiment": "neutral",
+                "sentiment_score": 0.280517578125
+              },
+              {
+                "word": "into",
+                "start": 107.75914,
+                "end": 108.19892,
+                "confidence": 0.9238281,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "into",
+                "sentiment": "neutral",
+                "sentiment_score": 0.2305908203125
+              },
+              {
+                "word": "law",
+                "start": 108.19892,
+                "end": 108.69892,
+                "confidence": 0.8991699,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "law.",
+                "sentiment": "neutral",
+                "sentiment_score": 0.2578125
+              },
+              {
+                "word": "but",
+                "start": 108.83994,
+                "end": 109.07982,
+                "confidence": 0.7973633,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "But",
+                "sentiment": "neutral",
+                "sentiment_score": 0.041748046875
+              },
+              {
+                "word": "understand",
+                "start": 109.07982,
+                "end": 109.57982,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "understand",
+                "sentiment": "neutral",
+                "sentiment_score": -0.05950927734375
+              },
+              {
+                "word": "if",
+                "start": 110.27922,
+                "end": 110.519104,
+                "confidence": 0.9433594,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "if",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0902099609375
+              },
+              {
+                "word": "donald",
+                "start": 110.519104,
+                "end": 110.9189,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "Donald",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2325439453125
+              },
+              {
+                "word": "trump",
+                "start": 110.9189,
+                "end": 111.19876,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "Trump",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1591796875
+              },
+              {
+                "word": "were",
+                "start": 111.19876,
+                "end": 111.438644,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "were",
+                "sentiment": "neutral",
+                "sentiment_score": -0.14599609375
+              },
+              {
+                "word": "to",
+                "start": 111.438644,
+                "end": 111.598564,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "to",
+                "sentiment": "neutral",
+                "sentiment_score": -0.18310546875
+              },
+              {
+                "word": "be",
+                "start": 111.598564,
+                "end": 111.758484,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "be",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1357421875
+              },
+              {
+                "word": "reelected",
+                "start": 111.758484,
+                "end": 112.258484,
+                "confidence": 0.8222656,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "reelected,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1441650390625
+              },
+              {
+                "word": "he",
+                "start": 112.59806,
+                "end": 112.79796,
+                "confidence": 0.99609375,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "he",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1990966796875
+              },
+              {
+                "word": "will",
+                "start": 112.79796,
+                "end": 113.03784,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "will",
+                "sentiment": "neutral",
+                "sentiment_score": -0.206787109375
+              },
+              {
+                "word": "sign",
+                "start": 113.03784,
+                "end": 113.3177,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "sign",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1058349609375
+              },
+              {
+                "word": "a",
+                "start": 113.3177,
+                "end": 113.437645,
+                "confidence": 0.96728516,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "a",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1866455078125
+              },
+              {
+                "word": "national",
+                "start": 113.437645,
+                "end": 113.87742,
+                "confidence": 0.9248047,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "national",
+                "sentiment": "neutral",
+                "sentiment_score": -0.21728515625
+              },
+              {
+                "word": "abortion",
+                "start": 113.87742,
+                "end": 114.35718,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "abortion",
+                "sentiment": "neutral",
+                "sentiment_score": -0.239013671875
+              },
+              {
+                "word": "ban",
+                "start": 114.35718,
+                "end": 114.79696,
+                "confidence": 0.9663086,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "ban.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.11590576171875
+              },
+              {
+                "word": "understand",
+                "start": 114.79696,
+                "end": 115.29696,
+                "confidence": 0.95458984,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "Understand",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0010986328125
+              },
+              {
+                "word": "in",
+                "start": 115.3167,
+                "end": 115.5166,
+                "confidence": 0.953125,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "in",
+                "sentiment": "neutral",
+                "sentiment_score": 0.000244140625
+              },
+              {
+                "word": "his",
+                "start": 115.5166,
+                "end": 115.7165,
+                "confidence": 0.9824219,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "his",
+                "sentiment": "neutral",
+                "sentiment_score": -0.06488037109375
+              },
+              {
+                "word": "project",
+                "start": 115.7165,
+                "end": 116.19626,
+                "confidence": 0.765625,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "project",
+                "sentiment": "neutral",
+                "sentiment_score": 0.0147705078125
+              },
+              {
+                "word": "2025",
+                "start": 116.19626,
+                "end": 116.69626,
+                "confidence": 0.8178711,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "2025,",
+                "sentiment": "neutral",
+                "sentiment_score": 0.00807952880859375
+              },
+              {
+                "word": "there",
+                "start": 117.27572,
+                "end": 117.5156,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "there",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0118408203125
+              },
+              {
+                "word": "would",
+                "start": 117.5156,
+                "end": 117.7155,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "would",
+                "sentiment": "neutral",
+                "sentiment_score": -0.07366943359375
+              },
+              {
+                "word": "be",
+                "start": 117.7155,
+                "end": 117.87542,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "be",
+                "sentiment": "neutral",
+                "sentiment_score": -0.02734375
+              },
+              {
+                "word": "a",
+                "start": 117.87542,
+                "end": 118.03534,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "a",
+                "sentiment": "neutral",
+                "sentiment_score": -0.05389404296875
+              },
+              {
+                "word": "national",
+                "start": 118.03534,
+                "end": 118.53534,
+                "confidence": 0.9941406,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "national",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0882568359375
+              },
+              {
+                "word": "abortion",
+                "start": 118.63504,
+                "end": 119.13504,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "abortion",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1329345703125
+              },
+              {
+                "word": "a",
+                "start": 119.35468,
+                "end": 119.5146,
+                "confidence": 0.98876953,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "a",
+                "sentiment": "neutral",
+                "sentiment_score": -0.051025390625
+              },
+              {
+                "word": "monitor",
+                "start": 119.5146,
+                "end": 120.0146,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "monitor",
+                "sentiment": "neutral",
+                "sentiment_score": -0.06085205078125
+              },
+              {
+                "word": "that",
+                "start": 120.03434,
+                "end": 120.23424,
+                "confidence": 0.97021484,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "that",
+                "sentiment": "neutral",
+                "sentiment_score": -0.04107666015625
+              },
+              {
+                "word": "would",
+                "start": 120.23424,
+                "end": 120.394165,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "would",
+                "sentiment": "neutral",
+                "sentiment_score": -0.05194091796875
+              },
+              {
+                "word": "be",
+                "start": 120.394165,
+                "end": 120.554085,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "be",
+                "sentiment": "neutral",
+                "sentiment_score": -0.07208251953125
+              },
+              {
+                "word": "monitoring",
+                "start": 120.554085,
+                "end": 121.054085,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "monitoring",
+                "sentiment": "neutral",
+                "sentiment_score": -0.11279296875
+              },
+              {
+                "word": "your",
+                "start": 121.1138,
+                "end": 121.35368,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "your",
+                "sentiment": "neutral",
+                "sentiment_score": -0.12249755859375
+              },
+              {
+                "word": "pregnancies",
+                "start": 121.35368,
+                "end": 121.85368,
+                "confidence": 0.998291,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "pregnancies,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.10302734375
+              },
+              {
+                "word": "your",
+                "start": 122.3132,
+                "end": 122.553085,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "your",
+                "sentiment": "neutral",
+                "sentiment_score": -0.23583984375
+              },
+              {
+                "word": "miscarriages",
+                "start": 122.553085,
+                "end": 123.053085,
+                "confidence": 0.9057617,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "miscarriages,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.182861328125
+              },
+              {
+                "word": "i",
+                "start": 123.55494,
+                "end": 123.67488,
+                "confidence": 0.9223633,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "I",
+                "sentiment": "neutral",
+                "sentiment_score": -0.141357421875
+              },
+              {
+                "word": "think",
+                "start": 123.67488,
+                "end": 123.954735,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "think",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1798095703125
+              },
+              {
+                "word": "the",
+                "start": 123.954735,
+                "end": 124.07468,
+                "confidence": 0.9741211,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "the",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1705322265625
+              },
+              {
+                "word": "american",
+                "start": 124.07468,
+                "end": 124.57468,
+                "confidence": 0.99658203,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "American",
+                "sentiment": "neutral",
+                "sentiment_score": -0.060546875
+              },
+              {
+                "word": "people",
+                "start": 124.59442,
+                "end": 125.09442,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "people",
+                "sentiment": "neutral",
+                "sentiment_score": 0.00048828125
+              },
+              {
+                "word": "believe",
+                "start": 125.11416,
+                "end": 125.61416,
+                "confidence": 0.99658203,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "believe",
+                "sentiment": "neutral",
+                "sentiment_score": -0.18505859375
+              },
+              {
+                "word": "that",
+                "start": 126.31356,
+                "end": 126.67338,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "that",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1326904296875
+              },
+              {
+                "word": "certain",
+                "start": 126.67338,
+                "end": 127.11316,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "certain",
+                "sentiment": "neutral",
+                "sentiment_score": -0.14453125
+              },
+              {
+                "word": "freedoms",
+                "start": 127.11316,
+                "end": 127.61316,
+                "confidence": 0.91796875,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "freedoms,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.09381103515625
+              },
+              {
+                "word": "in",
+                "start": 127.952736,
+                "end": 128.2326,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "in",
+                "sentiment": "neutral",
+                "sentiment_score": -0.058837890625
+              },
+              {
+                "word": "particular",
+                "start": 128.2326,
+                "end": 128.7326,
+                "confidence": 0.94384766,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "particular,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.09613037109375
+              },
+              {
+                "word": "the",
+                "start": 128.91226,
+                "end": 129.0322,
+                "confidence": 0.9926758,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "the",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0235595703125
+              },
+              {
+                "word": "freedom",
+                "start": 129.0322,
+                "end": 129.43199,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "freedom",
+                "sentiment": "neutral",
+                "sentiment_score": 0.1007080078125
+              },
+              {
+                "word": "to",
+                "start": 129.43199,
+                "end": 129.55194,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "to",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0230712890625
+              },
+              {
+                "word": "make",
+                "start": 129.55194,
+                "end": 129.75183,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "make",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1353759765625
+              },
+              {
+                "word": "decisions",
+                "start": 129.75183,
+                "end": 130.25183,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "decisions",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0579833984375
+              },
+              {
+                "word": "about",
+                "start": 130.27158,
+                "end": 130.59142,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "about",
+                "sentiment": "neutral",
+                "sentiment_score": -0.14404296875
+              },
+              {
+                "word": "one's",
+                "start": 130.59142,
+                "end": 130.95123,
+                "confidence": 0.982666,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "one's",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1390380859375
+              },
+              {
+                "word": "own",
+                "start": 130.95123,
+                "end": 131.2311,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "own",
+                "sentiment": "neutral",
+                "sentiment_score": -0.07275390625
+              },
+              {
+                "word": "body",
+                "start": 131.2311,
+                "end": 131.7311,
+                "confidence": 0.88500977,
+                "speaker": 0,
+                "speaker_confidence": 0.77734375,
+                "punctuated_word": "body,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2215576171875
+              },
+              {
+                "word": "should",
+                "start": 132.39052,
+                "end": 132.59042,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 0.34960938,
+                "punctuated_word": "should",
+                "sentiment": "neutral",
+                "sentiment_score": -0.330078125
+              },
+              {
+                "word": "not",
+                "start": 132.59042,
+                "end": 132.83029,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.34960938,
+                "punctuated_word": "not",
+                "sentiment": "neutral",
+                "sentiment_score": -0.291748046875
+              },
+              {
+                "word": "be",
+                "start": 132.83029,
+                "end": 132.99022,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 0.34960938,
+                "punctuated_word": "be",
+                "sentiment": "neutral",
+                "sentiment_score": -0.311767578125
+              },
+              {
+                "word": "made",
+                "start": 132.99022,
+                "end": 133.19012,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.34960938,
+                "punctuated_word": "made",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2763671875
+              },
+              {
+                "word": "by",
+                "start": 133.19012,
+                "end": 133.39001,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 0.34960938,
+                "punctuated_word": "by",
+                "sentiment": "neutral",
+                "sentiment_score": -0.296630859375
+              },
+              {
+                "word": "the",
+                "start": 133.39001,
+                "end": 133.46997,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 0.34960938,
+                "punctuated_word": "the",
+                "sentiment": "negative",
+                "sentiment_score": -0.3896484375
+              },
+              {
+                "word": "government",
+                "start": 133.46997,
+                "end": 133.90044,
+                "confidence": 0.9421387,
+                "speaker": 0,
+                "speaker_confidence": 0.34960938,
+                "punctuated_word": "government.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2034912109375
+              }
+            ],
+            "paragraphs": {
+              "transcript": "\nSpeaker 0: As I said, you're gonna hear a bunch of lies, and that's not actually a surprising fact. Let's understand how we got here. Donald Trump hand selected 3 members of the United States Supreme Court with the intention that they would undo the protections of Roe V Wade, and they did exactly as he intended. And now in over 20 states, there are Trump abortion bans, which make it criminal for a doctor or nurse to provide health care in one state it provides prison for life. Trump abortion bans that make no exception even for rape and incest, which understand what that means.\n\nA survivor of a crime of violation to their body does not have the right to make a decision about what happens to their body next. That is immoral. And one does not have to abandon their faith. Or deeply held beliefs to agree. The government and Donald Trump certainly should not be telling a woman what to do with her body.\n\nI have talked with women around our country. You wanna talk about this is what people wanted, Pregnant women who want to carry a pregnancy to term suffering from a miscarriage being denied care in an emergency room because the health care providers are afraid they might go to jail, and she's bleeding out in a car in the parking lot. She didn't want that. Her husband didn't want that. A twelve or thirteen year old survivor of incest being forced to carry a pregnancy to term.\n\nThey don't want that. And I pledged to you when Congress passes a bill to put back in place the protections of Roe v Wade. As president of the United States, I will proudly sign it into law. But understand if Donald Trump were to be reelected, he will sign a national abortion ban. Understand in his project 2025, there would be a national abortion a monitor that would be monitoring your pregnancies, your miscarriages, I think the American people believe that certain freedoms, in particular, the freedom to make decisions about one's own body, should not be made by the government.",
+              "paragraphs": [
+                {
+                  "sentences": [
+                    {
+                      "text": "As I said, you're gonna hear a bunch of lies, and that's not actually a surprising fact.",
+                      "start": 0.119940005,
+                      "end": 4.6979003,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.6135828354779411
+                    },
+                    {
+                      "text": "Let's understand how we got here.",
+                      "start": 5.51724,
+                      "end": 7.2966003,
+                      "sentiment": "neutral",
+                      "sentiment_score": -0.17720540364583334
+                    },
+                    {
+                      "text": "Donald Trump hand selected 3 members of the United States Supreme Court with the intention that they would undo the protections of Roe V Wade, and they did exactly as he intended.",
+                      "start": 7.8760605,
+                      "end": 18.90284,
+                      "sentiment": "neutral",
+                      "sentiment_score": -0.25812625885009766
+                    },
+                    {
+                      "text": "And now in over 20 states, there are Trump abortion bans, which make it criminal for a doctor or nurse to provide health care in one state it provides prison for life.",
+                      "start": 19.2824,
+                      "end": 32.7173,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.4406394958496094
+                    },
+                    {
+                      "text": "Trump abortion bans that make no exception even for rape and incest, which understand what that means.",
+                      "start": 33.656578,
+                      "end": 39.19406,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.36652688419117646
+                    }
+                  ],
+                  "speaker": 0,
+                  "sentiment": "negative",
+                  "sentiment_score": -0.385438478910006,
+                  "num_words": 104,
+                  "start": 0.119940005,
+                  "end": 39.19406
+                },
+                {
+                  "sentences": [
+                    {
+                      "text": "A survivor of a crime of violation to their body does not have the right to make a decision about what happens to their body next.",
+                      "start": 39.50486,
+                      "end": 47.740738,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.6404184194711539
+                    },
+                    {
+                      "text": "That is immoral.",
+                      "start": 47.740738,
+                      "end": 48.80046,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.8564453125
+                    },
+                    {
+                      "text": "And one does not have to abandon their faith.",
+                      "start": 49.93964,
+                      "end": 53.038338,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.5595974392361112
+                    },
+                    {
+                      "text": "Or deeply held beliefs to agree.",
+                      "start": 53.6198,
+                      "end": 56.078823,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.4374186197916667
+                    },
+                    {
+                      "text": "The government and Donald Trump certainly should not be telling a woman what to do with her body.",
+                      "start": 56.45838,
+                      "end": 62.97512,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.685791015625
+                    }
+                  ],
+                  "speaker": 0,
+                  "sentiment": "negative",
+                  "sentiment_score": -0.6326668031754032,
+                  "num_words": 62,
+                  "start": 39.50486,
+                  "end": 62.97512
+                },
+                {
+                  "sentences": [
+                    {
+                      "text": "I have talked with women around our country.",
+                      "start": 62.97512,
+                      "end": 65.95388,
+                      "sentiment": "neutral",
+                      "sentiment_score": -0.17513656616210938
+                    },
+                    {
+                      "text": "You wanna talk about this is what people wanted, Pregnant women who want to carry a pregnancy to term suffering from a miscarriage being denied care in an emergency room because the health care providers are afraid they might go to jail, and she's bleeding out in a car in the parking lot.",
+                      "start": 66.25348,
+                      "end": 83.52,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.44980146300117924
+                    },
+                    {
+                      "text": "She didn't want that.",
+                      "start": 83.75988,
+                      "end": 84.979515,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.6485595703125
+                    },
+                    {
+                      "text": "Her husband didn't want that.",
+                      "start": 85.03924,
+                      "end": 86.73864,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.62880859375
+                    },
+                    {
+                      "text": "A twelve or thirteen year old survivor of incest being forced to carry a pregnancy to term.",
+                      "start": 87.118195,
+                      "end": 93.25538,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.5649844898897058
+                    }
+                  ],
+                  "speaker": 0,
+                  "sentiment": "negative",
+                  "sentiment_score": -0.46647801892510776,
+                  "num_words": 87,
+                  "start": 62.97512,
+                  "end": 93.25538
+                },
+                {
+                  "sentences": [
+                    {
+                      "text": "They don't want that.",
+                      "start": 93.754875,
+                      "end": 95.13444,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.6678466796875
+                    },
+                    {
+                      "text": "And I pledged to you when Congress passes a bill to put back in place the protections of Roe v Wade.",
+                      "start": 96.12496,
+                      "end": 103.48128,
+                      "sentiment": "neutral",
+                      "sentiment_score": 0.12385922386532738
+                    },
+                    {
+                      "text": "As president of the United States, I will proudly sign it into law.",
+                      "start": 103.48128,
+                      "end": 108.69892,
+                      "sentiment": "neutral",
+                      "sentiment_score": 0.27890249399038464
+                    },
+                    {
+                      "text": "But understand if Donald Trump were to be reelected, he will sign a national abortion ban.",
+                      "start": 108.83994,
+                      "end": 114.79696,
+                      "sentiment": "neutral",
+                      "sentiment_score": -0.14870452880859375
+                    },
+                    {
+                      "text": "Understand in his project 2025, there would be a national abortion a monitor that would be monitoring your pregnancies, your miscarriages, I think the American people believe that certain freedoms, in particular, the freedom to make decisions about one's own body, should not be made by the government.",
+                      "start": 114.79696,
+                      "end": 133.90044,
+                      "sentiment": "neutral",
+                      "sentiment_score": -0.11550092697143555
+                    }
+                  ],
+                  "speaker": 0,
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.04282281913009344,
+                  "num_words": 102,
+                  "start": 93.754875,
+                  "end": 133.90044
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "result": "success",
+      "short": "Speaker 0 discusses the lack of surprising facts and the actions of Trump, including his selection of 3 US Supreme Court members and his ban on Roe V. Wade. He also talks about the issue of bleeding and the lack of support for abortion in the United States Congress. Speaker 0 ends by stating that Trump should sign a national abortion ban and monitor bleeding events to ensure the safety of American babies."
+    },
+    "topics": {
+      "segments": [
+        {
+          "text": "And now in over 20 states, there are Trump abortion bans, which make it criminal for a doctor or nurse to provide health care in one state it provides prison for life.",
+          "start_word": 55,
+          "end_word": 86,
+          "topics": [
+            {
+              "topic": "Trump abortion bans",
+              "confidence_score": 0.7138967
+            }
+          ]
+        },
+        {
+          "text": "Understand in his project 2025, there would be a national abortion a monitor that would be monitoring your pregnancies, your miscarriages, I think the American people believe that certain freedoms, in particular, the freedom to make decisions about one's own body, should not be made by the government.",
+          "start_word": 307,
+          "end_word": 354,
+          "topics": [
+            {
+              "topic": "Pregnancy monitoring",
+              "confidence_score": 0.020275235
+            }
+          ]
+        }
+      ]
+    },
+    "intents": {
+      "segments": [
+        {
+          "text": "Donald Trump hand selected 3 members of the United States Supreme Court with the intention that they would undo the protections of Roe V Wade, and they did exactly as he intended.",
+          "start_word": 23,
+          "end_word": 54,
+          "intents": [
+            {
+              "intent": "Confirm trump's decision",
+              "confidence_score": 0.0009195479
+            }
+          ]
+        },
+        {
+          "text": "A survivor of a crime of violation to their body does not have the right to make a decision about what happens to their body next. That is immoral.",
+          "start_word": 104,
+          "end_word": 132,
+          "intents": [
+            {
+              "intent": "Express dissatisfaction with trump's decision",
+              "confidence_score": 0.024143023
+            }
+          ]
+        },
+        {
+          "text": "I have talked with women around our country. You wanna talk about this is what people wanted, Pregnant women who want to carry a pregnancy to term suffering from a miscarriage being denied care in an emergency room because the health care providers are afraid they might go to jail, and she's bleeding out in a car in the parking lot. She didn't want that.",
+          "start_word": 166,
+          "end_word": 230,
+          "intents": [
+            {
+              "intent": "Defend trump's actions on miscarriage",
+              "confidence_score": 0.000014544202
+            },
+            {
+              "intent": "Defend trump's decision to reschedule a miscarriage",
+              "confidence_score": 0.0000019382524
+            }
+          ]
+        },
+        {
+          "text": "As president of the United States, I will proudly sign it into law. But understand if Donald Trump were to be reelected, he will sign a national abortion ban.",
+          "start_word": 278,
+          "end_word": 306,
+          "intents": [
+            {
+              "intent": "Affirm trump's plan to sign a national abortion ban",
+              "confidence_score": 1.1947176e-7
+            }
+          ]
+        },
+        {
+          "text": "Understand in his project 2025, there would be a national abortion a monitor that would be monitoring your pregnancies, your miscarriages, I think the American people believe that certain freedoms, in particular, the freedom to make decisions about one's own body, should not be made by the government.",
+          "start_word": 307,
+          "end_word": 354,
+          "intents": [
+            {
+              "intent": "Propose national abortion monitor",
+              "confidence_score": 0.09074162
+            },
+            {
+              "intent": "Address trump's miscarriage monitoring",
+              "confidence_score": 0.0000012540771
+            }
+          ]
+        }
+      ]
+    },
+    "sentiments": {
+      "segments": [
+        {
+          "text": "As I said, you're gonna hear a bunch of lies, and that's not actually a surprising fact.",
+          "start_word": 0,
+          "end_word": 16,
+          "sentiment": "negative",
+          "sentiment_score": -0.62744140625
+        },
+        {
+          "text": "Let's understand how we got here. Donald Trump hand selected 3 members of the United States Supreme Court with the intention that they would undo the protections of Roe V Wade, and they did exactly as he intended.",
+          "start_word": 17,
+          "end_word": 54,
+          "sentiment": "neutral",
+          "sentiment_score": -0.2486572265625
+        },
+        {
+          "text": "And now in over 20 states, there are Trump abortion bans, which make it criminal for a doctor or nurse to provide health care in one state it provides prison for life. Trump abortion bans that make no exception even for rape and incest, which understand what that means. A survivor of a crime of violation to their body does not have the right to make a decision about what happens to their body next. That is immoral. And one does not have to abandon their faith. Or deeply held beliefs to agree. The government and Donald Trump certainly should not be telling a woman what to do with her body.",
+          "start_word": 55,
+          "end_word": 165,
+          "sentiment": "negative",
+          "sentiment_score": -0.5380859375
+        },
+        {
+          "text": "I have talked with women around our country.",
+          "start_word": 166,
+          "end_word": 173,
+          "sentiment": "neutral",
+          "sentiment_score": -0.1617431640625
+        },
+        {
+          "text": "You wanna talk about this is what people wanted, Pregnant women who want to carry a pregnancy to term suffering from a miscarriage being denied care in an emergency room because the health care providers are afraid they might go to jail, and she's bleeding out in a car in the parking lot. She didn't want that. Her husband didn't want that. A twelve or thirteen year old survivor of incest being forced to carry a pregnancy to term. They don't want that.",
+          "start_word": 174,
+          "end_word": 256,
+          "sentiment": "negative",
+          "sentiment_score": -0.50732421875
+        },
+        {
+          "text": "And I pledged to you when Congress passes a bill to put back in place the protections of Roe v Wade. As president of the United States, I will proudly sign it into law. But understand if Donald Trump were to be reelected, he will sign a national abortion ban. Understand in his project 2025, there would be a national abortion a monitor that would be monitoring your pregnancies, your miscarriages, I think the American people believe that certain freedoms, in particular, the freedom to make decisions about one's own body, should not be made by the government.",
+          "start_word": 257,
+          "end_word": 354,
+          "sentiment": "neutral",
+          "sentiment_score": -0.0276031494140625
+        }
+      ],
+      "average": {
+        "sentiment": "negative",
+        "sentiment_score": -0.35259179265658747
+      }
+    }
+  },
+  "category": "rebuttal_01",
+  "speaker": "harris"
+}

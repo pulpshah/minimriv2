@@ -1,0 +1,182 @@
+{
+  "metadata": {
+    "transaction_key": "deprecated",
+    "request_id": "1352be0e-f60c-4945-a102-659e750d2199",
+    "sha256": "9248fe68eb7f84130f80d68f74cbf0e4a4c66c88278b5f454d696b2ff4b2e485",
+    "created": "2024-09-24T05:07:57.265Z",
+    "duration": 1.3346875,
+    "channels": 1,
+    "models": [
+      "6f548761-c9c0-429a-9315-11a1d28499c8"
+    ],
+    "model_info": {
+      "6f548761-c9c0-429a-9315-11a1d28499c8": {
+        "name": "general-enhanced",
+        "version": "2023-07-13.28732",
+        "arch": "polaris"
+      }
+    },
+    "summary_info": {
+      "model_uuid": "67875a7f-c9c4-48a0-aa55-5bdb8a91c34a",
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "sentiment_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 6,
+      "output_tokens": 6
+    },
+    "topics_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 6,
+      "output_tokens": 6
+    },
+    "intents_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 6,
+      "output_tokens": 10
+    }
+  },
+  "results": {
+    "channels": [
+      {
+        "alternatives": [
+          {
+            "transcript": "President Trump. Thank you.",
+            "confidence": 0.97558594,
+            "words": [
+              {
+                "word": "president",
+                "start": 0.03998,
+                "end": 0.43978003,
+                "confidence": 0.54541016,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "President",
+                "sentiment": "positive",
+                "sentiment_score": 0.41796875
+              },
+              {
+                "word": "trump",
+                "start": 0.43978003,
+                "end": 0.75962,
+                "confidence": 0.9055176,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "Trump.",
+                "sentiment": "positive",
+                "sentiment_score": 0.49951171875
+              },
+              {
+                "word": "thank",
+                "start": 0.75962,
+                "end": 1.0394801,
+                "confidence": 0.97558594,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "Thank",
+                "sentiment": "positive",
+                "sentiment_score": 0.837890625
+              },
+              {
+                "word": "you",
+                "start": 1.0394801,
+                "end": 1.3346875,
+                "confidence": 0.9968262,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "you.",
+                "sentiment": "positive",
+                "sentiment_score": 0.4677734375
+              }
+            ],
+            "paragraphs": {
+              "transcript": "\nSpeaker 0: President Trump. Thank you.",
+              "paragraphs": [
+                {
+                  "sentences": [
+                    {
+                      "text": "President Trump.",
+                      "start": 0.03998,
+                      "end": 0.75962,
+                      "sentiment": "positive",
+                      "sentiment_score": 0.458740234375
+                    },
+                    {
+                      "text": "Thank you.",
+                      "start": 0.75962,
+                      "end": 1.3346875,
+                      "sentiment": "positive",
+                      "sentiment_score": 0.65283203125
+                    }
+                  ],
+                  "speaker": 0,
+                  "sentiment": "positive",
+                  "sentiment_score": 0.5557861328125,
+                  "num_words": 4,
+                  "start": 0.03998,
+                  "end": 1.3346875
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "result": "success",
+      "short": "[Speaker 0:] President Trump. Thank you."
+    },
+    "topics": {
+      "segments": [
+        {
+          "text": "Thank you.",
+          "start_word": 2,
+          "end_word": 3,
+          "topics": [
+            {
+              "topic": "President trump",
+              "confidence_score": 0.84245634
+            }
+          ]
+        }
+      ]
+    },
+    "intents": {
+      "segments": [
+        {
+          "text": "Thank you.",
+          "start_word": 2,
+          "end_word": 3,
+          "intents": [
+            {
+              "intent": "Thank",
+              "confidence_score": 0.04482317
+            },
+            {
+              "intent": "Notify president trump",
+              "confidence_score": 0.0012312649
+            }
+          ]
+        }
+      ]
+    },
+    "sentiments": {
+      "segments": [
+        {
+          "text": "President Trump. Thank you.",
+          "start_word": 0,
+          "end_word": 3,
+          "sentiment": "positive",
+          "sentiment_score": 0.60986328125
+        }
+      ],
+      "average": {
+        "sentiment": "positive",
+        "sentiment_score": 0.6100260416666666
+      }
+    }
+  },
+  "category": "moderation",
+  "speaker": "davis"
+}

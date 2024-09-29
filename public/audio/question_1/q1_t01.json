@@ -1,0 +1,1058 @@
+{
+  "metadata": {
+    "transaction_key": "deprecated",
+    "request_id": "a4c44b6e-054b-4443-8039-d1e2ea164e53",
+    "sha256": "c50bc930085984e01161b945ce0a42022792c8a0e10530fe2e05af605a6c9a3f",
+    "created": "2024-09-24T04:34:38.101Z",
+    "duration": 21.655,
+    "channels": 1,
+    "models": [
+      "6f548761-c9c0-429a-9315-11a1d28499c8"
+    ],
+    "model_info": {
+      "6f548761-c9c0-429a-9315-11a1d28499c8": {
+        "name": "general-enhanced",
+        "version": "2023-07-13.28732",
+        "arch": "polaris"
+      }
+    },
+    "summary_info": {
+      "model_uuid": "67875a7f-c9c4-48a0-aa55-5bdb8a91c34a",
+      "input_tokens": 95,
+      "output_tokens": 37
+    },
+    "sentiment_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 91,
+      "output_tokens": 91
+    },
+    "topics_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 91,
+      "output_tokens": 12
+    },
+    "intents_info": {
+      "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+      "input_tokens": 91,
+      "output_tokens": 10
+    }
+  },
+  "results": {
+    "channels": [
+      {
+        "alternatives": [
+          {
+            "transcript": "Wanna begin tonight with the issue that voters repeatedly say is their number one issue, and that is the economy and the cost of living in this country. Vice President Harris, you and President Trump were elected 4 years ago, and your opponent on the stage here tonight often asks his supporters, are you better off than you were 4 years ago. When it comes to the economy, do you believe Americans are better off than they were 4 years ago?",
+            "confidence": 0.9980469,
+            "words": [
+              {
+                "word": "wanna",
+                "start": 0.03998,
+                "end": 0.35982,
+                "confidence": 0.7961426,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "Wanna",
+                "sentiment": "neutral",
+                "sentiment_score": -0.050628662109375
+              },
+              {
+                "word": "begin",
+                "start": 0.35982,
+                "end": 0.63968,
+                "confidence": 0.99316406,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "begin",
+                "sentiment": "neutral",
+                "sentiment_score": -0.045166015625
+              },
+              {
+                "word": "tonight",
+                "start": 0.63968,
+                "end": 0.91954005,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "tonight",
+                "sentiment": "neutral",
+                "sentiment_score": 0.00323486328125
+              },
+              {
+                "word": "with",
+                "start": 0.91954005,
+                "end": 1.1194401,
+                "confidence": 0.99560547,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "with",
+                "sentiment": "neutral",
+                "sentiment_score": -0.00244140625
+              },
+              {
+                "word": "the",
+                "start": 1.1194401,
+                "end": 1.23938,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "the",
+                "sentiment": "neutral",
+                "sentiment_score": -0.01788330078125
+              },
+              {
+                "word": "issue",
+                "start": 1.23938,
+                "end": 1.51924,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "issue",
+                "sentiment": "neutral",
+                "sentiment_score": -0.10498046875
+              },
+              {
+                "word": "that",
+                "start": 1.51924,
+                "end": 1.6791601,
+                "confidence": 0.9970703,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "that",
+                "sentiment": "neutral",
+                "sentiment_score": 0.00823974609375
+              },
+              {
+                "word": "voters",
+                "start": 1.6791601,
+                "end": 2.03898,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "voters",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0528564453125
+              },
+              {
+                "word": "repeatedly",
+                "start": 2.03898,
+                "end": 2.53898,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "repeatedly",
+                "sentiment": "neutral",
+                "sentiment_score": -0.02777099609375
+              },
+              {
+                "word": "say",
+                "start": 2.6386802,
+                "end": 2.9185402,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "say",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0152587890625
+              },
+              {
+                "word": "is",
+                "start": 2.9185402,
+                "end": 3.0784602,
+                "confidence": 0.9863281,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "is",
+                "sentiment": "neutral",
+                "sentiment_score": -0.08709716796875
+              },
+              {
+                "word": "their",
+                "start": 3.0784602,
+                "end": 3.31834,
+                "confidence": 0.99072266,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "their",
+                "sentiment": "neutral",
+                "sentiment_score": -0.09088134765625
+              },
+              {
+                "word": "number",
+                "start": 3.31834,
+                "end": 3.5982,
+                "confidence": 0.98291016,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "number",
+                "sentiment": "neutral",
+                "sentiment_score": -0.086181640625
+              },
+              {
+                "word": "one",
+                "start": 3.5982,
+                "end": 3.8380802,
+                "confidence": 0.8720703,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "one",
+                "sentiment": "neutral",
+                "sentiment_score": -0.029052734375
+              },
+              {
+                "word": "issue",
+                "start": 3.8380802,
+                "end": 4.11794,
+                "confidence": 0.81640625,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "issue,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.160888671875
+              },
+              {
+                "word": "and",
+                "start": 4.11794,
+                "end": 4.27786,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "and",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0404052734375
+              },
+              {
+                "word": "that",
+                "start": 4.27786,
+                "end": 4.4777603,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "that",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0531005859375
+              },
+              {
+                "word": "is",
+                "start": 4.4777603,
+                "end": 4.63768,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "is",
+                "sentiment": "neutral",
+                "sentiment_score": -0.165771484375
+              },
+              {
+                "word": "the",
+                "start": 4.63768,
+                "end": 4.7976003,
+                "confidence": 0.9902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "the",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2529296875
+              },
+              {
+                "word": "economy",
+                "start": 4.7976003,
+                "end": 5.2773604,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "economy",
+                "sentiment": "neutral",
+                "sentiment_score": -0.123779296875
+              },
+              {
+                "word": "and",
+                "start": 5.2773604,
+                "end": 5.43728,
+                "confidence": 0.9941406,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "and",
+                "sentiment": "neutral",
+                "sentiment_score": -0.239013671875
+              },
+              {
+                "word": "the",
+                "start": 5.43728,
+                "end": 5.5572205,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "the",
+                "sentiment": "neutral",
+                "sentiment_score": -0.30126953125
+              },
+              {
+                "word": "cost",
+                "start": 5.5572205,
+                "end": 5.8370805,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "cost",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1546630859375
+              },
+              {
+                "word": "of",
+                "start": 5.8370805,
+                "end": 5.997,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "of",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1884765625
+              },
+              {
+                "word": "living",
+                "start": 5.997,
+                "end": 6.31684,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "living",
+                "sentiment": "neutral",
+                "sentiment_score": -0.111572265625
+              },
+              {
+                "word": "in",
+                "start": 6.31684,
+                "end": 6.4767604,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "in",
+                "sentiment": "neutral",
+                "sentiment_score": -0.157470703125
+              },
+              {
+                "word": "this",
+                "start": 6.4767604,
+                "end": 6.67666,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "this",
+                "sentiment": "neutral",
+                "sentiment_score": -0.16455078125
+              },
+              {
+                "word": "country",
+                "start": 6.67666,
+                "end": 7.17666,
+                "confidence": 0.998291,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "country.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1339111328125
+              },
+              {
+                "word": "vice",
+                "start": 7.3963003,
+                "end": 7.6361804,
+                "confidence": 0.91259766,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "Vice",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1927490234375
+              },
+              {
+                "word": "president",
+                "start": 7.6361804,
+                "end": 8.0091915,
+                "confidence": 0.36279297,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "President",
+                "sentiment": "neutral",
+                "sentiment_score": -0.19091796875
+              },
+              {
+                "word": "harris",
+                "start": 8.0091915,
+                "end": 8.248868,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "Harris,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.11083984375
+              },
+              {
+                "word": "you",
+                "start": 8.355821,
+                "end": 8.47576,
+                "confidence": 0.9160156,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "you",
+                "sentiment": "neutral",
+                "sentiment_score": -0.154541015625
+              },
+              {
+                "word": "and",
+                "start": 8.47576,
+                "end": 8.67566,
+                "confidence": 0.99072266,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "and",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2271728515625
+              },
+              {
+                "word": "president",
+                "start": 8.67566,
+                "end": 9.11544,
+                "confidence": 0.7602539,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "President",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1673583984375
+              },
+              {
+                "word": "trump",
+                "start": 9.11544,
+                "end": 9.35532,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "Trump",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0416259765625
+              },
+              {
+                "word": "were",
+                "start": 9.35532,
+                "end": 9.475261,
+                "confidence": 0.88916016,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "were",
+                "sentiment": "neutral",
+                "sentiment_score": -0.05291748046875
+              },
+              {
+                "word": "elected",
+                "start": 9.475261,
+                "end": 9.87506,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "elected",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0589599609375
+              },
+              {
+                "word": "4",
+                "start": 9.87506,
+                "end": 10.074961,
+                "confidence": 0.9951172,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "4",
+                "sentiment": "neutral",
+                "sentiment_score": -0.160400390625
+              },
+              {
+                "word": "years",
+                "start": 10.074961,
+                "end": 10.31484,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "years",
+                "sentiment": "neutral",
+                "sentiment_score": -0.09136962890625
+              },
+              {
+                "word": "ago",
+                "start": 10.31484,
+                "end": 10.554721,
+                "confidence": 0.814209,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "ago,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.0743408203125
+              },
+              {
+                "word": "and",
+                "start": 10.554721,
+                "end": 10.714641,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "and",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1053466796875
+              },
+              {
+                "word": "your",
+                "start": 10.714641,
+                "end": 10.87456,
+                "confidence": 0.99560547,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "your",
+                "sentiment": "negative",
+                "sentiment_score": -0.35595703125
+              },
+              {
+                "word": "opponent",
+                "start": 10.87456,
+                "end": 11.314341,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "opponent",
+                "sentiment": "neutral",
+                "sentiment_score": -0.281005859375
+              },
+              {
+                "word": "on",
+                "start": 11.314341,
+                "end": 11.43428,
+                "confidence": 0.9951172,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "on",
+                "sentiment": "neutral",
+                "sentiment_score": -0.303955078125
+              },
+              {
+                "word": "the",
+                "start": 11.43428,
+                "end": 11.55422,
+                "confidence": 0.9941406,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "the",
+                "sentiment": "neutral",
+                "sentiment_score": -0.2060546875
+              },
+              {
+                "word": "stage",
+                "start": 11.55422,
+                "end": 11.874061,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "stage",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1851806640625
+              },
+              {
+                "word": "here",
+                "start": 11.874061,
+                "end": 12.07396,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "here",
+                "sentiment": "neutral",
+                "sentiment_score": -0.10797119140625
+              },
+              {
+                "word": "tonight",
+                "start": 12.07396,
+                "end": 12.57396,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "tonight",
+                "sentiment": "neutral",
+                "sentiment_score": -0.10821533203125
+              },
+              {
+                "word": "often",
+                "start": 12.75362,
+                "end": 13.1934,
+                "confidence": 0.92089844,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "often",
+                "sentiment": "neutral",
+                "sentiment_score": -0.1956787109375
+              },
+              {
+                "word": "asks",
+                "start": 13.1934,
+                "end": 13.553221,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "asks",
+                "sentiment": "negative",
+                "sentiment_score": -0.36328125
+              },
+              {
+                "word": "his",
+                "start": 13.553221,
+                "end": 13.7931,
+                "confidence": 0.9975586,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "his",
+                "sentiment": "negative",
+                "sentiment_score": -0.3935546875
+              },
+              {
+                "word": "supporters",
+                "start": 13.7931,
+                "end": 14.2931,
+                "confidence": 0.94384766,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "supporters,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.3173828125
+              },
+              {
+                "word": "are",
+                "start": 14.552721,
+                "end": 14.792601,
+                "confidence": 0.96875,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "are",
+                "sentiment": "negative",
+                "sentiment_score": -0.51611328125
+              },
+              {
+                "word": "you",
+                "start": 14.792601,
+                "end": 14.83,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "you",
+                "sentiment": "negative",
+                "sentiment_score": -0.62158203125
+              },
+              {
+                "word": "better",
+                "start": 14.86998,
+                "end": 15.2298,
+                "confidence": 0.9868164,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "better",
+                "sentiment": "negative",
+                "sentiment_score": -0.5830078125
+              },
+              {
+                "word": "off",
+                "start": 15.2298,
+                "end": 15.50966,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "off",
+                "sentiment": "negative",
+                "sentiment_score": -0.52685546875
+              },
+              {
+                "word": "than",
+                "start": 15.50966,
+                "end": 15.74954,
+                "confidence": 0.99658203,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "than",
+                "sentiment": "negative",
+                "sentiment_score": -0.53076171875
+              },
+              {
+                "word": "you",
+                "start": 15.74954,
+                "end": 15.90946,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "you",
+                "sentiment": "negative",
+                "sentiment_score": -0.56591796875
+              },
+              {
+                "word": "were",
+                "start": 15.90946,
+                "end": 16.10936,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "were",
+                "sentiment": "negative",
+                "sentiment_score": -0.449462890625
+              },
+              {
+                "word": "4",
+                "start": 16.10936,
+                "end": 16.30926,
+                "confidence": 0.9941406,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "4",
+                "sentiment": "negative",
+                "sentiment_score": -0.51123046875
+              },
+              {
+                "word": "years",
+                "start": 16.30926,
+                "end": 16.54914,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "years",
+                "sentiment": "negative",
+                "sentiment_score": -0.4365234375
+              },
+              {
+                "word": "ago",
+                "start": 16.54914,
+                "end": 17.04914,
+                "confidence": 0.95751953,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "ago.",
+                "sentiment": "neutral",
+                "sentiment_score": -0.3291015625
+              },
+              {
+                "word": "when",
+                "start": 17.14884,
+                "end": 17.34874,
+                "confidence": 0.9980469,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "When",
+                "sentiment": "negative",
+                "sentiment_score": -0.364501953125
+              },
+              {
+                "word": "it",
+                "start": 17.34874,
+                "end": 17.50866,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "it",
+                "sentiment": "neutral",
+                "sentiment_score": -0.3017578125
+              },
+              {
+                "word": "comes",
+                "start": 17.50866,
+                "end": 17.74854,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "comes",
+                "sentiment": "neutral",
+                "sentiment_score": -0.25439453125
+              },
+              {
+                "word": "to",
+                "start": 17.74854,
+                "end": 17.86848,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "to",
+                "sentiment": "neutral",
+                "sentiment_score": -0.3310546875
+              },
+              {
+                "word": "the",
+                "start": 17.86848,
+                "end": 17.98842,
+                "confidence": 0.9760742,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "the",
+                "sentiment": "negative",
+                "sentiment_score": -0.33984375
+              },
+              {
+                "word": "economy",
+                "start": 17.98842,
+                "end": 18.48842,
+                "confidence": 0.9868164,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "economy,",
+                "sentiment": "neutral",
+                "sentiment_score": -0.181884765625
+              },
+              {
+                "word": "do",
+                "start": 18.54814,
+                "end": 18.66808,
+                "confidence": 0.99853516,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "do",
+                "sentiment": "negative",
+                "sentiment_score": -0.43994140625
+              },
+              {
+                "word": "you",
+                "start": 18.66808,
+                "end": 18.828,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "you",
+                "sentiment": "negative",
+                "sentiment_score": -0.4462890625
+              },
+              {
+                "word": "believe",
+                "start": 18.828,
+                "end": 19.14784,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "believe",
+                "sentiment": "negative",
+                "sentiment_score": -0.67529296875
+              },
+              {
+                "word": "americans",
+                "start": 19.14784,
+                "end": 19.6276,
+                "confidence": 0.99658203,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "Americans",
+                "sentiment": "neutral",
+                "sentiment_score": -0.312255859375
+              },
+              {
+                "word": "are",
+                "start": 19.6276,
+                "end": 19.78752,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "are",
+                "sentiment": "negative",
+                "sentiment_score": -0.451904296875
+              },
+              {
+                "word": "better",
+                "start": 19.78752,
+                "end": 20.067379,
+                "confidence": 1,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "better",
+                "sentiment": "negative",
+                "sentiment_score": -0.39599609375
+              },
+              {
+                "word": "off",
+                "start": 20.067379,
+                "end": 20.2273,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "off",
+                "sentiment": "negative",
+                "sentiment_score": -0.385986328125
+              },
+              {
+                "word": "than",
+                "start": 20.2273,
+                "end": 20.38722,
+                "confidence": 0.7036133,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "than",
+                "sentiment": "negative",
+                "sentiment_score": -0.44482421875
+              },
+              {
+                "word": "they",
+                "start": 20.38722,
+                "end": 20.50716,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "they",
+                "sentiment": "negative",
+                "sentiment_score": -0.421630859375
+              },
+              {
+                "word": "were",
+                "start": 20.50716,
+                "end": 20.66708,
+                "confidence": 0.9995117,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "were",
+                "sentiment": "negative",
+                "sentiment_score": -0.42138671875
+              },
+              {
+                "word": "4",
+                "start": 20.66708,
+                "end": 20.86698,
+                "confidence": 0.99072266,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "4",
+                "sentiment": "negative",
+                "sentiment_score": -0.427001953125
+              },
+              {
+                "word": "years",
+                "start": 20.86698,
+                "end": 21.106861,
+                "confidence": 0.99902344,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "years",
+                "sentiment": "neutral",
+                "sentiment_score": -0.294921875
+              },
+              {
+                "word": "ago",
+                "start": 21.106861,
+                "end": 21.606861,
+                "confidence": 0.9863281,
+                "speaker": 0,
+                "speaker_confidence": 1,
+                "punctuated_word": "ago?",
+                "sentiment": "neutral",
+                "sentiment_score": -0.182861328125
+              }
+            ],
+            "paragraphs": {
+              "transcript": "\nSpeaker 0: Wanna begin tonight with the issue that voters repeatedly say is their number one issue, and that is the economy and the cost of living in this country. Vice President Harris, you and President Trump were elected 4 years ago, and your opponent on the stage here tonight often asks his supporters, are you better off than you were 4 years ago. When it comes to the economy, do you believe Americans are better off than they were 4 years ago?",
+              "paragraphs": [
+                {
+                  "sentences": [
+                    {
+                      "text": "Wanna begin tonight with the issue that voters repeatedly say is their number one issue, and that is the economy and the cost of living in this country.",
+                      "start": 0.03998,
+                      "end": 7.17666,
+                      "sentiment": "neutral",
+                      "sentiment_score": -0.10166168212890625
+                    },
+                    {
+                      "text": "Vice President Harris, you and President Trump were elected 4 years ago, and your opponent on the stage here tonight often asks his supporters, are you better off than you were 4 years ago.",
+                      "start": 7.3963003,
+                      "end": 17.04914,
+                      "sentiment": "neutral",
+                      "sentiment_score": -0.2799215877757353
+                    },
+                    {
+                      "text": "When it comes to the economy, do you believe Americans are better off than they were 4 years ago?",
+                      "start": 17.14884,
+                      "end": 21.606861,
+                      "sentiment": "negative",
+                      "sentiment_score": -0.3723016036184211
+                    }
+                  ],
+                  "speaker": 0,
+                  "sentiment": "neutral",
+                  "sentiment_score": -0.23997026608314043,
+                  "num_words": 81,
+                  "start": 0.03998,
+                  "end": 21.606861
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "result": "success",
+      "short": "Speaker 0 suggests that voters have repeatedly addressed the cost of living crisis and the economy, prompting President Harris to ask his supporters if they are better off than those four years ago."
+    },
+    "topics": {
+      "segments": [
+        {
+          "text": "Vice President Harris, you and President Trump were elected 4 years ago, and your opponent on the stage here tonight often asks his supporters, are you better off than you were 4 years ago. When it comes to the economy, do you believe Americans are better off than they were 4 years ago?",
+          "start_word": 28,
+          "end_word": 80,
+          "topics": [
+            {
+              "topic": "Election",
+              "confidence_score": 0.13418102
+            },
+            {
+              "topic": "Voting",
+              "confidence_score": 0.01623618
+            }
+          ]
+        },
+        {
+          "text": "When it comes to the economy, do you believe Americans are better off than they were 4 years ago?",
+          "start_word": 62,
+          "end_word": 80,
+          "topics": [
+            {
+              "topic": "Economy",
+              "confidence_score": 0.8226757
+            },
+            {
+              "topic": "Cost of living",
+              "confidence_score": 0.2713518
+            }
+          ]
+        }
+      ]
+    },
+    "intents": {
+      "segments": [
+        {
+          "text": "When it comes to the economy, do you believe Americans are better off than they were 4 years ago?",
+          "start_word": 62,
+          "end_word": 80,
+          "intents": [
+            {
+              "intent": "Analyze economy and cost of living",
+              "confidence_score": 0.013775969
+            }
+          ]
+        }
+      ]
+    },
+    "sentiments": {
+      "segments": [
+        {
+          "text": "Wanna begin tonight with the issue that voters repeatedly say is their number one issue, and that is the economy and the cost of living in this country. Vice President Harris, you and President Trump were elected 4 years ago, and your opponent on the stage here tonight often asks his supporters, are you better off than you were 4 years ago.",
+          "start_word": 0,
+          "end_word": 61,
+          "sentiment": "neutral",
+          "sentiment_score": -0.1986083984375
+        },
+        {
+          "text": "When it comes to the economy, do you believe Americans are better off than they were 4 years ago?",
+          "start_word": 62,
+          "end_word": 80,
+          "sentiment": "negative",
+          "sentiment_score": -0.3623046875
+        }
+      ],
+      "average": {
+        "sentiment": "neutral",
+        "sentiment_score": -0.23643543956043955
+      }
+    }
+  },
+  "category": "start",
+  "speaker": "muir"
+}

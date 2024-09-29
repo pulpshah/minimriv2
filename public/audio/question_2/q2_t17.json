@@ -1,0 +1,427 @@
+{
+    "metadata": {
+      "transaction_key": "deprecated",
+      "request_id": "f3f61570-c1b9-405e-8878-c10c21b8bb30",
+      "sha256": "181cc6069a155d295fa1c67bda9564fee0b03abd08df5bb68754af88bbe391de",
+      "created": "2024-09-24T05:05:31.209Z",
+      "duration": 6.3730626,
+      "channels": 1,
+      "models": [
+        "6f548761-c9c0-429a-9315-11a1d28499c8"
+      ],
+      "model_info": {
+        "6f548761-c9c0-429a-9315-11a1d28499c8": {
+          "name": "general-enhanced",
+          "version": "2023-07-13.28732",
+          "arch": "polaris"
+        }
+      },
+      "summary_info": {
+        "model_uuid": "67875a7f-c9c4-48a0-aa55-5bdb8a91c34a",
+        "input_tokens": 0,
+        "output_tokens": 0
+      },
+      "sentiment_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 35,
+        "output_tokens": 35
+      },
+      "topics_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 35,
+        "output_tokens": 14
+      },
+      "intents_info": {
+        "model_uuid": "80ab3179-d113-4254-bd6b-4a2f96498695",
+        "input_tokens": 35,
+        "output_tokens": 18
+      }
+    },
+    "results": {
+      "channels": [
+        {
+          "alternatives": [
+            {
+              "transcript": "Why don't you ask my question? Why don't you ask me the question? Would you Because under Roe v Watson, the question would be too.",
+              "confidence": 0.7729492,
+              "words": [
+                {
+                  "word": "why",
+                  "start": 0.87956005,
+                  "end": 1.0394801,
+                  "confidence": 0.46044922,
+                  "speaker": 0,
+                  "speaker_confidence": 0.45410156,
+                  "punctuated_word": "Why",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.85498046875
+                },
+                {
+                  "word": "don't",
+                  "start": 1.0394801,
+                  "end": 1.23938,
+                  "confidence": 0.9916992,
+                  "speaker": 0,
+                  "speaker_confidence": 0.45410156,
+                  "punctuated_word": "don't",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.88232421875
+                },
+                {
+                  "word": "you",
+                  "start": 1.23938,
+                  "end": 1.3993001,
+                  "confidence": 0.99853516,
+                  "speaker": 0,
+                  "speaker_confidence": 0.45410156,
+                  "punctuated_word": "you",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.87109375
+                },
+                {
+                  "word": "ask",
+                  "start": 1.3993001,
+                  "end": 1.5992,
+                  "confidence": 0.81591797,
+                  "speaker": 0,
+                  "speaker_confidence": 0.45410156,
+                  "punctuated_word": "ask",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.85107421875
+                },
+                {
+                  "word": "my",
+                  "start": 1.5992,
+                  "end": 1.7591201,
+                  "confidence": 0.7729492,
+                  "speaker": 0,
+                  "speaker_confidence": 0.45410156,
+                  "punctuated_word": "my",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.8916015625
+                },
+                {
+                  "word": "question",
+                  "start": 1.7591201,
+                  "end": 2.0789602,
+                  "confidence": 0.68188477,
+                  "speaker": 0,
+                  "speaker_confidence": 0.45410156,
+                  "punctuated_word": "question?",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.7919921875
+                },
+                {
+                  "word": "why",
+                  "start": 2.0789602,
+                  "end": 2.1989,
+                  "confidence": 0.6777344,
+                  "speaker": 0,
+                  "speaker_confidence": 0.4296875,
+                  "punctuated_word": "Why",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.78857421875
+                },
+                {
+                  "word": "don't",
+                  "start": 2.1989,
+                  "end": 2.3988001,
+                  "confidence": 0.99780273,
+                  "speaker": 0,
+                  "speaker_confidence": 0.4296875,
+                  "punctuated_word": "don't",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.78369140625
+                },
+                {
+                  "word": "you",
+                  "start": 2.3988001,
+                  "end": 2.55872,
+                  "confidence": 0.9946289,
+                  "speaker": 0,
+                  "speaker_confidence": 0.4296875,
+                  "punctuated_word": "you",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.79296875
+                },
+                {
+                  "word": "ask",
+                  "start": 2.55872,
+                  "end": 2.8385801,
+                  "confidence": 0.76171875,
+                  "speaker": 0,
+                  "speaker_confidence": 0.4296875,
+                  "punctuated_word": "ask",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.7275390625
+                },
+                {
+                  "word": "me",
+                  "start": 2.8385801,
+                  "end": 2.9985,
+                  "confidence": 0.2524414,
+                  "speaker": 0,
+                  "speaker_confidence": 0.56640625,
+                  "punctuated_word": "me",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.79443359375
+                },
+                {
+                  "word": "the",
+                  "start": 2.9985,
+                  "end": 3.1984,
+                  "confidence": 0.40454102,
+                  "speaker": 0,
+                  "speaker_confidence": 0.56640625,
+                  "punctuated_word": "the",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.78564453125
+                },
+                {
+                  "word": "question",
+                  "start": 3.1984,
+                  "end": 3.5982,
+                  "confidence": 0.73669434,
+                  "speaker": 0,
+                  "speaker_confidence": 0.56640625,
+                  "punctuated_word": "question?",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.6650390625
+                },
+                {
+                  "word": "would",
+                  "start": 3.5982,
+                  "end": 3.75812,
+                  "confidence": 0.78027344,
+                  "speaker": 0,
+                  "speaker_confidence": 0.56640625,
+                  "punctuated_word": "Would",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.71240234375
+                },
+                {
+                  "word": "you",
+                  "start": 3.75812,
+                  "end": 3.87806,
+                  "confidence": 0.97216797,
+                  "speaker": 0,
+                  "speaker_confidence": 0.56640625,
+                  "punctuated_word": "you",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.66845703125
+                },
+                {
+                  "word": "because",
+                  "start": 3.9580202,
+                  "end": 4.23788,
+                  "confidence": 0.77685547,
+                  "speaker": 0,
+                  "speaker_confidence": 0.56640625,
+                  "punctuated_word": "Because",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.60302734375
+                },
+                {
+                  "word": "under",
+                  "start": 4.23788,
+                  "end": 4.55772,
+                  "confidence": 0.92333984,
+                  "speaker": 0,
+                  "speaker_confidence": 0.38867188,
+                  "punctuated_word": "under",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.72021484375
+                },
+                {
+                  "word": "roe",
+                  "start": 4.55772,
+                  "end": 4.7576203,
+                  "confidence": 0.56884766,
+                  "speaker": 0,
+                  "speaker_confidence": 0.38867188,
+                  "punctuated_word": "Roe",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.751953125
+                },
+                {
+                  "word": "v",
+                  "start": 4.7576203,
+                  "end": 4.87756,
+                  "confidence": 0.5336914,
+                  "speaker": 0,
+                  "speaker_confidence": 0.38867188,
+                  "punctuated_word": "v",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.697265625
+                },
+                {
+                  "word": "watson",
+                  "start": 4.87756,
+                  "end": 5.23738,
+                  "confidence": 0.46929932,
+                  "speaker": 0,
+                  "speaker_confidence": 0.38867188,
+                  "punctuated_word": "Watson,",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.759765625
+                },
+                {
+                  "word": "the",
+                  "start": 5.23738,
+                  "end": 5.3973002,
+                  "confidence": 0.87402344,
+                  "speaker": 0,
+                  "speaker_confidence": 0.4819336,
+                  "punctuated_word": "the",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.8798828125
+                },
+                {
+                  "word": "question",
+                  "start": 5.3973002,
+                  "end": 5.7971,
+                  "confidence": 0.99316406,
+                  "speaker": 0,
+                  "speaker_confidence": 0.4819336,
+                  "punctuated_word": "question",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.7451171875
+                },
+                {
+                  "word": "would",
+                  "start": 5.7971,
+                  "end": 5.997,
+                  "confidence": 0.87402344,
+                  "speaker": 0,
+                  "speaker_confidence": 0.4819336,
+                  "punctuated_word": "would",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.88330078125
+                },
+                {
+                  "word": "be",
+                  "start": 5.997,
+                  "end": 6.1569204,
+                  "confidence": 0.6621094,
+                  "speaker": 0,
+                  "speaker_confidence": 0.4819336,
+                  "punctuated_word": "be",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.84326171875
+                },
+                {
+                  "word": "too",
+                  "start": 6.1569204,
+                  "end": 6.3730626,
+                  "confidence": 0.44726562,
+                  "speaker": 0,
+                  "speaker_confidence": 0.4819336,
+                  "punctuated_word": "too.",
+                  "sentiment": "negative",
+                  "sentiment_score": -0.48486328125
+                }
+              ],
+              "paragraphs": {
+                "transcript": "\nSpeaker 0: Why don't you ask my question? Why don't you ask me the question? Would you Because under Roe v Watson, the question would be too.",
+                "paragraphs": [
+                  {
+                    "sentences": [
+                      {
+                        "text": "Why don't you ask my question?",
+                        "start": 0.87956005,
+                        "end": 2.0789602,
+                        "sentiment": "negative",
+                        "sentiment_score": -0.857177734375
+                      },
+                      {
+                        "text": "Why don't you ask me the question?",
+                        "start": 2.0789602,
+                        "end": 3.5982,
+                        "sentiment": "negative",
+                        "sentiment_score": -0.7625558035714286
+                      },
+                      {
+                        "text": "Would you Because under Roe v Watson, the question would be too.",
+                        "start": 3.5982,
+                        "end": 6.3730626,
+                        "sentiment": "negative",
+                        "sentiment_score": -0.7291259765625
+                      }
+                    ],
+                    "speaker": 0,
+                    "sentiment": "negative",
+                    "sentiment_score": -0.76921875,
+                    "num_words": 25,
+                    "start": 0.87956005,
+                    "end": 6.3730626
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "result": "success",
+        "short": "[Speaker 0:] Why don't you ask my question? Why don't you ask me the question? Would you Because under Roe v Watson, the question would be too."
+      },
+      "topics": {
+        "segments": [
+          {
+            "text": "Why don't you ask me the question? Would you Because under Roe v Watson, the question would be too.",
+            "start_word": 6,
+            "end_word": 24,
+            "topics": [
+              {
+                "topic": "Asking question",
+                "confidence_score": 0.056827933
+              }
+            ]
+          },
+          {
+            "text": "Would you Because under Roe v Watson, the question would be too.",
+            "start_word": 13,
+            "end_word": 24,
+            "topics": [
+              {
+                "topic": "Roe v wilson",
+                "confidence_score": 0.22172579
+              }
+            ]
+          }
+        ]
+      },
+      "intents": {
+        "segments": [
+          {
+            "text": "Would you Because under Roe v Watson, the question would be too.",
+            "start_word": 13,
+            "end_word": 24,
+            "intents": [
+              {
+                "intent": "Inquire about roe v watson's question",
+                "confidence_score": 0.0007572877
+              }
+            ]
+          }
+        ]
+      },
+      "sentiments": {
+        "segments": [
+          {
+            "text": "Why don't you ask my question? Why don't you ask me the question? Would you Because under Roe v Watson, the question would be too.",
+            "start_word": 0,
+            "end_word": 24,
+            "sentiment": "negative",
+            "sentiment_score": -0.7763671875
+          }
+        ],
+        "average": {
+          "sentiment": "negative",
+          "sentiment_score": -0.7763392857142857
+        }
+      }
+    },
+    "category": "follow-up_12",
+    "speaker": "trump-harris-crosstalk-interruption-continued"  
+}
