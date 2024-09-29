@@ -1,21 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 
-interface SearchBarProps {
-  searchInput: string;
-  onSearchInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  isSearchMode: boolean;
-  handleSearchClick: () => void;
-  handleClearSearch: () => void;
-  setInboxOpen: () => void;
-  setFetchOpen: () => void;
-  isInboxOpen: boolean;
-  isFetchOpen: boolean;
-  isSearchBarExpanded: boolean;
-  onSearchBarClick: () => void;
-  setSearchBarExpanded: (expanded: boolean) => void;
-}
-
 const SearchBar: React.FC<SearchBarProps> = ({
   searchInput,
   onSearchInputChange,
@@ -31,12 +16,15 @@ const SearchBar: React.FC<SearchBarProps> = ({
   setSearchBarExpanded,
 }) => {
   const searchBarRef = useRef<HTMLDivElement | null>(null);
+  const clearButtonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         searchBarRef.current &&
-        !searchBarRef.current.contains(event.target as Node)
+        !searchBarRef.current.contains(event.target as Node) &&
+        clearButtonRef.current &&
+        !clearButtonRef.current.contains(event.target as Node)
       ) {
         setSearchBarExpanded(false);
       }
@@ -103,11 +91,11 @@ const SearchBar: React.FC<SearchBarProps> = ({
               value={searchInput}
               onChange={onSearchInputChange}
               onClick={onSearchBarClick}
-              onBlur={() => setSearchBarExpanded(false)}
             />
 
             {searchInput && (
               <button
+                ref={clearButtonRef}
                 className="absolute right-[10px] text-white cursor-pointer"
                 onClick={handleClearSearch}
               >
