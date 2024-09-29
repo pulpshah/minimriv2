@@ -34,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+#audio
+/public/audio/question_1/
+/public/audio/question_2/

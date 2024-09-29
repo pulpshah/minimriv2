@@ -39,6 +39,7 @@ const HomePage = () => {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [currentTurn, setCurrentTurn] = useState<number>(0);
+  const [currentQuestion, setCurrentQuestion] = useState<number>(0); // Start with question 1
   const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isSearchMode, setSearchMode] = useState(false);
@@ -47,6 +48,7 @@ const HomePage = () => {
   const [isFetchOpen, setFetchOpen] = useState(false);
   const [wordData, setWordData] = useState<any[]>([]);
   const [sentencesData, setSentencesData] = useState<any[]>([]);
+  const [turnCategory, setTurnCategory] = useState<string | null>(null);
   const [highlightedWordIndex, setHighlightedWordIndex] = useState<number | null>(null);
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState<number>(0);
   const [isSearchBarExpanded, setSearchBarExpanded] = useState(false);
@@ -57,31 +59,32 @@ const HomePage = () => {
   const turnsData: Array<TurnData> = JFile.analysis;
   const currentData = turnsData[currentTurn] ?? null;
   const nextData: TurnData | null = turnsData[currentTurn + 1] || null;
-  const cumulativeScoreKH = getCumulativeScoreKH();
-  const cumulativeScoreDT = getCumulativeScoreDT();
-  const scoreForCurrentTurn = currentData.score;
+  // const cumulativeScoreKH = getCumulativeScoreKH();
+  // const cumulativeScoreDT = getCumulativeScoreDT();
+  // const scoreForCurrentTurn = currentData.score;
+
   const nextTurnText = nextData && nextData.analysis.claims.length > 0
     ? nextData.analysis.claims[0].text
     : "No next turn text available";
 
   // Functions to calculate scores
-  function getCumulativeScoreKH() {
-    return (
-      turnsData
-        .filter((turn) => turn.speaker_name === "Kamala Harris")
-        .find((turn) => turn.turn_number === currentData.turn_number)
-        ?.cumulative_score || 0
-    );
-  }
+  // function getCumulativeScoreKH() {
+  //   return (
+  //     turnsData
+  //       .filter((turn) => turn.speaker_name === "Kamala Harris")
+  //       .find((turn) => turn.turn_number === currentData.turn_number)
+  //       ?.cumulative_score || 0
+  //   );
+  // }
 
-  function getCumulativeScoreDT() {
-    return (
-      turnsData
-        .filter((turn) => turn.speaker_name === "Donald Trump")
-        .find((turn) => turn.turn_number === currentData.turn_number)
-        ?.cumulative_score || 0
-    );
-  }
+  // function getCumulativeScoreDT() {
+  //   return (
+  //     turnsData
+  //       .filter((turn) => turn.speaker_name === "Donald Trump")
+  //       .find((turn) => turn.turn_number === currentData.turn_number)
+  //       ?.cumulative_score || 0
+  //   );
+  // }
 
   // UI Handlers
   const handleExpandClick = () => {
@@ -130,6 +133,33 @@ const HomePage = () => {
   };
 
   // Audio Handlers
+  const loadTurnContent = async (questionNumber: number, turnNumber: number) => {
+    try {
+      // Load the JSON file for the current turn
+      const jsonResponse = await fetch(`/audio/question_${questionNumber}/q${questionNumber}_t${String(turnNumber).padStart(2, '0')}.json`);
+      const jsonData = await jsonResponse.json();
+  
+      // Update state with word and sentence data
+      setWordData(jsonData.results.channels[0].alternatives[0].words);
+      setSentencesData(jsonData.results.channels[0].alternatives[0].paragraphs.paragraphs[0].sentences);
+  
+      // Update the category for the current turn
+      setTurnCategory(jsonData.category);
+  
+      // Update the audio source
+      if (audioRef.current) {
+        audioRef.current.src = `/audio/question_${questionNumber}/q${questionNumber}_t${String(turnNumber).padStart(2, '0')}.wav`;
+        setIsPlaying(false); // Stop any previous audio
+      }
+    } catch (error) {
+      console.error("Error loading turn content:", error);
+    }
+  };
+
+  useEffect(() => {
+    loadTurnContent(currentQuestion, currentTurn);
+  }, []);
+
   const getAudioFile = (turnNumber: number) => {
     return `/audio/turn${turnNumber}.wav`;
   };
@@ -164,12 +194,58 @@ const HomePage = () => {
     }
   };
 
-  const handleBackClick = (e: { stopPropagation: () => void }) => {
-    e.stopPropagation();
-    if (currentTurn > 0) {
-      setCurrentTurn(currentTurn - 1);
-      setIsPlaying(false);
+  const getNumberOfTurns = async (questionNumber: number) => {
+    let turnCount = 0;
+    let turnExists = true;
+  
+    // Keep checking for the existence of the next turn until a file is not found
+    while (turnExists) {
+      try {
+        const response = await fetch(`/audio/question_${questionNumber}/q${questionNumber}_t${String(turnCount + 1).padStart(2, '0')}.json`);
+        if (response.ok) {
+          turnCount++;
+        } else {
+          turnExists = false;
+        }
+      } catch (error) {
+        turnExists = false;
+      }
     }
+  
+    return turnCount;
+  };
+
+  const handleNextTurn = async () => {
+    if (audioRef.current) {
+      audioRef.current.pause(); // Pause the current audio
+    }
+    setIsPlaying(false);
+  
+    let nextTurn = currentTurn + 1;
+    let nextQuestion = currentQuestion;
+  
+    // Get the number of turns available for the current question
+    const maxTurns = await getNumberOfTurns(currentQuestion);
+  
+    // Check if we need to move to the next question
+    if (nextTurn > maxTurns) {
+      nextTurn = 1; // Reset turn to 1 for the new question
+      nextQuestion += 1;
+  
+      // Get the number of turns for the next question to confirm it exists
+      const nextQuestionTurns = await getNumberOfTurns(nextQuestion);
+      if (nextQuestionTurns === 0) {
+        // If no turns are available for the next question, stay on the current question
+        return;
+      }
+    }
+  
+    // Update state to load the new turn content
+    setCurrentTurn(nextTurn);
+    setCurrentQuestion(nextQuestion);
+  
+    // Load the content for the next turn
+    loadTurnContent(nextQuestion, nextTurn);
   };
 
   // Touch Handlers for Swipe Gestures
@@ -204,15 +280,17 @@ const HomePage = () => {
 
   // Effects
   useEffect(() => {
-    const loadWordAndSentenceData = async () => {
-      const response = await fetch(`/audio/audio_data/turn${currentTurn + 1}.json`);
-      const data = await response.json();
-      setWordData(data.results.channels[0].alternatives[0].words);
-      setSentencesData(data.results.channels[0].alternatives[0].paragraphs.paragraphs[0].sentences);
-    };
+    // Assuming question 1 and turn 1 for the initial load
+    loadTurnContent(1, 1);
+    setCurrentQuestion(1);
+    setCurrentTurn(1);
+  }, []);
 
-    loadWordAndSentenceData();
-  }, [currentTurn]);
+  useEffect(() => {
+    if (currentQuestion > 0 && currentTurn > 0) {
+      loadTurnContent(currentQuestion, currentTurn);
+    }
+  }, [currentQuestion, currentTurn]);
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -230,32 +308,27 @@ const HomePage = () => {
 
   useEffect(() => {
     const audioElement = audioRef.current;
-    if (audioElement && wordData.length > 0) {
+    if (audioElement) {
       const handleTimeUpdate = () => {
         const currentTime = audioElement.currentTime;
 
-        // Highlight the current word
-        const currentWordIndex = wordData.findIndex(
-          (word: any) => currentTime >= word.start && currentTime <= word.end
+        // Find the current sentence based on the current time
+        const currentSentenceIndex = sentencesData.findIndex(
+          (sentence) => currentTime >= sentence.start && currentTime <= sentence.end
         );
-        setHighlightedWordIndex(currentWordIndex !== -1 ? currentWordIndex : null);
 
-        // Check if the current two sentences are done being spoken
-        if (currentSentences.length === 2) {
-          const secondSentenceEnd = currentSentences[1]?.end;
-          if (currentTime >= secondSentenceEnd) {
-            // Scroll to the next two sentences
-            setCurrentSentenceIndex((prevIndex) => prevIndex + 2);
-          }
+        if (currentSentenceIndex !== -1) {
+          setCurrentSentenceIndex(currentSentenceIndex);
         }
       };
+
       audioElement.addEventListener("timeupdate", handleTimeUpdate);
 
       return () => {
         audioElement.removeEventListener("timeupdate", handleTimeUpdate);
       };
     }
-  }, [wordData, currentSentenceIndex]);
+  }, [sentencesData]);
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -320,85 +393,122 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* searchbar */}
+        {/* header */}
       <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
 
-            <div
-            onClick={() => setTranscriptOpen(!isTranscriptOpen)}
-            className={`top-pill cursor-pointer w-full max-w-[600px] white-opaque transition-all backdrop-blur-[200px] mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
-              isTranscriptOpen ? 'h-[45vh] max-w-full' : 'h-[57px]'
-            }`}
-          >
-            
-            <div className="flex gap-3"
-             >
-              <div
-                className="box current-speaker !w-[40px] !h-[40px] shadow shadow-[#cae7ff] border border-[#cae7ff] justify-center items-center inline-flex rounded-full"
-                style={{
-                  boxShadow: "0px 0px 11.7px 0px rgba(0, 140, 255, 0.91)",
-                }}
-              >
-                <Image
-                  src="/candidates/harris.webp"
-                  alt=""
-                  width={40}
-                  height={40}
-                  className="block mx-auto rounded-full"
-                  onClick={(e) => e.stopPropagation()}></Image>
-                
-              </div>
+      <div
+  onClick={() => setTranscriptOpen(!isTranscriptOpen)}
+  className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] white-opaque transition-all backdrop-blur-[200px] mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
+    isTranscriptOpen ? 'h-[45vh] max-w-full' : 'h-[57px]'
+  }`}
+>
+  <div className="box">
 
-              <div className="flex flex-col">
-                <div className="current-name text-sm md:text-base" >
-                  Kamala Harris
-                </div>
-                <div className="flex gap-1">
-                  <div className="poppins text-xs md:text-sm -mt-1.5">200 pts</div>
-                  <div className="poppins text-xs md:text-sm -mt-1.5">•</div>
-                <div className="poppins text-xs md:text-sm -mt-1.5">Happy</div>
-                </div>
-              </div>
-            </div>
+  <div className="flex flex-row justify-between items-center gap-3 w-full">
+    {/* Speaker Information */}
+    <div className="flex flex-row items-center gap-3">
+      <div
+        className="box current-speaker !w-[40px] !h-[40px] shadow shadow-[#cae7ff] border border-[#cae7ff] justify-center items-center inline-flex rounded-full"
+        style={{
+          boxShadow: "0px 0px 11.7px 0px rgba(0, 140, 255, 0.91)",
+        }}
+      >
+        <Image
+          src="/candidates/harris.webp"
+          alt=""
+          width={40}
+          height={40}
+          className="block mx-auto rounded-full"
+          onClick={(e) => e.stopPropagation()}
+        />
+      </div>
+      <div className="flex flex-col">
+        <div className="current-name text-sm md:text-base">Kamala Harris</div>
+        <div className="flex gap-1">
+          <div className="poppins text-xs md:text-sm -mt-1.5">200 pts</div>
+          <div className="poppins text-xs md:text-sm -mt-1.5">•</div>
+          <div className="poppins text-xs md:text-sm -mt-1.5">Happy</div>
+        </div>
+      </div>
+    </div>
 
-            <div className="speakers flex gap-3"
-            >
-              <div className="secondary-speaker flex-shrink-0 black-opaque rounded-full" onClick={(e) => e.stopPropagation()}>
-              <Image
-                src="/candidates/trump.webp"
-                alt=""
-                width={40}
-                height={40}
-                className="block mx-auto rounded-full"
-              />
-              </div>
-              <div className="secondary-speaker">
-                <div className="w-[40px] h-[40px] flex-shrink-0 black-opaque rounded-full flex justify-center items-center text-base">
-                  +2
-                </div>
-              </div>
-            
-              <button
-              onClick={(e) => {
-                e.stopPropagation(); // Prevent event from bubbling up
-                handlePlayPauseClick(); // Call your play/pause handler
-              }}
-            >
-              <div className="play text-white transition-all flex-shrink-0 w-[40px] h-[40px]">
-                <Image
-                  src={
-                    isPlaying ? "icons/pause-icon.svg" : "icons/play-icon.svg"
-                  }
-                  alt={isPlaying ? "pause" : "play"}
-                  height={40}
-                  width={40}
-                />
-              </div>
-            </button>
+    {/* Secondary Speakers and Controls */}
+    <div className="flex flex-row items-center gap-3">
+      <div
+        className="secondary-speaker flex-shrink-0 black-opaque rounded-full"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <Image
+          src="/candidates/trump.webp"
+          alt=""
+          width={40}
+          height={40}
+          className="block mx-auto rounded-full"
+        />
+      </div>
+      <div className="secondary-speaker">
+        <div className="w-[40px] h-[40px] flex-shrink-0 black-opaque rounded-full flex justify-center items-center text-base">
+          +2
+        </div>
+      </div>
+      <audio ref={audioRef} />
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          handlePlayPauseClick();
+        }}
+      >
+        <div className="play text-white transition-all flex-shrink-0 w-[40px] h-[40px]">
+          <Image
+            src={isPlaying ? "icons/pause-icon.svg" : "icons/play-icon.svg"}
+            alt={isPlaying ? "pause" : "play"}
+            height={40}
+            width={40}
+          />
+        </div>
+      </button>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          handleNextTurn();
+        }}
+      >
+        <div className="next-turn text-white transition-all flex-shrink-0 w-[40px] h-[40px]">
+          <Image
+            src={"icons/skip-icon.svg"}
+            alt="next"
+            height={40}
+            width={40}
+          />
+        </div>
+      </button>
+    </div>
+  </div>
+  </div>
 
-
-            </div>
-
-          </div>
+  {/* Transcript Section */}
+  {isTranscriptOpen && (
+  <div className="transcript-content h-full w-full rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col w-full mt-3">
+    <div className="flex flex-row justify-between w-full">
+      <p>transcript</p>
+      <p className="poppins text-[#79FF89]">20 pts+</p>
+      <div className="rounded-[20px] black-opaque px-[10px]">
+        {turnCategory || 'No Category'}
+      </div>
+    </div>
+    {sentencesData.map((sentence, index) => (
+      <div className="box">
+        <div
+          key={index}
+          className={`${highlightedWordIndex === index ? 'highlighted' : ''} !text-left text-sm md:text-base overflow-auto`}
+        >
+          {sentence.text}
+        </div>
+      </div>
+    ))}
+  </div>
+)}
+</div>
 
 
       </div>
