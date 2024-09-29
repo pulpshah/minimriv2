@@ -362,9 +362,7 @@ const HomePage = () => {
       <div className="overlay bg-white bg-opacity-20 absolute z-0 inset-0 backdrop-blur-[200px] opacity-100"></div>
 
       <div
-        className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[90px] pb-[150px] bg-none overflow-y-auto scroll-smooth ${
-          isTranscriptOpen ? "pb-[54vh]" : "pb-[150px]"
-        }`}
+        className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[90px] pb-[82px] bg-none overflow-y-auto scroll-smooth`}
       >
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
@@ -398,7 +396,7 @@ const HomePage = () => {
 
       <div
   onClick={() => setTranscriptOpen(!isTranscriptOpen)}
-  className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] white-opaque transition-all backdrop-blur-[200px] mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
+  className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] nav-bar !blurry transition-all mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
     isTranscriptOpen ? 'h-[45vh] max-w-full' : 'h-[57px]'
   }`}
 >
@@ -458,7 +456,7 @@ const HomePage = () => {
           handlePlayPauseClick();
         }}
       >
-        <div className="play text-white transition-all flex-shrink-0 w-[40px] h-[40px]">
+        <div className="play invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
           <Image
             src={isPlaying ? "icons/pause-icon.svg" : "icons/play-icon.svg"}
             alt={isPlaying ? "pause" : "play"}
@@ -468,12 +466,13 @@ const HomePage = () => {
         </div>
       </button>
       <button
+      className="hidden md:flex"
         onClick={(e) => {
           e.stopPropagation();
           handleNextTurn();
         }}
       >
-        <div className="next-turn text-white transition-all flex-shrink-0 w-[40px] h-[40px]">
+        <div className="next-turn invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
           <Image
             src={"icons/skip-icon.svg"}
             alt="next"
@@ -488,13 +487,12 @@ const HomePage = () => {
 
   {/* Transcript Section */}
   {isTranscriptOpen && (
-  <div className="transcript-content h-full w-full rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col w-full mt-3">
-    <div className="flex flex-row justify-between w-full">
-      <p>transcript</p>
-      <p className="poppins text-[#79FF89]">20 pts+</p>
-      <div className="rounded-[20px] black-opaque px-[10px]">
+  <div className="transcript-content h-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[0px] flex flex-col w-full mt-3">
+    <div className="flex flex-row items-center justify-between w-full">
+      <div className="rounded-[20px] poppins px-[10px]">
         {turnCategory || 'No Category'}
       </div>
+      <p className="rounded-[20px] flex gap-1 white-opaque px-[10px]">Turn <div className="">1</div></p>
     </div>
     {sentencesData.map((sentence, index) => (
       <div className="box">

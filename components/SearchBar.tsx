@@ -51,7 +51,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         }`}
       >
         <div
-          className={`search-bar relative backdrop-blur-[50px] mt-2.5 transition-all z-[101] flex-shrink-0 justify-between w-[65vw] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full ${
+          className={`search-bar relative backdrop-blur-[50px] mt-3.5 transition-all z-[101] flex-shrink-0 justify-between w-[65vw] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full ${
             isSearchBarExpanded
               ? "w-full max-w-[600px] h-[45px]"
               : "h-[35px] w-[65vw] max-w-[450px]"

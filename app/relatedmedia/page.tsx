@@ -298,13 +298,15 @@ const RelatedMedia = () => {
       <div className="overlay bg-white bg-opacity-20 absolute z-0 inset-0 backdrop-blur-[200px] opacity-100"></div>
 
       <div
-        className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[90px] pb-[150px] bg-none overflow-y-auto scroll-smooth ${
-          isTranscriptOpen ? "pb-[54vh]" : "pb-[150px]"
-        }`}
+        className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[90px] pb-[82px] bg-none overflow-y-auto scroll-smooth 
+        `}
       >
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
-                <h1 className="text-2xl font-bold text-center">Related Media</h1>
+                <div className="flex gap-5 items-center box">
+                <h1 className="text-2xl text-center">Related Media</h1>
+                <p className="rounded-[20px] text-2xl flex gap-1 black-opaque px-[10px]">Turn <div className="">1</div></p>
+                </div>
                 <MediaFeed items={mediaItems} />
           </div>
         </div>
@@ -312,82 +314,119 @@ const RelatedMedia = () => {
         {/* searchbar */}
       <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
 
-            <div
-            onClick={() => setTranscriptOpen(!isTranscriptOpen)}
-            className={`top-pill cursor-pointer w-full max-w-[600px] white-opaque transition-all backdrop-blur-[200px] mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
-              isTranscriptOpen ? 'h-[45vh] max-w-full' : 'h-[57px]'
-            }`}
-          >
-            
-            <div className="flex gap-3"
-             >
-              <div
-                className="box current-speaker !w-[40px] !h-[40px] shadow shadow-[#cae7ff] border border-[#cae7ff] justify-center items-center inline-flex rounded-full"
-                style={{
-                  boxShadow: "0px 0px 11.7px 0px rgba(0, 140, 255, 0.91)",
-                }}
-              >
-                <Image
-                  src="/candidates/harris.webp"
-                  alt=""
-                  width={40}
-                  height={40}
-                  className="block mx-auto rounded-full"
-                  onClick={(e) => e.stopPropagation()}></Image>
-                
-              </div>
+      <div
+  onClick={() => setTranscriptOpen(!isTranscriptOpen)}
+  className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] nav-bar !blurry transition-all mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
+    isTranscriptOpen ? 'h-[45vh] max-w-full' : 'h-[57px]'
+  }`}
+>
+  <div className="box">
 
-              <div className="flex flex-col">
-                <div className="current-name text-sm md:text-base" >
-                  Kamala Harris
-                </div>
-                <div className="flex gap-1">
-                  <div className="poppins text-xs md:text-sm -mt-1.5">200 pts</div>
-                  <div className="poppins text-xs md:text-sm -mt-1.5">•</div>
-                <div className="poppins text-xs md:text-sm -mt-1.5">Happy</div>
-                </div>
-              </div>
-            </div>
+  <div className="flex flex-row justify-between items-center gap-3 w-full">
+    {/* Speaker Information */}
+    <div className="flex flex-row items-center gap-3">
+      <div
+        className="box current-speaker !w-[40px] !h-[40px] shadow shadow-[#cae7ff] border border-[#cae7ff] justify-center items-center inline-flex rounded-full"
+        style={{
+          boxShadow: "0px 0px 11.7px 0px rgba(0, 140, 255, 0.91)",
+        }}
+      >
+        <Image
+          src="/candidates/harris.webp"
+          alt=""
+          width={40}
+          height={40}
+          className="block mx-auto rounded-full"
+          onClick={(e) => e.stopPropagation()}
+        />
+      </div>
+      <div className="flex flex-col">
+        <div className="current-name text-sm md:text-base">Kamala Harris</div>
+        <div className="flex gap-1">
+          <div className="poppins text-xs md:text-sm -mt-1.5">200 pts</div>
+          <div className="poppins text-xs md:text-sm -mt-1.5">•</div>
+          <div className="poppins text-xs md:text-sm -mt-1.5">Happy</div>
+        </div>
+      </div>
+    </div>
 
-            <div className="speakers flex gap-3"
-            >
-              <div className="secondary-speaker flex-shrink-0 black-opaque rounded-full" onClick={(e) => e.stopPropagation()}>
-              <Image
-                src="/candidates/trump.webp"
-                alt=""
-                width={40}
-                height={40}
-                className="block mx-auto rounded-full"
-              />
-              </div>
-              <div className="secondary-speaker">
-                <div className="w-[40px] h-[40px] flex-shrink-0 black-opaque rounded-full flex justify-center items-center text-base">
-                  +2
-                </div>
-              </div>
-            
-              <button
-              onClick={(e) => {
-                e.stopPropagation(); // Prevent event from bubbling up
-                handlePlayPauseClick(); // Call your play/pause handler
-              }}
-            >
-              <div className="play text-white transition-all flex-shrink-0 w-[40px] h-[40px]">
-                <Image
-                  src={
-                    isPlaying ? "icons/pause-icon.svg" : "icons/play-icon.svg"
-                  }
-                  alt={isPlaying ? "pause" : "play"}
-                  height={40}
-                  width={40}
-                />
-              </div>
-            </button>
+    {/* Secondary Speakers and Controls */}
+    <div className="flex flex-row items-center gap-3">
+      <div
+        className="secondary-speaker flex-shrink-0 black-opaque rounded-full"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <Image
+          src="/candidates/trump.webp"
+          alt=""
+          width={40}
+          height={40}
+          className="block mx-auto rounded-full"
+        />
+      </div>
+      <div className="secondary-speaker">
+        <div className="w-[40px] h-[40px] flex-shrink-0 black-opaque rounded-full flex justify-center items-center text-base">
+          +2
+        </div>
+      </div>
+      <audio ref={audioRef} />
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          handlePlayPauseClick();
+        }}
+      >
+        <div className="play invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
+          <Image
+            src={isPlaying ? "icons/pause-icon.svg" : "icons/play-icon.svg"}
+            alt={isPlaying ? "pause" : "play"}
+            height={40}
+            width={40}
+          />
+        </div>
+      </button>
+      <button
+      className="hidden md:flex"
+        onClick={(e) => {
+          e.stopPropagation();
+          handleNextTurn();
+        }}
+      >
+        <div className="next-turn invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
+          <Image
+            src={"icons/skip-icon.svg"}
+            alt="next"
+            height={40}
+            width={40}
+          />
+        </div>
+      </button>
+    </div>
+  </div>
+  </div>
 
-
-            </div>
-
-          </div>
+  {/* Transcript Section */}
+  {isTranscriptOpen && (
+  <div className="transcript-content h-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[0px] flex flex-col w-full mt-3">
+    <div className="flex flex-row items-center justify-between w-full">
+      <div className="rounded-[20px] poppins px-[10px]">
+        {turnCategory || 'No Category'}
+      </div>
+      <p className="rounded-[20px] flex gap-1 white-opaque px-[10px]">Turn <div className="">1</div></p>
+    </div>
+    {sentencesData.map((sentence, index) => (
+      <div className="box">
+        <div
+          key={index}
+          className={`${highlightedWordIndex === index ? 'highlighted' : ''} !text-left text-sm md:text-base overflow-auto`}
+        >
+          {sentence.text}
+        </div>
+      </div>
+    ))}
+  </div>
+)}
+</div>
 
 
       </div>

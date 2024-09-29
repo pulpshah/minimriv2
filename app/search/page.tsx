@@ -290,33 +290,32 @@ const SearchPage = () => {
       <div className="overlay bg-white bg-opacity-20 absolute z-0 inset-0 backdrop-blur-[200px] opacity-100"></div>
 
       <div
-        className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[65px] pb-[150px] bg-none overflow-y-auto scroll-smooth ${
-          isTranscriptOpen ? "pb-[54vh]" : "pb-[150px]"
-        }`}
+        className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[65px] pb-[82px] bg-none overflow-y-auto scroll-smooth 
+        `}
       >
 
 <div className="feed w-full h-fit z-40 flex-col items-center justify-center flex">
     <div className="box max-w-[300px] !justify-between">
         <div
-          className={`cursor-pointer px-2 ${activeTab === 'all' ? 'black-card !shadow-none rounded-[7px]' : ''}`}
+          className={`cursor-pointer px-2 ${activeTab === 'all' ? 'black-opaque !shadow-none rounded-[7px]' : 'opacity-65'}`}
           onClick={() => setActiveTab('all')}
         >
           All
         </div>
         <div
-          className={`cursor-pointer px-2 ${activeTab === 'media' ? 'black-card !shadow-none rounded-[7px]' : ''}`}
+          className={`cursor-pointer px-2 ${activeTab === 'media' ? 'black-opaque !shadow-none rounded-[7px]' : 'opacity-65'}`}
           onClick={() => setActiveTab('media')}
         >
           Media
         </div>
         <div
-          className={`cursor-pointer px-2 ${activeTab === 'topics' ? 'black-card !shadow-none rounded-[7px]' : ''}`}
+          className={`cursor-pointer px-2 ${activeTab === 'topics' ? 'black-opaque !shadow-none rounded-[7px]' : 'opacity-65'}`}
           onClick={() => setActiveTab('topics')}
         >
           Topics
         </div>
         <div
-          className={`cursor-pointer px-2 ${activeTab === 'phases' ? 'black-card !shadow-none rounded-[7px]' : ''}`}
+          className={`cursor-pointer px-2 ${activeTab === 'phases' ? 'black-opaque !shadow-none rounded-[7px]' : 'opacity-65'}`}
           onClick={() => setActiveTab('phases')}
         >
           Phases
