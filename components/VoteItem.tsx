@@ -1,5 +1,8 @@
+import { useState, useEffect } from "react"
+import { useSwipeable } from "react-swipeable"
 import Image from "next/image"
 import Link from "next/link"
+import clsx from "clsx"
 
 interface MediaItem {
   id: string
@@ -55,55 +58,126 @@ const dummyData: MediaItem[] = [
 ]
 
 export default function Component() {
+  const [votes, setVotes] = useState<{ [key: string]: string }>({})
+  const [swipedCard, setSwipedCard] = useState<{ [key: string]: string }>({})
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    // Check if the device is mobile-sized on initial render
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    // Set the initial value
+    handleResize()
+
+    // Add event listener to handle window resize
+    window.addEventListener("resize", handleResize)
+
+    // Cleanup the event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  // Handler for swipe actions
+  const handleSwipe = (itemId: string, direction: string) => {
+    if (direction === "left") {
+      setVotes(prevVotes => ({ ...prevVotes, [itemId]: "invalid" }))
+      setSwipedCard(prev => ({ ...prev, [itemId]: "swiped-left" }))
+    } else if (direction === "right") {
+      setVotes(prevVotes => ({ ...prevVotes, [itemId]: "valid" }))
+      setSwipedCard(prev => ({ ...prev, [itemId]: "swiped-right" }))
+    }
+    setTimeout(() => {
+      setSwipedCard(prev => ({ ...prev, [itemId]: "disappear" }))
+    }, 300) // Faster fade duration
+  }
+
+  // Handler for click actions
+  const handleClick = (itemId: string, vote: string) => {
+    setVotes(prevVotes => ({ ...prevVotes, [itemId]: vote }))
+    
+    // On desktop, fade out instead of swiping
+    if (!isMobile) {
+      setSwipedCard(prev => ({ ...prev, [itemId]: "fade-out" }))
+    } else {
+      setSwipedCard(prev => ({ ...prev, [itemId]: vote === "invalid" ? "swiped-left" : "swiped-right" }))
+    }
+
+    setTimeout(() => {
+      setSwipedCard(prev => ({ ...prev, [itemId]: "disappear" }))
+    }, 500) // Faster fade duration
+  }
+
   return (
     <div className="feed w-full h-fit z-40 items-center justify-center flex">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full h-fit gap-[24px]">
-        {dummyData.map((item) => (
-          <div key={item.id} className="white-opaque rounded-[40px] p-[25px] overflow-hidden shadow-md">
-            <div className="flex justify-between mb-[15px]">
-              <h3 className="text-lg md:text-xl">{item.name}</h3>
-              <div className="flex gap-2 items-center">
-                <div
-                  className={`turn flex w-fit !shadow-none text-base md:text-lg h-fit px-[8px] py-[1px] black-opaque items-center rounded-full`}
-                >
-                  Turn {item.turn}
+        {dummyData.map((item) => {
+          const swipeHandlers = useSwipeable({
+            onSwipedLeft: () => handleSwipe(item.id, "left"),
+            onSwipedRight: () => handleSwipe(item.id, "right"),
+            trackMouse: true,
+          })
+
+          return (
+            <div
+              key={item.id}
+              {...(isMobile ? swipeHandlers : {})} // Only attach swipe handlers if on mobile
+              className={clsx(
+                "white-opaque rounded-[40px] p-[25px] overflow-hidden shadow-md transition-all duration-300", // Faster transition
+                swipedCard[item.id] === "swiped-left" && "translate-x-[-100%]",
+                swipedCard[item.id] === "swiped-right" && "translate-x-[100%]",
+                swipedCard[item.id] === "fade-out" && "opacity-0", // Fade out on desktop click
+                swipedCard[item.id] === "disappear" && "hidden"
+              )}
+            >
+              <div className="flex justify-between mb-[15px]">
+                <h3 className="text-lg md:text-xl">{item.name}</h3>
+                <div className="flex gap-2 items-center">
+                  <div className="turn flex w-fit !shadow-none text-base md:text-lg h-fit px-[8px] py-[1px] black-opaque items-center rounded-full">
+                    Turn {item.turn}
+                  </div>
+                  <Link href="/relatedmedia" passHref>
+                    <button className="flex items-center justify-center w-auto h-auto flex-col gap-1">
+                      <Image
+                        src={item.name === "Redditor" ? '/icons/globe-icon-black.svg' : '/icons/play-icon.svg'}
+                        alt={item.name === "Redditor" ? 'Globe Icon' : 'Play Icon'}
+                        width={32}
+                        height={30}
+                      />
+                    </button>
+                  </Link>
                 </div>
-                <Link href="/relatedmedia" passHref>
-                  <button className="flex items-center justify-center w-auto h-auto flex-col gap-1">
+              </div>
+
+              <div className="relative flex flex-col gap-[25px] justify-between mx-auto w-full h-fit">
+                <div className="quote w-full flex justify-center">
+                  <p className="text-xl md:text-xl">"{item.description}"</p>
+                </div>
+
+                {/* Voting options: valid, invalid, abstain */}
+                <div className="flex items-center justify-center gap-4">
+                  <button onClick={() => handleClick(item.id, "invalid")}>
                     <Image
-                      src={item.name === "Redditor" ? '/icons/globe-icon-black.svg' : '/icons/play-icon.svg'}
-                      alt={item.name === "Redditor" ? 'Globe Icon' : 'Play Icon'}
-                      width={32}
+                      src={'/icons/invalid-icon.svg'}
+                      alt="Invalid"
+                      width={42}
                       height={30}
                     />
                   </button>
-                </Link>
+                  <div className="text-xl md:text-2xl poppins">abstain</div>
+                  <button onClick={() => handleClick(item.id, "valid")}>
+                    <Image
+                      src={'/icons/valid-icon.svg'}
+                      alt="Valid"
+                      width={42}
+                      height={30}
+                    />
+                  </button>
+                </div>
               </div>
             </div>
-            <div className="relative flex flex-col gap-[25px] justify-between mx-auto w-full h-fit">
-              <div className="quote w-full flex justify-center">
-                <p className="text-xl md:text-xl">"{item.description}"</p>
-              </div>
-              
-              {/* Flex container to hold the icons and abstain text */}
-              <div className="flex items-center justify-center gap-4">
-                <Image
-                  src={'/icons/invalid-icon.svg'}
-                  alt="Invalid"
-                  width={42}
-                  height={30}
-                />
-                <div className="text-xl md:text-2xl poppins">abstain</div>
-                <Image
-                  src={'/icons/valid-icon.svg'}
-                  alt="Valid"
-                  width={42}
-                  height={30}
-                />
-              </div>
-            </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )
