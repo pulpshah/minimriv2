@@ -133,10 +133,10 @@ const HomePage = () => {
     setFetchOpen(false);
   };
 
-  const handleSearchInputChange = (input: string) => {
-    setSearchInput(input);
-  };  
-
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value); // Extract the input value from the event
+  };
+  
   // Audio Handlers
   const loadTurnContent = async (
     questionNumber: number,
