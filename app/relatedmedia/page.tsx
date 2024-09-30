@@ -5,7 +5,7 @@ import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import SearchBar from "@/components/SearchBar";
 import { NavBar } from "@/components/NavBar";
-import MediaFeed from '@/components/MediaItem'
+import MediaItem from "@/components/MediaItem";
 
 type TurnData = {
   speaker_name: string;
@@ -40,7 +40,9 @@ const RelatedMedia = () => {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [currentTurn, setCurrentTurn] = useState<number>(0);
-  const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(null);
+  const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(
+    null
+  );
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isSearchMode, setSearchMode] = useState(false);
   const [searchInput, setSearchInput] = useState("");
@@ -48,10 +50,12 @@ const RelatedMedia = () => {
   const [isFetchOpen, setFetchOpen] = useState(false);
   const [wordData, setWordData] = useState<any[]>([]);
   const [sentencesData, setSentencesData] = useState<any[]>([]);
-  const [highlightedWordIndex, setHighlightedWordIndex] = useState<number | null>(null);
+  const [highlightedWordIndex, setHighlightedWordIndex] = useState<
+    number | null
+  >(null);
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState<number>(0);
   const [isSearchBarExpanded, setSearchBarExpanded] = useState(false);
-  const [mediaItems, setMediaItems] = useState([])
+  const [mediaItems, setMediaItems] = useState([]);
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -62,16 +66,17 @@ const RelatedMedia = () => {
   const cumulativeScoreKH = getCumulativeScoreKH();
   const cumulativeScoreDT = getCumulativeScoreDT();
   const scoreForCurrentTurn = currentData.score;
-  const nextTurnText = nextData && nextData.analysis.claims.length > 0
-    ? nextData.analysis.claims[0].text
-    : "No next turn text available";
+  const nextTurnText =
+    nextData && nextData.analysis.claims.length > 0
+      ? nextData.analysis.claims[0].text
+      : "No next turn text available";
 
-    useEffect(() => {
-      fetch('/api/media-items')
-        .then(response => response.json())
-        .then(data => setMediaItems(data))
-        .catch(error => console.error('Error fetching media items:', error))
-    }, [])
+  useEffect(() => {
+    fetch("/api/media-items")
+      .then((response) => response.json())
+      .then((data) => setMediaItems(data))
+      .catch((error) => console.error("Error fetching media items:", error));
+  }, []);
 
   // Functions to calculate scores
   function getCumulativeScoreKH() {
@@ -214,10 +219,15 @@ const RelatedMedia = () => {
   // Effects
   useEffect(() => {
     const loadWordAndSentenceData = async () => {
-      const response = await fetch(`/audio/audio_data/turn${currentTurn + 1}.json`);
+      const response = await fetch(
+        `/audio/audio_data/turn${currentTurn + 1}.json`
+      );
       const data = await response.json();
       setWordData(data.results.channels[0].alternatives[0].words);
-      setSentencesData(data.results.channels[0].alternatives[0].paragraphs.paragraphs[0].sentences);
+      setSentencesData(
+        data.results.channels[0].alternatives[0].paragraphs.paragraphs[0]
+          .sentences
+      );
     };
 
     loadWordAndSentenceData();
@@ -235,7 +245,10 @@ const RelatedMedia = () => {
     }
   }, [audioRef]);
 
-  const currentSentences = sentencesData.slice(currentSentenceIndex, currentSentenceIndex + 2);
+  const currentSentences = sentencesData.slice(
+    currentSentenceIndex,
+    currentSentenceIndex + 2
+  );
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -247,7 +260,9 @@ const RelatedMedia = () => {
         const currentWordIndex = wordData.findIndex(
           (word: any) => currentTime >= word.start && currentTime <= word.end
         );
-        setHighlightedWordIndex(currentWordIndex !== -1 ? currentWordIndex : null);
+        setHighlightedWordIndex(
+          currentWordIndex !== -1 ? currentWordIndex : null
+        );
 
         // Check if the current two sentences are done being spoken
         if (currentSentences.length === 2) {
@@ -303,137 +318,150 @@ const RelatedMedia = () => {
       >
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
-                <div className="flex gap-5 items-center box">
-                <h1 className="text-xl md:text-2xl text-center">related media</h1>
-                <p className="rounded-[20px] text-xl md:text-2xl flex gap-1 black-opaque px-[10px]">Turn <div className="">1</div></p>
-                </div>
-                <MediaFeed items={mediaItems} />
+            <div className="flex gap-5 items-center box">
+              <h1 className="text-xl md:text-2xl text-center">related media</h1>
+              <p className="rounded-[20px] text-xl md:text-2xl flex gap-1 black-opaque px-[10px]">
+                Turn <div className="">1</div>
+              </p>
+            </div>
+            <MediaItem items={mediaItems} />
           </div>
         </div>
 
         {/* searchbar */}
-      <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
+        <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
+          <div
+            onClick={() => setTranscriptOpen(!isTranscriptOpen)}
+            className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] nav-bar !blurry transition-all mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
+              isTranscriptOpen ? "h-[45vh] max-w-full" : "h-[57px]"
+            }`}
+          >
+            <div className="box">
+              <div className="flex flex-row justify-between items-center gap-3 w-full">
+                {/* Speaker Information */}
+                <div className="flex flex-row items-center gap-3">
+                  <div
+                    className="box current-speaker !w-[40px] !h-[40px] shadow shadow-[#cae7ff] border border-[#cae7ff] justify-center items-center inline-flex rounded-full"
+                    style={{
+                      boxShadow: "0px 0px 11.7px 0px rgba(0, 140, 255, 0.91)",
+                    }}
+                  >
+                    <Image
+                      src="/candidates/harris.webp"
+                      alt=""
+                      width={40}
+                      height={40}
+                      className="block mx-auto rounded-full"
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <div className="current-name text-sm md:text-base">
+                      Kamala Harris
+                    </div>
+                    <div className="flex gap-1">
+                      <div className="poppins text-xs md:text-sm -mt-1.5">
+                        200 pts
+                      </div>
+                      <div className="poppins text-xs md:text-sm -mt-1.5">
+                        •
+                      </div>
+                      <div className="poppins text-xs md:text-sm -mt-1.5">
+                        Happy
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-      <div
-  onClick={() => setTranscriptOpen(!isTranscriptOpen)}
-  className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] nav-bar !blurry transition-all mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
-    isTranscriptOpen ? 'h-[45vh] max-w-full' : 'h-[57px]'
-  }`}
->
-  <div className="box">
+                {/* Secondary Speakers and Controls */}
+                <div className="flex flex-row items-center gap-3">
+                  <div
+                    className="secondary-speaker flex-shrink-0 black-opaque rounded-full"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Image
+                      src="/candidates/trump.webp"
+                      alt=""
+                      width={40}
+                      height={40}
+                      className="block mx-auto rounded-full"
+                    />
+                  </div>
+                  <div className="secondary-speaker">
+                    <div className="w-[40px] h-[40px] flex-shrink-0 black-opaque rounded-full flex justify-center items-center text-base">
+                      +2
+                    </div>
+                  </div>
+                  <audio ref={audioRef} />
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePlayPauseClick();
+                    }}
+                  >
+                    <div className="play invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
+                      <Image
+                        src={
+                          isPlaying
+                            ? "icons/pause-icon.svg"
+                            : "icons/play-icon.svg"
+                        }
+                        alt={isPlaying ? "pause" : "play"}
+                        height={40}
+                        width={40}
+                      />
+                    </div>
+                  </button>
+                  <button
+                    className="hidden md:flex"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
+                  >
+                    <div className="next-turn invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
+                      <Image
+                        src={"icons/skip-icon.svg"}
+                        alt="next"
+                        height={40}
+                        width={40}
+                      />
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
 
-  <div className="flex flex-row justify-between items-center gap-3 w-full">
-    {/* Speaker Information */}
-    <div className="flex flex-row items-center gap-3">
-      <div
-        className="box current-speaker !w-[40px] !h-[40px] shadow shadow-[#cae7ff] border border-[#cae7ff] justify-center items-center inline-flex rounded-full"
-        style={{
-          boxShadow: "0px 0px 11.7px 0px rgba(0, 140, 255, 0.91)",
-        }}
-      >
-        <Image
-          src="/candidates/harris.webp"
-          alt=""
-          width={40}
-          height={40}
-          className="block mx-auto rounded-full"
-          onClick={(e) => e.stopPropagation()}
-        />
-      </div>
-      <div className="flex flex-col">
-        <div className="current-name text-sm md:text-base">Kamala Harris</div>
-        <div className="flex gap-1">
-          <div className="poppins text-xs md:text-sm -mt-1.5">200 pts</div>
-          <div className="poppins text-xs md:text-sm -mt-1.5">•</div>
-          <div className="poppins text-xs md:text-sm -mt-1.5">Happy</div>
+            {/* Transcript Section */}
+            {isTranscriptOpen && (
+              <div className="transcript-content h-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[0px] flex flex-col w-full mt-3">
+                <div className="flex flex-row items-center justify-between w-full">
+                  <div className="rounded-[20px] poppins px-[10px]">
+                    {"turnCategory" || "no category"}
+                  </div>
+                  <p className="rounded-[20px] flex gap-1 white-opaque px-[10px]">
+                    Turn <div className="">1</div>
+                  </p>
+                </div>
+                {sentencesData.map((sentence, index) => (
+                  <div className="box">
+                    <div
+                      key={index}
+                      className={`${
+                        highlightedWordIndex === index ? "highlighted" : ""
+                      } !text-left text-sm md:text-base overflow-auto`}
+                    >
+                      {sentence.text}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-    </div>
 
-    {/* Secondary Speakers and Controls */}
-    <div className="flex flex-row items-center gap-3">
-      <div
-        className="secondary-speaker flex-shrink-0 black-opaque rounded-full"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <Image
-          src="/candidates/trump.webp"
-          alt=""
-          width={40}
-          height={40}
-          className="block mx-auto rounded-full"
-        />
-      </div>
-      <div className="secondary-speaker">
-        <div className="w-[40px] h-[40px] flex-shrink-0 black-opaque rounded-full flex justify-center items-center text-base">
-          +2
+        <div className="navbar fixed bottom-0 sm:bottom-2.5 w-full sm:max-w-[500px] z-40 px-[0px] sm:px-[20px]">
+          <NavBar onSearchClick={toggleSearchTab} />
         </div>
-      </div>
-      <audio ref={audioRef} />
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          handlePlayPauseClick();
-        }}
-      >
-        <div className="play invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
-          <Image
-            src={isPlaying ? "icons/pause-icon.svg" : "icons/play-icon.svg"}
-            alt={isPlaying ? "pause" : "play"}
-            height={40}
-            width={40}
-          />
-        </div>
-      </button>
-      <button
-      className="hidden md:flex"
-        onClick={(e) => {
-          e.stopPropagation();
-          handleNextTurn();
-        }}
-      >
-        <div className="next-turn invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
-          <Image
-            src={"icons/skip-icon.svg"}
-            alt="next"
-            height={40}
-            width={40}
-          />
-        </div>
-      </button>
-    </div>
-  </div>
-  </div>
-
-  {/* Transcript Section */}
-  {isTranscriptOpen && (
-  <div className="transcript-content h-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[0px] flex flex-col w-full mt-3">
-    <div className="flex flex-row items-center justify-between w-full">
-      <div className="rounded-[20px] poppins px-[10px]">
-        {turnCategory || 'no category'}
-      </div>
-      <p className="rounded-[20px] flex gap-1 white-opaque px-[10px]">Turn <div className="">1</div></p>
-    </div>
-    {sentencesData.map((sentence, index) => (
-      <div className="box">
-        <div
-          key={index}
-          className={`${highlightedWordIndex === index ? 'highlighted' : ''} !text-left text-sm md:text-base overflow-auto`}
-        >
-          {sentence.text}
-        </div>
-      </div>
-    ))}
-  </div>
-)}
-</div>
-
-
-      </div>
-
-      <div className="navbar fixed bottom-0 sm:bottom-2.5 w-full sm:max-w-[500px] z-40 px-[0px] sm:px-[20px]">
-        <NavBar onSearchClick={toggleSearchTab} />
-      </div>
 
         <div
           className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
@@ -457,9 +485,7 @@ const RelatedMedia = () => {
           />
         </div>
 
-
-
-      {/* <div
+        {/* <div
           className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
             isInboxOpen ? "translate-y-0" : "translate-y-full"
           } w-full h-[90.3vh] bg-white rounded-t-[40px]`}
@@ -476,7 +502,7 @@ const RelatedMedia = () => {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         > */}
-          {/* <button
+        {/* <button
             className="tab transition-all flex flex-col gap-[10px] py-[6px] w-full items-center"
             onClick={toggleTranscript}
           >
@@ -508,22 +534,22 @@ const RelatedMedia = () => {
                       <div className="time text !text-left">
                         {currentData.turn_category}
                       </div> */}
-                       {/*<div className="text !text-left">•</div>
+        {/*<div className="text !text-left">•</div>
                       {/*
                       <div className="turn text !text-left">
                         Turn {currentData.turn_number}
                       </div> */}
-                     
-                    {/* </div> */}
-                    
-                    {/* <div className="">,</div>
+
+        {/* </div> */}
+
+        {/* <div className="">,</div>
                     
                     <div className="sentiment text !text-left">Upset</div> */}
-                  {/* </div>
+        {/* </div>
                 </div>
               </div> */}
 
-              {/* <div className="points-1 w-fit text-[.8rem] h-fit text-black poppins"></div>
+        {/* <div className="points-1 w-fit text-[.8rem] h-fit text-black poppins"></div>
               <div className="flex gap-[16px] z-50 items-center justify-center">
                 <button onClick={handleBackClick}>
                   <div className="back hidden md:flex text-white transition-all flex-shrink-0">
@@ -564,15 +590,15 @@ const RelatedMedia = () => {
                 </button>
               </div> */}
 
-              {/* <audio
+        {/* <audio
                 ref={audioRef}
                 src={`/audio/turn${currentTurn + 1}.wav`} 
               />
             </div>
           </div> */}
 
-          {/* Transcript content */}
-          {/* <div
+        {/* Transcript content */}
+        {/* <div
             className={`transcript-box flex flex-col p-[25px] gap-[10px] w-full h-full black-opaque !shadow-none rounded-[40px] transitions-all ${
               isTranscriptOpen ? "flex" : "hidden"
             }`}
@@ -611,9 +637,9 @@ const RelatedMedia = () => {
                 <div className="line text !text-left line-clamp-5">
                   {currentTurnText}
                 </div> */}
-              {/* </div> */}
-            {/* </div> */}
-          {/* </div> */}
+        {/* </div> */}
+        {/* </div> */}
+        {/* </div> */}
         {/* </div> */}
       </div>
     </div>

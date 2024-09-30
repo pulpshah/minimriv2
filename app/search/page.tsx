@@ -34,14 +34,16 @@ type TurnData = {
 
 const SearchPage = () => {
   // State variables
-  const [activeTab, setActiveTab] = useState('all');
+  const [activeTab, setActiveTab] = useState("all");
 
   const [isTranscriptExpanded, setTranscriptExpanded] = useState(false);
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [currentTurn, setCurrentTurn] = useState<number>(0);
-  const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(null);
+  const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(
+    null
+  );
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isSearchMode, setSearchMode] = useState(false);
   const [searchInput, setSearchInput] = useState("");
@@ -49,7 +51,9 @@ const SearchPage = () => {
   const [isFetchOpen, setFetchOpen] = useState(false);
   const [wordData, setWordData] = useState<any[]>([]);
   const [sentencesData, setSentencesData] = useState<any[]>([]);
-  const [highlightedWordIndex, setHighlightedWordIndex] = useState<number | null>(null);
+  const [highlightedWordIndex, setHighlightedWordIndex] = useState<
+    number | null
+  >(null);
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState<number>(0);
   const [isSearchBarExpanded, setSearchBarExpanded] = useState(false);
 
@@ -62,9 +66,10 @@ const SearchPage = () => {
   const cumulativeScoreKH = getCumulativeScoreKH();
   const cumulativeScoreDT = getCumulativeScoreDT();
   const scoreForCurrentTurn = currentData.score;
-  const nextTurnText = nextData && nextData.analysis.claims.length > 0
-    ? nextData.analysis.claims[0].text
-    : "No next turn text available";
+  const nextTurnText =
+    nextData && nextData.analysis.claims.length > 0
+      ? nextData.analysis.claims[0].text
+      : "No next turn text available";
 
   // Functions to calculate scores
   function getCumulativeScoreKH() {
@@ -97,7 +102,6 @@ const SearchPage = () => {
   const handleClearSearch = () => {
     setSearchInput("");
   };
-  
 
   const toggleSearchTab = () => {
     setInboxOpen(!isInboxOpen);
@@ -206,10 +210,15 @@ const SearchPage = () => {
   // Effects
   useEffect(() => {
     const loadWordAndSentenceData = async () => {
-      const response = await fetch(`/audio/audio_data/turn${currentTurn + 1}.json`);
+      const response = await fetch(
+        `/audio/audio_data/turn${currentTurn + 1}.json`
+      );
       const data = await response.json();
       setWordData(data.results.channels[0].alternatives[0].words);
-      setSentencesData(data.results.channels[0].alternatives[0].paragraphs.paragraphs[0].sentences);
+      setSentencesData(
+        data.results.channels[0].alternatives[0].paragraphs.paragraphs[0]
+          .sentences
+      );
     };
 
     loadWordAndSentenceData();
@@ -227,7 +236,10 @@ const SearchPage = () => {
     }
   }, [audioRef]);
 
-  const currentSentences = sentencesData.slice(currentSentenceIndex, currentSentenceIndex + 2);
+  const currentSentences = sentencesData.slice(
+    currentSentenceIndex,
+    currentSentenceIndex + 2
+  );
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -239,7 +251,9 @@ const SearchPage = () => {
         const currentWordIndex = wordData.findIndex(
           (word: any) => currentTime >= word.start && currentTime <= word.end
         );
-        setHighlightedWordIndex(currentWordIndex !== -1 ? currentWordIndex : null);
+        setHighlightedWordIndex(
+          currentWordIndex !== -1 ? currentWordIndex : null
+        );
 
         // Check if the current two sentences are done being spoken
         if (currentSentences.length === 2) {
@@ -293,62 +307,67 @@ const SearchPage = () => {
         className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[65px] pb-[82px] bg-none overflow-y-auto scroll-smooth 
         `}
       >
+        <div className="feed w-full h-fit z-40 flex-col items-center justify-center flex">
+          <div className="box max-w-[300px] !justify-between">
+            <div
+              className={`cursor-pointer px-2 ${
+                activeTab === "all"
+                  ? "black-opaque !shadow-none rounded-[7px]"
+                  : "opacity-65"
+              }`}
+              onClick={() => setActiveTab("all")}
+            >
+              All
+            </div>
+            <div
+              className={`cursor-pointer px-2 ${
+                activeTab === "media"
+                  ? "black-opaque !shadow-none rounded-[7px]"
+                  : "opacity-65"
+              }`}
+              onClick={() => setActiveTab("media")}
+            >
+              Media
+            </div>
+            <div
+              className={`cursor-pointer px-2 ${
+                activeTab === "topics"
+                  ? "black-opaque !shadow-none rounded-[7px]"
+                  : "opacity-65"
+              }`}
+              onClick={() => setActiveTab("topics")}
+            >
+              Topics
+            </div>
+            <div
+              className={`cursor-pointer px-2 ${
+                activeTab === "phases"
+                  ? "black-opaque !shadow-none rounded-[7px]"
+                  : "opacity-65"
+              }`}
+              onClick={() => setActiveTab("phases")}
+            >
+              Phases
+            </div>
+          </div>
+          <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
+            <div className="tab-content w-full flex justify-center h-fit mt-4">
+              {activeTab === "all" && <div className="">1</div>}
 
-<div className="feed w-full h-fit z-40 flex-col items-center justify-center flex">
-    <div className="box max-w-[300px] !justify-between">
-        <div
-          className={`cursor-pointer px-2 ${activeTab === 'all' ? 'black-opaque !shadow-none rounded-[7px]' : 'opacity-65'}`}
-          onClick={() => setActiveTab('all')}
-        >
-          All
+              {activeTab === "media" && <div className="">2</div>}
+
+              {activeTab === "topics" && <div className="">3</div>}
+
+              {activeTab === "phases" && <div className="">4</div>}
+            </div>
+          </div>
+
+          {/* Add content rendering here */}
         </div>
-        <div
-          className={`cursor-pointer px-2 ${activeTab === 'media' ? 'black-opaque !shadow-none rounded-[7px]' : 'opacity-65'}`}
-          onClick={() => setActiveTab('media')}
-        >
-          Media
-        </div>
-        <div
-          className={`cursor-pointer px-2 ${activeTab === 'topics' ? 'black-opaque !shadow-none rounded-[7px]' : 'opacity-65'}`}
-          onClick={() => setActiveTab('topics')}
-        >
-          Topics
-        </div>
-        <div
-          className={`cursor-pointer px-2 ${activeTab === 'phases' ? 'black-opaque !shadow-none rounded-[7px]' : 'opacity-65'}`}
-          onClick={() => setActiveTab('phases')}
-        >
-          Phases
-        </div>
-    </div>
-      <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
-      <div className="tab-content w-full flex justify-center h-fit mt-4">
-        {activeTab === 'all' && (
-            <div className="">1</div>
-        )}
-
-        {activeTab === 'media' && (
-            <div className="">2</div>
-        )}
-
-        {activeTab === 'topics' && (
-            <div className="">3</div>
-        )}
-
-        {activeTab === 'phases' && (
-            <div className="">4</div>
-        )}
-      </div>
-      </div>
-
-      {/* Add content rendering here */}
-    </div>
-
 
         {/* searchbar */}
-      <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
-
-      <SearchBar
+        <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
+          <SearchBar
             searchInput={searchInput}
             onSearchInputChange={handleSearchInputChange}
             isSearchMode={isSearchMode}
@@ -362,15 +381,11 @@ const SearchPage = () => {
             onSearchBarClick={handleSearchBarClick}
             setSearchBarExpanded={setSearchBarExpanded}
           />
+        </div>
 
-
-      </div>
-
-      
-
-      <div className="navbar fixed bottom-0 sm:bottom-2.5 w-full sm:max-w-[500px] z-40 px-[0px] sm:px-[20px]">
-        <NavBar onSearchClick={toggleSearchTab} />
-      </div>
+        <div className="navbar fixed bottom-0 sm:bottom-2.5 w-full sm:max-w-[500px] z-40 px-[0px] sm:px-[20px]">
+          <NavBar onSearchClick={toggleSearchTab} />
+        </div>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import SearchBar from "@/components/SearchBar";
 import { NavBar } from "@/components/NavBar";
-import <VoteItem></VoteItem> from '@/components/VoteItem'
+import VoteItem from '@/components/VoteItem'
 
 type TurnData = {
   speaker_name: string;
@@ -388,7 +388,6 @@ const vote = () => {
       className="hidden md:flex"
         onClick={(e) => {
           e.stopPropagation();
-          handleNextTurn();
         }}
       >
         <div className="next-turn invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
@@ -409,7 +408,7 @@ const vote = () => {
   <div className="transcript-content h-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[0px] flex flex-col w-full mt-3">
     <div className="flex flex-row items-center justify-between w-full">
       <div className="rounded-[20px] poppins px-[10px]">
-        {turnCategory || 'no category'}
+        {'turnCategory' || 'no category'}
       </div>
       <p className="rounded-[20px] flex gap-1 white-opaque px-[10px]">Turn <div className="">1</div></p>
     </div>

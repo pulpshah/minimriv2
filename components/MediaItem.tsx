@@ -1,11 +1,20 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
 interface MediaItem {
-  id: string
-  title: string
-  description: string
-  imageUrl: string
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+}
+
+interface MediaItemProps {
+  items: {
+    id: string;
+    title: string;
+    description: string;
+    imageUrl: string;
+  }[];
 }
 
 const dummyData: MediaItem[] = [
@@ -44,10 +53,10 @@ const dummyData: MediaItem[] = [
     title: "reference 6",
     description: "The mesmerizing aurora borealis lighting up the night sky.",
     imageUrl: "/placeholder.svg?height=200&width=400",
-  }
-]
+  },
+];
 
-export default function Component() {
+export default function MediaItem({ items }: MediaItemProps) {
   return (
     <div className="feed w-full h-fit z-40 items-center justify-center flex">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full h-fit gap-[24px]">
@@ -58,8 +67,8 @@ export default function Component() {
               <Link href="/relatedmedia" passHref>
                 <button className="flex invert items-center justify-center w-auto h-auto flex-col gap-1">
                   <Image
-                    src={'/icons/globe-icon.svg'}
-                    alt='Search'
+                    src={"/icons/globe-icon.svg"}
+                    alt="Search"
                     width={32}
                     height={30}
                   />
@@ -79,7 +88,9 @@ export default function Component() {
             </div>
 
             <div className="pt-5">
-              <p className="text-sm poppins text-gray-600">{item.description}</p>
+              <p className="text-sm poppins text-gray-600">
+                {item.description}
+              </p>
             </div>
           </div>
         ))}
