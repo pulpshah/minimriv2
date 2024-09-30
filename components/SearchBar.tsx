@@ -87,20 +87,20 @@ const SearchBar: React.FC<SearchBarProps> = ({
             </button>
 
             <input
-              placeholder="search"
-              type="text"
-              className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
-              value={searchInput}
-              onChange={onSearchInputChange}  // No need to wrap it
-              onClick={onSearchBarClick}
-              onBlur={() => setSearchBarExpanded(false)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleSearchClick();
-                  setSearchBarExpanded(false);
-                }
-              }}
-            />
+            placeholder="search"
+            type="text"
+            className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
+            value={searchInput}
+            onChange={onSearchInputChange} // Directly passing the event to the handler
+            onClick={onSearchBarClick}
+            onBlur={() => setSearchBarExpanded(false)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSearchClick();
+                setSearchBarExpanded(false);
+              }
+            }}
+          />
 
 
             {searchInput && (
