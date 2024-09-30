@@ -617,7 +617,7 @@ const HomePage = () => {
                                 }
                               : null
                           }
-                          className={`${sentenceStyle} text-left !text-2xl md:text-base w-full lg:w-3/4 p-3 mx-auto`}
+                          className={`${sentenceStyle} text-left !text-xl md:!text-2xl w-full lg:w-3/4 p-3 mx-auto`}
                           onClick={(event) => event.stopPropagation()}
                         >
                           {wordData
