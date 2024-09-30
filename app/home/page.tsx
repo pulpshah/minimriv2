@@ -140,11 +140,17 @@ const HomePage = () => {
       const jsonData = await jsonResponse.json();
   
       // Update state with word and sentence data
-      setWordData(jsonData.results.channels[0].alternatives[0].words);
-      setSentencesData(jsonData.results.channels[0].alternatives[0].paragraphs.paragraphs[0].sentences);
+      const words = jsonData.results.channels[0].alternatives[0].words || [];
+      const paragraphs = jsonData.results.channels[0].alternatives[0].paragraphs.paragraphs || [];
+  
+      if (paragraphs.length > 0) {
+        const sentences = paragraphs.flatMap(paragraph => paragraph.sentences);
+        setWordData(words);
+        setSentencesData(sentences);
+      }
   
       // Update the category for the current turn
-      setTurnCategory(jsonData.category);
+      setTurnCategory(jsonData.category || null);
   
       // Update the audio source
       if (audioRef.current) {
@@ -246,6 +252,37 @@ const HomePage = () => {
   
     // Load the content for the next turn
     loadTurnContent(nextQuestion, nextTurn);
+  };
+
+  const handleBackTurn = async () => {
+    if (audioRef.current) {
+      audioRef.current.pause(); // Pause the current audio
+    }
+    setIsPlaying(false);
+  
+    let previousTurn = currentTurn - 1;
+    let previousQuestion = currentQuestion;
+  
+    // If we need to go back to the previous question
+    if (previousTurn < 1) {
+      previousQuestion -= 1;
+  
+      // Get the number of turns available for the previous question
+      const maxTurns = await getNumberOfTurns(previousQuestion);
+      if (maxTurns === 0) {
+        // If no turns are available for the previous question, stay on the current question
+        return;
+      }
+  
+      previousTurn = maxTurns; // Set to the last turn of the previous question
+    }
+  
+    // Update state to load the new turn content
+    setCurrentTurn(previousTurn);
+    setCurrentQuestion(previousQuestion);
+  
+    // Load the content for the previous turn
+    loadTurnContent(previousQuestion, previousTurn);
   };
 
   // Touch Handlers for Swipe Gestures
@@ -405,11 +442,10 @@ const HomePage = () => {
       <div
   onClick={() => setTranscriptOpen(!isTranscriptOpen)}
   className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] nav-bar !blurry transition-all mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
-    isTranscriptOpen ? 'h-[44.7vh] max-w-full' : 'h-[57px]'
+    isTranscriptOpen ? 'h-[45vh] max-w-full' : 'h-[57px]'
   }`}
 >
   <div className="box">
-
   <div className="flex flex-row justify-between items-center gap-3 w-full">
     {/* Speaker Information */}
     <div className="flex flex-row items-center gap-3">
@@ -458,6 +494,23 @@ const HomePage = () => {
         </div>
       </div>
       <audio ref={audioRef} />
+
+      <button
+  className="hidden md:flex"
+  onClick={(e) => {
+    e.stopPropagation();
+    handleBackTurn();
+  }}
+>
+  <div className="next-turn invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
+    <Image
+      src={"icons/back-icon.svg"}
+      alt="next"
+      height={40}
+      width={40}
+    />
+  </div>
+</button>
       <button
   onClick={(e) => {
     e.stopPropagation(); // Prevent event from bubbling up
@@ -495,43 +548,52 @@ const HomePage = () => {
 
   {/* Transcript Section */}
   {isTranscriptOpen && (
-  <div className="transcript-content h-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[0px] flex flex-col w-full mt-3">
+    <div className="transcript-content custom-scrollbar h-full w-full rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col w-full mt-3 text-left overflow-y-auto">
     <div className="flex flex-row justify-between w-full">
-      <div className="poppins text-sm md:text-base">
+      <p>transcript</p>
+      <p className="poppins text-[#79FF89]">20 pts+</p>
+      <div className="rounded-[20px] black-opaque px-[10px]">
         {turnCategory || 'No Category'}
       </div>
-      <p className="rounded-[20px] white-opaque px-[8px]">Turn {currentData.turn_number}</p>
     </div>
-    {sentencesData.map((sentence, sentenceIndex) => (
-      <div className="box" key={sentenceIndex}>
-        <div
-          ref={sentenceIndex === currentSentenceIndex ? (el) => el?.scrollIntoView({ behavior: 'smooth', block: 'center' }) : null}
-          className={`${
-            currentSentenceIndex === sentenceIndex ? 'highlighted-sentence' : ''
-          } text-left text-sm md:text-base`}
-        >
-{wordData
-  .filter(
-    (word) => word.start >= sentence.start && word.end <= sentence.end
-  )
-  .map((word, wordIndex) => (
-    <span
-      key={`${sentenceIndex}-${wordIndex}`}
-      onClick={(e) => {
-        e.stopPropagation(); // Prevent top-pill collapse
-        handleWordClick(word.start);
-      }}
-      className="cursor-pointer hover:underline"
-    >
-      {word.punctuated_word + ' '}
-    </span>
-  ))}
+    <div className="flex flex-col">
+      {sentencesData.map((sentence, sentenceIndex) => (
+        <div className="text-left" key={sentenceIndex}>
+          <div
+            ref={
+              sentenceIndex === currentSentenceIndex
+                ? (el) => el?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                : null
+            }
+            className={`${
+              currentSentenceIndex === sentenceIndex
+                ? 'text-white opacity-100'
+                : 'text-gray-400 opacity-70'
+            } text-left text-sm md:text-base`}
+          >
+            {wordData
+              .filter(
+                (word) =>
+                  word.start >= sentence.start && word.end <= sentence.end
+              )
+              .map((word, wordIndex) => (
+                <span
+                  key={`${sentenceIndex}-${wordIndex}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleWordClick(word.start);
+                  }}
+                  className="cursor-pointer hover:underline"
+                >
+                  {word.punctuated_word + ' '}
+                </span>
+              ))}
+          </div>
         </div>
-      </div>
-    ))}
+      ))}
+    </div>
   </div>
 )}
-
 </div>
 
 
