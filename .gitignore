@@ -38,3 +38,4 @@ next-env.d.ts
 #audio
 /public/audio/question_1/
 /public/audio/question_2/
+/public/audio/question_3/

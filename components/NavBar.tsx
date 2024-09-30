@@ -24,14 +24,16 @@ export const NavBar: React.FC<{ onSearchClick: () => void }> = ({ onSearchClick 
                 </button>
             </Link>
 
-            <button className="flex items-center justify-center w-auto h-auto flex-col gap-1">
-                <Image
-                    src={activePage === '/related-media' ? '/icons/globe-icon-filled.svg' : '/icons/globe-icon.svg'}
-                    alt='Related Media'
-                    width={30}
-                    height={30}
-                />
-            </button>
+            <Link href="/relatedmedia" passHref>
+                <button className="flex items-center justify-center w-auto h-auto flex-col gap-1">
+                    <Image
+                        src={activePage === '/relatedmedia' ? '/icons/globe-icon-filled.svg' : '/icons/globe-icon.svg'}
+                        alt='Search'
+                        width={30}
+                        height={30}
+                    />
+                </button>
+            </Link>
 
             <Link href="/search" passHref>
                 <button className="flex items-center justify-center w-auto h-auto flex-col gap-1">
