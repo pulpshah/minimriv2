@@ -495,12 +495,10 @@ const HomePage = () => {
 
   {/* Transcript Section */}
   {isTranscriptOpen && (
-  <div className="transcript-content h-full w-full rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col w-full mt-3 text-left overflow-y-auto">
-    <div className="flex flex-row justify-between w-full">
-      <p>transcript</p>
-      <p className="poppins text-[#79FF89]">20 pts+</p>
-      <div className="rounded-[20px] black-opaque px-[10px]">
-        {turnCategory || 'No Category'}
+  <div className="transcript-content h-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[0px] flex flex-col w-full mt-3">
+    <div className="flex flex-row items-center justify-between w-full">
+      <div className="rounded-[20px] text-sm poppins px-[10px]">
+        {turnCategory || 'no category'}
       </div>
     </div>
     {sentencesData.map((sentence, sentenceIndex) => (

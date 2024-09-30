@@ -304,7 +304,7 @@ const RelatedMedia = () => {
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
                 <div className="flex gap-5 items-center box">
-                <h1 className="text-2xl text-center">Related Media</h1>
+                <h1 className="text-2xl text-center">related media</h1>
                 <p className="rounded-[20px] text-2xl flex gap-1 black-opaque px-[10px]">Turn <div className="">1</div></p>
                 </div>
                 <MediaFeed items={mediaItems} />
@@ -410,7 +410,7 @@ const RelatedMedia = () => {
   <div className="transcript-content h-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[0px] flex flex-col w-full mt-3">
     <div className="flex flex-row items-center justify-between w-full">
       <div className="rounded-[20px] poppins px-[10px]">
-        {turnCategory || 'No Category'}
+        {turnCategory || 'no category'}
       </div>
       <p className="rounded-[20px] flex gap-1 white-opaque px-[10px]">Turn <div className="">1</div></p>
     </div>
