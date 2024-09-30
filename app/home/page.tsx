@@ -468,8 +468,8 @@ const HomePage = () => {
         <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
           <div
             onClick={() => setTranscriptOpen(!isTranscriptOpen)}
-            className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] nav-bar !blurry transition-all mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
-              isTranscriptOpen ? "h-[45vh] max-w-full" : "h-[57px]"
+            className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] nav-bar !blurry transition-all mt-3.5 rounded-[40px] px-[10px] py-[10px] box !justify-between ${
+              isTranscriptOpen ? "h-[45vh] max-w-full" : "h-[60px]"
             }`}
           >
             <div className="box">
@@ -503,14 +503,14 @@ const HomePage = () => {
                         •
                       </div>
                       <div className="poppins text-xs md:text-sm -mt-1.5">
-                        Happy
+                      {turnCategory || "No Category"}
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Secondary Speakers and Controls */}
-                <div className="flex flex-row items-center gap-3">
+                <div className="flex flex-row items-center gap-2">
                   <div
                     className="secondary-speaker flex-shrink-0 black-opaque rounded-full"
                     onClick={(e) => e.stopPropagation()}
@@ -529,7 +529,7 @@ const HomePage = () => {
                     </div>
                   </div>
                   <audio ref={audioRef} />
-
+                    <div className="flex gap-4">
                   <button
                     className="hidden md:flex"
                     onClick={(e) => {
@@ -542,7 +542,7 @@ const HomePage = () => {
                         src={"icons/back-icon.svg"}
                         alt="next"
                         height={30}
-                        width={35}
+                        width={32}
                       />
                     </div>
                   </button>
@@ -577,21 +577,19 @@ const HomePage = () => {
                         src={"icons/skip-icon.svg"}
                         alt="next"
                         height={35}
-                        width={35}
+                        width={32}
                       />
                     </div>
                   </button>
+                    </div>
                 </div>
               </div>
             </div>
 
             {/* Transcript Section */}
             {isTranscriptOpen && (
-              <div className="transcript-content custom-scrollbar h-full w-full rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col w-full mt-3 overflow-y-auto">
+              <div className="transcript-content custom-scrollbar h-full w-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col mt-3 overflow-y-auto">
                 <div className="flex flex-row justify-end w-full">
-                  <div className="rounded-[20px] white-opaque px-[10px]">
-                    {turnCategory || "No Category"}
-                  </div>
                 </div>
                 <div className="flex flex-col">
                   {sentencesData.map((sentence, sentenceIndex) => {
@@ -619,7 +617,8 @@ const HomePage = () => {
                                 }
                               : null
                           }
-                          className={`${sentenceStyle} text-left !text-2xl md:text-base w-full lg:w-3/4 mx-auto`}
+                          className={`${sentenceStyle} text-left !text-xl md:!text-2xl w-full lg:w-3/4 p-3 mx-auto`}
+                          onClick={(event) => event.stopPropagation()}
                         >
                           {wordData
                             .filter(
