@@ -164,7 +164,9 @@ export default function Component() {
                       height={30}
                     />
                   </button>
+                  <button onClick={() => handleClick(item.id, "abstain")}>
                   <div className="text-xl md:text-2xl poppins">abstain</div>
+                  </button>
                   <button onClick={() => handleClick(item.id, "valid")}>
                     <Image
                       src={'/icons/valid-icon.svg'}
