@@ -60,11 +60,8 @@ export default function MediaItem({ items }: MediaItemProps) {
   return (
     <div className="feed w-full h-fit z-40 items-center justify-center flex">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full h-fit gap-[24px]">
-        {items.map((item) => (
-          <div
-            key={item.id}
-            className="white-opaque rounded-[40px] p-[25px] overflow-hidden shadow-md"
-          >
+        {dummyData.map((item) => (
+          <div key={item.id} className="white-opaque rounded-[40px] p-[25px] overflow-hidden shadow-md">
             <div className="flex justify-between mb-[15px]">
               <h3 className="text-lg md:text-xl">{item.title}</h3>
               <Link href="/relatedmedia" passHref>
@@ -99,5 +96,5 @@ export default function MediaItem({ items }: MediaItemProps) {
         ))}
       </div>
     </div>
-  );
+  )
 }
