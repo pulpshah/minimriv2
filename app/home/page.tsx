@@ -405,7 +405,7 @@ const HomePage = () => {
       <div
   onClick={() => setTranscriptOpen(!isTranscriptOpen)}
   className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] nav-bar !blurry transition-all mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
-    isTranscriptOpen ? 'h-[45vh] max-w-full' : 'h-[57px]'
+    isTranscriptOpen ? 'h-[44.6vh] max-w-full' : 'h-[57px]'
   }`}
 >
   <div className="box">
@@ -497,11 +497,10 @@ const HomePage = () => {
   {isTranscriptOpen && (
   <div className="transcript-content h-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[0px] flex flex-col w-full mt-3">
     <div className="flex flex-row justify-between w-full">
-      <p>transcript</p>
-      <p className="poppins text-[#79FF89]">20 pts+</p>
-      <div className="rounded-[20px] white-opaque px-[10px]">
+      <div className="poppins text-sm md:text-base">
         {turnCategory || 'No Category'}
       </div>
+      <p className="rounded-[20px] white-opaque px-[8px]">Turn {currentData.turn_number}</p>
     </div>
     {sentencesData.map((sentence, sentenceIndex) => (
       <div className="box" key={sentenceIndex}>
