@@ -1,6 +1,22 @@
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 
+interface SearchBarProps {
+  searchInput: string;
+  onSearchInputChange: (input: string) => void;
+  isSearchMode: boolean;
+  handleSearchClick: () => void;
+  handleClearSearch: () => void;
+  setInboxOpen: (open: boolean) => void;
+  setFetchOpen: (open: boolean) => void;
+  isInboxOpen: boolean;
+  isFetchOpen: boolean;
+  isSearchBarExpanded: boolean;
+  onSearchBarClick: () => void;
+  setSearchBarExpanded: (expanded: boolean) => void;
+}
+
+
 const SearchBar: React.FC<SearchBarProps> = ({
   searchInput,
   onSearchInputChange,
