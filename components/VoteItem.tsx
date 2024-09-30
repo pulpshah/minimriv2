@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react"
-import { useSwipeable } from "react-swipeable"
-import Image from "next/image"
-import Link from "next/link"
-import clsx from "clsx"
+import { useState, useEffect } from "react";
+import { useSwipeable } from "react-swipeable";
+import Image from "next/image";
+import Link from "next/link";
+import clsx from "clsx";
 
 interface VoteItem {
-  id: string
-  name: string
-  description: string
-  imageUrl: string
-  turn: number
+  id: string;
+  name: string;
+  description: string;
+  imageUrl: string;
+  turn: number;
 }
 
 interface VoteItemProps {
@@ -64,53 +64,58 @@ const dummyData: VoteItem[] = [
     name: "Redditor",
     description: "The mesmerizing aurora borealis lighting up the night sky.",
     imageUrl: "/placeholder.svg?height=200&width=400",
-  }
-]
+  },
+];
 
 export default function VoteItem({ items }: VoteItemProps) {
-  const [votes, setVotes] = useState<{ [key: string]: string }>({})
-  const [swipedCard, setSwipedCard] = useState<{ [key: string]: string }>({})
-  const [isMobile, setIsMobile] = useState(false)
+  const [votes, setVotes] = useState<{ [key: string]: string }>({});
+  const [swipedCard, setSwipedCard] = useState<{ [key: string]: string }>({});
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-    handleResize()
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
 
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleSwipe = (itemId: string, direction: string) => {
     if (direction === "left") {
-      setVotes(prevVotes => ({ ...prevVotes, [itemId]: "invalid" }))
-      setSwipedCard(prev => ({ ...prev, [itemId]: "swiped-left" }))
+      setVotes((prevVotes) => ({ ...prevVotes, [itemId]: "invalid" }));
+      setSwipedCard((prev) => ({ ...prev, [itemId]: "swiped-left" }));
     } else if (direction === "right") {
-      setVotes(prevVotes => ({ ...prevVotes, [itemId]: "valid" }))
-      setSwipedCard(prev => ({ ...prev, [itemId]: "swiped-right" }))
+      setVotes((prevVotes) => ({ ...prevVotes, [itemId]: "valid" }));
+      setSwipedCard((prev) => ({ ...prev, [itemId]: "swiped-right" }));
     }
     setTimeout(() => {
-      setSwipedCard(prev => ({ ...prev, [itemId]: "disappear" }))
-    }, 300)
-  }
+      setSwipedCard((prev) => ({ ...prev, [itemId]: "disappear" }));
+    }, 300);
+  };
 
   const handleClick = (itemId: string, vote: string) => {
-    setVotes(prevVotes => ({ ...prevVotes, [itemId]: vote }))
+    setVotes((prevVotes) => ({ ...prevVotes, [itemId]: vote }));
 
     if (!isMobile) {
-      setSwipedCard(prev => ({ ...prev, [itemId]: "fade-out" }))
+      setSwipedCard((prev) => ({ ...prev, [itemId]: "fade-out" }));
     } else {
-      setSwipedCard(prev => ({ ...prev, [itemId]: vote === "invalid" ? "swiped-left" : "swiped-right" }))
+      setSwipedCard((prev) => ({
+        ...prev,
+        [itemId]: vote === "invalid" ? "swiped-left" : "swiped-right",
+      }));
     }
 
     setTimeout(() => {
-      setSwipedCard(prev => ({ ...prev, [itemId]: "disappear" }))
-    }, 500)
-  }
+      setSwipedCard((prev) => ({ ...prev, [itemId]: "disappear" }));
+    }, 500);
+  };
 
   // Determine if all items have been swiped (disappear state)
-  const allSwiped = dummyData.every(item => swipedCard[item.id] === "disappear")
+  const allSwiped = dummyData.every(
+    (item) => swipedCard[item.id] === "disappear"
+  );
 
   return (
     <div className="feed w-full h-fit z-40 items-center justify-center flex">
@@ -120,7 +125,7 @@ export default function VoteItem({ items }: VoteItemProps) {
             onSwipedLeft: () => handleSwipe(item.id, "left"),
             onSwipedRight: () => handleSwipe(item.id, "right"),
             trackMouse: true,
-          })
+          });
 
           return (
             <div
@@ -143,8 +148,14 @@ export default function VoteItem({ items }: VoteItemProps) {
                   <Link href="/relatedmedia" passHref>
                     <button className="flex items-center justify-center w-auto h-auto flex-col gap-1">
                       <Image
-                        src={item.name === "Redditor" ? '/icons/globe-icon-black.svg' : '/icons/play-icon.svg'}
-                        alt={item.name === "Redditor" ? 'Globe Icon' : 'Play Icon'}
+                        src={
+                          item.name === "Redditor"
+                            ? "/icons/globe-icon-black.svg"
+                            : "/icons/play-icon.svg"
+                        }
+                        alt={
+                          item.name === "Redditor" ? "Globe Icon" : "Play Icon"
+                        }
                         width={32}
                         height={30}
                       />
@@ -161,7 +172,7 @@ export default function VoteItem({ items }: VoteItemProps) {
                 <div className="flex items-center justify-center gap-4">
                   <button onClick={() => handleClick(item.id, "invalid")}>
                     <Image
-                      src={'/icons/invalid-icon.svg'}
+                      src={"/icons/invalid-icon.svg"}
                       alt="Invalid"
                       width={42}
                       height={30}
@@ -172,7 +183,7 @@ export default function VoteItem({ items }: VoteItemProps) {
                   </button>
                   <button onClick={() => handleClick(item.id, "valid")}>
                     <Image
-                      src={'/icons/valid-icon.svg'}
+                      src={"/icons/valid-icon.svg"}
                       alt="Valid"
                       width={42}
                       height={30}
@@ -181,17 +192,22 @@ export default function VoteItem({ items }: VoteItemProps) {
                 </div>
               </div>
             </div>
-          )
+          );
         })}
 
         {/* Empty state */}
         {allSwiped && (
           <div className="empty-state w-full h-full flex flex-row items-center justify-center">
-            <Image src="/icons/zzz-icon.svg" alt="ZZZ Icon" width={64} height={64} />
+            <Image
+              src="/icons/zzz-icon.svg"
+              alt="ZZZ Icon"
+              width={64}
+              height={64}
+            />
             <h3 className="text-base mt-4 poppins">No new votables</h3>
           </div>
         )}
       </div>
     </div>
-  )
+  );
 }

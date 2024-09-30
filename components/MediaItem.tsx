@@ -1,11 +1,11 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
 interface MediaItem {
-  id: string
-  title: string
-  description: string
-  imageUrl: string
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
 }
 
 interface MediaItemProps {
@@ -53,22 +53,25 @@ const dummyData: MediaItem[] = [
     title: "reference 6",
     description: "The mesmerizing aurora borealis lighting up the night sky.",
     imageUrl: "/placeholder.svg?height=200&width=400",
-  }
-]
+  },
+];
 
 export default function MediaItem({ items }: MediaItemProps) {
   return (
     <div className="feed w-full h-fit z-40 items-center justify-center flex">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full h-fit gap-[24px]">
         {items.map((item) => (
-          <div key={item.id} className="white-opaque rounded-[40px] p-[25px] overflow-hidden shadow-md">
+          <div
+            key={item.id}
+            className="white-opaque rounded-[40px] p-[25px] overflow-hidden shadow-md"
+          >
             <div className="flex justify-between mb-[15px]">
               <h3 className="text-lg md:text-xl">{item.title}</h3>
               <Link href="/relatedmedia" passHref>
                 <button className="flex invert items-center justify-center w-auto h-auto flex-col gap-1">
                   <Image
-                    src={'/icons/globe-icon.svg'}
-                    alt='Search'
+                    src={"/icons/globe-icon.svg"}
+                    alt="Search"
                     width={32}
                     height={30}
                   />
@@ -88,7 +91,9 @@ export default function MediaItem({ items }: MediaItemProps) {
             </div>
 
             <div className="pt-5">
-              <p className="text-sm poppins text-gray-600">{item.description}</p>
+              <p className="text-sm poppins text-gray-600">
+                {item.description}
+              </p>
             </div>
           </div>
         ))}
