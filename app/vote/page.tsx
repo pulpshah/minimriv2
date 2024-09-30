@@ -5,7 +5,7 @@ import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import SearchBar from "@/components/SearchBar";
 import { NavBar } from "@/components/NavBar";
-import MediaFeed from '@/components/VoteItem'
+import <VoteItem></VoteItem> from '@/components/VoteItem'
 
 type TurnData = {
   speaker_name: string;
@@ -306,7 +306,7 @@ const vote = () => {
                 <div className="flex gap-5 items-center box">
                 <h1 className="text-2xl text-center">Votes</h1>
                 </div>
-                <MediaFeed items={voteitems} />
+                <VoteItem items={voteitems} />
           </div>
         </div>
 
