@@ -133,9 +133,9 @@ const HomePage = () => {
     setFetchOpen(false);
   };
 
-  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
-  };
+  const handleSearchInputChange = (input: string) => {
+    setSearchInput(input);
+  };  
 
   // Audio Handlers
   const loadTurnContent = async (
@@ -589,54 +589,60 @@ const HomePage = () => {
             {isTranscriptOpen && (
               <div className="transcript-content custom-scrollbar h-full w-full rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col w-full mt-3 overflow-y-auto">
                 <div className="flex flex-row justify-end w-full">
-                  {/* <p className="poppins text-[#79FF89]">20 pts+</p> */}
                   <div className="rounded-[20px] white-opaque px-[10px]">
                     {turnCategory || "No Category"}
                   </div>
                 </div>
                 <div className="flex flex-col">
-                  {sentencesData.map((sentence, sentenceIndex) => (
-                    <div className="" key={sentenceIndex}>
-                      <div
-                        ref={
-                          sentenceIndex === currentSentenceIndex
-                            ? (el) => {
-                                if (el) {
-                                  el.scrollIntoView({
-                                    behavior: "smooth",
-                                    block: "nearest",
-                                  });
+                  {sentencesData.map((sentence, sentenceIndex) => {
+                    // Determine the style for each sentence based on its playback state
+                    let sentenceStyle = "text-gray-600 opacity-50"; // Default: Not yet played
+
+                    if (sentenceIndex < currentSentenceIndex) {
+                      sentenceStyle = "text-gray-500"; // Played sentences
+                    } else if (sentenceIndex === currentSentenceIndex) {
+                      sentenceStyle = "text-white"; // Currently playing sentence
+                    }
+
+                    return (
+                      <div className="" key={sentenceIndex}>
+                        <div
+                          ref={
+                            sentenceIndex === currentSentenceIndex
+                              ? (el) => {
+                                  if (el) {
+                                    el.scrollIntoView({
+                                      behavior: "smooth",
+                                      block: "nearest",
+                                    });
+                                  }
                                 }
-                              }
-                            : null
-                        }
-                        className={`${
-                          currentSentenceIndex === sentenceIndex
-                            ? "text-white opacity-100"
-                            : "text-gray-400 opacity-70"
-                        } text-left !text-2xl md:text-base w-full lg:w-3/4 mx-auto `}
-                      >
-                        {wordData
-                          .filter(
-                            (word) =>
-                              word.start >= sentence.start &&
-                              word.end <= sentence.end
-                          )
-                          .map((word, wordIndex) => (
-                            <span
-                              key={`${sentenceIndex}-${wordIndex}`}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleWordClick(word.start);
-                              }}
-                              className="cursor-pointer hover:underline"
-                            >
-                              {word.punctuated_word + " "}
-                            </span>
-                          ))}
+                              : null
+                          }
+                          className={`${sentenceStyle} text-left !text-2xl md:text-base w-full lg:w-3/4 mx-auto`}
+                        >
+                          {wordData
+                            .filter(
+                              (word) =>
+                                word.start >= sentence.start &&
+                                word.end <= sentence.end
+                            )
+                            .map((word, wordIndex) => (
+                              <span
+                                key={`${sentenceIndex}-${wordIndex}`}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleWordClick(word.start);
+                                }}
+                                className="cursor-pointer hover:underline"
+                              >
+                                {word.punctuated_word + " "}
+                              </span>
+                            ))}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             )}
