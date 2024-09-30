@@ -19,27 +19,13 @@ html, body {
 
 @layer utilities {
   .custom-scrollbar::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
+    display: none; /* Hide scrollbar for WebKit browsers */
   }
-  
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2); /* Color of the scrollbar track */
-    border-radius: 10px;
-  }
-  
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.5); /* Color of the scrollbar thumb */
-    border-radius: 10px; /* Rounded corners */
-  }
-  
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.7); /* Color when hovered */
-  }
-  
-  /* Firefox-specific scrollbar styling */
+
+  /* Firefox-specific scrollbar styling to hide the scrollbar */
   .custom-scrollbar {
-    scrollbar-width: thin; /* Options: auto, thin, none */
-    scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.2); /* Thumb color, Track color */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
 

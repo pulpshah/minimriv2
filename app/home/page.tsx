@@ -144,7 +144,7 @@ const HomePage = () => {
       const paragraphs = jsonData.results.channels[0].alternatives[0].paragraphs.paragraphs || [];
   
       if (paragraphs.length > 0) {
-        const sentences = paragraphs.flatMap(paragraph => paragraph.sentences);
+        const sentences = paragraphs.flatMap((paragraph: { sentences: any; }) => paragraph.sentences);
         setWordData(words);
         setSentencesData(sentences);
       }
@@ -548,28 +548,31 @@ const HomePage = () => {
 
   {/* Transcript Section */}
   {isTranscriptOpen && (
-    <div className="transcript-content custom-scrollbar h-full w-full rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col w-full mt-3 text-left overflow-y-auto">
-    <div className="flex flex-row justify-between w-full">
-      <p>transcript</p>
-      <p className="poppins text-[#79FF89]">20 pts+</p>
-      <div className="rounded-[20px] black-opaque px-[10px]">
+  <div className="transcript-content custom-scrollbar h-full w-full rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col w-full mt-3 overflow-y-auto">
+    <div className="flex flex-row justify-end w-full">
+      {/* <p className="poppins text-[#79FF89]">20 pts+</p> */}
+      <div className="rounded-[20px] white-opaque px-[10px]">
         {turnCategory || 'No Category'}
       </div>
     </div>
     <div className="flex flex-col">
       {sentencesData.map((sentence, sentenceIndex) => (
-        <div className="text-left" key={sentenceIndex}>
+        <div className="" key={sentenceIndex}>
           <div
             ref={
               sentenceIndex === currentSentenceIndex
-                ? (el) => el?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                ? (el) => {
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                  }
                 : null
             }
             className={`${
               currentSentenceIndex === sentenceIndex
                 ? 'text-white opacity-100'
                 : 'text-gray-400 opacity-70'
-            } text-left text-sm md:text-base`}
+            } text-left !text-2xl md:text-base w-full lg:w-3/4 mx-auto `}
           >
             {wordData
               .filter(
