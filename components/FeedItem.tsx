@@ -140,7 +140,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
             <button onClick={handlePlayPause}>
               <Image
                 className={`cursor-pointer ${isQuestion ? "invert" : ""}`}
-                src={isPlaying ? "/icons/pause-icon.svg" : "/icons/feed-play.svg"} 
+                src={isPlaying ? "/icons/pause-icon.svg" : "/icons/play-icon.svg"} 
                 alt={isPlaying ? "Pause" : "Play"}
                 height={44}
                 width={47}
