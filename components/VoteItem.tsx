@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import clsx from "clsx"
 
-interface MediaItem {
+interface VoteItem {
   id: string
   name: string
   description: string
@@ -12,7 +12,7 @@ interface MediaItem {
   turn: number
 }
 
-const dummyData: MediaItem[] = [
+const dummyData: VoteItem[] = [
   {
     id: "1",
     turn: 1,
@@ -63,22 +63,15 @@ export default function Component() {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    // Check if the device is mobile-sized on initial render
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768)
     }
-
-    // Set the initial value
     handleResize()
 
-    // Add event listener to handle window resize
     window.addEventListener("resize", handleResize)
-
-    // Cleanup the event listener on component unmount
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  // Handler for swipe actions
   const handleSwipe = (itemId: string, direction: string) => {
     if (direction === "left") {
       setVotes(prevVotes => ({ ...prevVotes, [itemId]: "invalid" }))
@@ -89,14 +82,12 @@ export default function Component() {
     }
     setTimeout(() => {
       setSwipedCard(prev => ({ ...prev, [itemId]: "disappear" }))
-    }, 300) // Faster fade duration
+    }, 300)
   }
 
-  // Handler for click actions
   const handleClick = (itemId: string, vote: string) => {
     setVotes(prevVotes => ({ ...prevVotes, [itemId]: vote }))
-    
-    // On desktop, fade out instead of swiping
+
     if (!isMobile) {
       setSwipedCard(prev => ({ ...prev, [itemId]: "fade-out" }))
     } else {
@@ -105,8 +96,11 @@ export default function Component() {
 
     setTimeout(() => {
       setSwipedCard(prev => ({ ...prev, [itemId]: "disappear" }))
-    }, 500) // Faster fade duration
+    }, 500)
   }
+
+  // Determine if all items have been swiped (disappear state)
+  const allSwiped = dummyData.every(item => swipedCard[item.id] === "disappear")
 
   return (
     <div className="feed w-full h-fit z-40 items-center justify-center flex">
@@ -121,12 +115,12 @@ export default function Component() {
           return (
             <div
               key={item.id}
-              {...(isMobile ? swipeHandlers : {})} // Only attach swipe handlers if on mobile
+              {...(isMobile ? swipeHandlers : {})}
               className={clsx(
-                "white-opaque rounded-[40px] p-[25px] overflow-hidden shadow-md transition-all duration-300", // Faster transition
+                "white-opaque rounded-[40px] p-[25px] overflow-hidden shadow-md transition-all duration-300",
                 swipedCard[item.id] === "swiped-left" && "translate-x-[-100%]",
                 swipedCard[item.id] === "swiped-right" && "translate-x-[100%]",
-                swipedCard[item.id] === "fade-out" && "opacity-0", // Fade out on desktop click
+                swipedCard[item.id] === "fade-out" && "opacity-0",
                 swipedCard[item.id] === "disappear" && "hidden"
               )}
             >
@@ -154,7 +148,6 @@ export default function Component() {
                   <p className="text-xl md:text-xl">"{item.description}"</p>
                 </div>
 
-                {/* Voting options: valid, invalid, abstain */}
                 <div className="flex items-center justify-center gap-4">
                   <button onClick={() => handleClick(item.id, "invalid")}>
                     <Image
@@ -164,7 +157,9 @@ export default function Component() {
                       height={30}
                     />
                   </button>
-                  <div className="text-xl md:text-2xl poppins">abstain</div>
+                  <button onClick={() => handleClick(item.id, "abstain")}>
+                    <div className="text-xl md:text-2xl poppins">abstain</div>
+                  </button>
                   <button onClick={() => handleClick(item.id, "valid")}>
                     <Image
                       src={'/icons/valid-icon.svg'}
@@ -178,6 +173,14 @@ export default function Component() {
             </div>
           )
         })}
+
+        {/* Empty state */}
+        {allSwiped && (
+          <div className="empty-state w-full h-full flex flex-row items-center justify-center">
+            <Image src="/icons/zzz-icon.svg" alt="ZZZ Icon" width={64} height={64} />
+            <h3 className="text-base mt-4 poppins">No new votables</h3>
+          </div>
+        )}
       </div>
     </div>
   )

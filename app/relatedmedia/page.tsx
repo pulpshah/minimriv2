@@ -304,8 +304,8 @@ const RelatedMedia = () => {
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
                 <div className="flex gap-5 items-center box">
-                <h1 className="text-2xl text-center">related media</h1>
-                <p className="rounded-[20px] text-2xl flex gap-1 black-opaque px-[10px]">Turn <div className="">1</div></p>
+                <h1 className="text-xl md:text-2xl text-center">related media</h1>
+                <p className="rounded-[20px] text-xl md:text-2xl flex gap-1 black-opaque px-[10px]">Turn <div className="">1</div></p>
                 </div>
                 <MediaFeed items={mediaItems} />
           </div>
