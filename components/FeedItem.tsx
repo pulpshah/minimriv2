@@ -127,7 +127,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
             <span>{title}</span>
           </div>
 
-          <div className="turn-play w-fit h-fit flex flex-row justify-end items-center gap-[5px]">
+          <div className="turn-play w-fit h-fit flex flex-row justify-end items-center gap-2">
             <div
               className={`turn flex w-fit !shadow-none text-base md:text-lg h-fit px-[3px] max-sm:px-[1px] py-[1px] items-center rounded-full box ${
                 isQuestion ? "white-opaque" : "black-opaque"
