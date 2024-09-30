@@ -8,6 +8,15 @@ interface MediaItem {
   imageUrl: string
 }
 
+interface MediaItemProps {
+  items: {
+    id: string;
+    title: string;
+    description: string;
+    imageUrl: string;
+  }[];
+}
+
 const dummyData: MediaItem[] = [
   {
     id: "1",
@@ -47,11 +56,11 @@ const dummyData: MediaItem[] = [
   }
 ]
 
-export default function Component() {
+export default function MediaItem({ items }: MediaItemProps) {
   return (
     <div className="feed w-full h-fit z-40 items-center justify-center flex">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full h-fit gap-[24px]">
-        {dummyData.map((item) => (
+        {items.map((item) => (
           <div key={item.id} className="white-opaque rounded-[40px] p-[25px] overflow-hidden shadow-md">
             <div className="flex justify-between mb-[15px]">
               <h3 className="text-lg md:text-xl">{item.title}</h3>
@@ -85,5 +94,5 @@ export default function Component() {
         ))}
       </div>
     </div>
-  )
+  );
 }
