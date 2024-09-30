@@ -405,7 +405,7 @@ const HomePage = () => {
       <div
   onClick={() => setTranscriptOpen(!isTranscriptOpen)}
   className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] nav-bar !blurry transition-all mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
-    isTranscriptOpen ? 'h-[44.6vh] max-w-full' : 'h-[57px]'
+    isTranscriptOpen ? 'h-[44.7vh] max-w-full' : 'h-[57px]'
   }`}
 >
   <div className="box">
