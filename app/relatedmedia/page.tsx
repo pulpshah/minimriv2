@@ -5,7 +5,7 @@ import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import SearchBar from "@/components/SearchBar";
 import { NavBar } from "@/components/NavBar";
-import MediaFeed from '@/components/MediaItem'
+import MediaItem from '@/components/MediaItem'
 
 type TurnData = {
   speaker_name: string;
@@ -307,7 +307,7 @@ const RelatedMedia = () => {
                 <h1 className="text-xl md:text-2xl text-center">related media</h1>
                 <p className="rounded-[20px] text-xl md:text-2xl flex gap-1 black-opaque px-[10px]">Turn <div className="">1</div></p>
                 </div>
-                <MediaFeed items={mediaItems} />
+                <MediaItem items={mediaItems} />
           </div>
         </div>
 
