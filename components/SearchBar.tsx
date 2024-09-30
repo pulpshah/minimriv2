@@ -92,7 +92,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
               className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
               value={searchInput}
               onChange={(e) => {
-                onSearchInputChange(e);
+                onSearchInputChange(e.target.value);
                 setSearchBarExpanded(true);
               }}
               onClick={onSearchBarClick}
