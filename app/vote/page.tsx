@@ -408,7 +408,7 @@ const vote = () => {
   <div className="transcript-content h-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[0px] flex flex-col w-full mt-3">
     <div className="flex flex-row items-center justify-between w-full">
       <div className="rounded-[20px] poppins px-[10px]">
-        {'turnCategory' || 'no category'}
+        {currentData?.turn_category || "no category"}
       </div>
       <p className="rounded-[20px] flex gap-1 white-opaque px-[10px]">Turn <div className="">1</div></p>
     </div>
