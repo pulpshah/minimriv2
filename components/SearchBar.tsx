@@ -3,7 +3,7 @@ import Image from "next/image";
 
 interface SearchBarProps {
   searchInput: string;
-  onSearchInputChange: (input: string) => void;
+  onSearchInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isSearchMode: boolean;
   handleSearchClick: () => void;
   handleClearSearch: () => void;
@@ -91,10 +91,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
               type="text"
               className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
               value={searchInput}
-              onChange={(e) => {
-                onSearchInputChange(e);
-                setSearchBarExpanded(true);
-              }}
+              onChange={onSearchInputChange}  // No need to wrap it
               onClick={onSearchBarClick}
               onBlur={() => setSearchBarExpanded(false)}
               onKeyDown={(e) => {
@@ -104,6 +101,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
                 }
               }}
             />
+
 
             {searchInput && (
               <button
