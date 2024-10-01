@@ -15,7 +15,7 @@ export const RadarChart: React.FC<RadarChartProps> = ({ ethos, pathos, logos }) 
   points.push({"key":"pathos", "value":pathos/10})
   points.push({"key":"logos", "value":logos/10})
 
-  const plotRef = useRef(null);
+  const plotRef = useRef<HTMLDivElement | null>(null); // Specify the type
 
   useEffect(() => {
     if (points && points.length > 0) {
@@ -102,12 +102,14 @@ export const RadarChart: React.FC<RadarChartProps> = ({ ethos, pathos, logos }) 
         ],
       });
 
-      if (plotRef.current.firstChild) {
-        plotRef.current.removeChild(plotRef.current.firstChild);
-      }
+      if (plotRef.current) { // Check if plotRef.current is not null
+        if (plotRef.current.firstChild) {
+          plotRef.current.removeChild(plotRef.current.firstChild);
+        }
 
-      // Append the plot to the div
-      plotRef.current.appendChild(plot);
+        // Append the plot to the div
+        plotRef.current.appendChild(plot);
+      }
 
       const svg = d3.select(plotRef.current).select("svg");
 

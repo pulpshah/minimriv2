@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 
 interface SearchBarProps {
@@ -7,11 +7,15 @@ interface SearchBarProps {
   isSearchMode: boolean;
   handleSearchClick: () => void;
   handleClearSearch: () => void;
-  setInboxOpen: () => void;
-  setFetchOpen: () => void;
+  setInboxOpen: (open: boolean) => void;
+  setFetchOpen: (open: boolean) => void;
   isInboxOpen: boolean;
   isFetchOpen: boolean;
+  isSearchBarExpanded: boolean;
+  onSearchBarClick: () => void;
+  setSearchBarExpanded: (expanded: boolean) => void;
 }
+
 
 const SearchBar: React.FC<SearchBarProps> = ({
   searchInput,
@@ -19,37 +23,53 @@ const SearchBar: React.FC<SearchBarProps> = ({
   isSearchMode,
   handleSearchClick,
   handleClearSearch,
-  setInboxOpen,  // Correct prop name
-  setFetchOpen,  // Correct prop name
+  setInboxOpen,
+  setFetchOpen,
   isInboxOpen,
   isFetchOpen,
+  isSearchBarExpanded,
+  onSearchBarClick,
+  setSearchBarExpanded,
 }) => {
+  const searchBarRef = useRef<HTMLDivElement | null>(null);
+  const clearButtonRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        searchBarRef.current &&
+        !searchBarRef.current.contains(event.target as Node) &&
+        clearButtonRef.current &&
+        !clearButtonRef.current.contains(event.target as Node)
+      ) {
+        setSearchBarExpanded(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [setSearchBarExpanded]);
+
   return (
     <div
-      className={`search z-[101] gap-2 w-full h-[81px] box flex flex-row items-center ${
+      className={`search z-[101] gap-2 w-full h-fit box flex flex-row items-center ${
         isSearchMode ? "justify-center" : "!justify-between"
       }`}
+      ref={searchBarRef}
     >
-    <button
-    className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
-        isSearchMode ? "hidden" : "flex"
-    }`}
-    onClick={setInboxOpen}
-
-  // Update to trigger inbox
-    >
-    <Image src={isInboxOpen ? "icons/close-icon.svg" : "icons/inbox-icon.svg"} alt="Inbox" height={35} width={45} />
-    </button>
-
-
       <div
         className={`flex items-center w-full justify-center ${
-          isSearchMode ? "mx-[20px]" : "mx-0"
+          isSearchMode ? "" : "mx-0"
         }`}
       >
         <div
-          className={`search-bar backdrop-blur-[50px] transition-all z-[101] flex-shrink-0 justify-between w-[65vw] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full ${
-            isSearchMode ? " w-full max-w-[600px] h-[45px]" : "h-[35px] w-[65vw] max-w-[450px]"
+          className={`search-bar relative backdrop-blur-[50px] mt-3.5 transition-all z-[101] flex-shrink-0 justify-between w-[65vw] max-h-[50px] flex flex-row gap-[10px] px-[8px] overflow-hidden text-white rounded-full ${
+            isSearchBarExpanded
+              ? "w-full max-w-[600px] h-[45px]"
+              : "h-[35px] w-[65vw] max-w-[450px]"
           }`}
         >
           <div
@@ -67,38 +87,36 @@ const SearchBar: React.FC<SearchBarProps> = ({
             </button>
 
             <input
-              placeholder="search"
-              type="text"
-              className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
-              value={searchInput}
-              onChange={onSearchInputChange}
-            />
+            placeholder="search"
+            type="text"
+            className="placeholder-white transition-all poppins bg-transparent outline-none justify-between w-full text-white bg-none"
+            value={searchInput}
+            onChange={onSearchInputChange} // Directly passing the event to the handler
+            onClick={onSearchBarClick}
+            onBlur={() => setSearchBarExpanded(false)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSearchClick();
+                setSearchBarExpanded(false);
+              }
+            }}
+          />
+
+
+            {searchInput && (
+              <button
+                onMouseDown={(e) => {
+                  e.preventDefault(); // Prevents input blur from happening
+                  handleClearSearch(); // Clears the search input but keeps the bar expanded
+                }}
+                className="absolute right-[10px] text-lg text-white cursor-pointer"
+              >
+                clear
+              </button>
+            )}
           </div>
         </div>
-
-        <div className="">
-          <button
-            className={`cursor-pointer flex-shrink-0 z-[101] w-[32px] md:w-[32px] transition-opacity ${
-              isSearchMode ? "flex" : "hidden"
-            }`}
-            onClick={handleClearSearch}
-          >
-            <Image src={"icons/close-icon.svg"} alt={"close"} height={45} width={45} />
-          </button>
-        </div>
       </div>
-
-      <button
-    className={`cursor-pointer flex-shrink-0 z-[101] w-[35px] md:w-[45px] transition-opacity ${
-        isSearchMode ? "hidden" : "flex"
-    }`}
-
-    onClick={setFetchOpen}
-  // Update to trigger fetch
-    >
-    <Image src={isFetchOpen ? "icons/close-icon.svg" : "icons/fetch-icon.svg"} alt="Fetch" height={35} width={45} />
-    </button>
-
     </div>
   );
 };
