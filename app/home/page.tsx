@@ -7,22 +7,22 @@ import SearchBar from "@/components/SearchBar";
 import { NavBar } from "@/components/NavBar";
 
 type TurnData = {
-  turn: number; // Turn number
-  speaker: string; // Speaker's name
-  role: string; // Speaker's role
-  rawTotalScore: number; // Total score for the turn
-  headline?: string; // Headline for the first sentence of the turn
+  turn: number; 
+  speaker: string; 
+  role: string; 
+  rawTotalScore: number;
+  headline?: string;
   sentences: {
-    Headline: string[]; // Array of headlines for each sentence
+    Headline: string[];
   }[];
 };
 
 type ComprehensiveTurnData = {
-  turn: number; // Turn number
-  speaker: string; // Speaker's name
-  role: string; // Speaker's role
-  rawTotalScore: number; // Total score for the turn
-  headline: string; // Headline for the first sentence of the turn
+  turn: number;
+  speaker: string;
+  role: string;
+  rawTotalScore: number;
+  headline: string;
 };
 
 
@@ -33,7 +33,7 @@ const HomePage = () => {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [currentTurn, setCurrentTurn] = useState<number>(1);
-  const [currentQuestion, setCurrentQuestion] = useState<number>(0); // Start with question 1
+  const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(
     null
   );
@@ -439,8 +439,11 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
       <div className="feed w-full h-fit z-40 items-center justify-center flex">
         <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
         {turnsData && turnsData.length > 0 ? (
-  turnsData.map((turn: TurnData, index: number) => {
-    const turnCategory = turn.role || "segment";
+      // Filter turnsData to start from turn 11
+      turnsData
+        .filter((turn) => turn.turn >= 11)
+        .map((turn: TurnData, index: number) => {
+          const turnCategory = turn.role || "segment";
 
     return (
       <FeedItem

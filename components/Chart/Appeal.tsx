@@ -1,7 +1,7 @@
 import React,{ useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import * as Plot from '@observablehq/plot';
-import AppealData from "@/public/data/processed_appeal_data.json";
+import AppealData from "@/public/data/Appeal.json";
 
 interface ChartProps {
     turnNum: number,

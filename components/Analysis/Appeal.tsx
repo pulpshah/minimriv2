@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { RadarChart } from "../ChartData";
 import { GeneralAppealChart, EthosChart, PathosChart, LogosChart } from "../Chart/Appeal";
+import AppealData from '@/public/data/Appeal.json';
 
 interface AnalysisProps {
   ethosScore: number;
@@ -9,6 +10,17 @@ interface AnalysisProps {
   showChart: boolean;
   isModerator: boolean;
   turnNumber: number;
+}
+
+interface AppealSubcategory {
+  axis_score: number;
+  reasoning: string;
+}
+
+interface AppealTurnData {
+  ethos: Record<string, AppealSubcategory>;
+  pathos: Record<string, AppealSubcategory>;
+  logos: Record<string, AppealSubcategory>;
 }
 
 const Appeal: React.FC<AnalysisProps> = ({
@@ -20,6 +32,30 @@ const Appeal: React.FC<AnalysisProps> = ({
   turnNumber,
 }) => {
   const [activeTab, setActiveTab] = useState<string>("ethos");
+
+  const currentTurnData: AppealTurnData | undefined = useMemo(() => {
+    return AppealData[turnNumber - 1]; // Adjusting for 0-based index
+  }, [turnNumber]);
+
+  const getHighestScoringReasoning = (appealCategory: Record<string, AppealSubcategory>) => {
+    if (!appealCategory) return "No reasoning available";
+    let highestSubcategory = Object.values(appealCategory).reduce((highest, current) =>
+      current.axis_score > highest.axis_score ? current : highest
+    );
+    return highestSubcategory.reasoning;
+  };
+
+  const ethosReasoning = currentTurnData
+    ? getHighestScoringReasoning(currentTurnData.ethos)
+    : "No reasoning available";
+
+  const pathosReasoning = currentTurnData
+    ? getHighestScoringReasoning(currentTurnData.pathos)
+    : "No reasoning available";
+
+  const logosReasoning = currentTurnData
+    ? getHighestScoringReasoning(currentTurnData.logos)
+    : "No reasoning available";
 
   return (
     <div className="analysis grid grid-cols-1 w-full h-fit gap-[25px]">
@@ -86,7 +122,7 @@ const Appeal: React.FC<AnalysisProps> = ({
                       Ethos Reasoning
                     </div>
                     <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                      {ethosReasoning}
                     </div>
                   </div>
                   </div>
@@ -101,7 +137,7 @@ const Appeal: React.FC<AnalysisProps> = ({
                       Pathos Reasoning
                     </div>
                     <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                      {pathosReasoning}
                     </div>
                   </div>
                   </div>
@@ -116,7 +152,7 @@ const Appeal: React.FC<AnalysisProps> = ({
                       Logos Reasoning
                     </div>
                     <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                      {logosReasoning}
                     </div>
                   </div>
                   </div>

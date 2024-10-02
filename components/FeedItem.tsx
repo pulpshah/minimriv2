@@ -11,17 +11,17 @@ import Total from "./Analysis/Total";
 type TurnCategory = "question" | "rebuttal" | "answer";
 
 interface FeedItemProps {
-  turn_number: number; // Turn number for the specific feed item
-  title: string; // Title of the feed item, e.g., "Question", "Rebuttal"
-  topic: string; // Topic of the feed item, which is displayed for the "Question" or "Rebuttal"
-  speaker: string; // Speaker of the feed item, such as "Kamala Harris", "Donald Trump"
+  turn_number: number;
+  title: string;
+  topic: string;
+  speaker: string;
   role: string;
-  ethosScore: number; // Ethos score for the analysis chart (optional but being used in Appeal and other components)
-  pathosScore: number; // Pathos score for the analysis chart
-  logosScore: number; // Logos score for the analysis chart
-  turn_category: string; // Turn category, which you use for UI conditional rendering (e.g., question, rebuttal)
-  isPlaying: boolean; // Whether the audio of the turn is currently playing
-  onPlay: (turnNumber: number | null) => void; // Callback function to handle the play/pause behavior, updated to allow null
+  ethosScore: number;
+  pathosScore: number;
+  logosScore: number;
+  turn_category: string;
+  isPlaying: boolean; 
+  onPlay: (turnNumber: number | null) => void;
 }
 
 interface AnalysisProps {
@@ -137,7 +137,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 isModerator ? "white-opaque" : "black-opaque"
               }`}
             >
-              Turn {turn_number}
+              Turn {turn_number - 10}
             </div>
 
             <button onClick={handlePlayPause}>
