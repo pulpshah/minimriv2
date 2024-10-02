@@ -7,6 +7,7 @@ interface AnalysisProps {
   logosScore: number;
   showChart: boolean;
   isModerator: boolean;
+  turnNumber: number;
 }
 
 const Critical: React.FC<AnalysisProps> = ({
@@ -15,6 +16,7 @@ const Critical: React.FC<AnalysisProps> = ({
   logosScore,
   showChart,
   isModerator,
+  turnNumber,
 }) => {
   const [activeTab, setActiveTab] = useState<string>("ethos");
 

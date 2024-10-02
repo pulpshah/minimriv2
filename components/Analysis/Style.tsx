@@ -8,6 +8,7 @@ interface AnalysisProps {
   logosScore: number;
   showChart: boolean;
   isModerator: boolean;
+  turnNumber: number;
 }
 
 const Style: React.FC<AnalysisProps> = ({
@@ -16,6 +17,7 @@ const Style: React.FC<AnalysisProps> = ({
   logosScore,
   showChart,
   isModerator,
+  turnNumber,
 }) => {
   const [activeTab, setActiveTab] = useState<string>("ethos");
 
@@ -46,7 +48,7 @@ const Style: React.FC<AnalysisProps> = ({
             )}
 
             {activeTab === "ethos" && (
-              <StyleChart turnNum={1} />
+              <StyleChart turnNum={turnNumber} />
             )}
 
             {activeTab === "pathos" && (

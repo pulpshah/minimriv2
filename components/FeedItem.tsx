@@ -196,6 +196,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 logosScore={logosScore}
                 showChart={showChart}
                 isModerator={isModerator}
+                turnNumber={turn_number}
               />
             )}
 
@@ -208,6 +209,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                   logosScore={logosScore}
                   showChart={showChart}
                   isModerator={isModerator}
+                  turnNumber={turn_number}
                 />
               </div>
             )}
@@ -219,6 +221,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                   logosScore={logosScore}
                   showChart={showChart}
                   isModerator={isModerator}
+                  turnNumber={turn_number}
                 />
               </div>
             )}
@@ -230,6 +233,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                   logosScore={logosScore}
                   showChart={showChart}
                   isModerator={isModerator}
+                  turnNumber={turn_number}
                 />
               </div>
             )}
@@ -241,6 +245,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                   logosScore={logosScore}
                   showChart={showChart}
                   isModerator={isModerator}
+                  turnNumber={turn_number}
                 />
               </div>
             )}
