@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { RadarChart } from "../ChartData";
+import { ClarityChart } from "../Chart/Clarity.jsx";
 
 interface AnalysisProps {
   ethosScore: number;
@@ -45,7 +46,7 @@ const Clarity: React.FC<AnalysisProps> = ({
             )}
 
             {activeTab === "ethos" && (
-              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+              <ClarityChart turnNum={0} />
             )}
 
             {activeTab === "pathos" && (
