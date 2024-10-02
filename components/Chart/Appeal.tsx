@@ -1,6 +1,7 @@
 import React,{ useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import * as Plot from '@observablehq/plot';
+import AppealData from "@/public/data/processed_appeal_data.json";
 
 interface ChartProps {
     turnNum: number,
@@ -8,11 +9,15 @@ interface ChartProps {
 
 export const GeneralAppealChart: React.FC<ChartProps> = ({turnNum}) => 
 {
-  
   let points = []
-  points.push({"key":"Ethos", "value":AppealData[turnNum-1].EthosScore})
-  points.push({"key":"Pathos", "value":AppealData[turnNum-1].PathosScore})
-  points.push({"key":"Logos", "value":AppealData[turnNum-1].LogosScore})
+  points.push({"key":"Ethos", "value":AppealData[turnNum-1].ethos_score})
+  points.push({"key":"Pathos", "value":AppealData[turnNum-1].pathos_score})
+  points.push({"key":"Logos", "value":AppealData[turnNum-1].logos_score})
+
+  for(let i = 0; i<points.length; i++)
+  {
+    points[i].value = Math.abs(points[i].value);
+  }
 
   const plotRef = useRef<HTMLDivElement | null>(null); // Specify the type
 
@@ -129,12 +134,17 @@ export const EthosChart: React.FC<ChartProps> = ({turnNum}) =>
 {
     
     let points = []
-    points.push({"key":"Trust", "value":AppealData[turnNum-1].TrustScore})
-    points.push({"key":"Influence", "value":AppealData[turnNum-1].InfluenceScore})
-    points.push({"key":"Capability", "value":AppealData[turnNum-1].CapabilityScore})
-    points.push({"key":"Accuracy", "value":AppealData[turnNum-1].AccuracyScore})
-    points.push({"key":"Assurance", "value":AppealData[turnNum-1].AssuranceScore})
-    points.push({"key":"Validity", "value":AppealData[turnNum-1].ValidityScore})
+    points.push({"key":"Trust", "value":AppealData[turnNum-1].ethos.Trust.axis_score})
+    points.push({"key":"Influence", "value":AppealData[turnNum-1].ethos.Influence.axis_score})
+    points.push({"key":"Capability", "value":AppealData[turnNum-1].ethos.Capability.axis_score})
+    points.push({"key":"Accuracy", "value":AppealData[turnNum-1].ethos.Accuracy.axis_score})
+    points.push({"key":"Assurance", "value":AppealData[turnNum-1].ethos.Assurance.axis_score})
+    points.push({"key":"Validity", "value":AppealData[turnNum-1].ethos.Validity.axis_score})
+
+    for(let i = 0; i<points.length; i++)
+    {
+      points[i].value = Math.abs(points[i].value);
+    }
     
 
     const plotRef = useRef<HTMLDivElement | null>(null); // Specify the type
@@ -253,13 +263,17 @@ export const PathosChart: React.FC<ChartProps> = ({turnNum}) =>
 {
     
     let points = []
-    points.push({"key":"Evaluation Sentiment", "value":AppealData[turnNum-1].EvaluationSentimentScore})
-    points.push({"key":"Planning Sentiment", "value":AppealData[turnNum-1].PlanningSentimentScore})
-    points.push({"key":"Problematic Sentiment", "value":AppealData[turnNum-1].ProblematicSentimentScore})
-    points.push({"key":"Risk Sentiment", "value":AppealData[turnNum-1].RiskSentimentScore})
-    points.push({"key":"Togetherness Sentiment", "value":AppealData[turnNum-1].TogethernessSentimentScore})
-    points.push({"key":"Pity Sentiment", "value":AppealData[turnNum-1].PitySentimentScore})
-    
+    points.push({"key":"Evaluation Sentiment", "value":AppealData[turnNum-1].pathos.EvaluationSentiment.axis_score})
+    points.push({"key":"Planning Sentiment", "value":AppealData[turnNum-1].pathos.PlanningSentiment.axis_score})
+    points.push({"key":"Problematic Sentiment", "value":AppealData[turnNum-1].pathos.ProblematicSentiment.axis_score})
+    points.push({"key":"Risk Sentiment", "value":AppealData[turnNum-1].pathos.RiskSentiment.axis_score})
+    points.push({"key":"Togetherness Sentiment", "value":AppealData[turnNum-1].pathos.TogethernessSentiment.axis_score})
+    points.push({"key":"Pity Sentiment", "value":AppealData[turnNum-1].pathos.PitySentiment.axis_score})
+
+    for(let i = 0; i<points.length; i++)
+    {
+      points[i].value = Math.abs(points[i].value);
+    }
 
     const plotRef = useRef<HTMLDivElement | null>(null); // Specify the type
 
@@ -376,11 +390,16 @@ export const LogosChart: React.FC<ChartProps> = ({turnNum}) =>
 {
     
     let points = []
-    points.push({"key":"Premises", "value":AppealData[turnNum-1].PremisesScore})
-    points.push({"key":"Conclusions", "value":AppealData[turnNum-1].ConclusionsScore})
-    points.push({"key":"Soundness", "value":AppealData[turnNum-1].SoundnessScore})
-    points.push({"key":"Fallacies", "value":AppealData[turnNum-1].FallaciesScore})
-    points.push({"key":"Biases", "value":AppealData[turnNum-1].BiasesScore})
+    points.push({"key":"Premises", "value":AppealData[turnNum-1].logos.Premises.axis_score})
+    points.push({"key":"Conclusions", "value":AppealData[turnNum-1].logos.Conclusions.axis_score})
+    points.push({"key":"Soundness", "value":AppealData[turnNum-1].logos.Soundness.axis_score})
+    points.push({"key":"Fallacies", "value":AppealData[turnNum-1].logos.Fallacies.axis_score})
+    points.push({"key":"Biases", "value":AppealData[turnNum-1].logos.Biases.axis_score})
+
+    for(let i = 0; i<points.length; i++)
+    {
+      points[i].value = Math.abs(points[i].value);
+    }
 
     const plotRef = useRef<HTMLDivElement | null>(null); // Specify the type
 

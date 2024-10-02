@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { RadarChart } from "../ChartData";
+import { GeneralAppealChart, EthosChart, PathosChart, LogosChart } from "../Chart/Appeal.tsx";
 
 interface AnalysisProps {
   ethosScore: number;
@@ -41,19 +42,19 @@ const Appeal: React.FC<AnalysisProps> = ({
           <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[40px] black-card h-fit !bg-[url('/bg/appeal.webp')] !bg-cover !bg-center p-[10px] py-4 md:p-[20px]">
             <div className="chart box w-full h-fit px-[10%]">
             {activeTab === "summary" && (
-              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+              <GeneralAppealChart turnNum={1} />
             )}
 
             {activeTab === "ethos" && (
-              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+              <EthosChart turnNum={1} />
             )}
 
             {activeTab === "pathos" && (
-              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+              <PathosChart turnNum={1} />
             )}
 
             {activeTab === "logos" && (
-              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+              <LogosChart turnNum={1} />
             )}
 
             </div>
