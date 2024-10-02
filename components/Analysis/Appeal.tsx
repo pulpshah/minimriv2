@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { RadarChart } from "../ChartData";
-import { GeneralAppealChart, EthosChart, PathosChart, LogosChart } from "../Chart/Appeal.tsx";
+import { GeneralAppealChart, EthosChart, PathosChart, LogosChart } from "../Chart/Appeal";
 
 interface AnalysisProps {
   ethosScore: number;
