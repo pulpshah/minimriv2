@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { RadarChart } from "../ChartData";
+import { StyleChart } from "../Chart/Style.jsx";
 
 interface AnalysisProps {
   ethosScore: number;
@@ -45,7 +46,7 @@ const Style: React.FC<AnalysisProps> = ({
             )}
 
             {activeTab === "ethos" && (
-              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
+              <StyleChart turnNum={1} />
             )}
 
             {activeTab === "pathos" && (

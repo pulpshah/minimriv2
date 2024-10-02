@@ -46,7 +46,7 @@ const Clarity: React.FC<AnalysisProps> = ({
             )}
 
             {activeTab === "ethos" && (
-              <ClarityChart turnNum={0} />
+              <ClarityChart turnNum={1} />
             )}
 
             {activeTab === "pathos" && (
