@@ -8,17 +8,20 @@ import Critical from "./Analysis/Critical";
 import Style from "./Analysis/Style";
 import Total from "./Analysis/Total";
 
+type TurnCategory = "question" | "rebuttal" | "answer";
+
 interface FeedItemProps {
-  turn_number: number;
-  title: string;
-  topic: string;
-  speaker: string;
-  ethosScore: number;
-  pathosScore: number;
-  logosScore: number;
-  turn_category: string;
-  isPlaying: boolean;
-  onPlay: (turnNumber: number | null) => void; // Updated type to allow null
+  turn_number: number; // Turn number for the specific feed item
+  title: string; // Title of the feed item, e.g., "Question", "Rebuttal"
+  topic: string; // Topic of the feed item, which is displayed for the "Question" or "Rebuttal"
+  speaker: string; // Speaker of the feed item, such as "Kamala Harris", "Donald Trump"
+  role: string;
+  ethosScore: number; // Ethos score for the analysis chart (optional but being used in Appeal and other components)
+  pathosScore: number; // Pathos score for the analysis chart
+  logosScore: number; // Logos score for the analysis chart
+  turn_category: string; // Turn category, which you use for UI conditional rendering (e.g., question, rebuttal)
+  isPlaying: boolean; // Whether the audio of the turn is currently playing
+  onPlay: (turnNumber: number | null) => void; // Callback function to handle the play/pause behavior, updated to allow null
 }
 
 interface AnalysisProps {
@@ -28,7 +31,7 @@ interface AnalysisProps {
   showChart: boolean;
   activeTab: string; // Add this line to the interface
   setActiveTab: Dispatch<SetStateAction<string>>;
-  isQuestion: boolean;
+  isModerator: boolean;
 }
 
 const FeedItem: React.FC<FeedItemProps> = ({
@@ -36,6 +39,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
   title,
   topic,
   speaker,
+  role,
   ethosScore,
   pathosScore,
   logosScore,
@@ -100,28 +104,28 @@ const FeedItem: React.FC<FeedItemProps> = ({
   const [activeTab, setActiveTab] = useState<string>("ethos");
   const showChart = speaker === "Kamala Harris" || speaker === "Donald Trump";
 
-  const isQuestion = title.toLowerCase() === "question";
-  const isRebuttal = title.toLowerCase() === "rebuttal";
+  const isModerator = role === "Moderator";
+  const isCandidate = role === "Candidate";
 
   return (
     <div
       className={`graph box w-full h-fit gap-[25px] ${
-        isQuestion
+        isModerator
           ? "bg-question-color"
-          : isRebuttal
+          : isCandidate
           ? "bg-rebuttal-color"
           : "bg-answer-color"
       }`}
     >
       <div
         className={`box gap-[15px] md:gap-[25px] flex-col p-[10px] md:px-[20px] !justify-start white-opaque rounded-[40px] min-h-fit h-full ${
-          isQuestion ? "black-opaque" : "white-opaque"
+          isModerator ? "black-opaque" : "white-opaque"
         }`}
       >
         <div className="title-turn-play px-2 md:px-0 flex flex-row justify-between items-center h-fit w-full">
           <div
             className={`feed-text w-fit !text-lg md:!text-xl h-fit flex flex-row items-center justify-start gap-[10px] ${
-              isQuestion ? "text-white" : "text-black"
+              isModerator ? "text-white" : "text-black"
             }`}
           >
             <span>{title}</span>
@@ -130,7 +134,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
           <div className="turn-play w-fit h-fit flex flex-row justify-end items-center gap-2">
             <div
               className={`turn flex w-fit !shadow-none text-base md:text-lg h-fit px-[3px] max-sm:px-[1px] py-[1px] items-center rounded-full box ${
-                isQuestion ? "white-opaque" : "black-opaque"
+                isModerator ? "white-opaque" : "black-opaque"
               }`}
             >
               Turn {turn_number}
@@ -138,7 +142,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
 
             <button onClick={handlePlayPause}>
               <Image
-                className={`cursor-pointer ${isQuestion ? "invert" : ""}`}
+                className={`cursor-pointer ${isModerator ? "invert" : ""}`}
                 src={
                   isPlaying ? "/icons/pause-icon.svg" : "/icons/play-icon.svg"
                 }
@@ -155,16 +159,11 @@ const FeedItem: React.FC<FeedItemProps> = ({
           <div className="topic-text auth-text !text-black flex flex-col md:flex-row gap-[8px]">
             <div
               className={`w-full max-sm:text-3xl max-sm:!leading-none mx-auto ${
-                isQuestion ? "text-white" : ""
+                isModerator ? "text-white" : ""
               }`}
             >
-              {isQuestion
-                ? "Let's talk about"
-                : isRebuttal
-                ? "My rebuttal On"
-                : "My thoughts on"}
               <div className="text-white topic-outline">
-                {isQuestion || isRebuttal ? `${topic}.` : `${topic},`}
+                {topic}
               </div>
             </div>
           </div>
@@ -185,7 +184,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
           </div>
         </div>
 
-        {isQuestion ? (
+        {isModerator ? (
           <div className="question flex"></div>
         ) : (
           <div className="box flex-col">
@@ -196,7 +195,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 pathosScore={pathosScore}
                 logosScore={logosScore}
                 showChart={showChart}
-                isQuestion={isQuestion}
+                isModerator={isModerator}
               />
             )}
 
@@ -208,7 +207,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                   pathosScore={pathosScore}
                   logosScore={logosScore}
                   showChart={showChart}
-                  isQuestion={isQuestion}
+                  isModerator={isModerator}
                 />
               </div>
             )}
@@ -219,7 +218,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                   pathosScore={pathosScore}
                   logosScore={logosScore}
                   showChart={showChart}
-                  isQuestion={isQuestion}
+                  isModerator={isModerator}
                 />
               </div>
             )}
@@ -230,7 +229,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                   pathosScore={pathosScore}
                   logosScore={logosScore}
                   showChart={showChart}
-                  isQuestion={isQuestion}
+                  isModerator={isModerator}
                 />
               </div>
             )}
@@ -241,7 +240,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                   pathosScore={pathosScore}
                   logosScore={logosScore}
                   showChart={showChart}
-                  isQuestion={isQuestion}
+                  isModerator={isModerator}
                 />
               </div>
             )}

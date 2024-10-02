@@ -40,3 +40,6 @@ next-env.d.ts
 /public/audio/question_2/
 /public/audio/question_3/
 /public/audio/question_4/
+/public/audio/question_5/
+
+page.tsx
