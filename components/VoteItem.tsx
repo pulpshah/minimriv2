@@ -103,14 +103,20 @@ export default function VoteItem({ items }: VoteItemProps) {
     } else {
       setSwipedCard((prev) => ({
         ...prev,
-        [itemId]: vote === "invalid" ? "swiped-left" : "swiped-right",
+        [itemId]:
+          vote === "invalid"
+            ? "swiped-left"
+            : vote === "valid"
+            ? "swiped-right"
+            : "fade-out",  // For the "abstain" vote, make sure to trigger the fade-out
       }));
     }
 
     setTimeout(() => {
       setSwipedCard((prev) => ({ ...prev, [itemId]: "disappear" }));
     }, 500);
-  };
+};
+
 
   // Determine if all items have been swiped (disappear state)
   const allSwiped = dummyData.every(
@@ -150,7 +156,7 @@ export default function VoteItem({ items }: VoteItemProps) {
                       <Image
                         src={
                           item.name === "Redditor"
-                            ? "/icons/globe-icon-black.svg"
+                            ? "/icons/reddit-icon.svg"
                             : "/icons/play-icon.svg"
                         }
                         alt={
@@ -164,9 +170,10 @@ export default function VoteItem({ items }: VoteItemProps) {
                 </div>
               </div>
 
-              <div className="relative flex flex-col gap-[25px] justify-between mx-auto w-full h-fit">
+              <div className="relative flex flex-col gap-[25px] justify-between mx-auto w-full">
+
                 <div className="quote w-full flex justify-center">
-                  <p className="text-xl md:text-xl">"{item.description}"</p>
+                  <p className="text-xl md:text-xl ">"{item.description}"</p>
                 </div>
 
                 <div className="flex items-center justify-center gap-4">

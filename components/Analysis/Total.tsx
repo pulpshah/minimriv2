@@ -6,7 +6,7 @@ interface AnalysisProps {
   pathosScore: number;
   logosScore: number;
   showChart: boolean;
-  isQuestion: boolean;
+  isModerator: boolean;
 }
 
 const Total: React.FC<AnalysisProps> = ({
@@ -14,7 +14,7 @@ const Total: React.FC<AnalysisProps> = ({
   pathosScore,
   logosScore,
   showChart,
-  isQuestion,
+  isModerator,
 }) => {
   const [activeTab, setActiveTab] = useState<string>("ethos");
 
@@ -121,7 +121,7 @@ const Total: React.FC<AnalysisProps> = ({
               )}
               <div
           className={`tabs flex w-fit !shadow-none text-lg md:text-xl h-fit px-[12px] py-[1px] items-center rounded-full mx-auto gap-2 !bg-transparent ${
-            isQuestion ? "white-opaque" : "black-card"
+            isModerator ? "white-opaque" : "black-card"
           }`}
         >
           <button

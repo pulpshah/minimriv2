@@ -1,36 +1,30 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import JFile from "@/public/data/dummydata.json";
+import JFile from "@/public/data/AnnotatedTranscript.json";
 import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import SearchBar from "@/components/SearchBar";
 import { NavBar } from "@/components/NavBar";
 
 type TurnData = {
-  speaker_name: string;
-  topic?: string;
-  turn_number: number;
-  turn_category?: string;
-  score: number;
-  talk_time: number;
-  analysis: {
-    claims: {
-      text: string;
-      scores?: {
-        ethos?: {
-          score: number;
-        };
-        pathos?: {
-          score: number;
-        };
-        logos?: {
-          score: number;
-        };
-      };
-    }[];
-  };
-  cumulative_score?: number;
+  turn: number; // Turn number
+  speaker: string; // Speaker's name
+  role: string; // Speaker's role
+  rawTotalScore: number; // Total score for the turn
+  headline?: string; // Headline for the first sentence of the turn
+  sentences: {
+    Headline: string[]; // Array of headlines for each sentence
+  }[];
 };
+
+type ComprehensiveTurnData = {
+  turn: number; // Turn number
+  speaker: string; // Speaker's name
+  role: string; // Speaker's role
+  rawTotalScore: number; // Total score for the turn
+  headline: string; // Headline for the first sentence of the turn
+};
+
 
 const HomePage = () => {
   // State variables
@@ -38,7 +32,7 @@ const HomePage = () => {
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-  const [currentTurn, setCurrentTurn] = useState<number>(0);
+  const [currentTurn, setCurrentTurn] = useState<number>(1);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0); // Start with question 1
   const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(
     null
@@ -56,21 +50,26 @@ const HomePage = () => {
   >(null);
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState<number>(0);
   const [isSearchBarExpanded, setSearchBarExpanded] = useState(false);
+  const [speakerName, setSpeakerName] = useState<string>("");
+const [speakerRole, setSpeakerRole] = useState<string>("");
+const [headline, setHeadline] = useState<string>("");
+const [rawTotalScore, setRawTotalScore] = useState<number>(0);
+const [turnsData, setTurnsData] = useState<TurnData[]>([]);
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Data and derived variables
-  const turnsData: Array<TurnData> = JFile.analysis;
-  const currentData = turnsData[currentTurn] ?? null;
-  const nextData: TurnData | null = turnsData[currentTurn + 1] || null;
+  // // Data and derived variables
+  // const turnsData: Array<TurnData> = JFile.analysis;
+  // const currentData = turnsData[currentTurn] ?? null;
+  // const nextData: TurnData | null = turnsData[currentTurn + 1] || null;
   // const cumulativeScoreKH = getCumulativeScoreKH();
   // const cumulativeScoreDT = getCumulativeScoreDT();
   // const scoreForCurrentTurn = currentData.score;
 
-  const nextTurnText =
-    nextData && nextData.analysis.claims.length > 0
-      ? nextData.analysis.claims[0].text
-      : "No next turn text available";
+  // const nextTurnText =
+  //   nextData && nextData.analysis.claims.length > 0
+  //     ? nextData.analysis.claims[0].text
+  //     : "No next turn text available";
 
   // Functions to calculate scores
   // function getCumulativeScoreKH() {
@@ -90,6 +89,55 @@ const HomePage = () => {
   //       ?.cumulative_score || 0
   //   );
   // }
+
+  const loadData = async (turnNumber: number) => {
+    try {
+      const jsonResponse = await fetch("/data/AnnotatedTranscript.json");
+      const jsonData = await jsonResponse.json();
+  
+      // Find the data for the current turn
+      const turnData = jsonData.analysis.find((turn: TurnData) => turn.turn === turnNumber);
+  
+      if (turnData) {
+        // Extract the required fields
+        const comprehensiveTurnData: ComprehensiveTurnData = {
+          turn: turnData.turn,
+          speaker: turnData.speaker,
+          role: turnData.role,
+          headline: turnData.sentences[0]?.Headline[0] || "No headline available",
+          rawTotalScore: turnData.rawTotalScore || 0,
+        };
+  
+        // Update state variables
+        setCurrentTurn(comprehensiveTurnData.turn);
+        setSpeakerName(comprehensiveTurnData.speaker);
+        setSpeakerRole(comprehensiveTurnData.role);
+        setHeadline(comprehensiveTurnData.headline);
+        setRawTotalScore(comprehensiveTurnData.rawTotalScore);
+      }
+    } catch (error) {
+      console.error("Error loading comprehensive data:", error);
+    }
+  };
+  
+
+  const loadAllTurnData = async () => {
+    try {
+      const jsonResponse = await fetch("/data/AnnotatedTranscript.json");
+      const jsonData = await jsonResponse.json();
+  
+      // Assuming jsonData.analysis contains the array of turn data
+      setTurnsData(jsonData.analysis);
+    } catch (error) {
+      console.error("Error loading all turn data:", error);
+    }
+  };
+  
+  // Call loadAllTurnData when component mounts
+  useEffect(() => {
+    loadAllTurnData();
+  }, []);
+  
 
   // UI Handlers
   const handleExpandClick = () => {
@@ -138,16 +186,21 @@ const HomePage = () => {
   };
   
   // Audio Handlers
-  const loadTurnContent = async (
-    questionNumber: number,
-    turnNumber: number
-  ) => {
+  const loadTurnContent = async (turnNumber: number) => {
     try {
+      // Determine which question folder the current turn belongs to
+      let questionNumber = 1;
+      let turnsInPreviousQuestions = 0;
+
+      // Adjust to find the appropriate question number based on cumulative turns
+      while (turnNumber > turnsInPreviousQuestions + 18) {
+        turnsInPreviousQuestions += 18; // Adjust based on how many turns each question contains
+        questionNumber++;
+      }
+
       // Load the JSON file for the current turn
       const jsonResponse = await fetch(
-        `/audio/question_${questionNumber}/q${questionNumber}_t${String(
-          turnNumber
-        ).padStart(2, "0")}.json`
+        `/audio/question_${questionNumber}/turn${turnNumber}.json`
       );
       const jsonData = await jsonResponse.json();
 
@@ -170,9 +223,7 @@ const HomePage = () => {
 
       // Update the audio source
       if (audioRef.current) {
-        audioRef.current.src = `/audio/question_${questionNumber}/q${questionNumber}_t${String(
-          turnNumber
-        ).padStart(2, "0")}.wav`;
+        audioRef.current.src = `/audio/question_${questionNumber}/turn${turnNumber}.wav`;
         setIsPlaying(false); // Stop any previous audio
       }
     } catch (error) {
@@ -181,12 +232,16 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    loadTurnContent(currentQuestion, currentTurn);
-  }, []);
+    // Load the individual JSON for audio and transcript
+    loadTurnContent(currentTurn);
+  
+    // Load comprehensive JSON data for additional information
+    loadData(currentTurn);
+  }, [currentTurn]);
 
-  const getAudioFile = (turnNumber: number) => {
-    return `/audio/turn${turnNumber}.wav`;
-  };
+  // const getAudioFile = (turnNumber: number) => {
+  //   return `/audio/turn${turnNumber}.wav`;
+  // };
 
   const handlePlayPauseClick = () => {
     if (audioRef.current) {
@@ -212,12 +267,12 @@ const HomePage = () => {
 
   const handleNextClick = (e: { stopPropagation: () => void }) => {
     e.stopPropagation();
-    if (currentTurn < turnsData.length - 1) {
+    if (currentTurn < turnsData.length) {
       setCurrentTurn(currentTurn + 1);
       setIsPlaying(false);
     }
   };
-
+  
   const getNumberOfTurns = async (questionNumber: number) => {
     let turnCount = 0;
     let turnExists = true;
@@ -243,68 +298,28 @@ const HomePage = () => {
     return turnCount;
   };
 
-  const handleNextTurn = async () => {
+  const handleNextTurn = () => {
     if (audioRef.current) {
       audioRef.current.pause(); // Pause the current audio
     }
     setIsPlaying(false);
-
-    let nextTurn = currentTurn + 1;
-    let nextQuestion = currentQuestion;
-
-    // Get the number of turns available for the current question
-    const maxTurns = await getNumberOfTurns(currentQuestion);
-
-    // Check if we need to move to the next question
-    if (nextTurn > maxTurns) {
-      nextTurn = 1; // Reset turn to 1 for the new question
-      nextQuestion += 1;
-
-      // Get the number of turns for the next question to confirm it exists
-      const nextQuestionTurns = await getNumberOfTurns(nextQuestion);
-      if (nextQuestionTurns === 0) {
-        // If no turns are available for the next question, stay on the current question
-        return;
-      }
+  
+    // Move to the next turn if available
+    if (currentTurn < turnsData.length) {
+      setCurrentTurn(currentTurn + 1);
     }
-
-    // Update state to load the new turn content
-    setCurrentTurn(nextTurn);
-    setCurrentQuestion(nextQuestion);
-
-    // Load the content for the next turn
-    loadTurnContent(nextQuestion, nextTurn);
   };
 
-  const handleBackTurn = async () => {
+  const handleBackTurn = () => {
     if (audioRef.current) {
       audioRef.current.pause(); // Pause the current audio
     }
     setIsPlaying(false);
 
-    let previousTurn = currentTurn - 1;
-    let previousQuestion = currentQuestion;
-
-    // If we need to go back to the previous question
-    if (previousTurn < 1) {
-      previousQuestion -= 1;
-
-      // Get the number of turns available for the previous question
-      const maxTurns = await getNumberOfTurns(previousQuestion);
-      if (maxTurns === 0) {
-        // If no turns are available for the previous question, stay on the current question
-        return;
-      }
-
-      previousTurn = maxTurns; // Set to the last turn of the previous question
+    // Move to the previous turn if available
+    if (currentTurn > 1) {
+      setCurrentTurn(currentTurn - 1);
     }
-
-    // Update state to load the new turn content
-    setCurrentTurn(previousTurn);
-    setCurrentQuestion(previousQuestion);
-
-    // Load the content for the previous turn
-    loadTurnContent(previousQuestion, previousTurn);
   };
 
   // Touch Handlers for Swipe Gestures
@@ -338,19 +353,6 @@ const HomePage = () => {
   };
 
   // Effects
-  useEffect(() => {
-    // Assuming question 1 and turn 1 for the initial load
-    loadTurnContent(1, 1);
-    setCurrentQuestion(1);
-    setCurrentTurn(1);
-  }, []);
-
-  useEffect(() => {
-    if (currentQuestion > 0 && currentTurn > 0) {
-      loadTurnContent(currentQuestion, currentTurn);
-    }
-  }, [currentQuestion, currentTurn]);
-
   useEffect(() => {
     const audioElement = audioRef.current;
     if (audioElement) {
@@ -434,35 +436,34 @@ const HomePage = () => {
       <div
         className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[90px] pb-[82px] bg-none overflow-y-auto scroll-smooth`}
       >
-        <div className="feed w-full h-fit z-40 items-center justify-center flex">
-          <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
-            {turnsData.map((turn: TurnData, index) => {
-              const ethosScore =
-                turn.analysis.claims[0]?.scores?.ethos?.score || 0;
-              const pathosScore =
-                turn.analysis.claims[0]?.scores?.pathos?.score || 0;
-              const logosScore =
-                turn.analysis.claims[0]?.scores?.logos?.score || 0;
-              const turnCategory = turn.turn_category || "segment";
+      <div className="feed w-full h-fit z-40 items-center justify-center flex">
+        <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
+        {turnsData && turnsData.length > 0 ? (
+  turnsData.map((turn: TurnData, index: number) => {
+    const turnCategory = turn.role || "segment";
 
-              return (
-                <FeedItem
-                  key={index}
-                  speaker={turn.speaker_name}
-                  topic={turn.topic || "No Topic"}
-                  turn_number={turn.turn_number}
-                  turn_category={turnCategory}
-                  title={turn.turn_category || "segment"}
-                  ethosScore={ethosScore}
-                  pathosScore={pathosScore}
-                  logosScore={logosScore}
-                  isPlaying={currentPlayingTurn === turn.turn_number}
-                  onPlay={handlePlay}
-                />
-              );
-            })}
-          </div>
+    return (
+      <FeedItem
+        key={index}
+        speaker={turn.speaker} // Use turn.speaker for the speaker name
+        role={turn.role}
+        topic={turn.sentences?.[0]?.Headline?.[0] || "No Topic"} // Ensure sentences and Headline exist before accessing [0]
+        turn_number={turn.turn} // Use turn.turn for turn number
+        turn_category={turnCategory}
+        title={turnCategory} // Set the title based on role or category
+        ethosScore={0} // Assuming no ethosScore in the new JSON
+        pathosScore={0} // Assuming no pathosScore in the new JSON
+        logosScore={0} // Assuming no logosScore in the new JSON
+        isPlaying={currentPlayingTurn === turn.turn}
+        onPlay={handlePlay}
+      />
+    );
+  })
+) : (
+  <div>Loading...</div>
+)}
         </div>
+      </div>
 
         {/* header */}
         <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
@@ -585,7 +586,6 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
-
             {/* Transcript Section */}
             {isTranscriptOpen && (
               <div className="transcript-content custom-scrollbar h-full w-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col mt-3 overflow-y-auto">
@@ -601,7 +601,6 @@ const HomePage = () => {
                     } else if (sentenceIndex === currentSentenceIndex) {
                       sentenceStyle = "text-white"; // Currently playing sentence
                     }
-
                     return (
                       <div className="" key={sentenceIndex}>
                         <div
