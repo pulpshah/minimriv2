@@ -489,7 +489,7 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
         <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
           <div
             onClick={() => setTranscriptOpen(!isTranscriptOpen)}
-            className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] nav-bar !blurry transition-all mt-3.5 rounded-[40px] px-[10px] py-[10px] box !justify-between ${
+            className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] nav-bar !blurry transition-all mt-3.5 rounded-[20px] px-[10px] py-[10px] box !justify-between ${
               isTranscriptOpen ? "h-[45vh] max-w-full" : "h-[60px]"
             }`}
           >
@@ -498,10 +498,8 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
                 {/* Speaker Information */}
                 <div className="flex flex-row items-center gap-3">
                   <div
-                    className="box current-speaker !w-[40px] !h-[40px] shadow shadow-[#cae7ff] border border-[#cae7ff] justify-center items-center inline-flex rounded-full"
-                    style={{
-                      boxShadow: "0px 0px 11.7px 0px rgba(0, 140, 255, 0.91)",
-                    }}
+                    className="box current-speaker !w-[40px] !h-[40px] shadow justify-center items-center inline-flex rounded-full"
+          
                   >
                     <Image
                       src="/candidates/harris.webp"
