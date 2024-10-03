@@ -21,7 +21,9 @@ interface FeedItemProps {
   logosScore: number;
   turn_category: string;
   isPlaying: boolean; 
+  currentPlayingTurn: number | null;
   onPlay: (turnNumber: number | null) => void;
+  audioRef: React.RefObject<HTMLAudioElement>; 
 }
 
 interface AnalysisProps {
@@ -45,33 +47,40 @@ const FeedItem: React.FC<FeedItemProps> = ({
   logosScore,
   turn_category,
   isPlaying,
+  currentPlayingTurn,
   onPlay,
+  audioRef
 }) => {
   const [mainTab, setMainTab] = useState("total");
 
-  const audioRef = useRef<HTMLAudioElement>(null);
-
   const getAudioFile = () => {
-    return `/audio/turn${turn_number}.wav`;
+    const actualTurnNumber = turn_number - 10;
+    return `/audio/turn${actualTurnNumber}.wav`;
   };
 
   const handlePlayPause = () => {
     if (isPlaying) {
+      // Pause the audio using the centralized HomePage's function
       audioRef.current?.pause();
-      onPlay(null);
+      onPlay(null); // Setting null means stop playback, which will sync all buttons
     } else {
-      onPlay(turn_number);
+      // Adjust the turn number before calling onPlay
+      onPlay(turn_number - 10); // Adjusting turn_number to match the audio file
     }
   };
-
+  
   useEffect(() => {
-    if (isPlaying && audioRef.current) {
-      audioRef.current.play();
-    } else if (!isPlaying && audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
+    if (audioRef.current) {
+      if (isPlaying && currentPlayingTurn === turn_number) {
+        // Only play the audio if it's the current turn being played
+        audioRef.current.play().catch((error) => console.error("Error playing audio:", error));
+      } else {
+        // Pause the audio if it's not the current turn
+        audioRef.current.pause();
+      }
     }
-  }, [isPlaying]);
+  }, [isPlaying, currentPlayingTurn, turn_number]);
+  
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -151,7 +160,6 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 width={47}
               />
             </button>
-            <audio ref={audioRef} src={audioFile} preload="auto" />
           </div>
         </div>
 

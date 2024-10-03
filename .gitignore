@@ -26,7 +26,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-
+.env.local
 
 # vercel
 .vercel
@@ -36,10 +36,6 @@ yarn-error.log*
 next-env.d.ts
 
 #audio
-/public/audio/question_1/
-/public/audio/question_2/
-/public/audio/question_3/
-/public/audio/question_4/
-/public/audio/question_5/
+/public/audio/
 
 page.tsx

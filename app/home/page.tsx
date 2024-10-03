@@ -188,48 +188,32 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
   // Audio Handlers
   const loadTurnContent = async (turnNumber: number) => {
     try {
-      // Determine which question folder the current turn belongs to
-      let questionNumber = 1;
-      let turnsInPreviousQuestions = 0;
-
-      // Adjust to find the appropriate question number based on cumulative turns
-      while (turnNumber > turnsInPreviousQuestions + 18) {
-        turnsInPreviousQuestions += 18; // Adjust based on how many turns each question contains
-        questionNumber++;
-      }
-
       // Load the JSON file for the current turn
-      const jsonResponse = await fetch(
-        `/audio/question_${questionNumber}/turn${turnNumber}.json`
-      );
+      const jsonResponse = await fetch(`/audio/turn${turnNumber}.json`);
       const jsonData = await jsonResponse.json();
-
+  
       // Update state with word and sentence data
       const words = jsonData.results.channels[0].alternatives[0].words || [];
-      const paragraphs =
-        jsonData.results.channels[0].alternatives[0].paragraphs.paragraphs ||
-        [];
-
+      const paragraphs = jsonData.results.channels[0].alternatives[0].paragraphs.paragraphs || [];
+  
       if (paragraphs.length > 0) {
-        const sentences = paragraphs.flatMap(
-          (paragraph: { sentences: any }) => paragraph.sentences
-        );
+        const sentences = paragraphs.flatMap((paragraph: { sentences: any }) => paragraph.sentences);
         setWordData(words);
         setSentencesData(sentences);
       }
-
+  
       // Update the category for the current turn
       setTurnCategory(jsonData.category || null);
-
+  
       // Update the audio source
       if (audioRef.current) {
-        audioRef.current.src = `/audio/question_${questionNumber}/turn${turnNumber}.wav`;
+        audioRef.current.src = `/audio/turn${turnNumber}.wav`;
         setIsPlaying(false); // Stop any previous audio
       }
     } catch (error) {
       console.error("Error loading turn content:", error);
     }
-  };
+  };  
 
   useEffect(() => {
     // Load the individual JSON for audio and transcript
@@ -239,29 +223,57 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
     loadData(currentTurn);
   }, [currentTurn]);
 
-  // const getAudioFile = (turnNumber: number) => {
-  //   return `/audio/turn${turnNumber}.wav`;
-  // };
 
   const handlePlayPauseClick = () => {
     if (audioRef.current) {
       if (isPlaying) {
+        // Set state to paused first to prevent re-triggering play
+        setIsPlaying(false);
+        setCurrentPlayingTurn(null);
+  
+        // Then pause the audio
         audioRef.current.pause();
       } else {
-        audioRef.current.play();
+        // Set the state to play and ensure the correct turn is active
+        setIsPlaying(true);
+        handlePlay(currentTurn);
       }
-      setIsPlaying(!isPlaying);
     }
   };
+  
 
   const handlePlay = (turnNumber: number | null) => {
-    setCurrentPlayingTurn(turnNumber);
+    if (audioRef.current) {
+      // Pause any currently playing audio before starting a new one
+      audioRef.current.pause();
+  
+      if (turnNumber !== null) {
+        setCurrentPlayingTurn(turnNumber);
+        setCurrentTurn(turnNumber); // Update current turn for the top-pill
+        setIsPlaying(true);
+  
+        // Set the new audio source
+        const audioFile = `/audio/turn${turnNumber}.wav`;
+        audioRef.current.src = audioFile;
+  
+        // Play the audio once it can play
+        audioRef.current.oncanplay = () => {
+          audioRef.current
+            ?.play()
+            .catch((error) => console.error("Error playing audio:", error));
+        };
+      } else {
+        // If no turn is playing, ensure isPlaying is set to false
+        setIsPlaying(false);
+        setCurrentPlayingTurn(null);
+      }
+    }
   };
 
   const handleWordClick = (start: number) => {
     if (audioRef.current) {
       audioRef.current.currentTime = start;
-      audioRef.current.play(); // Play the audio after seeking
+      audioRef.current.play();
     }
   };
 
@@ -300,13 +312,33 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
 
   const handleNextTurn = () => {
     if (audioRef.current) {
-      audioRef.current.pause(); // Pause the current audio
+      audioRef.current.pause(); // Pause the current audio to switch the source
     }
-    setIsPlaying(false);
   
-    // Move to the next turn if available
     if (currentTurn < turnsData.length) {
-      setCurrentTurn(currentTurn + 1);
+      const nextTurn = currentTurn + 1;
+      setCurrentTurn(nextTurn); // Update the state to the next turn
+      setCurrentPlayingTurn(nextTurn);
+  
+      if (audioRef.current) {
+        // Set the audio source to the next turn
+        audioRef.current.src = `/audio/turn${nextTurn}.wav`;
+      
+        if (isPlaying) {
+          // Set isPlaying to true immediately to ensure the button shows the pause icon
+          setIsPlaying(true);
+      
+          // Play the next turn's audio when it can play
+          audioRef.current.oncanplay = () => {
+            audioRef.current?.play().catch((error) => {
+              console.error("Error playing next turn audio:", error);
+            });
+          };
+        } else {
+          // If audio was paused, ensure it remains paused
+          setIsPlaying(false);
+        }
+      }
     }
   };
 
@@ -439,29 +471,30 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
       <div className="feed w-full h-fit z-40 items-center justify-center flex">
         <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
         {turnsData && turnsData.length > 0 ? (
-      // Filter turnsData to start from turn 11
-      turnsData
-        .filter((turn) => turn.turn >= 11)
-        .map((turn: TurnData, index: number) => {
-          const turnCategory = turn.role || "segment";
+  turnsData
+    .filter((turn) => turn.turn >= 11)
+    .map((turn: TurnData, index: number) => {
+      const turnCategory = turn.role || "segment";
 
-    return (
-      <FeedItem
-        key={index}
-        speaker={turn.speaker} // Use turn.speaker for the speaker name
-        role={turn.role}
-        topic={turn.sentences?.[0]?.Headline?.[0] || "No Topic"} // Ensure sentences and Headline exist before accessing [0]
-        turn_number={turn.turn} // Use turn.turn for turn number
-        turn_category={turnCategory}
-        title={turnCategory} // Set the title based on role or category
-        ethosScore={0} // Assuming no ethosScore in the new JSON
-        pathosScore={0} // Assuming no pathosScore in the new JSON
-        logosScore={0} // Assuming no logosScore in the new JSON
-        isPlaying={currentPlayingTurn === turn.turn}
-        onPlay={handlePlay}
-      />
-    );
-  })
+      return (
+        <FeedItem
+          key={index}
+          speaker={turn.speaker}
+          role={turn.role}
+          topic={turn.sentences?.[0]?.Headline?.[0] || "No Topic"}
+          turn_number={turn.turn}
+          turn_category={turnCategory}
+          title={turnCategory}
+          ethosScore={0}
+          pathosScore={0}
+          logosScore={0}
+          isPlaying={currentPlayingTurn === (turn.turn - 10)}
+          currentPlayingTurn={currentPlayingTurn}
+          onPlay={handlePlay}
+          audioRef={audioRef}
+        />
+      );
+    })
 ) : (
   <div>Loading...</div>
 )}
