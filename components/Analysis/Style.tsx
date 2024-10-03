@@ -42,7 +42,7 @@ const Style: React.FC<AnalysisProps> = ({
         </div>
         {showChart && (
           <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[20px] black-card h-fit !bg-[url('/bg/style.webp')] !bg-cover !bg-center p-[10px] py-4 md:p-[20px]">
-            <div className="chart box w-full h-fit p-6 text-black px-[10%]">
+            <div className="chart box w-full h-fit p-6 text-black scale-110 px-[10%]">
             {activeTab === "summary" && (
               <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
             )}

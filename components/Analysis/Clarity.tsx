@@ -36,7 +36,7 @@ const Clarity: React.FC<AnalysisProps> = ({
         </div>
         {showChart && (
           <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[20px] black-card h-fit !bg-[url('/bg/clarity.webp')] !bg-cover !bg-center p-[10px] py-4 md:p-[20px]">
-            <div className="chart scale-[120%] ps-6 p-20 box w-full ">
+            <div className="chart scale-[118%] ps-6 p-20 box w-full ">
             
               <ClarityChart turnNum={turnNumber} />
             
@@ -64,7 +64,7 @@ const Clarity: React.FC<AnalysisProps> = ({
                   <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
-                      explicitness Reasoning
+                      Esxplicitness Reasoning
                     </div>
                     <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
