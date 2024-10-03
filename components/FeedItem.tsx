@@ -133,7 +133,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
       }`}
     >
       <div
-        className={`box gap-[15px] md:gap-[25px] flex-col p-[10px] md:px-[20px] !justify-start white-opaque rounded-[40px] min-h-fit h-full ${
+        className={`box gap-[15px] md:gap-[25px] flex-col p-[10px] md:px-[20px] !justify-start white-opaque rounded-[20px] min-h-fit h-full ${
           isModerator ? "black-opaque" : "white-opaque"
         }`}
       >
@@ -148,7 +148,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
 
           <div className="turn-play w-fit h-fit flex flex-row justify-end items-center gap-2">
             <div
-              className={`turn flex w-fit !shadow-none text-base md:text-lg h-fit px-[3px] max-sm:px-[1px] py-[1px] items-center rounded-full box ${
+              className={`turn flex w-fit !shadow-none text-base md:text-lg h-fit py-[1px] items-center rounded-full box ${
                 isModerator ? "white-opaque" : "black-opaque"
               }`}
             >

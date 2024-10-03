@@ -35,7 +35,7 @@ const Clarity: React.FC<AnalysisProps> = ({
           </div>
         </div>
         {showChart && (
-          <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[40px] black-card h-fit !bg-[url('/bg/clarity.webp')] !bg-cover !bg-center p-[10px] py-4 md:p-[20px]">
+          <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[20px] black-card h-fit !bg-[url('/bg/clarity.webp')] !bg-cover !bg-center p-[10px] py-4 md:p-[20px]">
             <div className="chart box w-full h-fit px-[10%]">
             
               <ClarityChart turnNum={turnNumber} />
@@ -46,7 +46,7 @@ const Clarity: React.FC<AnalysisProps> = ({
               {activeTab === "summary" && (
                 <div className="summary box ">
 
-                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
+                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
                       Summary
@@ -61,7 +61,7 @@ const Clarity: React.FC<AnalysisProps> = ({
               {activeTab === "explicitness" && (
                 <div className="explicitness box">
 
-                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
+                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
                       explicitness Reasoning
@@ -76,7 +76,7 @@ const Clarity: React.FC<AnalysisProps> = ({
               {activeTab === "concision" && (
                 <div className="concision box">
                   
-                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
+                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
                       concision Reasoning
@@ -91,7 +91,7 @@ const Clarity: React.FC<AnalysisProps> = ({
               )}
               {activeTab === "focus" && (
                 <div className="focus box">
-                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
+                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
                       focus Reasoning
@@ -109,7 +109,7 @@ const Clarity: React.FC<AnalysisProps> = ({
           }`}
         >
           <button
-            className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${
+            className={`px-[10px] py-[1px] rounded-[20px] tab-btn ${
               activeTab === "summary" ? "active" : ""
             }`}
             onClick={() => setActiveTab("summary")}
@@ -117,7 +117,7 @@ const Clarity: React.FC<AnalysisProps> = ({
             1
           </button>
           <button
-            className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${
+            className={`px-[10px] py-[1px] rounded-[20px] tab-btn ${
               activeTab === "explicitness" ? "active" : ""
             }`}
             onClick={() => setActiveTab("explicitness")}
@@ -125,7 +125,7 @@ const Clarity: React.FC<AnalysisProps> = ({
             2
           </button>
           <button
-            className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${
+            className={`px-[10px] py-[1px] rounded-[20px] tab-btn ${
               activeTab === "concision" ? "active" : ""
             }`}
             onClick={() => setActiveTab("concision")}
@@ -133,7 +133,7 @@ const Clarity: React.FC<AnalysisProps> = ({
             3
           </button>
           <button
-            className={` px-[10px] py-[1px] rounded-[40px] tab-btn ${
+            className={` px-[10px] py-[1px] rounded-[20px] tab-btn ${
               activeTab === "focus" ? "active" : ""
             }`}
             onClick={() => setActiveTab("focus")}

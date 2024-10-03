@@ -56,38 +56,6 @@ const HomePage = () => {
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // // Data and derived variables
-  // const turnsData: Array<TurnData> = JFile.analysis;
-  // const currentData = turnsData[currentTurn] ?? null;
-  // const nextData: TurnData | null = turnsData[currentTurn + 1] || null;
-  // const cumulativeScoreKH = getCumulativeScoreKH();
-  // const cumulativeScoreDT = getCumulativeScoreDT();
-  // const scoreForCurrentTurn = currentData.score;
-
-  // const nextTurnText =
-  //   nextData && nextData.analysis.claims.length > 0
-  //     ? nextData.analysis.claims[0].text
-  //     : "No next turn text available";
-
-  // Functions to calculate scores
-  // function getCumulativeScoreKH() {
-  //   return (
-  //     turnsData
-  //       .filter((turn) => turn.speaker_name === "Kamala Harris")
-  //       .find((turn) => turn.turn_number === currentData.turn_number)
-  //       ?.cumulative_score || 0
-  //   );
-  // }
-
-  // function getCumulativeScoreDT() {
-  //   return (
-  //     turnsData
-  //       .filter((turn) => turn.speaker_name === "Donald Trump")
-  //       .find((turn) => turn.turn_number === currentData.turn_number)
-  //       ?.cumulative_score || 0
-  //   );
-  // }
-
   const loadData = async (turnNumber: number) => {
     try {
       const jsonResponse = await fetch("/data/AnnotatedTranscript.json");
@@ -472,13 +440,13 @@ const HomePage = () => {
   }, [isSearchMode]);
 
   return (
-    <div className="min-h-screen bg-[url('')] bg-cover bg-white bg-center backdrop-blur-[50px]">
+    <div className="min-h-screen bg-cover bg-center backdrop-blur-[50px]">
       <div className="light absolute z-50 inset-0 h-[80px] w-full"></div>
 
-      <div className="overlay bg-white bg-opacity-20 absolute z-0 inset-0 backdrop-blur-[200px] opacity-100"></div>
+      <div className="overlay bg-opacity-20 absolute z-0 inset-0 backdrop-blur-[200px] opacity-100"></div>
 
       <div
-        className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[90px] pb-[82px] bg-none overflow-y-auto scroll-smooth`}
+        className={`mainbody px-[10px] lg:px[20px] xl:px-[10vw] h-screen w-full pt-[90px] pb-[82px] bg-none overflow-y-auto scroll-smooth`}
       >
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
@@ -517,8 +485,8 @@ const HomePage = () => {
         <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
           <div
             onClick={() => setTranscriptOpen(!isTranscriptOpen)}
-            className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] nav-bar !blurry transition-all mt-3.5 rounded-[20px] px-[10px] py-[10px] box !justify-between ${
-              isTranscriptOpen ? "h-[45vh] max-w-full" : "h-[60px]"
+            className={`top-pill !flex-col cursor-pointer w-full max-w-[500px] nav-bar !blurry transition-all mt-3.5 rounded-[20px] px-[13px] py-[10px] box !justify-between ${
+              isTranscriptOpen ? "h-[45vh] !max-w-full" : "h-[60px]"
             }`}
           >
             <div className="box">
@@ -559,7 +527,7 @@ const HomePage = () => {
                 {/* Secondary Speakers and Controls */}
                 <div className="flex flex-row items-center gap-2">
                   <div
-                    className="secondary-speaker flex-shrink-0 black-opaque rounded-full"
+                    className="secondary-speaker hidden sm:flex flex-shrink-0 black-opaque rounded-full"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <Image
@@ -571,14 +539,14 @@ const HomePage = () => {
                     />
                   </div>
                   <div className="secondary-speaker">
-                    <div className="w-[40px] h-[40px] flex-shrink-0 black-opaque rounded-full flex justify-center items-center text-base">
+                    <div className="w-[40px] h-[40px] flex-shrink-0 hidden sm:flex black-opaque rounded-full justify-center items-center text-base">
                       +2
                     </div>
                   </div>
                   <audio ref={audioRef} />
                   <div className="flex gap-4">
                     <button
-                      className="hidden md:flex"
+                      className=""
                       onClick={(e) => {
                         e.stopPropagation();
                         handleBackTurn();
@@ -613,7 +581,7 @@ const HomePage = () => {
                       </div>
                     </button>
                     <button
-                      className="hidden md:flex"
+                      className=""
                       onClick={(e) => {
                         e.stopPropagation(); // Prevent event from bubbling up
                         handleNextTurn();
@@ -621,7 +589,7 @@ const HomePage = () => {
                     >
                       <div className="next-turn box invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
                         <Image
-                          src={"icons/skip-icon.svg"}
+                          src={"icons/next-icon.svg"}
                           alt="next"
                           height={35}
                           width={32}
@@ -634,7 +602,7 @@ const HomePage = () => {
             </div>
             {/* Transcript Section */}
             {isTranscriptOpen && (
-              <div className="transcript-content custom-scrollbar h-full w-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col mt-3 overflow-y-auto">
+              <div className="transcript-content custom-scrollbar h-full w-full rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col mt-3 overflow-y-auto">
                 <div className="flex flex-row justify-end w-full"></div>
                 <div className="flex flex-col">
                   {sentencesData.map((sentence, sentenceIndex) => {

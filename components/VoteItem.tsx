@@ -138,7 +138,7 @@ export default function VoteItem({ items }: VoteItemProps) {
               key={item.id}
               {...(isMobile ? swipeHandlers : {})}
               className={clsx(
-                "white-opaque rounded-[40px] p-[25px] overflow-hidden shadow-md transition-all duration-300",
+                "white-opaque rounded-[20px] p-[25px] overflow-hidden shadow-md transition-all duration-300",
                 swipedCard[item.id] === "swiped-left" && "translate-x-[-100%]",
                 swipedCard[item.id] === "swiped-right" && "translate-x-[100%]",
                 swipedCard[item.id] === "fade-out" && "opacity-0",

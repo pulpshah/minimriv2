@@ -315,7 +315,7 @@ const vote = () => {
 
       <div
   onClick={() => setTranscriptOpen(!isTranscriptOpen)}
-  className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] nav-bar !blurry transition-all mt-3.5 rounded-[40px] px-[15px] py-[10px] box !justify-between ${
+  className={`top-pill !flex-col cursor-pointer w-full max-w-[600px] nav-bar !blurry transition-all mt-3.5 rounded-[20px] px-[15px] py-[10px] box !justify-between ${
     isTranscriptOpen ? 'h-[45vh] max-w-full' : 'h-[57px]'
   }`}
 >
@@ -405,7 +405,7 @@ const vote = () => {
 
   {/* Transcript Section */}
   {isTranscriptOpen && (
-  <div className="transcript-content h-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[0px] flex flex-col w-full mt-3">
+  <div className="transcript-content h-full rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[0px] flex flex-col w-full mt-3">
     <div className="flex flex-row items-center justify-between w-full">
       <div className="rounded-[20px] poppins px-[10px]">
         {currentData?.turn_category || "no category"}

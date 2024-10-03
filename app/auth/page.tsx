@@ -61,7 +61,7 @@ export default function Home() {
                         breaking it down
                     </div>
                 </div>
-                <form className={`box drawer transition-all lg:h-fit lg:py-[40px] lg:w-[420px] lg:rounded-[40px] flex-col rounded-t-[40px] px-[20px] pb-[20px] pt-[30px] duration-200 gap-[20px] ${drawerOpen ? 'h-3/4' : 'h-[195px]'}`}>
+                <form className={`box drawer transition-all lg:h-fit lg:py-[40px] lg:w-[420px] lg:rounded-[20px] flex-col rounded-t-[40px] px-[20px] pb-[20px] pt-[30px] duration-200 gap-[20px] ${drawerOpen ? 'h-3/4' : 'h-[195px]'}`}>
                     <div className="auth-text">enter your email</div>
                     <input
                         onFocus={handleInputFocus}

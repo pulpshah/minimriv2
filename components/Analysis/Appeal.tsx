@@ -77,7 +77,7 @@ const Appeal: React.FC<AnalysisProps> = ({
           </div>
         </div>
         {showChart && (
-          <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[40px] black-card h-fit !bg-[url('/bg/appeal.webp')] !bg-cover !bg-center p-[10px] py-4 md:p-[20px]">
+          <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[20px] black-card h-fit !bg-[url('/bg/appeal.webp')] !bg-cover !bg-center p-[10px] py-4 md:p-[20px]">
             <div className="chart box w-full h-fit px-[10%]">
             {activeTab === "summary" && (
               <GeneralAppealChart turnNum={turnNumber} />
@@ -101,7 +101,7 @@ const Appeal: React.FC<AnalysisProps> = ({
               {activeTab === "summary" && (
                 <div className="summary box ">
 
-                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
+                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
                       Summary
@@ -116,7 +116,7 @@ const Appeal: React.FC<AnalysisProps> = ({
               {activeTab === "ethos" && (
                 <div className="ethos box">
 
-                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
+                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
                       Ethos Reasoning
@@ -131,7 +131,7 @@ const Appeal: React.FC<AnalysisProps> = ({
               {activeTab === "pathos" && (
                 <div className="pathos box">
                   
-                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
+                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
                       Pathos Reasoning
@@ -146,7 +146,7 @@ const Appeal: React.FC<AnalysisProps> = ({
               )}
               {activeTab === "logos" && (
                 <div className="logos box">
-                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
+                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
                       Logos Reasoning
@@ -164,7 +164,7 @@ const Appeal: React.FC<AnalysisProps> = ({
           }`}
         >
           <button
-            className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${
+            className={`px-[10px] py-[1px] rounded-[20px] tab-btn ${
               activeTab === "summary" ? "active" : ""
             }`}
             onClick={() => setActiveTab("summary")}
@@ -172,7 +172,7 @@ const Appeal: React.FC<AnalysisProps> = ({
             1
           </button>
           <button
-            className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${
+            className={`px-[10px] py-[1px] rounded-[20px] tab-btn ${
               activeTab === "ethos" ? "active" : ""
             }`}
             onClick={() => setActiveTab("ethos")}
@@ -180,7 +180,7 @@ const Appeal: React.FC<AnalysisProps> = ({
             2
           </button>
           <button
-            className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${
+            className={`px-[10px] py-[1px] rounded-[20px] tab-btn ${
               activeTab === "pathos" ? "active" : ""
             }`}
             onClick={() => setActiveTab("pathos")}
@@ -188,7 +188,7 @@ const Appeal: React.FC<AnalysisProps> = ({
             3
           </button>
           <button
-            className={` px-[10px] py-[1px] rounded-[40px] tab-btn ${
+            className={` px-[10px] py-[1px] rounded-[20px] tab-btn ${
               activeTab === "logos" ? "active" : ""
             }`}
             onClick={() => setActiveTab("logos")}

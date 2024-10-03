@@ -61,7 +61,7 @@ export default function MediaItem({ items }: MediaItemProps) {
     <div className="feed w-full h-fit z-40 items-center justify-center flex">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full h-fit gap-[24px]">
         {dummyData.map((item) => (
-          <div key={item.id} className="white-opaque rounded-[40px] p-[25px] overflow-hidden shadow-md">
+          <div key={item.id} className="white-opaque rounded-[20px] p-[25px] overflow-hidden shadow-md">
             <div className="flex justify-between mb-[15px]">
               <h3 className="text-lg md:text-xl">{item.title}</h3>
               <Link href="/relatedmedia" passHref>
@@ -77,9 +77,9 @@ export default function MediaItem({ items }: MediaItemProps) {
             </div>
 
             {/* 16:9 Aspect Ratio Wrapper */}
-            <div className="relative w-full pb-[56.25%] black-opaque rounded-[40px] overflow-hidden">
+            <div className="relative w-full pb-[56.25%] black-opaque rounded-[20px] overflow-hidden">
               <Image
-                className="absolute top-0 left-0 w-full h-full object-cover rounded-[40px]"
+                className="absolute top-0 left-0 w-full h-full object-cover rounded-[20px]"
                 src={item.imageUrl}
                 layout="fill"
                 objectFit="cover"

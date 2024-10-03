@@ -44,11 +44,11 @@ export default function Home() {
                 </div>
                 <div className="box
                 drawer transition-all
-                lg:p-[30px] lg:w-[830px] h-3/4 lg:h-[643px] lg:rounded-[40px] flex-col 
+                lg:p-[30px] lg:w-[830px] h-3/4 lg:h-[643px] lg:rounded-[20px] flex-col 
                 rounded-t-[40px] 
                 px-[20px] pb-[45px] 
                 pt-[30px] gap-[20px]">
-                    <div className='rounded-[40px] black-opaque w-full h-full px-[30px] py-7 flex justify-start items-center text-white flex-col'>
+                    <div className='rounded-[20px] black-opaque w-full h-full px-[30px] py-7 flex justify-start items-center text-white flex-col'>
                         <div className="card-text transition-all">
                             {steps[step].title}
                         </div>
