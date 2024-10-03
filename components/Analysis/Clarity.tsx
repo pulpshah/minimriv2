@@ -3,23 +3,17 @@ import { RadarChart } from "../ChartData";
 import { ClarityChart } from "../Chart/Clarity.jsx";
 
 interface AnalysisProps {
-  ethosScore: number;
-  pathosScore: number;
-  logosScore: number;
   showChart: boolean;
   isModerator: boolean;
   turnNumber: number;
 }
 
 const Clarity: React.FC<AnalysisProps> = ({
-  ethosScore,
-  pathosScore,
-  logosScore,
   showChart,
   isModerator,
   turnNumber,
 }) => {
-  const [activeTab, setActiveTab] = useState<string>("ethos");
+  const [activeTab, setActiveTab] = useState<string>("explicitness");
 
   return (
     <div className="analysis grid grid-cols-1 w-full h-fit gap-[25px]">
@@ -33,7 +27,7 @@ const Clarity: React.FC<AnalysisProps> = ({
           </div>
           <div className="w-fit text-center hidden h-fit lg:text-left lg:w-[802px] lg:flex justify-start text-sm md:text-base">
             Appeal Score evaluates the effectiveness of the speaker's use of
-            rhetorical appeals—ethos (credibility), pathos (emotion), and logos
+            rhetorical appeals—explicitness (credibility), concision (emotion), and focus
             (logic). It assesses how well the speaker connects with the
             audience, persuades through emotional resonance, and presents
             logical arguments. A higher appeal score indicates a stronger
@@ -43,22 +37,9 @@ const Clarity: React.FC<AnalysisProps> = ({
         {showChart && (
           <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[40px] black-card h-fit !bg-[url('/bg/clarity.webp')] !bg-cover !bg-center p-[10px] py-4 md:p-[20px]">
             <div className="chart box w-full h-fit px-[10%]">
-            {activeTab === "summary" && (
-              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
-            )}
-
-            {activeTab === "ethos" && (
+            
               <ClarityChart turnNum={turnNumber} />
-            )}
-
-            {activeTab === "pathos" && (
-              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
-            )}
-
-            {activeTab === "logos" && (
-              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
-            )}
-
+            
             </div>
             <div className="textual-annotation box flex flex-col gap-[20px]">
               
@@ -77,13 +58,13 @@ const Clarity: React.FC<AnalysisProps> = ({
                   </div>
                 </div>
               )}
-              {activeTab === "ethos" && (
-                <div className="ethos box">
+              {activeTab === "explicitness" && (
+                <div className="explicitness box">
 
                   <div className="!justify-start black-card box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
-                      Ethos Reasoning
+                      explicitness Reasoning
                     </div>
                     <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
@@ -92,13 +73,13 @@ const Clarity: React.FC<AnalysisProps> = ({
                   </div>
                 </div>
               )}
-              {activeTab === "pathos" && (
-                <div className="pathos box">
+              {activeTab === "concision" && (
+                <div className="concision box">
                   
                   <div className="!justify-start black-card box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
-                      Pathos Reasoning
+                      concision Reasoning
                     </div>
                     <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
@@ -108,12 +89,12 @@ const Clarity: React.FC<AnalysisProps> = ({
 
                 </div>
               )}
-              {activeTab === "logos" && (
-                <div className="logos box">
+              {activeTab === "focus" && (
+                <div className="focus box">
                   <div className="!justify-start black-card box rounded-[20px] md:rounded-[40px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
-                      Logos Reasoning
+                      focus Reasoning
                     </div>
                     <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
@@ -137,25 +118,25 @@ const Clarity: React.FC<AnalysisProps> = ({
           </button>
           <button
             className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${
-              activeTab === "ethos" ? "active" : ""
+              activeTab === "explicitness" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("ethos")}
+            onClick={() => setActiveTab("explicitness")}
           >
             2
           </button>
           <button
             className={`px-[10px] py-[1px] rounded-[40px] tab-btn ${
-              activeTab === "pathos" ? "active" : ""
+              activeTab === "concision" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("pathos")}
+            onClick={() => setActiveTab("concision")}
           >
             3
           </button>
           <button
             className={` px-[10px] py-[1px] rounded-[40px] tab-btn ${
-              activeTab === "logos" ? "active" : ""
+              activeTab === "focus" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("logos")}
+            onClick={() => setActiveTab("focus")}
           >
             4
           </button>

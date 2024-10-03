@@ -242,9 +242,6 @@ const FeedItem: React.FC<FeedItemProps> = ({
             {mainTab === "clarity" && (
               <div>
                 <Clarity
-                  ethosScore={ethosScore}
-                  pathosScore={pathosScore}
-                  logosScore={logosScore}
                   showChart={showChart}
                   isModerator={isModerator}
                   turnNumber={turn_number}
