@@ -696,27 +696,7 @@ const HomePage = () => {
           <NavBar onSearchClick={toggleSearchTab} />
         </div>
 
-        <div
-          className={`search-tab z-[50] transition-all duration-200 w-full text-black fixed bottom-0 ${
-            isSearchMode ? "translate-y-0" : "translate-y-full"
-          } h-[100vh] bg-white rounded-t-[40px]`}
-          style={{ transition: "transform 0.4s ease" }}
-        >
-          <SearchBar
-            searchInput={searchInput}
-            onSearchInputChange={handleSearchInputChange}
-            isSearchMode={isSearchMode}
-            handleSearchClick={handleSearchClick}
-            handleClearSearch={handleClearSearch}
-            setInboxOpen={handleToggleInbox}
-            setFetchOpen={handleToggleFetch}
-            isFetchOpen={isFetchOpen}
-            isInboxOpen={isInboxOpen}
-            isSearchBarExpanded={isSearchBarExpanded}
-            onSearchBarClick={handleSearchBarClick}
-            setSearchBarExpanded={setSearchBarExpanded}
-          />
-        </div>
+        
       </div>
     </div>
   );
