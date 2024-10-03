@@ -36,7 +36,7 @@ const Clarity: React.FC<AnalysisProps> = ({
         </div>
         {showChart && (
           <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[20px] black-card h-fit !bg-[url('/bg/clarity.webp')] !bg-cover !bg-center p-[10px] py-4 md:p-[20px]">
-            <div className="chart box w-full h-fit px-[10%]">
+            <div className="chart scale-[120%] ps-6 p-20 box w-full ">
             
               <ClarityChart turnNum={turnNumber} />
             

@@ -368,3 +368,7 @@ html, body {
   justify-content: space-between;
 }
 
+/* Custom styles for Observable Plot tooltips */
+.plot-tooltip {
+  color: black !important;       /* Change text color to black *//* Optional: adjust font size */
+}

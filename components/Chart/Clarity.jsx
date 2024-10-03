@@ -84,7 +84,8 @@ export const ClarityChart = ({turnNum, width=700, height=1000}) =>
                 .attr("y1", marginTop)
                 .attr("y2", height - marginBottom))
         
-        let color = d3.scaleOrdinal([true, false], ["steelblue", "#aaa"])
+                let color = d3.scaleOrdinal([true, false], ["#D83FB7", "#D83F41"]);  // Green for parent, Yellow for child
+
         let barStep = 27
         let barPadding = 3 / barStep
         let duration = 750
