@@ -194,6 +194,21 @@ const HomePage = () => {
     }
   };
 
+  const getSpeakerImage = (speaker: string) => {
+    switch (speaker) {
+      case "Donald Trump":
+        return "/candidates/trump.webp";
+      case "Kamala Harris":
+        return "/candidates/harris.webp";
+      case "David Muir":
+        return "/candidates/muir.webp";
+      case "Linsey Davis":
+        return "/candidates/davis.webp";
+      default:
+        return "/candidates/default.webp";
+    }
+  };
+
   useEffect(() => {
     // Load the individual JSON for audio and transcript
     loadTurnContent(currentTurn);
@@ -498,17 +513,16 @@ const HomePage = () => {
           
                   >
                     <Image
-                      src="/candidates/harris.webp"
-                      alt=""
+                      src={getSpeakerImage(speakerName)}
+                      alt="Speaker Image"
                       width={40}
-                      height={40}
+                      height={41}
                       className="block mx-auto rounded-full"
-                      onClick={(e) => e.stopPropagation()}
                     />
                   </div>
                   <div className="flex flex-col">
                     <div className="current-name text-sm md:text-base">
-                      Kamala Harris
+                      {speakerName}
                     </div>
                     <div className="flex gap-1">
                       <div className="poppins text-xs md:text-sm -mt-1.5">
