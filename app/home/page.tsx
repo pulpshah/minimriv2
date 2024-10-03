@@ -6,9 +6,9 @@ import SearchBar from "@/components/SearchBar";
 import { NavBar } from "@/components/NavBar";
 
 type TurnData = {
-  turn: number; 
-  speaker: string; 
-  role: string; 
+  turn: number;
+  speaker: string;
+  role: string;
   rawTotalScore: number;
   headline?: string;
   sentences: {
@@ -23,7 +23,6 @@ type ComprehensiveTurnData = {
   rawTotalScore: number;
   headline: string;
 };
-
 
 const HomePage = () => {
   // State variables
@@ -50,10 +49,10 @@ const HomePage = () => {
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState<number>(0);
   const [isSearchBarExpanded, setSearchBarExpanded] = useState(false);
   const [speakerName, setSpeakerName] = useState<string>("");
-const [speakerRole, setSpeakerRole] = useState<string>("");
-const [headline, setHeadline] = useState<string>("");
-const [rawTotalScore, setRawTotalScore] = useState<number>(0);
-const [turnsData, setTurnsData] = useState<TurnData[]>([]);
+  const [speakerRole, setSpeakerRole] = useState<string>("");
+  const [headline, setHeadline] = useState<string>("");
+  const [rawTotalScore, setRawTotalScore] = useState<number>(0);
+  const [turnsData, setTurnsData] = useState<TurnData[]>([]);
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -93,20 +92,23 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
     try {
       const jsonResponse = await fetch("/data/AnnotatedTranscript.json");
       const jsonData = await jsonResponse.json();
-  
+
       // Find the data for the current turn
-      const turnData = jsonData.analysis.find((turn: TurnData) => turn.turn === turnNumber);
-  
+      const turnData = jsonData.analysis.find(
+        (turn: TurnData) => turn.turn === turnNumber
+      );
+
       if (turnData) {
         // Extract the required fields
         const comprehensiveTurnData: ComprehensiveTurnData = {
           turn: turnData.turn,
           speaker: turnData.speaker,
           role: turnData.role,
-          headline: turnData.sentences[0]?.Headline[0] || "No headline available",
+          headline:
+            turnData.sentences[0]?.Headline[0] || "No headline available",
           rawTotalScore: turnData.rawTotalScore || 0,
         };
-  
+
         // Update state variables
         setCurrentTurn(comprehensiveTurnData.turn);
         setSpeakerName(comprehensiveTurnData.speaker);
@@ -118,25 +120,23 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
       console.error("Error loading comprehensive data:", error);
     }
   };
-  
 
   const loadAllTurnData = async () => {
     try {
       const jsonResponse = await fetch("/data/AnnotatedTranscript.json");
       const jsonData = await jsonResponse.json();
-  
+
       // Assuming jsonData.analysis contains the array of turn data
       setTurnsData(jsonData.analysis);
     } catch (error) {
       console.error("Error loading all turn data:", error);
     }
   };
-  
+
   // Call loadAllTurnData when component mounts
   useEffect(() => {
     loadAllTurnData();
   }, []);
-  
 
   // UI Handlers
   const handleExpandClick = () => {
@@ -183,54 +183,56 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value); // Extract the input value from the event
   };
-  
+
   // Audio Handlers
   const loadTurnContent = async (turnNumber: number) => {
     try {
-      // Construct the S3 JSON file URL based on the turn number
       const jsonUrl = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber}.json`;
-  
-      // Fetch the JSON file from S3
+
       const response = await fetch(jsonUrl);
-  
-      // Check if the response is okay
+
       if (!response.ok) {
-        throw new Error(`Failed to fetch JSON data: ${response.statusText}`);
+        throw new Error(`Missing JSON for turn ${turnNumber}`);
       }
-  
+
       const jsonData = await response.json();
-  
+
       // Update state with word and sentence data
       const words = jsonData.results.channels[0].alternatives[0].words || [];
-      const paragraphs = jsonData.results.channels[0].alternatives[0].paragraphs.paragraphs || [];
-  
+      const paragraphs =
+        jsonData.results.channels[0].alternatives[0].paragraphs.paragraphs ||
+        [];
+
       if (paragraphs.length > 0) {
-        const sentences = paragraphs.flatMap((paragraph: { sentences: any }) => paragraph.sentences);
+        const sentences = paragraphs.flatMap(
+          (paragraph: { sentences: any }) => paragraph.sentences
+        );
         setWordData(words);
         setSentencesData(sentences);
       }
-  
-      // Update the category for the current turn
+
       setTurnCategory(jsonData.category || null);
-  
-      // Update the audio source with the correct S3 URL
-      if (audioRef.current) {
-        audioRef.current.src = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber}.wav`;
-        setIsPlaying(false); // Stop any previous audio
-      }
     } catch (error) {
-      console.error("Error loading turn content:", error);
+      console.warn(`No transcript available for turn ${turnNumber}`);
+      setWordData([]); // Clear previous words
+      setSentencesData([]); // Clear previous sentences
+      setTurnCategory(null);
     }
-  };  
+
+    // Always set audio source even if JSON is missing
+    if (audioRef.current) {
+      audioRef.current.src = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber}.wav`;
+      setIsPlaying(false); // Stop any previous audio
+    }
+  };
 
   useEffect(() => {
     // Load the individual JSON for audio and transcript
     loadTurnContent(currentTurn);
-  
+
     // Load comprehensive JSON data for additional information
     loadData(currentTurn);
   }, [currentTurn]);
-
 
   const handlePlayPauseClick = () => {
     if (audioRef.current) {
@@ -238,7 +240,7 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
         // Set state to paused first to prevent re-triggering play
         setIsPlaying(false);
         setCurrentPlayingTurn(null);
-  
+
         // Then pause the audio
         audioRef.current.pause();
       } else {
@@ -248,22 +250,21 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
       }
     }
   };
-  
 
   const handlePlay = (turnNumber: number | null) => {
     if (audioRef.current) {
       // Pause any currently playing audio before starting a new one
       audioRef.current.pause();
-  
+
       if (turnNumber !== null) {
         setCurrentPlayingTurn(turnNumber);
         setCurrentTurn(turnNumber); // Update current turn for the top-pill
         setIsPlaying(true);
-  
+
         // Set the new audio source using the S3 URL
         const audioFile = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber}.wav`;
         audioRef.current.src = audioFile;
-  
+
         // Play the audio once it can play
         audioRef.current.oncanplay = () => {
           audioRef.current
@@ -276,7 +277,7 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
         setCurrentPlayingTurn(null);
       }
     }
-  };  
+  };
 
   const handleWordClick = (start: number) => {
     if (audioRef.current) {
@@ -293,24 +294,52 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
     }
   };
 
-  const handleNextTurn = () => {
+  const handleNextTurn = async () => {
     if (audioRef.current) {
       audioRef.current.pause(); // Pause the current audio to switch the source
     }
-  
-    if (currentTurn < turnsData.length) {
-      const nextTurn = currentTurn + 1;
+
+    let nextTurn = currentTurn + 1;
+
+    // Skip specific turns without JSON
+    if (nextTurn === 108) {
+      nextTurn++; // Skip over turn 108 if it's missing the JSON
+    }
+
+    while (nextTurn <= turnsData.length) {
+      try {
+        // Attempt to load the next turn JSON file from S3
+        const jsonUrl = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${nextTurn}.json`;
+        const response = await fetch(jsonUrl);
+
+        // If JSON is missing or response fails, skip to the following turn
+        if (!response.ok) {
+          throw new Error(`Missing JSON for turn ${nextTurn}`);
+        }
+
+        // If JSON exists, parse the data and break out of the loop
+        await response.json();
+        break;
+      } catch (error) {
+        console.warn(`Skipping turn ${nextTurn} due to missing JSON`);
+        nextTurn++;
+      }
+    }
+
+    // Ensure we don't go beyond the available turns
+    if (nextTurn <= turnsData.length) {
       setCurrentTurn(nextTurn); // Update the state to the next turn
       setCurrentPlayingTurn(nextTurn);
-  
+
+      // Update the audio source to the next turn
       if (audioRef.current) {
-        // Set the audio source to the next turn using S3 URL
-        audioRef.current.src = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${nextTurn}.wav`;
-  
+        const audioFile = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${nextTurn}.wav`;
+        audioRef.current.src = audioFile;
+
         if (isPlaying) {
           // Set isPlaying to true immediately to ensure the button shows the pause icon
           setIsPlaying(true);
-  
+
           // Play the next turn's audio when it can play
           audioRef.current.oncanplay = () => {
             audioRef.current?.play().catch((error) => {
@@ -324,7 +353,6 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
       }
     }
   };
-  
 
   const handleBackTurn = () => {
     if (audioRef.current) {
@@ -452,38 +480,38 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
       <div
         className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[90px] pb-[82px] bg-none overflow-y-auto scroll-smooth`}
       >
-      <div className="feed w-full h-fit z-40 items-center justify-center flex">
-        <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
-        {turnsData && turnsData.length > 0 ? (
-  turnsData
-    .filter((turn) => turn.turn >= 11)
-    .map((turn: TurnData, index: number) => {
-      const turnCategory = turn.role || "segment";
+        <div className="feed w-full h-fit z-40 items-center justify-center flex">
+          <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
+            {turnsData && turnsData.length > 0 ? (
+              turnsData
+                .filter((turn) => turn.turn >= 11)
+                .map((turn: TurnData, index: number) => {
+                  const turnCategory = turn.role || "segment";
 
-      return (
-        <FeedItem
-          key={index}
-          speaker={turn.speaker}
-          role={turn.role}
-          topic={turn.sentences?.[0]?.Headline?.[0] || "No Topic"}
-          turn_number={turn.turn}
-          turn_category={turnCategory}
-          title={turnCategory}
-          ethosScore={0}
-          pathosScore={0}
-          logosScore={0}
-          isPlaying={currentPlayingTurn === (turn.turn - 10)}
-          currentPlayingTurn={currentPlayingTurn}
-          onPlay={handlePlay}
-          audioRef={audioRef}
-        />
-      );
-    })
-) : (
-  <div>Loading...</div>
-)}
+                  return (
+                    <FeedItem
+                      key={index}
+                      speaker={turn.speaker}
+                      role={turn.role}
+                      topic={turn.sentences?.[0]?.Headline?.[0] || "No Topic"}
+                      turn_number={turn.turn}
+                      turn_category={turnCategory}
+                      title={turnCategory}
+                      ethosScore={0}
+                      pathosScore={0}
+                      logosScore={0}
+                      isPlaying={currentPlayingTurn === turn.turn - 10}
+                      currentPlayingTurn={currentPlayingTurn}
+                      onPlay={handlePlay}
+                      audioRef={audioRef}
+                    />
+                  );
+                })
+            ) : (
+              <div>Loading...</div>
+            )}
+          </div>
         </div>
-      </div>
 
         {/* header */}
         <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
@@ -522,7 +550,7 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
                         •
                       </div>
                       <div className="poppins text-xs md:text-sm -mt-1.5">
-                      {turnCategory || "No Category"}
+                        {turnCategory || "No Category"}
                       </div>
                     </div>
                   </div>
@@ -548,67 +576,66 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
                     </div>
                   </div>
                   <audio ref={audioRef} />
-                    <div className="flex gap-4">
-                  <button
-                    className="hidden md:flex"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleBackTurn();
-                    }}
-                  >
-                    <div className="next-turn invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90 box">
-                      <Image
-                        src={"icons/back-icon.svg"}
-                        alt="next"
-                        height={30}
-                        width={32}
-                      />
-                    </div>
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation(); // Prevent event from bubbling up
-                      handlePlayPauseClick(); // Call play/pause handler
-                    }}
-                  >
-                    <div className="play invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
-                      <Image
-                        src={
-                          isPlaying
-                            ? "icons/pause-icon.svg"
-                            : "icons/play-icon.svg"
-                        }
-                        alt={isPlaying ? "pause" : "play"}
-                        height={40}
-                        width={40}
-                      />
-                    </div>
-                  </button>
-                  <button
-                    className="hidden md:flex"
-                    onClick={(e) => {
-                      e.stopPropagation(); // Prevent event from bubbling up
-                      handleNextTurn();
-                    }}
-                  >
-                    <div className="next-turn box invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
-                      <Image
-                        src={"icons/skip-icon.svg"}
-                        alt="next"
-                        height={35}
-                        width={32}
-                      />
-                    </div>
-                  </button>
-                    </div>
+                  <div className="flex gap-4">
+                    <button
+                      className="hidden md:flex"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleBackTurn();
+                      }}
+                    >
+                      <div className="next-turn invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90 box">
+                        <Image
+                          src={"icons/back-icon.svg"}
+                          alt="next"
+                          height={30}
+                          width={32}
+                        />
+                      </div>
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent event from bubbling up
+                        handlePlayPauseClick(); // Call play/pause handler
+                      }}
+                    >
+                      <div className="play invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
+                        <Image
+                          src={
+                            isPlaying
+                              ? "icons/pause-icon.svg"
+                              : "icons/play-icon.svg"
+                          }
+                          alt={isPlaying ? "pause" : "play"}
+                          height={40}
+                          width={40}
+                        />
+                      </div>
+                    </button>
+                    <button
+                      className="hidden md:flex"
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent event from bubbling up
+                        handleNextTurn();
+                      }}
+                    >
+                      <div className="next-turn box invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
+                        <Image
+                          src={"icons/skip-icon.svg"}
+                          alt="next"
+                          height={35}
+                          width={32}
+                        />
+                      </div>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
             {/* Transcript Section */}
             {isTranscriptOpen && (
               <div className="transcript-content custom-scrollbar h-full w-full rounded-[40px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col mt-3 overflow-y-auto">
-                <div className="flex flex-row justify-end w-full">
-                </div>
+                <div className="flex flex-row justify-end w-full"></div>
                 <div className="flex flex-col">
                   {sentencesData.map((sentence, sentenceIndex) => {
                     // Determine the style for each sentence based on its playback state
