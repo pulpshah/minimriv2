@@ -30,7 +30,7 @@ const HomePage = () => {
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-  const [currentTurn, setCurrentTurn] = useState<number>(1);
+  const [currentTurn, setCurrentTurn] = useState<number>(11);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(
     null
@@ -643,7 +643,7 @@ const HomePage = () => {
                                 }
                               : null
                           }
-                          className={`${sentenceStyle} text-left !text-xl md:!text-2xl w-full lg:w-3/4 p-3 mx-auto`}
+                          className={`${sentenceStyle} text-left !text-xl md:!text-2xl w-full lg:w-3/4 px-3 pb-2 mx-auto`}
                           onClick={(event) => event.stopPropagation()}
                         >
                           {wordData

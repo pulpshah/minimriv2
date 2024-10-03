@@ -119,7 +119,7 @@ const Appeal: React.FC<AnalysisProps> = ({
                   <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
-                      Ethos Reasoning
+                      Ethos
                     </div>
                     <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
                       {ethosReasoning}
@@ -134,7 +134,7 @@ const Appeal: React.FC<AnalysisProps> = ({
                   <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
-                      Pathos Reasoning
+                      Pathos
                     </div>
                     <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
                       {pathosReasoning}
@@ -149,7 +149,7 @@ const Appeal: React.FC<AnalysisProps> = ({
                   <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
-                      Logos Reasoning
+                      Logos
                     </div>
                     <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
                       {logosReasoning}

@@ -2,8 +2,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import JFile from "@/public/data/dummydata.json";
 import Image from "next/image";
-import FeedItem from "@/components/FeedItem";
-import SearchBar from "@/components/SearchBar";
 import { NavBar } from "@/components/NavBar";
 import MediaItem from "@/components/MediaItem";
 
@@ -37,8 +35,6 @@ const RelatedMedia = () => {
   // State variables
   const [isTranscriptExpanded, setTranscriptExpanded] = useState(false);
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
   const [currentTurn, setCurrentTurn] = useState<number>(0);
   const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(
     null
@@ -46,8 +42,6 @@ const RelatedMedia = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isSearchMode, setSearchMode] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [isInboxOpen, setInboxOpen] = useState(false);
-  const [isFetchOpen, setFetchOpen] = useState(false);
   const [wordData, setWordData] = useState<any[]>([]);
   const [sentencesData, setSentencesData] = useState<any[]>([]);
   const [highlightedWordIndex, setHighlightedWordIndex] = useState<
