@@ -44,7 +44,7 @@ const HomePage = () => {
   const [sentencesData, setSentencesData] = useState<any[]>([]);
   const [turnCategory, setTurnCategory] = useState<string | null>(null);
   const [highlightedWordIndex, setHighlightedWordIndex] = useState<
-    number | null
+  number | null
   >(null);
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState<number>(0);
   const [isSearchBarExpanded, setSearchBarExpanded] = useState(false);
@@ -53,9 +53,11 @@ const HomePage = () => {
   const [headline, setHeadline] = useState<string>("");
   const [rawTotalScore, setRawTotalScore] = useState<number>(0);
   const [turnsData, setTurnsData] = useState<TurnData[]>([]);
-
+  const nextTurn = turnsData.find(turn => turn.turn === currentTurn + 1);
+  const nextSpeaker = nextTurn ? nextTurn.speaker : null;
+  
   const audioRef = useRef<HTMLAudioElement>(null);
-
+  
   const loadData = async (turnNumber: number) => {
     try {
       const jsonResponse = await fetch("/data/AnnotatedTranscript.json");
@@ -540,18 +542,28 @@ const HomePage = () => {
 
                 {/* Secondary Speakers and Controls */}
                 <div className="flex flex-row items-center gap-2">
-                  <div
-                    className="secondary-speaker hidden sm:flex flex-shrink-0 black-opaque rounded-full"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <Image
-                      src="/candidates/trump.webp"
-                      alt=""
-                      width={40}
-                      height={40}
-                      className="block mx-auto rounded-full"
-                    />
-                  </div>
+                <div className="secondary-speaker hidden sm:flex flex-shrink-0 black-opaque rounded-full"
+    onClick={(e) => e.stopPropagation()}>
+  {nextSpeaker && (
+    <Image
+      src={
+        nextSpeaker === "Kamala Harris"
+          ? "/candidates/harris.webp"
+          : nextSpeaker === "Donald Trump"
+          ? "/candidates/trump.webp"
+          : nextSpeaker === "David Muir"
+          ? "/candidates/muir.webp"
+          : nextSpeaker === "Linsey Davis"
+          ? "/candidates/davis.webp"
+          : "/candidates/default.webp"
+      }
+      alt={nextSpeaker}
+      width={40}
+      height={40}
+      className="block mx-auto rounded-full"
+    />
+  )}
+</div>
                   <div className="secondary-speaker">
                     <div className="w-[40px] h-[40px] flex-shrink-0 hidden sm:flex black-opaque rounded-full justify-center items-center text-base">
                       +2
@@ -643,7 +655,7 @@ const HomePage = () => {
                                 }
                               : null
                           }
-                          className={`${sentenceStyle} text-left !text-xl md:!text-2xl w-full lg:w-3/4 p-3 mx-auto`}
+                          className={`${sentenceStyle} text-left !text-xl md:!text-2xl w-full lg:w-3/4 px-3 pb-2 mx-auto`}
                           onClick={(event) => event.stopPropagation()}
                         >
                           {wordData

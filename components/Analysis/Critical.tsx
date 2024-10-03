@@ -27,7 +27,7 @@ const Critical: React.FC<AnalysisProps> = ({
         <div className="appeal-score box items-center flex-col lg:!justify-between lg:flex-row gap-[25px] lg:gap-[30px]">
           <div className="appeal w-fit h-fit">
             <div className="flex gap-2 text-6xl lg:text-8xl w-fit h-fit outline-text">
-              <div className="flex w-fit text-center md:text-left md:gap-3 lg:gap-4">crtical thinking</div>
+              <div className="flex w-fit text-center md:text-left md:gap-3 lg:gap-4">thinking</div>
             </div>
           </div>
           <div className="w-fit text-center hidden h-fit lg:text-left lg:w-[802px] lg:flex justify-start text-sm md:text-base">
