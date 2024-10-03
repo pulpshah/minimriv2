@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import JFile from "@/public/data/AnnotatedTranscript.json";
 import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import SearchBar from "@/components/SearchBar";
@@ -188,9 +187,18 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
   // Audio Handlers
   const loadTurnContent = async (turnNumber: number) => {
     try {
-      // Load the JSON file for the current turn
-      const jsonResponse = await fetch(`/audio/turn${turnNumber}.json`);
-      const jsonData = await jsonResponse.json();
+      // Construct the S3 JSON file URL based on the turn number
+      const jsonUrl = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber}.json`;
+  
+      // Fetch the JSON file from S3
+      const response = await fetch(jsonUrl);
+  
+      // Check if the response is okay
+      if (!response.ok) {
+        throw new Error(`Failed to fetch JSON data: ${response.statusText}`);
+      }
+  
+      const jsonData = await response.json();
   
       // Update state with word and sentence data
       const words = jsonData.results.channels[0].alternatives[0].words || [];
@@ -205,9 +213,9 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
       // Update the category for the current turn
       setTurnCategory(jsonData.category || null);
   
-      // Update the audio source
+      // Update the audio source with the correct S3 URL
       if (audioRef.current) {
-        audioRef.current.src = `/audio/turn${turnNumber}.wav`;
+        audioRef.current.src = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber}.wav`;
         setIsPlaying(false); // Stop any previous audio
       }
     } catch (error) {
@@ -252,8 +260,8 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
         setCurrentTurn(turnNumber); // Update current turn for the top-pill
         setIsPlaying(true);
   
-        // Set the new audio source
-        const audioFile = `/audio/turn${turnNumber}.wav`;
+        // Set the new audio source using the S3 URL
+        const audioFile = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber}.wav`;
         audioRef.current.src = audioFile;
   
         // Play the audio once it can play
@@ -268,7 +276,7 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
         setCurrentPlayingTurn(null);
       }
     }
-  };
+  };  
 
   const handleWordClick = (start: number) => {
     if (audioRef.current) {
@@ -284,31 +292,6 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
       setIsPlaying(false);
     }
   };
-  
-  const getNumberOfTurns = async (questionNumber: number) => {
-    let turnCount = 0;
-    let turnExists = true;
-
-    // Keep checking for the existence of the next turn until a file is not found
-    while (turnExists) {
-      try {
-        const response = await fetch(
-          `/audio/question_${questionNumber}/q${questionNumber}_t${String(
-            turnCount + 1
-          ).padStart(2, "0")}.json`
-        );
-        if (response.ok) {
-          turnCount++;
-        } else {
-          turnExists = false;
-        }
-      } catch (error) {
-        turnExists = false;
-      }
-    }
-
-    return turnCount;
-  };
 
   const handleNextTurn = () => {
     if (audioRef.current) {
@@ -321,13 +304,13 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
       setCurrentPlayingTurn(nextTurn);
   
       if (audioRef.current) {
-        // Set the audio source to the next turn
-        audioRef.current.src = `/audio/turn${nextTurn}.wav`;
-      
+        // Set the audio source to the next turn using S3 URL
+        audioRef.current.src = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${nextTurn}.wav`;
+  
         if (isPlaying) {
           // Set isPlaying to true immediately to ensure the button shows the pause icon
           setIsPlaying(true);
-      
+  
           // Play the next turn's audio when it can play
           audioRef.current.oncanplay = () => {
             audioRef.current?.play().catch((error) => {
@@ -341,6 +324,7 @@ const [turnsData, setTurnsData] = useState<TurnData[]>([]);
       }
     }
   };
+  
 
   const handleBackTurn = () => {
     if (audioRef.current) {

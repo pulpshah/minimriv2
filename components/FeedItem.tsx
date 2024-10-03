@@ -54,8 +54,11 @@ const FeedItem: React.FC<FeedItemProps> = ({
   const [mainTab, setMainTab] = useState("total");
 
   const getAudioFile = () => {
+    // Adjust the actual turn number as needed
     const actualTurnNumber = turn_number - 10;
-    return `/audio/turn${actualTurnNumber}.wav`;
+  
+    // Return the AWS S3 URL for the audio file
+    return `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${actualTurnNumber}.wav`;
   };
 
   const handlePlayPause = () => {
@@ -64,7 +67,11 @@ const FeedItem: React.FC<FeedItemProps> = ({
       audioRef.current?.pause();
       onPlay(null); // Setting null means stop playback, which will sync all buttons
     } else {
-      // Adjust the turn number before calling onPlay
+      // Set the audio source using the S3 URL before calling onPlay
+      const audioFile = getAudioFile();
+      if (audioRef.current) {
+        audioRef.current.src = audioFile;
+      }
       onPlay(turn_number - 10); // Adjusting turn_number to match the audio file
     }
   };
@@ -72,15 +79,16 @@ const FeedItem: React.FC<FeedItemProps> = ({
   useEffect(() => {
     if (audioRef.current) {
       if (isPlaying && currentPlayingTurn === turn_number) {
-        // Only play the audio if it's the current turn being played
-        audioRef.current.play().catch((error) => console.error("Error playing audio:", error));
+        const audioFile = getAudioFile();
+        audioRef.current.src = audioFile; // Set the audio source using the AWS URL
+        audioRef.current
+          .play()
+          .catch((error) => console.error("Error playing audio:", error));
       } else {
-        // Pause the audio if it's not the current turn
         audioRef.current.pause();
       }
     }
-  }, [isPlaying, currentPlayingTurn, turn_number]);
-  
+  }, [isPlaying, currentPlayingTurn, turn_number]);  
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -93,8 +101,6 @@ const FeedItem: React.FC<FeedItemProps> = ({
       };
     }
   }, [onPlay]);
-
-  const audioFile = getAudioFile();
 
   const getSpeakerImage = (speaker: string) => {
     switch (speaker) {
