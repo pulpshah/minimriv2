@@ -30,7 +30,7 @@ const HomePage = () => {
   const [isTranscriptOpen, setTranscriptOpen] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-  const [currentTurn, setCurrentTurn] = useState<number>(1);
+  const [currentTurn, setCurrentTurn] = useState<number>(11);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [currentPlayingTurn, setCurrentPlayingTurn] = useState<number | null>(
     null
@@ -155,12 +155,12 @@ const HomePage = () => {
   // Audio Handlers
   const loadTurnContent = async (turnNumber: number) => {
     try {
-      const jsonUrl = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber}.json`;
+      const jsonUrl = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber - 10}.json`;
 
       const response = await fetch(jsonUrl);
 
       if (!response.ok) {
-        throw new Error(`Missing JSON for turn ${turnNumber}`);
+        throw new Error(`Missing JSON for turn ${turnNumber - 10}`);
       }
 
       const jsonData = await response.json();
@@ -181,7 +181,7 @@ const HomePage = () => {
 
       setTurnCategory(jsonData.category || null);
     } catch (error) {
-      console.warn(`No transcript available for turn ${turnNumber}`);
+      console.warn(`No transcript available for turn ${turnNumber - 10}`);
       setWordData([]); // Clear previous words
       setSentencesData([]); // Clear previous sentences
       setTurnCategory(null);
@@ -189,7 +189,7 @@ const HomePage = () => {
 
     // Always set audio source even if JSON is missing
     if (audioRef.current) {
-      audioRef.current.src = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber}.wav`;
+      audioRef.current.src = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber - 10}.wav`;
       setIsPlaying(false); // Stop any previous audio
     }
   };
@@ -245,7 +245,7 @@ const HomePage = () => {
         setIsPlaying(true);
 
         // Set the new audio source using the S3 URL
-        const audioFile = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber}.wav`;
+        const audioFile = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber - 10}.wav`;
         audioRef.current.src = audioFile;
 
         // Play the audio once it can play
