@@ -240,16 +240,19 @@ const HomePage = () => {
     if (audioRef.current) {
       // Pause any currently playing audio before starting a new one
       audioRef.current.pause();
-
+  
       if (turnNumber !== null) {
+        // Adjust `turnNumber` to reflect the correct turn
+        const actualTurnNumber = turnNumber - 10;
+  
         setCurrentPlayingTurn(turnNumber);
         setCurrentTurn(turnNumber); // Update current turn for the top-pill
         setIsPlaying(true);
-
+  
         // Set the new audio source using the S3 URL
-        const audioFile = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber - 10}.wav`;
+        const audioFile = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${actualTurnNumber}.wav`;
         audioRef.current.src = audioFile;
-
+  
         // Play the audio once it can play
         audioRef.current.oncanplay = () => {
           audioRef.current
@@ -257,7 +260,7 @@ const HomePage = () => {
             .catch((error) => console.error("Error playing audio:", error));
         };
       } else {
-        // If no turn is playing, ensure isPlaying is set to false
+        // If no turn is playing, ensure `isPlaying` is set to false
         setIsPlaying(false);
         setCurrentPlayingTurn(null);
       }
@@ -485,7 +488,7 @@ const HomePage = () => {
                       ethosScore={0}
                       pathosScore={0}
                       logosScore={0}
-                      isPlaying={currentPlayingTurn === turn.turn - 10}
+                      isPlaying={currentPlayingTurn === turn.turn}
                       currentPlayingTurn={currentPlayingTurn}
                       onPlay={handlePlay}
                       audioRef={audioRef}
