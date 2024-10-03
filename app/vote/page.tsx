@@ -304,7 +304,7 @@ const vote = () => {
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
                 <div className="flex gap-5 items-center box">
-                <h1 className="text-2xl text-center">Votes</h1>
+                <h1 className="text-2xl text-center">Voteables</h1>
                 </div>
                 <VoteItem items={voteitems} />
           </div>
