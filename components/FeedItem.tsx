@@ -54,7 +54,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
   const [mainTab, setMainTab] = useState("total");
 
   const getAudioFile = () => {
-    // Adjust the actual turn number as needed
+    // Adjust the actual turn number by subtracting 10 to match the audio file
     const actualTurnNumber = turn_number - 10;
   
     // Return the AWS S3 URL for the audio file
@@ -63,16 +63,17 @@ const FeedItem: React.FC<FeedItemProps> = ({
 
   const handlePlayPause = () => {
     if (isPlaying) {
-      // Pause the audio using the centralized HomePage's function
+      // Pause the audio and stop playback in `HomePage`
       audioRef.current?.pause();
-      onPlay(null); // Setting null means stop playback, which will sync all buttons
+      onPlay(null); // Set null to stop playback across all components
     } else {
-      // Set the audio source using the S3 URL before calling onPlay
+      // Set the correct audio source before calling `onPlay`
       const audioFile = getAudioFile();
       if (audioRef.current) {
         audioRef.current.src = audioFile;
       }
-      onPlay(turn_number - 10); // Adjusting turn_number to match the audio file
+      // Play the specific turn, with the adjustment to account for the naming offset
+      onPlay(turn_number); 
     }
   };
   
@@ -80,7 +81,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
     if (audioRef.current) {
       if (isPlaying && currentPlayingTurn === turn_number) {
         const audioFile = getAudioFile();
-        audioRef.current.src = audioFile; // Set the audio source using the AWS URL
+        audioRef.current.src = audioFile; // Set the correct audio source
         audioRef.current
           .play()
           .catch((error) => console.error("Error playing audio:", error));
@@ -88,7 +89,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
         audioRef.current.pause();
       }
     }
-  }, [isPlaying, currentPlayingTurn, turn_number]);  
+  }, [isPlaying, currentPlayingTurn, turn_number]);
 
   useEffect(() => {
     const audioElement = audioRef.current;
