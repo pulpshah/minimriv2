@@ -483,7 +483,7 @@ const HomePage = () => {
                   <div className="text-5xl md:text-7xl text-center text-white">2024</div>
                 </div>
 
-                <div className="candidates gap-[0px] mt-[40px] md:gap-[20px] !items-center flex flex-col xl:flex-row justify-between w-full">
+                <div className="candidates pb-3 gap-[0px] mt-[40px] md:gap-[20px] !items-center flex flex-col xl:flex-row justify-between w-full">
                   <div className="kamala xl:ms-[15%]">
                     <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black winner h-fit">
                       <Image
@@ -494,13 +494,13 @@ const HomePage = () => {
                         className="block mx-auto w-[132.5px] md:w-[180px]"
                       />
                     </div>
-                    <div className="text-center text-base md:text-lg poppins pt-1.5">
+                    <div className="text-center text-base md:text-lg poppins pt-1.5 text-white">
                       Kamala Harris
                     </div>
                   </div>
                   
                   <div className="flex box !justify-between max-w-[300px] md:max-w-[450px] py-8 xl:py-0">
-                    <div className="score 1 text-4xl md:text-6xl text-white">1000</div>
+                    <div className="score1 poppins text-4xl md:text-6xl text-white">1000</div>
 
                   <Image
                     src={"icons/vote-icon.svg"}
@@ -509,7 +509,7 @@ const HomePage = () => {
                     width={90}
                   />
 
-                  <div className="score 1 text-4xl md:text-6xl text-white">1000</div>
+                  <div className="score2 poppins text-4xl md:text-6xl text-white">1000</div>
 
 
                   </div>
@@ -524,23 +524,11 @@ const HomePage = () => {
                         className="block flex-shrink-0 mx-auto w-[132.5px] md:w-[180px]"
                       />
                     </div>
-                    <div className="text-center text-base md:text-lg poppins pt-1.5">
+                    <div className="text-center text-base md:text-lg poppins pt-1.5 text-white">
                       Donald Trump
                     </div>
                   </div>
                 </div>
-                <div className="text-4xl pt-[50px] text-white md:text-6xl text-center">
-                    highlights
-                </div>
-                  <div className="text-white">
-                    <ul>
-                      <li>1</li>
-                      <li>2</li>
-                      <li>3</li>
-                      <li>4</li>
-                      <li>5</li>
-                    </ul>
-                  </div>
               </div>
             </div>
             {turnsData && turnsData.length > 0 ? (
