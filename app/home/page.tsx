@@ -55,6 +55,7 @@ const HomePage = () => {
   const [turnsData, setTurnsData] = useState<TurnData[]>([]);
   const nextTurn = turnsData.find((turn) => turn.turn === currentTurn + 1);
   const nextSpeaker = nextTurn ? nextTurn.speaker : null;
+  const [showAdditionalSpeakers, setShowAdditionalSpeakers] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -153,6 +154,12 @@ const HomePage = () => {
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value); // Extract the input value from the event
   };
+
+  const allSpeakers = ["Kamala Harris", "Donald Trump", "David Muir", "Linsey Davis"];
+  const additionalSpeakers = allSpeakers.filter(
+    (speaker) => speaker !== speakerName && speaker !== nextSpeaker
+  );
+
 
   // Audio Handlers
   const loadTurnContent = async (turnNumber: number) => {
@@ -632,11 +639,78 @@ const HomePage = () => {
                       />
                     )}
                   </div>
-                  <div className="secondary-speaker">
-                    <div className="w-[40px] h-[40px] flex-shrink-0 hidden sm:flex black-opaque rounded-full justify-center items-center text-base">
-                      +2
-                    </div>
-                  </div>
+                  <div
+  className="secondary-speaker relative"
+  onMouseEnter={() => setShowAdditionalSpeakers(true)}
+  onMouseLeave={() => setShowAdditionalSpeakers(false)}
+>
+  {/* +2 Circle - Changes to an Arrow on Hover */}
+  <div
+    className={`w-[40px] h-[40px] flex-shrink-0 hidden sm:flex black-opaque rounded-full justify-center items-center text-base transition-transform duration-200 ease-in-out ${
+      showAdditionalSpeakers ? 'transform rotate-45' : ''
+    }`}
+  >
+    {showAdditionalSpeakers ? (
+      <span className="font-bold text-lg transform transition-transform duration-200 ease-in-out">
+        ↑
+      </span>
+    ) : (
+      <span className="font-bold text-lg">+2</span>
+    )}
+  </div>
+
+  {/* Hidden Container for Additional Speakers with Snappy Animation */}
+  <div
+    className={`absolute top-[45px] left-0 flex flex-col gap-2 transition-all duration-200 ease-out z-50 ${
+      showAdditionalSpeakers ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-[-10px] scale-75 opacity-0'
+    }`}
+  >
+    {speakerName !== 'Kamala Harris' && nextSpeaker !== 'Kamala Harris' && (
+      <div className="flex-shrink-0 w-[40px] h-[40px] black-opaque rounded-full justify-center items-center">
+        <Image
+          src="/candidates/harris.webp"
+          alt="Kamala Harris"
+          width={40}
+          height={40}
+          className="block mx-auto rounded-full"
+        />
+      </div>
+    )}
+    {speakerName !== 'Donald Trump' && nextSpeaker !== 'Donald Trump' && (
+      <div className="flex-shrink-0 w-[40px] h-[40px] black-opaque rounded-full justify-center items-center">
+        <Image
+          src="/candidates/trump.webp"
+          alt="Donald Trump"
+          width={40}
+          height={40}
+          className="block mx-auto rounded-full"
+        />
+      </div>
+    )}
+    {speakerName !== 'David Muir' && nextSpeaker !== 'David Muir' && (
+      <div className="flex-shrink-0 w-[40px] h-[40px] black-opaque rounded-full justify-center items-center">
+        <Image
+          src="/candidates/muir.webp"
+          alt="David Muir"
+          width={40}
+          height={40}
+          className="block mx-auto rounded-full"
+        />
+      </div>
+    )}
+    {speakerName !== 'Linsey Davis' && nextSpeaker !== 'Linsey Davis' && (
+      <div className="flex-shrink-0 w-[40px] h-[40px] black-opaque rounded-full justify-center items-center">
+        <Image
+          src="/candidates/davis.webp"
+          alt="Linsey Davis"
+          width={40}
+          height={40}
+          className="block mx-auto rounded-full"
+        />
+      </div>
+    )}
+  </div>
+</div>
                   <audio ref={audioRef} />
                   <div className="flex gap-4">
                     <button
