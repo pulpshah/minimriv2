@@ -474,6 +474,13 @@ const HomePage = () => {
       >
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
+          <div className="box">
+                    <Image
+                    src={"/logo.svg"}
+                    alt="next"
+                    height={60}
+                    width={110}
+                  /></div>
             <div className="box bg-[url('/bg/total.webp')] bg-cover bg-center gap-[15px] md:gap-[25px] flex-col p-[10px] py-[20px]  md:px-[20px] !justify-start rounded-[20px] min-h-fit h-full">
               <div className="box flex-col gap-[24px]">
                 <div className="">
@@ -483,8 +490,8 @@ const HomePage = () => {
                   <div className="text-5xl md:text-7xl text-center text-white">2024</div>
                 </div>
 
-                <div className="candidates pb-3 gap-[0px] mt-[40px] md:gap-[20px] !items-center flex flex-col xl:flex-row justify-between w-full">
-                  <div className="kamala xl:ms-[15%]">
+                <div className="candidates max-w-[1000px] pb-3 gap-[0px] mt-[40px] md:gap-[20px] !items-center flex flex-col xl:flex-row justify-between w-full">
+                  <div className="kamala">
                     <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black winner h-fit">
                       <Image
                         src={getSpeakerImage("Kamala Harris")}
@@ -514,7 +521,7 @@ const HomePage = () => {
 
                   </div>
 
-                  <div className="trump xl:me-[15%] md:me-0">
+                  <div className="trump">
                     <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black">
                       <Image
                         src={getSpeakerImage("Donald Trump")}
