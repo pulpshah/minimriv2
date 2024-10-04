@@ -1,10 +1,11 @@
 "use client";
+
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import SearchBar from "@/components/SearchBar";
 import { NavBar } from "@/components/NavBar";
-import CustomScrollBar from "@/components/CustomerScrollBar";
+import { motion, useAnimation } from 'framer-motion';
 
 type TurnData = {
   turn: number;
@@ -23,6 +24,78 @@ type ComprehensiveTurnData = {
   role: string;
   rawTotalScore: number;
   headline: string;
+};
+
+const CustomScrollbar = ({ children, turns }: { children: React.ReactNode; turns: number[] }) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [scrollPercentage, setScrollPercentage] = useState(0);
+  const controls = useAnimation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scrollContainerRef.current) {
+        const { scrollTop, scrollHeight, clientHeight } = scrollContainerRef.current;
+        const newScrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+        setScrollPercentage(newScrollPercentage);
+      }
+    };
+
+    scrollContainerRef.current?.addEventListener('scroll', handleScroll);
+    return () => scrollContainerRef.current?.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleScrollbarDrag = (event: React.MouseEvent<HTMLDivElement>, info: { offset: { y: number } }) => {
+    if (scrollContainerRef.current) {
+      const { scrollHeight, clientHeight } = scrollContainerRef.current;
+      const scrollableHeight = scrollHeight - clientHeight;
+      const newScrollTop = (info.offset.y / clientHeight) * scrollableHeight;
+      scrollContainerRef.current.scrollTop = newScrollTop;
+    }
+  };
+
+  const scrollToTurn = (turnIndex: number) => {
+    if (scrollContainerRef.current) {
+      const { scrollHeight, clientHeight } = scrollContainerRef.current;
+      const scrollableHeight = scrollHeight - clientHeight;
+      const newScrollTop = (turnIndex / (turns.length - 1)) * scrollableHeight;
+      controls.start({ y: newScrollTop });
+      scrollContainerRef.current.scrollTo({ top: newScrollTop, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="relative h-full overflow-hidden">
+      <div
+        ref={scrollContainerRef}
+        className="h-full overflow-y-scroll pr-4 scrollbar-hide"
+        style={{ paddingRight: '20px', marginRight: '-20px' }}
+      >
+        {children}
+      </div>
+      <div className="absolute top-0 right-0 h-full w-2 bg-gray-200 rounded">
+        <motion.div
+          className="w-full bg-gray-400 rounded cursor-pointer"
+          style={{ height: `${100 / turns.length}%`, top: `${scrollPercentage}%` }}
+          animate={controls}
+          drag="y"
+          dragConstraints={{ top: 0, bottom: 0 }}
+          dragElastic={0}
+          dragMomentum={false}
+          onDrag={handleScrollbarDrag}
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.9 }}
+        />
+        {turns.map((turn, index) => (
+          <div
+            key={turn}
+            className="absolute w-full h-1 bg-blue-500 cursor-pointer"
+            style={{ top: `${(index / (turns.length - 1)) * 100}%` }}
+            onClick={() => scrollToTurn(index)}
+          />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 const HomePage = () => {
@@ -110,19 +183,6 @@ const HomePage = () => {
     loadAllTurnData();
   }, []);
 
-// Function to handle turn click from scrollbar
-const handleTurnClick = (turnNumber: number) => {
-  setCurrentTurn(turnNumber); // Set the turn and scroll to the content
-};
-
-// Function to handle turn input change
-const handleTurnInputChange = (turnNumber: number) => {
-  if (turnNumber >= 1 && turnNumber <= turnsData.length) {
-    setCurrentTurn(turnNumber); // Set the turn based on input
-  }
-};
-
-
   // UI Handlers
   const handleExpandClick = () => {
     setTranscriptExpanded((prevState) => !prevState);
@@ -173,7 +233,6 @@ const handleTurnInputChange = (turnNumber: number) => {
   const additionalSpeakers = allSpeakers.filter(
     (speaker) => speaker !== speakerName && speaker !== nextSpeaker
   );
-
 
   // Audio Handlers
   const loadTurnContent = async (turnNumber: number) => {
@@ -487,374 +546,364 @@ const handleTurnInputChange = (turnNumber: number) => {
   return (
     <div className="min-h-screen bg-cover bg-center backdrop-blur-[50px]">
       <div className="light absolute z-50 inset-0 h-[80px] w-full"></div>
-
       <div className="overlay bg-opacity-20 absolute z-0 inset-0 backdrop-blur-[200px] opacity-100"></div>
 
-      <div
-        className={`mainbody px-[10px] lg:px[20px] xl:px-[10vw] h-screen w-full pt-[90px] pb-[82px] bg-none overflow-y-auto scroll-smooth`}
-      >
-        <div className="feed w-full h-fit z-40 items-center justify-center flex">
-          <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
-          <div className="box">
-                    <Image
-                    src={"/logo.svg"}
-                    alt="next"
-                    height={60}
-                    width={110}
-                  /></div>
-            <div className="box bg-[url('/bg/total.webp')] bg-cover bg-center gap-[15px] md:gap-[25px] flex-col p-[10px] py-[20px]  md:px-[20px] !justify-start rounded-[20px] min-h-fit h-full">
-              <div className="box flex-col gap-[24px]">
-                <div className="">
-                  <div className="text-4xl md:text-6xl text-white text-center">
-                    presidential debate
+      <CustomScrollbar turns={turnsData.map(turn => turn.turn)}>
+        <div className="mainbody px-[10px] lg:px[20px] xl:px-[10vw] h-screen w-full pt-[90px] pb-[82px] bg-none">
+          <div className="feed w-full h-fit z-40 items-center justify-center flex">
+            <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
+              <div className="box">
+                <Image
+                  src={"/logo.svg"}
+                  alt="next"
+                  height={60}
+                  width={110}
+                />
+              </div>
+              <div className="box bg-[url('/bg/total.webp')] bg-cover bg-center gap-[15px] md:gap-[25px] flex-col p-[10px] py-[20px]  md:px-[20px] !justify-start rounded-[20px] min-h-fit h-full">
+                <div className="box flex-col gap-[24px]">
+                  <div className="">
+                    <div className="text-4xl md:text-6xl text-white text-center">
+                      presidential debate
+                    </div>
+                    <div className="text-5xl md:text-7xl text-center text-white">2024</div>
                   </div>
-                  <div className="text-5xl md:text-7xl text-center text-white">2024</div>
-                </div>
 
-                <div className="candidates max-w-[1000px] pb-3 gap-[0px] mt-[40px] md:gap-[20px] !items-center flex flex-col xl:flex-row justify-between w-full">
-                  <div className="kamala">
-                    <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black winner h-fit">
+                  <div className="candidates max-w-[1000px] pb-3 gap-[0px] mt-[40px] md:gap-[20px] !items-center flex flex-col xl:flex-row justify-between w-full">
+                    <div className="kamala">
+                      <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black winner h-fit">
+                        <Image
+                          src={getSpeakerImage("Kamala Harris")}
+                          alt="Speaker Image"
+                          width={180}
+                          height={41}
+                          className="block mx-auto w-[132.5px] md:w-[180px]"
+                        />
+                      </div>
+                      <div className="text-center text-base md:text-lg poppins pt-1.5 text-white">
+                        Kamala Harris
+                      </div>
+                    </div>
+                    
+                    <div className="flex box !justify-between max-w-[300px] md:max-w-[450px] py-8 xl:py-0">
+                      <div className="score1 poppins text-4xl md:text-6xl text-white">1000</div>
+
                       <Image
-                        src={getSpeakerImage("Kamala Harris")}
-                        alt="Speaker Image"
-                        width={180}
-                        height={41}
-                        className="block mx-auto w-[132.5px] md:w-[180px]"
+                        src={"icons/vote-icon.svg"}
+                        alt="next"
+                        height={60}
+                        width={90}
                       />
+
+                      <div className="score2 poppins text-4xl md:text-6xl text-white">1000</div>
                     </div>
-                    <div className="text-center text-base md:text-lg poppins pt-1.5 text-white">
-                      Kamala Harris
-                    </div>
-                  </div>
-                  
-                  <div className="flex box !justify-between max-w-[300px] md:max-w-[450px] py-8 xl:py-0">
-                    <div className="score1 poppins text-4xl md:text-6xl text-white">1000</div>
 
-                  <Image
-                    src={"icons/vote-icon.svg"}
-                    alt="next"
-                    height={60}
-                    width={90}
-                  />
-
-                  <div className="score2 poppins text-4xl md:text-6xl text-white">1000</div>
-
-
-                  </div>
-
-                  <div className="trump">
-                    <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black">
-                      <Image
-                        src={getSpeakerImage("Donald Trump")}
-                        alt="Speaker Image"
-                        width={180}
-                        height={41}
-                        className="block flex-shrink-0 mx-auto w-[132.5px] md:w-[180px]"
-                      />
-                    </div>
-                    <div className="text-center text-base md:text-lg poppins pt-1.5 text-white">
-                      Donald Trump
+                    <div className="trump">
+                      <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black">
+                        <Image
+                          src={getSpeakerImage("Donald Trump")}
+                          alt="Speaker Image"
+                          width={180}
+                          height={41}
+                          className="block flex-shrink-0 mx-auto w-[132.5px] md:w-[180px]"
+                        />
+                      </div>
+                      <div className="text-center text-base md:text-lg poppins pt-1.5 text-white">
+                        Donald Trump
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            {turnsData && turnsData.length > 0 ? (
-              turnsData
-                .filter((turn) => turn.turn >= 11)
-                .map((turn: TurnData, index: number) => {
-                  const turnCategory = turn.role || "segment";
+              {turnsData && turnsData.length > 0 ? (
+                turnsData
+                  .filter((turn) => turn.turn >= 11)
+                  .map((turn: TurnData, index: number) => {
+                    const turnCategory = turn.role || "segment";
 
-                  return (
-                    <FeedItem
-                      key={index}
-                      speaker={turn.speaker}
-                      role={turn.role}
-                      topic={turn.sentences?.[0]?.Headline?.[0] || "No Topic"}
-                      turn_number={turn.turn}
-                      turn_category={turnCategory}
-                      title={turnCategory}
-                      ethosScore={0}
-                      pathosScore={0}
-                      logosScore={0}
-                      isPlaying={currentPlayingTurn === turn.turn}
-                      currentPlayingTurn={currentPlayingTurn}
-                      onPlay={handlePlay}
-                      audioRef={audioRef}
-                    />
-                  );
-                })
-            ) : (
-              <div>Loading...</div>
-            )}
+                    return (
+                      <FeedItem
+                        key={index}
+                        speaker={turn.speaker}
+                        role={turn.role}
+                        topic={turn.sentences?.[0]?.Headline?.[0] || "No Topic"}
+                        turn_number={turn.turn}
+                        turn_category={turnCategory}
+                        title={turnCategory}
+                        ethosScore={0}
+                        pathosScore={0}
+                        logosScore={0}
+                        isPlaying={currentPlayingTurn === turn.turn}
+                        currentPlayingTurn={currentPlayingTurn}
+                        onPlay={handlePlay}
+                        audioRef={audioRef}
+                      />
+                    );
+                  })
+              ) : (
+                <div>Loading...</div>
+              )}
+            </div>
           </div>
         </div>
+      </CustomScrollbar>
 
-        {/* header */}
-        <div className="header -top-1 px-[10px] xl:px-[192px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
-          <div
-            onClick={() => setTranscriptOpen(!isTranscriptOpen)}
-            className={`top-pill !flex-col cursor-pointer w-full max-w-[500px] nav-bar !blurry transition-all mt-3.5 rounded-[20px] px-[13px] py-[10px] box !justify-between ${
-              isTranscriptOpen ? "h-[45vh] !max-w-full" : "h-[60px]"
-            }`}
-          >
-            <div className="box">
-              <div className="flex flex-row justify-between items-center gap-3 w-full">
-                {/* Speaker Information */}
-                <div className="flex flex-row items-center gap-3">
-                  <div className="box current-speaker !w-[40px] !h-[40px] shadow justify-center items-center inline-flex rounded-full">
+      {/* header */}
+      <div className="header -top-1 px-[10px] xl:px-[192px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
+        <div
+          onClick={() => setTranscriptOpen(!isTranscriptOpen)}
+          className={`top-pill !flex-col cursor-pointer w-full max-w-[500px] nav-bar !blurry transition-all mt-3.5 rounded-[20px] px-[13px] py-[10px] box !justify-between ${
+            isTranscriptOpen ? "h-[45vh] !max-w-full" : "h-[60px]"
+          }`}
+        >
+          <div className="box">
+            <div className="flex flex-row justify-between items-center gap-3 w-full">
+              {/* Speaker Information */}
+              <div className="flex flex-row items-center gap-3">
+                <div className="box current-speaker !w-[40px] !h-[40px] shadow justify-center items-center inline-flex rounded-full">
+                  <Image
+                    src={getSpeakerImage(speakerName)}
+                    alt="Speaker Image"
+                    width={40}
+                    height={41}
+                    className="block mx-auto rounded-full"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <div className="current-name text-sm md:text-base">
+                    {speakerName}
+                  </div>
+                  <div className="flex gap-1">
+                    <div className="poppins text-xs md:text-sm -mt-1.5">
+                      200 pts
+                    </div>
+                    <div className="poppins text-xs md:text-sm -mt-1.5">
+                      •
+                    </div>
+                    <div className="poppins text-xs md:text-sm -mt-1.5">
+                      {turnCategory || "No Category"}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Secondary Speakers and Controls */}
+              <div className="flex flex-row items-center gap-2">
+                <div
+                  className="secondary-speaker hidden sm:flex flex-shrink-0 black-opaque rounded-full"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {nextSpeaker && (
                     <Image
-                      src={getSpeakerImage(speakerName)}
-                      alt="Speaker Image"
+                      src={
+                        nextSpeaker === "Kamala Harris"
+                          ? "/candidates/harris.webp"
+                          : nextSpeaker === "Donald Trump"
+                          ? "/candidates/trump.webp"
+                          : nextSpeaker === "David Muir"
+                          ? "/candidates/muir.webp"
+                          : nextSpeaker === "Linsey Davis"
+                          ? "/candidates/davis.webp"
+                          : "/candidates/default.webp"
+                      }
+                      alt={nextSpeaker}
                       width={40}
-                      height={41}
+                      height={40}
                       className="block mx-auto rounded-full"
                     />
-                  </div>
-                  <div className="flex flex-col">
-                    <div className="current-name text-sm md:text-base">
-                      {speakerName}
-                    </div>
-                    <div className="flex gap-1">
-                      <div className="poppins text-xs md:text-sm -mt-1.5">
-                        200 pts
-                      </div>
-                      <div className="poppins text-xs md:text-sm -mt-1.5">
-                        •
-                      </div>
-                      <div className="poppins text-xs md:text-sm -mt-1.5">
-                        {turnCategory || "No Category"}
-                      </div>
-                    </div>
-                  </div>
+                  )}
                 </div>
-
-                {/* Secondary Speakers and Controls */}
-                <div className="flex flex-row items-center gap-2">
+                <div
+                  className="secondary-speaker relative"
+                  onMouseEnter={() => setShowAdditionalSpeakers(true)}
+                  onMouseLeave={() => setShowAdditionalSpeakers(false)}
+                >
+                  {/* +2 Circle - Changes to an Arrow on Hover */}
                   <div
-                    className="secondary-speaker hidden sm:flex flex-shrink-0 black-opaque rounded-full"
-                    onClick={(e) => e.stopPropagation()}
+                    className={`w-[40px] h-[40px] flex-shrink-0 hidden sm:flex black-opaque rounded-full justify-center items-center text-base transition-transform duration-200 ease-in-out ${
+                      showAdditionalSpeakers ? 'transform rotate-45' : ''
+                    }`}
                   >
-                    {nextSpeaker && (
-                      <Image
-                        src={
-                          nextSpeaker === "Kamala Harris"
-                            ? "/candidates/harris.webp"
-                            : nextSpeaker === "Donald Trump"
-                            ? "/candidates/trump.webp"
-                            : nextSpeaker === "David Muir"
-                            ? "/candidates/muir.webp"
-                            : nextSpeaker === "Linsey Davis"
-                            ? "/candidates/davis.webp"
-                            : "/candidates/default.webp"
-                        }
-                        alt={nextSpeaker}
-                        width={40}
-                        height={40}
-                        className="block mx-auto rounded-full"
-                      />
+                    {showAdditionalSpeakers ? (
+                      <span className="font-bold text-lg transform transition-transform duration-200 ease-in-out">
+                        ↑
+                      </span>
+                    ) : (
+                      <span className="font-bold text-lg">+2</span>
                     )}
                   </div>
-                  <div
-  className="secondary-speaker relative"
-  onMouseEnter={() => setShowAdditionalSpeakers(true)}
-  onMouseLeave={() => setShowAdditionalSpeakers(false)}
->
-  {/* +2 Circle - Changes to an Arrow on Hover */}
-  <div
-    className={`w-[40px] h-[40px] flex-shrink-0 hidden sm:flex black-opaque rounded-full justify-center items-center text-base transition-transform duration-200 ease-in-out ${
-      showAdditionalSpeakers ? 'transform rotate-45' : ''
-    }`}
-  >
-    {showAdditionalSpeakers ? (
-      <span className="font-bold text-lg transform transition-transform duration-200 ease-in-out">
-        ↑
-      </span>
-    ) : (
-      <span className="font-bold text-lg">+2</span>
-    )}
-  </div>
 
-  {/* Hidden Container for Additional Speakers with Snappy Animation */}
-  <div
-    className={`absolute top-[45px] -left-1 flex flex-col gap-[5px] black-opaque rounded-full p-[4px] transition-all duration-200 ease-out z-50 ${
-      showAdditionalSpeakers ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-[-10px] scale-75 opacity-0 pointer-events-none'
-    }`}
-  >
-    {speakerName !== 'Kamala Harris' && nextSpeaker !== 'Kamala Harris' && (
-      <div className="flex-shrink-0 w-[40px] h-[40px] black-opaque rounded-full justify-center items-center">
-        <Image
-          src="/candidates/harris.webp"
-          alt="Kamala Harris"
-          width={40}
-          height={40}
-          className="block mx-auto rounded-full"
-        />
-      </div>
-    )}
-    {speakerName !== 'Donald Trump' && nextSpeaker !== 'Donald Trump' && (
-      <div className="flex-shrink-0 w-[40px] h-[40px] black-opaque rounded-full justify-center items-center">
-        <Image
-          src="/candidates/trump.webp"
-          alt="Donald Trump"
-          width={40}
-          height={40}
-          className="block mx-auto rounded-full"
-        />
-      </div>
-    )}
-    {speakerName !== 'David Muir' && nextSpeaker !== 'David Muir' && (
-      <div className="flex-shrink-0 w-[40px] h-[40px] black-opaque rounded-full justify-center items-center">
-        <Image
-          src="/candidates/muir.webp"
-          alt="David Muir"
-          width={40}
-          height={40}
-          className="block mx-auto rounded-full"
-        />
-      </div>
-    )}
-    {speakerName !== 'Linsey Davis' && nextSpeaker !== 'Linsey Davis' && (
-      <div className="flex-shrink-0 w-[40px] h-[40px] black-opaque rounded-full justify-center items-center">
-        <Image
-          src="/candidates/davis.webp"
-          alt="Linsey Davis"
-          width={40}
-          height={40}
-          className="block mx-auto rounded-full"
-        />
-      </div>
-    )}
-  </div>
-</div>
-                  <audio ref={audioRef} />
-                  <div className="flex gap-4">
-                    <button
-                      className=""
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleBackTurn();
-                      }}
-                    >
-                      <div className="next-turn invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90 box">
+                  {/* Hidden Container for Additional Speakers with Snappy Animation */}
+                  <div
+                    className={`absolute top-[45px] -left-1 flex flex-col gap-[5px] black-opaque rounded-full p-[4px] transition-all duration-200 ease-out z-50 ${
+                      showAdditionalSpeakers ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-[-10px] scale-75 opacity-0 pointer-events-none'
+                    }`}
+                  >
+                    {speakerName !== 'Kamala Harris' && nextSpeaker !== 'Kamala Harris' && (
+                      <div className="flex-shrink-0 w-[40px] h-[40px] black-opaque rounded-full justify-center items-center">
                         <Image
-                          src={"icons/back-icon.svg"}
-                          alt="next"
-                          height={30}
-                          width={32}
-                        />
-                      </div>
-                    </button>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation(); // Prevent event from bubbling up
-                        handlePlayPauseClick(); // Call play/pause handler
-                      }}
-                    >
-                      <div className="play invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
-                        <Image
-                          src={
-                            isPlaying
-                              ? "icons/pause-icon.svg"
-                              : "icons/play-icon.svg"
-                          }
-                          alt={isPlaying ? "pause" : "play"}
-                          height={40}
+                          src="/candidates/harris.webp"
+                          alt="Kamala Harris"
                           width={40}
+                          height={40}
+                          className="block mx-auto rounded-full"
                         />
                       </div>
-                    </button>
-                    <button
-                      className=""
-                      onClick={(e) => {
-                        e.stopPropagation(); // Prevent event from bubbling up
-                        handleNextTurn();
-                      }}
-                    >
-                      <div className="next-turn box invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
+                    )}
+                    {speakerName !== 'Donald Trump' && nextSpeaker !== 'Donald Trump' && (
+                      <div className="flex-shrink-0 w-[40px] h-[40px] black-opaque rounded-full justify-center items-center">
                         <Image
-                          src={"icons/next-icon.svg"}
-                          alt="next"
-                          height={35}
-                          width={32}
+                          src="/candidates/trump.webp"
+                          alt="Donald Trump"
+                          width={40}
+                          height={40}
+                          className="block mx-auto rounded-full"
                         />
                       </div>
-                    </button>
+                    )}
+                    {speakerName !== 'David Muir' && nextSpeaker !== 'David Muir' && (
+                      <div className="flex-shrink-0 w-[40px] h-[40px] black-opaque rounded-full justify-center items-center">
+                        <Image
+                          src="/candidates/muir.webp"
+                          alt="David Muir"
+                          width={40}
+                          height={40}
+                          className="block mx-auto rounded-full"
+                        />
+                      </div>
+                    )}
+                    {speakerName !== 'Linsey Davis' && nextSpeaker !== 'Linsey Davis' && (
+                      <div className="flex-shrink-0 w-[40px] h-[40px] black-opaque rounded-full justify-center items-center">
+                        <Image
+                          src="/candidates/davis.webp"
+                          alt="Linsey Davis"
+                          width={40}
+                          height={40}
+                          className="block mx-auto rounded-full"
+                        />
+                      </div>
+                    )}
                   </div>
+                </div>
+                <audio ref={audioRef} />
+                <div className="flex gap-4">
+                  <button
+                    className=""
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleBackTurn();
+                    }}
+                  >
+                    <div className="next-turn invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90 box">
+                      <Image
+                        src={"icons/back-icon.svg"}
+                        alt="next"
+                        height={30}
+                        width={32}
+                      />
+                    </div>
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePlayPauseClick();
+                    }}
+                  >
+                    <div className="play invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
+                      <Image
+                        src={
+                          isPlaying
+                            ? "icons/pause-icon.svg"
+                            : "icons/play-icon.svg"
+                        }
+                        alt={isPlaying ? "pause" : "play"}
+                        height={40}
+                        width={40}
+                      />
+                    </div>
+                  </button>
+                  <button
+                    className=""
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNextTurn();
+                    }}
+                  >
+                    <div className="next-turn box invert text-white transition-all flex-shrink-0 w-[40px] h-[40px] opacity-90">
+                      <Image
+                        src={"icons/next-icon.svg"}
+                        alt="next"
+                        height={35}
+                        width={32}
+                      />
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
-            {/* Transcript Section */}
-            {isTranscriptOpen && (
-              <div className="transcript-content custom-scrollbar h-full w-full rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col mt-3 overflow-y-auto">
-                <div className="flex flex-row justify-end w-full"></div>
-                <div className="flex flex-col">
-                  {sentencesData.map((sentence, sentenceIndex) => {
-                    // Determine the style for each sentence based on its playback state
-                    let sentenceStyle = "text-gray-600 opacity-50"; // Default: Not yet played
-
-                    if (sentenceIndex < currentSentenceIndex) {
-                      sentenceStyle = "text-gray-500"; // Played sentences
-                    } else if (sentenceIndex === currentSentenceIndex) {
-                      sentenceStyle = "text-white"; // Currently playing sentence
-                    }
-                    return (
-                      <div className="" key={sentenceIndex}>
-                        <div
-                          ref={
-                            sentenceIndex === currentSentenceIndex
-                              ? (el) => {
-                                  if (el) {
-                                    el.scrollIntoView({
-                                      behavior: "smooth",
-                                      block: "nearest",
-                                    });
-                                  }
-                                }
-                              : null
-                          }
-                          className={`${sentenceStyle} text-left !text-xl md:!text-2xl w-full lg:w-3/4 px-3 pb-2 mx-auto`}
-                          onClick={(event) => event.stopPropagation()}
-                        >
-                          {wordData
-                            .filter(
-                              (word) =>
-                                word.start >= sentence.start &&
-                                word.end <= sentence.end
-                            )
-                            .map((word, wordIndex) => (
-                              <span
-                                key={`${sentenceIndex}-${wordIndex}`}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handleWordClick(word.start);
-                                }}
-                                className="cursor-pointer hover:underline"
-                              >
-                                {word.punctuated_word + " "}
-                              </span>
-                            ))}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
           </div>
-        </div>
+          {/* Transcript Section */}
+          {isTranscriptOpen && (
+            <div className="transcript-content custom-scrollbar h-full w-full rounded-[20px] black-opaque px-[15px] pt-[15px] pb-[10px] flex flex-col mt-3 overflow-y-auto">
+              <div className="flex flex-row justify-end w-full"></div>
+              <div className="flex flex-col">
+                {sentencesData.map((sentence, sentenceIndex) => {
+                  let sentenceStyle = "text-gray-600 opacity-50";
 
-        <div className="navbar fixed bottom-0 sm:bottom-2.5 w-full sm:max-w-[500px] z-40 px-[0px] sm:px-[20px]">
-          <NavBar onSearchClick={toggleSearchTab} />
+                  if (sentenceIndex < currentSentenceIndex) {
+                    sentenceStyle = "text-gray-500";
+                  } else if (sentenceIndex === currentSentenceIndex) {
+                    sentenceStyle = "text-white";
+                  }
+                  return (
+                    <div className="" key={sentenceIndex}>
+                      <div
+                        ref={
+                          sentenceIndex === currentSentenceIndex
+                            ? (el) => {
+                                if (el) {
+                                  el.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "nearest",
+                                  });
+                                }
+                              }
+                            : null
+                        }
+                        className={`${sentenceStyle} text-left !text-xl md:!text-2xl w-full lg:w-3/4 px-3 pb-2 mx-auto`}
+                        onClick={(event) => event.stopPropagation()}
+                      >
+                        {wordData
+                          .filter(
+                            (word) =>
+                              word.start >= sentence.start &&
+                              word.end <= sentence.end
+                          )
+                          .map((word, wordIndex) => (
+                            <span
+                              key={`${sentenceIndex}-${wordIndex}`}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleWordClick(word.start);
+                              }}
+                              className="cursor-pointer hover:underline"
+                            >
+                              {word.punctuated_word + " "}
+                            </span>
+                          ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
-      <CustomScrollBar
-      turnsData={turnsData}
-      currentTurn={currentTurn}
-      onTurnClick={handleTurnClick}
-      onInputChange={handleTurnInputChange}
-    />
 
+      <div className="navbar fixed bottom-0 sm:bottom-2.5 w-full sm:max-w-[500px] z-40 px-[0px] sm:px-[20px]">
+        <NavBar onSearchClick={toggleSearchTab} />
+      </div>
     </div>
   );
 };
