@@ -577,7 +577,7 @@ const HomePage = () => {
         </div>
 
         {/* header */}
-        <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
+        <div className="header -top-1 px-[10px] xl:px-[192px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
           <div
             onClick={() => setTranscriptOpen(!isTranscriptOpen)}
             className={`top-pill !flex-col cursor-pointer w-full max-w-[500px] nav-bar !blurry transition-all mt-3.5 rounded-[20px] px-[13px] py-[10px] box !justify-between ${
