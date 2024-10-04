@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useRef, useEffect, useState } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 
@@ -9,7 +11,6 @@ interface CustomScrollbarProps {
 export default function CustomScrollbar({ children, turns }: CustomScrollbarProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [scrollPercentage, setScrollPercentage] = useState(0)
-  const [isDragging, setIsDragging] = useState(false)
   const controls = useAnimation()
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function CustomScrollbar({ children, turns }: CustomScrollbarProp
     return () => scrollContainerRef.current?.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleScrollbarDrag = (event: React.MouseEvent<HTMLDivElement>, info: { offset: { y: number } }) => {
+  const handleScrollbarDrag = (event: MouseEvent | TouchEvent | PointerEvent, info: { offset: { y: number } }) => {
     if (scrollContainerRef.current) {
       const { scrollHeight, clientHeight } = scrollContainerRef.current
       const scrollableHeight = scrollHeight - clientHeight
@@ -53,29 +54,34 @@ export default function CustomScrollbar({ children, turns }: CustomScrollbarProp
       >
         {children}
       </div>
-      <div className="absolute top-0 right-0 h-full w-2 bg-gray-200 rounded">
-        <motion.div
-          className="w-full bg-gray-400 rounded cursor-pointer"
-          style={{ height: `${100 / turns.length}%` }}
-          animate={controls}
-          drag="y"
-          dragConstraints={{ top: 0, bottom: 0 }}
-          dragElastic={0}
-          dragMomentum={false}
-          onDrag={handleScrollbarDrag}
-          onDragStart={() => setIsDragging(true)}
-          onDragEnd={() => setIsDragging(false)}
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
-        />
-        {turns.map((turn, index) => (
-          <div
-            key={turn}
-            className="absolute w-full h-1 bg-blue-500 cursor-pointer"
-            style={{ top: `${(index / (turns.length - 1)) * 100}%` }}
-            onClick={() => scrollToTurn(index)}
+      <div className="absolute top-0 right-0 h-full w-12 bg-gray-200 rounded-r-lg z-50">
+        <div className="relative h-full">
+          <motion.div
+            className="absolute w-8 h-8 bg-blue-500 rounded-full cursor-pointer left-1/2 transform -translate-x-1/2 shadow-lg z-50"
+            style={{ top: `${scrollPercentage}%` }}
+            animate={controls}
+            drag="y"
+            dragConstraints={{ top: 0, bottom: 0 }}
+            dragElastic={0}
+            dragMomentum={false}
+            onDrag={handleScrollbarDrag}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
           />
-        ))}
+          {turns.map((turn, index) => (
+            <div
+              key={turn}
+              className="absolute w-full flex items-center justify-start cursor-pointer"
+              style={{ top: `${(index / (turns.length - 1)) * 100}%` }}
+              onClick={() => scrollToTurn(index)}
+            >
+              <div className="w-2 h-2 bg-blue-500 rounded-full mr-1" />
+              {turn % 2 === 0 && (
+                <span className="text-xs font-semibold text-blue-500">Q{turn / 2}</span>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

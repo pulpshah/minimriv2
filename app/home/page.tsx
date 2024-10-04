@@ -155,7 +155,7 @@ const HomePage = () => {
         };
 
         // Update state variables
-        setCurrentTurn(comprehensiveTurnData.turn);
+        setCurrentTurn(comprehensiveTurnData.turn);cus
         setSpeakerName(comprehensiveTurnData.speaker);
         setSpeakerRole(comprehensiveTurnData.role);
         setHeadline(comprehensiveTurnData.headline);
@@ -900,10 +900,10 @@ const HomePage = () => {
           )}
         </div>
       </div>
+      <div className="navbar fixed bottom-0 sm:bottom-2.5 w-full flex justify-center z-40 px-[0px] sm:px-[20px]">
+  <NavBar onSearchClick={toggleSearchTab} />
+</div>
 
-      <div className="navbar fixed bottom-0 sm:bottom-2.5 w-full sm:max-w-[500px] z-40 px-[0px] sm:px-[20px]">
-        <NavBar onSearchClick={toggleSearchTab} />
-      </div>
     </div>
   );
 };
