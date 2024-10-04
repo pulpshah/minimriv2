@@ -90,5 +90,6 @@ export default function CustomScrollbar({ children, turns }: CustomScrollbarProp
         </div>
       </div>
     </div>
+    </div>
   )
 }
