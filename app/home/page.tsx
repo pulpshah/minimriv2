@@ -44,7 +44,7 @@ const HomePage = () => {
   const [sentencesData, setSentencesData] = useState<any[]>([]);
   const [turnCategory, setTurnCategory] = useState<string | null>(null);
   const [highlightedWordIndex, setHighlightedWordIndex] = useState<
-  number | null
+    number | null
   >(null);
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState<number>(0);
   const [isSearchBarExpanded, setSearchBarExpanded] = useState(false);
@@ -53,11 +53,11 @@ const HomePage = () => {
   const [headline, setHeadline] = useState<string>("");
   const [rawTotalScore, setRawTotalScore] = useState<number>(0);
   const [turnsData, setTurnsData] = useState<TurnData[]>([]);
-  const nextTurn = turnsData.find(turn => turn.turn === currentTurn + 1);
+  const nextTurn = turnsData.find((turn) => turn.turn === currentTurn + 1);
   const nextSpeaker = nextTurn ? nextTurn.speaker : null;
-  
+
   const audioRef = useRef<HTMLAudioElement>(null);
-  
+
   const loadData = async (turnNumber: number) => {
     try {
       const jsonResponse = await fetch("/data/AnnotatedTranscript.json");
@@ -157,7 +157,9 @@ const HomePage = () => {
   // Audio Handlers
   const loadTurnContent = async (turnNumber: number) => {
     try {
-      const jsonUrl = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber - 10}.json`;
+      const jsonUrl = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${
+        turnNumber - 10
+      }.json`;
 
       const response = await fetch(jsonUrl);
 
@@ -191,7 +193,9 @@ const HomePage = () => {
 
     // Always set audio source even if JSON is missing
     if (audioRef.current) {
-      audioRef.current.src = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber - 10}.wav`;
+      audioRef.current.src = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${
+        turnNumber - 10
+      }.wav`;
       setIsPlaying(false); // Stop any previous audio
     }
   };
@@ -247,7 +251,9 @@ const HomePage = () => {
         setIsPlaying(true);
 
         // Set the new audio source using the S3 URL
-        const audioFile = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${turnNumber - 10}.wav`;
+        const audioFile = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${
+          turnNumber - 10
+        }.wav`;
         audioRef.current.src = audioFile;
 
         // Play the audio once it can play
@@ -467,6 +473,49 @@ const HomePage = () => {
       >
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
+            <div className="box bg-[url('/bg/starting.webp')] bg-cover bg-center gap-[15px] md:gap-[25px] flex-col p-[10px] md:px-[20px] !justify-start rounded-[20px] min-h-fit h-full">
+            
+              <div className="candidates  flex flex-col md:flex-row justify-between w-full">
+                
+                <div className="kamala">
+                  <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black h-fit">
+                    <Image
+                      src={getSpeakerImage("Kamala Harris")}
+                      alt="Speaker Image"
+                      width={180}
+                      height={41}
+                      className="block mx-auto"
+                    />
+                  </div>
+                  <div className="text-center text-base md:text-lg poppins pt-1.5">
+                    Kamala Harris
+                  </div>
+                </div>
+                
+                <div className="text-2xl text-center ">
+                presidental debate
+                </div>
+      
+
+                <div className="trump">
+                  <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black">
+                    <Image
+                      src={getSpeakerImage("Donald Trump")}
+                      alt="Speaker Image"
+                      width={180}
+                      height={41}
+                      className="block mx-auto"
+                    />
+                  </div>
+                  <div className="text-center text-base md:text-lg poppins pt-1.5">
+                    Donald Trump
+                  </div>
+                </div>
+
+                
+
+              </div>
+            </div>
             {turnsData && turnsData.length > 0 ? (
               turnsData
                 .filter((turn) => turn.turn >= 11)
@@ -510,10 +559,7 @@ const HomePage = () => {
               <div className="flex flex-row justify-between items-center gap-3 w-full">
                 {/* Speaker Information */}
                 <div className="flex flex-row items-center gap-3">
-                  <div
-                    className="box current-speaker !w-[40px] !h-[40px] shadow justify-center items-center inline-flex rounded-full"
-          
-                  >
+                  <div className="box current-speaker !w-[40px] !h-[40px] shadow justify-center items-center inline-flex rounded-full">
                     <Image
                       src={getSpeakerImage(speakerName)}
                       alt="Speaker Image"
@@ -542,28 +588,30 @@ const HomePage = () => {
 
                 {/* Secondary Speakers and Controls */}
                 <div className="flex flex-row items-center gap-2">
-                <div className="secondary-speaker hidden sm:flex flex-shrink-0 black-opaque rounded-full"
-    onClick={(e) => e.stopPropagation()}>
-  {nextSpeaker && (
-    <Image
-      src={
-        nextSpeaker === "Kamala Harris"
-          ? "/candidates/harris.webp"
-          : nextSpeaker === "Donald Trump"
-          ? "/candidates/trump.webp"
-          : nextSpeaker === "David Muir"
-          ? "/candidates/muir.webp"
-          : nextSpeaker === "Linsey Davis"
-          ? "/candidates/davis.webp"
-          : "/candidates/default.webp"
-      }
-      alt={nextSpeaker}
-      width={40}
-      height={40}
-      className="block mx-auto rounded-full"
-    />
-  )}
-</div>
+                  <div
+                    className="secondary-speaker hidden sm:flex flex-shrink-0 black-opaque rounded-full"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {nextSpeaker && (
+                      <Image
+                        src={
+                          nextSpeaker === "Kamala Harris"
+                            ? "/candidates/harris.webp"
+                            : nextSpeaker === "Donald Trump"
+                            ? "/candidates/trump.webp"
+                            : nextSpeaker === "David Muir"
+                            ? "/candidates/muir.webp"
+                            : nextSpeaker === "Linsey Davis"
+                            ? "/candidates/davis.webp"
+                            : "/candidates/default.webp"
+                        }
+                        alt={nextSpeaker}
+                        width={40}
+                        height={40}
+                        className="block mx-auto rounded-full"
+                      />
+                    )}
+                  </div>
                   <div className="secondary-speaker">
                     <div className="w-[40px] h-[40px] flex-shrink-0 hidden sm:flex black-opaque rounded-full justify-center items-center text-base">
                       +2
@@ -689,8 +737,6 @@ const HomePage = () => {
         <div className="navbar fixed bottom-0 sm:bottom-2.5 w-full sm:max-w-[500px] z-40 px-[0px] sm:px-[20px]">
           <NavBar onSearchClick={toggleSearchTab} />
         </div>
-
-        
       </div>
     </div>
   );
