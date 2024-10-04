@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { RadarChart } from "../ChartData";
 import { StyleChart } from "../Chart/Style.jsx";
 import StyleData from "@/public/data/Style.json"
@@ -19,21 +19,21 @@ type StyleSubcategory = {
 };
 
 type StyleCategory = {
-  Tone: StyleSubcategory;
-  Humor: StyleSubcategory;
-  Callbacks: StyleSubcategory;
-  Imagery: StyleSubcategory;
-  Symbolism: StyleSubcategory;
-  Metaphors: StyleSubcategory;
-  Analogies: StyleSubcategory;
-  Repetition: StyleSubcategory;
-  Emphasis: StyleSubcategory;
-  Alliteration: StyleSubcategory;
+  Tone?: StyleSubcategory;
+  Humor?: StyleSubcategory;
+  Callbacks?: StyleSubcategory;
+  Imagery?: StyleSubcategory;
+  Symbolism?: StyleSubcategory;
+  Metaphors?: StyleSubcategory;
+  Analogies?: StyleSubcategory;
+  Repetition?: StyleSubcategory;
+  Emphasis?: StyleSubcategory;
+  Alliteration?: StyleSubcategory;
 };
 
 interface Sentence {
   SentenceNum: number;
-  Style: StyleCategory;
+  Style: StyleCategory | StyleCategory[]; // Update to reflect that Style can be either an object or an array
 }
 
 interface Turn {
@@ -51,10 +51,15 @@ const Style: React.FC<AnalysisProps> = ({
   const [activeTab, setActiveTab] = useState<string>("toneAndDemeanor");
 
   // Access the correct turn data from the StyleData array using turnNumber
-  const turnData = StyleData[turnNumber - 1]; // Access turn directly by index
+  const turnData = StyleData[turnNumber - 1]; // Adjust for 0-based indexing
 
-  // Helper function to get the highest reasoning for Tone & Demeanor
-  const getHighestToneReasoning = () => {
+  // Helper function to get the correct Style object
+  const getStyleObject = (style: StyleCategory | StyleCategory[]): StyleCategory => {
+    return Array.isArray(style) ? style[0] : style;
+  };
+
+  // Memoized function to compute the highest tone reasoning
+  const highestToneReasoning = useMemo(() => {
     if (!turnData || !turnData.Sentence) {
       return "No reasoning available for Tone & Demeanor.";
     }
@@ -63,7 +68,9 @@ const Style: React.FC<AnalysisProps> = ({
     let highestReasoning = "No reasoning available for Tone & Demeanor.";
 
     turnData.Sentence.forEach((sentence) => {
-      const toneData = sentence.Style[0]?.Tone; // Access the first object in Style array
+      const style = getStyleObject(sentence.Style);
+      const toneData = style?.Tone;
+
       if (toneData && toneData.score > highestScore) {
         highestScore = toneData.score;
         highestReasoning = toneData.reasoning;
@@ -71,20 +78,21 @@ const Style: React.FC<AnalysisProps> = ({
     });
 
     return highestReasoning;
-  };
+  }, [turnData]);
 
-  // Helper function to get the highest reasoning for Use of Rhetorical Devices
-  const getHighestRhetoricalDevicesReasoning = () => {
+  // Memoized function to compute the highest rhetorical devices reasoning
+  const highestRhetoricalDevicesReasoning = useMemo(() => {
     if (!turnData || !turnData.Sentence) {
       return "No reasoning available for Rhetorical Devices.";
     }
 
     let highestScore = -1;
-    let reasonings: string[] = [];
+    let highestReasoning = "No reasoning available for Rhetorical Devices.";
 
     turnData.Sentence.forEach((sentence) => {
-      const categories = sentence.Style[0]; // Access the first object in Style array
-      if (categories) {
+      const style = getStyleObject(sentence.Style);
+
+      if (style) {
         const keys = [
           "Humor",
           "Callbacks",
@@ -97,28 +105,21 @@ const Style: React.FC<AnalysisProps> = ({
           "Alliteration",
         ] as (keyof StyleCategory)[];
 
-        let sentenceHighestScore = -1;
-        let sentenceHighestReasoning = "";
-
         keys.forEach((key) => {
-          const subCategoryScore = categories[key]?.score;
-          if (subCategoryScore > sentenceHighestScore) {
-            sentenceHighestScore = subCategoryScore;
-            sentenceHighestReasoning = categories[key]?.reasoning;
+          const subCategory = style[key];
+          if (subCategory && subCategory.score > highestScore) {
+            highestScore = subCategory.score;
+            highestReasoning = subCategory.reasoning;
           }
         });
-
-        if (sentenceHighestScore > highestScore) {
-          highestScore = sentenceHighestScore;
-          reasonings = [sentenceHighestReasoning];
-        } else if (sentenceHighestScore === highestScore) {
-          reasonings.push(sentenceHighestReasoning);
-        }
       }
     });
 
-    return reasonings.length > 0 ? reasonings.join(" ") : "No reasoning available for Rhetorical Devices.";
-  };
+    return highestReasoning;
+  }, [turnData]);
+
+  // Summary reasoning concatenating tone and rhetorical devices reasoning
+  const summaryReasoning = `${highestToneReasoning} ${highestRhetoricalDevicesReasoning}`.trim();
 
   return (
     <div className="analysis grid grid-cols-1 w-full h-fit gap-[25px]">
@@ -155,7 +156,7 @@ const Style: React.FC<AnalysisProps> = ({
                       Summary
                     </div>
                     <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    {summaryReasoning}
                     </div>
                   </div>
                   </div>
@@ -170,7 +171,7 @@ const Style: React.FC<AnalysisProps> = ({
                       Tone and Demeanor
                     </div>
                     <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                    {getHighestToneReasoning()}
+                    {highestToneReasoning}
                     </div>
                   </div>
                   </div>
@@ -185,7 +186,7 @@ const Style: React.FC<AnalysisProps> = ({
                       Use of Rhetorical Devices
                     </div>
                     <div className="reasoning poppins  text-sm md:text-[14px] md:text-md">
-                    {getHighestRhetoricalDevicesReasoning()}
+                    {highestRhetoricalDevicesReasoning}
                     </div>
                   </div>
                   </div>
