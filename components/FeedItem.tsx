@@ -173,7 +173,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
         <div className="w-full h-full box">
           <div className="topic-text auth-text !text-black flex flex-col md:flex-row gap-[8px]">
             <div
-              className={`w-full max-sm:text-3xl max-sm:!leading-none mx-auto ${
+              className={`w-full text-xl md:text-2xl mx-auto ${
                 isModerator ? "text-white" : ""
               }`}
             >

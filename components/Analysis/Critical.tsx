@@ -18,7 +18,7 @@ const Critical: React.FC<AnalysisProps> = ({
   isModerator,
   turnNumber,
 }) => {
-  const [activeTab, setActiveTab] = useState<string>("ethos");
+  const [activeTab, setActiveTab] = useState<string>("summary");
 
   return (
     <div className="analysis grid grid-cols-1 w-full h-fit gap-[25px]">

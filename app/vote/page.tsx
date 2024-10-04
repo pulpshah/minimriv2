@@ -59,38 +59,17 @@ const vote = () => {
   const turnsData: Array<TurnData> = JFile.analysis;
   const currentData = turnsData[currentTurn] ?? null;
   const nextData: TurnData | null = turnsData[currentTurn + 1] || null;
-  const cumulativeScoreKH = getCumulativeScoreKH();
-  const cumulativeScoreDT = getCumulativeScoreDT();
   const scoreForCurrentTurn = currentData.score;
   const nextTurnText = nextData && nextData.analysis.claims.length > 0
     ? nextData.analysis.claims[0].text
     : "No next turn text available";
 
-    useEffect(() => {
-      fetch('/api/media-items')
-        .then(response => response.json())
-        .then(data => setvoteitems(data))
-        .catch(error => console.error('Error fetching media items:', error))
-    }, [])
-
-  // Functions to calculate scores
-  function getCumulativeScoreKH() {
-    return (
-      turnsData
-        .filter((turn) => turn.speaker_name === "Kamala Harris")
-        .find((turn) => turn.turn_number === currentData.turn_number)
-        ?.cumulative_score || 0
-    );
-  }
-
-  function getCumulativeScoreDT() {
-    return (
-      turnsData
-        .filter((turn) => turn.speaker_name === "Donald Trump")
-        .find((turn) => turn.turn_number === currentData.turn_number)
-        ?.cumulative_score || 0
-    );
-  }
+    // useEffect(() => {
+    //   fetch('/api/media-items')
+    //     .then(response => response.json())
+    //     .then(data => setvoteitems(data))
+    //     .catch(error => console.error('Error fetching media items:', error))
+    // }, [])
 
   // UI Handlers
   const handleExpandClick = () => {
@@ -139,9 +118,9 @@ const vote = () => {
   };
 
   // Audio Handlers
-  const getAudioFile = (turnNumber: number) => {
-    return `/audio/turn${turnNumber}.wav`;
-  };
+  // const getAudioFile = (turnNumber: number) => {
+  //   return `/audio/turn${turnNumber}.wav`;
+  // };
 
   const handlePlayPauseClick = () => {
     if (audioRef.current) {

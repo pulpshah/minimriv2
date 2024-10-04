@@ -14,28 +14,31 @@ export default function CustomScrollbar({ children, turns }: CustomScrollbarProp
   const controls = useAnimation()
   const thumbHeight = 40; // Adjust as needed for the size of the scrollbar thumb
 
-
   useEffect(() => {
     const handleScroll = () => {
       if (scrollContainerRef.current) {
-        const { scrollTop, scrollHeight, clientHeight } = scrollContainerRef.current
-        const newScrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100
-        setScrollPercentage(newScrollPercentage)
+        const { scrollTop, scrollHeight, clientHeight } = scrollContainerRef.current;
+        const newScrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+        setScrollPercentage(newScrollPercentage);
       }
-    }
+    };
 
-    scrollContainerRef.current?.addEventListener('scroll', handleScroll)
-    return () => scrollContainerRef.current?.removeEventListener('scroll', handleScroll)
-  }, [])
+    scrollContainerRef.current?.addEventListener('scroll', handleScroll);
+    return () => scrollContainerRef.current?.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const handleScrollbarDrag = (event: MouseEvent | TouchEvent | PointerEvent, info: { offset: { y: number } }) => {
+  const handleScrollbarDrag = (_event: MouseEvent | TouchEvent | PointerEvent, info: { point: { y: number } }) => {
     if (scrollContainerRef.current) {
-      const { scrollHeight, clientHeight } = scrollContainerRef.current
-      const scrollableHeight = scrollHeight - clientHeight
-      const newScrollTop = (info.offset.y / clientHeight) * scrollableHeight
-      scrollContainerRef.current.scrollTop = newScrollTop
+      const { scrollHeight, clientHeight } = scrollContainerRef.current;
+      const scrollableHeight = scrollHeight - clientHeight;
+
+      // Calculate new scrollTop based on the drag position of the thumb
+      const newScrollTop = (info.point.y / clientHeight) * scrollableHeight;
+
+      // Set the scrollTop to the calculated value
+      scrollContainerRef.current.scrollTop = newScrollTop;
     }
-  }
+  };
 
   const scrollToTurn = (turnIndex: number) => {
     if (scrollContainerRef.current) {
@@ -58,18 +61,19 @@ export default function CustomScrollbar({ children, turns }: CustomScrollbarProp
       </div>
       <div className="absolute top-0 right-0 h-full w-12 bg-gray-200 rounded-r-lg z-50">
         <div className="relative h-full">
-          <motion.div
-            className="absolute w-8 h-8 bg-blue-500 rounded-full cursor-pointer left-1/2 transform -translate-x-1/2 shadow-lg z-50"
-            style={{ top: `${scrollPercentage}%` }}
-            animate={controls}
-            drag="y"
-            dragConstraints={{ top: 0, bottom: 0 }}
-            dragElastic={0}
-            dragMomentum={false}
-            onDrag={handleScrollbarDrag}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-          />
+        <div className="absolute top-0 right-0 h-full w-4 bg-gray-200 rounded-r-lg z-50">
+        <motion.div
+          className="w-full bg-blue-500 rounded cursor-pointer"
+          style={{ height: `${thumbHeight}px`, top: `${scrollPercentage}%`, transform: 'translateY(-50%)' }}
+          animate={controls}
+          drag="y"
+          dragConstraints={{ top: 0, bottom: scrollContainerRef.current ? scrollContainerRef.current.clientHeight - thumbHeight : 0 }}
+          dragElastic={0}
+          dragMomentum={false}
+          onDrag={handleScrollbarDrag}
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.9 }}
+        />
           {turns.map((turn, index) => (
             <div
               key={turn}
@@ -85,6 +89,7 @@ export default function CustomScrollbar({ children, turns }: CustomScrollbarProp
           ))}
         </div>
       </div>
+    </div>
     </div>
   )
 }
