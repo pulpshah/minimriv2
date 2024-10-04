@@ -4,7 +4,7 @@ import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import SearchBar from "@/components/SearchBar";
 import { NavBar } from "@/components/NavBar";
-import CustomScrollBar from "@/components/CustomerScrollBar";
+import ThinkingScores from '@/public/data/ThinkingScores.json';
 
 type TurnData = {
   turn: number;
@@ -64,23 +64,27 @@ const HomePage = () => {
     try {
       const jsonResponse = await fetch("/data/AnnotatedTranscript.json");
       const jsonData = await jsonResponse.json();
-
+  
       // Find the data for the current turn
       const turnData = jsonData.analysis.find(
         (turn: TurnData) => turn.turn === turnNumber
       );
-
+  
+      // Find the headline from ThinkingScores for the current turn
+      const thinkingScore = ThinkingScores.thinking_score.find(
+        (score) => score?.turn_index === turnNumber
+      );
+  
       if (turnData) {
         // Extract the required fields
         const comprehensiveTurnData: ComprehensiveTurnData = {
           turn: turnData.turn,
           speaker: turnData.speaker,
           role: turnData.role,
-          headline:
-            turnData.sentences[0]?.Headline[0] || "No headline available",
+          headline: thinkingScore?.headline || "No headline available",
           rawTotalScore: turnData.rawTotalScore || 0,
         };
-
+  
         // Update state variables
         setCurrentTurn(comprehensiveTurnData.turn);
         setSpeakerName(comprehensiveTurnData.speaker);
@@ -109,19 +113,6 @@ const HomePage = () => {
   useEffect(() => {
     loadAllTurnData();
   }, []);
-
-// Function to handle turn click from scrollbar
-const handleTurnClick = (turnNumber: number) => {
-  setCurrentTurn(turnNumber); // Set the turn and scroll to the content
-};
-
-// Function to handle turn input change
-const handleTurnInputChange = (turnNumber: number) => {
-  if (turnNumber >= 1 && turnNumber <= turnsData.length) {
-    setCurrentTurn(turnNumber); // Set the turn based on input
-  }
-};
-
 
   // UI Handlers
   const handleExpandClick = () => {
@@ -560,28 +551,31 @@ const handleTurnInputChange = (turnNumber: number) => {
               </div>
             </div>
             {turnsData && turnsData.length > 0 ? (
-              turnsData
-                .filter((turn) => turn.turn >= 11)
-                .map((turn: TurnData, index: number) => {
-                  const turnCategory = turn.role || "segment";
+  turnsData
+    .filter((turn) => turn.turn >= 11)
+    .map((turn: TurnData, index: number) => {
+      // Find the corresponding headline from thinkingScores.json
+      const thinkingScore = ThinkingScores.thinking_score.find(
+        (score) => score?.turn_index === turn.turn
+      );
 
-                  return (
-                    <FeedItem
-                      key={index}
-                      speaker={turn.speaker}
-                      role={turn.role}
-                      topic={turn.sentences?.[0]?.Headline?.[0] || "No Topic"}
-                      turn_number={turn.turn}
-                      turn_category={turnCategory}
-                      title={turnCategory}
-                      ethosScore={0}
-                      pathosScore={0}
-                      logosScore={0}
-                      isPlaying={currentPlayingTurn === turn.turn}
-                      currentPlayingTurn={currentPlayingTurn}
-                      onPlay={handlePlay}
-                      audioRef={audioRef}
-                    />
+      return (
+        <FeedItem
+          key={index}
+          speaker={turn.speaker}
+          role={turn.role}
+          topic={thinkingScore?.headline || "No Topic"}
+          turn_number={turn.turn}
+          turn_category={turn.role || "segment"}
+          title={turn.role || "segment"}
+          ethosScore={0}
+          pathosScore={0}
+          logosScore={0}
+          isPlaying={currentPlayingTurn === turn.turn}
+          currentPlayingTurn={currentPlayingTurn}
+          onPlay={handlePlay}
+          audioRef={audioRef}
+        />
                   );
                 })
             ) : (
@@ -591,7 +585,7 @@ const handleTurnInputChange = (turnNumber: number) => {
         </div>
 
         {/* header */}
-        <div className="header -top-1 px-[10px] xl:px-[192px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
+        <div className="header -top-1 px-[10px] md:px-[20px] z-40 pb-[15px] fixed box flex-col w-full h-fit">
           <div
             onClick={() => setTranscriptOpen(!isTranscriptOpen)}
             className={`top-pill !flex-col cursor-pointer w-full max-w-[500px] nav-bar !blurry transition-all mt-3.5 rounded-[20px] px-[13px] py-[10px] box !justify-between ${
@@ -677,8 +671,8 @@ const handleTurnInputChange = (turnNumber: number) => {
 
   {/* Hidden Container for Additional Speakers with Snappy Animation */}
   <div
-    className={`absolute top-[45px] -left-1 flex flex-col gap-[5px] black-opaque rounded-full p-[4px] transition-all duration-200 ease-out z-50 ${
-      showAdditionalSpeakers ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-[-10px] scale-75 opacity-0 pointer-events-none'
+    className={`absolute top-[45px] left-0 flex flex-col gap-2 transition-all duration-200 ease-out z-50 ${
+      showAdditionalSpeakers ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-[-10px] scale-75 opacity-0'
     }`}
   >
     {speakerName !== 'Kamala Harris' && nextSpeaker !== 'Kamala Harris' && (
@@ -848,13 +842,6 @@ const handleTurnInputChange = (turnNumber: number) => {
           <NavBar onSearchClick={toggleSearchTab} />
         </div>
       </div>
-      <CustomScrollBar
-      turnsData={turnsData}
-      currentTurn={currentTurn}
-      onTurnClick={handleTurnClick}
-      onInputChange={handleTurnInputChange}
-    />
-
     </div>
   );
 };
