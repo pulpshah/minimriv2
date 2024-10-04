@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { RadarChart } from "../ChartData";
 import { StyleChart } from "../Chart/Style.jsx";
+import StyleData from "@/public/data/Style.json"
 
 interface AnalysisProps {
   ethosScore: number;
@@ -11,6 +12,34 @@ interface AnalysisProps {
   turnNumber: number;
 }
 
+type StyleSubcategory = {
+  score: number;
+  confidence: number;
+  reasoning: string;
+};
+
+type StyleCategory = {
+  Tone: StyleSubcategory;
+  Humor: StyleSubcategory;
+  Callbacks: StyleSubcategory;
+  Imagery: StyleSubcategory;
+  Symbolism: StyleSubcategory;
+  Metaphors: StyleSubcategory;
+  Analogies: StyleSubcategory;
+  Repetition: StyleSubcategory;
+  Emphasis: StyleSubcategory;
+  Alliteration: StyleSubcategory;
+};
+
+interface Sentence {
+  SentenceNum: number;
+  Style: StyleCategory;
+}
+
+interface Turn {
+  Sentence: Sentence[];
+}
+
 const Style: React.FC<AnalysisProps> = ({
   ethosScore,
   pathosScore,
@@ -19,7 +48,77 @@ const Style: React.FC<AnalysisProps> = ({
   isModerator,
   turnNumber,
 }) => {
-  const [activeTab, setActiveTab] = useState<string>("ethos");
+  const [activeTab, setActiveTab] = useState<string>("toneAndDemeanor");
+
+  // Access the correct turn data from the StyleData array using turnNumber
+  const turnData = StyleData[turnNumber - 1]; // Access turn directly by index
+
+  // Helper function to get the highest reasoning for Tone & Demeanor
+  const getHighestToneReasoning = () => {
+    if (!turnData || !turnData.Sentence) {
+      return "No reasoning available for Tone & Demeanor.";
+    }
+
+    let highestScore = -1;
+    let highestReasoning = "No reasoning available for Tone & Demeanor.";
+
+    turnData.Sentence.forEach((sentence) => {
+      const toneData = sentence.Style[0]?.Tone; // Access the first object in Style array
+      if (toneData && toneData.score > highestScore) {
+        highestScore = toneData.score;
+        highestReasoning = toneData.reasoning;
+      }
+    });
+
+    return highestReasoning;
+  };
+
+  // Helper function to get the highest reasoning for Use of Rhetorical Devices
+  const getHighestRhetoricalDevicesReasoning = () => {
+    if (!turnData || !turnData.Sentence) {
+      return "No reasoning available for Rhetorical Devices.";
+    }
+
+    let highestScore = -1;
+    let reasonings: string[] = [];
+
+    turnData.Sentence.forEach((sentence) => {
+      const categories = sentence.Style[0]; // Access the first object in Style array
+      if (categories) {
+        const keys = [
+          "Humor",
+          "Callbacks",
+          "Imagery",
+          "Symbolism",
+          "Metaphors",
+          "Analogies",
+          "Repetition",
+          "Emphasis",
+          "Alliteration",
+        ] as (keyof StyleCategory)[];
+
+        let sentenceHighestScore = -1;
+        let sentenceHighestReasoning = "";
+
+        keys.forEach((key) => {
+          const subCategoryScore = categories[key]?.score;
+          if (subCategoryScore > sentenceHighestScore) {
+            sentenceHighestScore = subCategoryScore;
+            sentenceHighestReasoning = categories[key]?.reasoning;
+          }
+        });
+
+        if (sentenceHighestScore > highestScore) {
+          highestScore = sentenceHighestScore;
+          reasonings = [sentenceHighestReasoning];
+        } else if (sentenceHighestScore === highestScore) {
+          reasonings.push(sentenceHighestReasoning);
+        }
+      }
+    });
+
+    return reasonings.length > 0 ? reasonings.join(" ") : "No reasoning available for Rhetorical Devices.";
+  };
 
   return (
     <div className="analysis grid grid-cols-1 w-full h-fit gap-[25px]">
@@ -43,22 +142,7 @@ const Style: React.FC<AnalysisProps> = ({
         {showChart && (
           <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[20px] black-card h-fit !bg-[url('/bg/style.webp')] !bg-cover !bg-center p-[10px] py-4 md:p-[20px]">
             <div className="chart box w-full h-fit p-6 text-black scale-110 px-[10%]">
-            {activeTab === "summary" && (
-              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
-            )}
-
-            {activeTab === "ethos" && (
               <StyleChart turnNum={turnNumber} />
-            )}
-
-            {activeTab === "pathos" && (
-              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
-            )}
-
-            {activeTab === "logos" && (
-              <RadarChart ethos={ethosScore} pathos={pathosScore} logos={logosScore} />
-            )}
-
             </div>
             <div className="textual-annotation box flex flex-col gap-[20px]">
               
@@ -77,49 +161,35 @@ const Style: React.FC<AnalysisProps> = ({
                   </div>
                 </div>
               )}
-              {activeTab === "ethos" && (
-                <div className="ethos box">
+              {activeTab === "toneAndDemeanor" && (
+                <div className="toneAndDemeanor box">
 
                   <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
-                      Ethos Reasoning
+                      Tone and Demeanor
                     </div>
                     <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    {getHighestToneReasoning()}
                     </div>
                   </div>
                   </div>
                 </div>
               )}
-              {activeTab === "pathos" && (
-                <div className="pathos box">
+              {activeTab === "rhetoricalDevices" && (
+                <div className="rhetoricalDevices box">
                   
                   <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
                   <div className="reasoning w-full text-left">
                     <div className="text-lg text-center md:text-xl">
-                      Pathos Reasoning
+                      Use of Rhetorical Devices
                     </div>
                     <div className="reasoning poppins  text-sm md:text-[14px] md:text-md">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                    {getHighestRhetoricalDevicesReasoning()}
                     </div>
                   </div>
                   </div>
 
-                </div>
-              )}
-              {activeTab === "logos" && (
-                <div className="logos box">
-                  <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
-                  <div className="reasoning w-full text-left">
-                    <div className="text-lg text-center md:text-xl">
-                      Logos Reasoning
-                    </div>
-                    <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                    </div>
-                  </div>
-                  </div>
                 </div>
               )}
               <div
@@ -137,27 +207,19 @@ const Style: React.FC<AnalysisProps> = ({
           </button>
           <button
             className={`px-[10px] py-[1px] rounded-[20px] tab-btn ${
-              activeTab === "ethos" ? "active" : ""
+              activeTab === "toneAndDemeanor" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("ethos")}
+            onClick={() => setActiveTab("toneAndDemeanor")}
           >
             2
           </button>
           <button
             className={`px-[10px] py-[1px] rounded-[20px] tab-btn ${
-              activeTab === "pathos" ? "active" : ""
+              activeTab === "rhetoricalDevices" ? "active" : ""
             }`}
-            onClick={() => setActiveTab("pathos")}
+            onClick={() => setActiveTab("rhetoricalDevices")}
           >
             3
-          </button>
-          <button
-            className={` px-[10px] py-[1px] rounded-[20px] tab-btn ${
-              activeTab === "logos" ? "active" : ""
-            }`}
-            onClick={() => setActiveTab("logos")}
-          >
-            4
           </button>
         </div>
             </div>

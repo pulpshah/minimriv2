@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as Plot from '@observablehq/plot';
-import StyleData from "@/public/data/newStyle.json";
+import StyleData from "@/public/data/Style.json";
 import '@/app/globals.css';  // This is just an example, adjust the path to your styles if needed
 
 function transformData(input) {
