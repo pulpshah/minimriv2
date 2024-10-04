@@ -4,6 +4,7 @@ import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import SearchBar from "@/components/SearchBar";
 import { NavBar } from "@/components/NavBar";
+import CustomScrollBar from "@/components/CustomerScrollBar";
 
 type TurnData = {
   turn: number;
@@ -108,6 +109,19 @@ const HomePage = () => {
   useEffect(() => {
     loadAllTurnData();
   }, []);
+
+// Function to handle turn click from scrollbar
+const handleTurnClick = (turnNumber: number) => {
+  setCurrentTurn(turnNumber); // Set the turn and scroll to the content
+};
+
+// Function to handle turn input change
+const handleTurnInputChange = (turnNumber: number) => {
+  if (turnNumber >= 1 && turnNumber <= turnsData.length) {
+    setCurrentTurn(turnNumber); // Set the turn based on input
+  }
+};
+
 
   // UI Handlers
   const handleExpandClick = () => {
@@ -663,8 +677,8 @@ const HomePage = () => {
 
   {/* Hidden Container for Additional Speakers with Snappy Animation */}
   <div
-    className={`absolute top-[45px] left-0 flex flex-col gap-2 transition-all duration-200 ease-out z-50 ${
-      showAdditionalSpeakers ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-[-10px] scale-75 opacity-0'
+    className={`absolute top-[45px] -left-1 flex flex-col gap-[5px] black-opaque rounded-full p-[4px] transition-all duration-200 ease-out z-50 ${
+      showAdditionalSpeakers ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-[-10px] scale-75 opacity-0 pointer-events-none'
     }`}
   >
     {speakerName !== 'Kamala Harris' && nextSpeaker !== 'Kamala Harris' && (
@@ -834,6 +848,13 @@ const HomePage = () => {
           <NavBar onSearchClick={toggleSearchTab} />
         </div>
       </div>
+      <CustomScrollBar
+      turnsData={turnsData}
+      currentTurn={currentTurn}
+      onTurnClick={handleTurnClick}
+      onInputChange={handleTurnInputChange}
+    />
+
     </div>
   );
 };

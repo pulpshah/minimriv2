@@ -304,7 +304,7 @@ const SearchPage = () => {
       <div className="overlay bg-white bg-opacity-20 absolute z-0 inset-0 backdrop-blur-[200px] opacity-100"></div>
 
       <div
-        className={`mainbody px-[10px] md:px-[20px] h-screen w-full pt-[65px] pb-[82px] bg-none overflow-y-auto scroll-smooth 
+        className={`mainbody px-[10px] md:px-[20px] xl:px-[10vw] h-screen w-full pt-[65px] pb-[82px] bg-none overflow-y-auto scroll-smooth 
         `}
       >
         <div className="feed w-full h-fit z-40 flex-col items-center justify-center flex">
