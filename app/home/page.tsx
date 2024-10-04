@@ -474,12 +474,23 @@ const HomePage = () => {
       >
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
-            <div className="box bg-[url('/bg/starting.webp')] bg-cover bg-center gap-[15px] md:gap-[25px] flex-col p-[10px] md:px-[20px] !justify-start rounded-[20px] min-h-fit h-full">
+            <div className="box bg-[url('/bg/starting.webp')] bg-cover bg-center gap-[15px] md:gap-[25px] flex-col p-[10px] py-[20px]  md:px-[20px] !justify-start rounded-[20px] min-h-fit h-full">
+                  <div className="box flex-col gap-[24px]">
+                    <div className="">
+                    <div className="text-4xl md:text-6xl text-center">
+                     presidential debate
+
+                    </div>
+                    <div className="text-5xl md:text-7xl text-center">
+                     2024
+
+                    </div>
+                    </div>
             
-              <div className="candidates  flex flex-col md:flex-row justify-between w-full">
+              <div className="candidates gap-[20px] items-center flex flex-col md:flex-row justify-between w-full">
                 
                 <div className="kamala">
-                  <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black h-fit">
+                  <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black winner h-fit">
                     <Image
                       src={getSpeakerImage("Kamala Harris")}
                       alt="Speaker Image"
@@ -493,10 +504,16 @@ const HomePage = () => {
                   </div>
                 </div>
                 
-                <div className="text-2xl text-center ">
-                presidental debate
-                </div>
-      
+       
+                   
+
+    
+                    <Image
+                              src={"icons/vote-icon.svg"}
+                              alt="next"
+                              height={60}
+                              width={100}
+                              />
 
                 <div className="trump">
                   <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black">
@@ -506,11 +523,13 @@ const HomePage = () => {
                       width={180}
                       height={41}
                       className="block mx-auto"
-                    />
+                      />
                   </div>
                   <div className="text-center text-base md:text-lg poppins pt-1.5">
                     Donald Trump
                   </div>
+                      </div>
+            
                 </div>
 
                 
