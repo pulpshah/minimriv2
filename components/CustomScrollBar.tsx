@@ -12,6 +12,8 @@ export default function CustomScrollbar({ children, turns }: CustomScrollbarProp
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [scrollPercentage, setScrollPercentage] = useState(0)
   const controls = useAnimation()
+  const thumbHeight = 40; // Adjust as needed for the size of the scrollbar thumb
+
 
   useEffect(() => {
     const handleScroll = () => {

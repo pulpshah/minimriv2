@@ -160,7 +160,7 @@ const HomePage = () => {
         };
   
         // Update state variables
-        setCurrentTurn(comprehensiveTurnData.turn);cus
+        setCurrentTurn(comprehensiveTurnData.turn);
         setSpeakerName(comprehensiveTurnData.speaker);
         setSpeakerRole(comprehensiveTurnData.role);
         setHeadline(comprehensiveTurnData.headline);
