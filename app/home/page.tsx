@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, MouseEvent, TouchEvent, PointerEvent } from "react";
 import Image from "next/image";
 import FeedItem from "@/components/FeedItem";
 import SearchBar from "@/components/SearchBar";
 import { NavBar } from "@/components/NavBar";
-import { motion, useAnimation } from 'framer-motion';
+import ScoreBox from "@/components/ScoreBox";
+import { motion, useAnimation, PanInfo } from 'framer-motion';
 import ThinkingScores from '@/public/data/ThinkingScores.json';
 
 type TurnData = {
@@ -45,14 +46,17 @@ const CustomScrollbar = ({ children, turns }: { children: React.ReactNode; turns
     return () => scrollContainerRef.current?.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleScrollbarDrag = (event: React.MouseEvent<HTMLDivElement>, info: { offset: { y: number } }) => {
+  const handleScrollbarDrag = (
+    event: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
     if (scrollContainerRef.current) {
       const { scrollHeight, clientHeight } = scrollContainerRef.current;
       const scrollableHeight = scrollHeight - clientHeight;
-      const newScrollTop = (info.offset.y / clientHeight) * scrollableHeight;
+      const newScrollTop = (info.point.y / clientHeight) * scrollableHeight;
       scrollContainerRef.current.scrollTop = newScrollTop;
     }
-  };
+  };  
 
   const scrollToTurn = (turnIndex: number) => {
     if (scrollContainerRef.current) {
@@ -74,18 +78,18 @@ const CustomScrollbar = ({ children, turns }: { children: React.ReactNode; turns
         {children}
       </div>
       <div className="absolute top-0 right-0 h-full w-2 bg-gray-200 rounded">
-        <motion.div
-          className="w-full bg-gray-400 rounded cursor-pointer"
-          style={{ height: `${100 / turns.length}%`, top: `${scrollPercentage}%` }}
-          animate={controls}
-          drag="y"
-          dragConstraints={{ top: 0, bottom: 0 }}
-          dragElastic={0}
-          dragMomentum={false}
-          onDrag={handleScrollbarDrag}
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
-        />
+      {/* <motion.div
+        className="w-full bg-gray-400 rounded cursor-pointer"
+        style={{ height: `${100 / turns.length}%`, top: `${scrollPercentage}%` }}
+        animate={controls}
+        drag="y"
+        dragConstraints={{ top: 0, bottom: 0 }}
+        dragElastic={0}
+        dragMomentum={false}
+        onDrag={handleScrollbarDrag}
+        whileHover={{ scale: 1.2 }}
+        whileTap={{ scale: 0.9 }}
+      /> */}
         {turns.map((turn, index) => (
           <div
             key={turn}
@@ -565,61 +569,7 @@ const HomePage = () => {
                   width={110}
                 />
               </div>
-              <div className="box bg-[url('/bg/total.webp')] bg-cover bg-center gap-[15px] md:gap-[25px] flex-col p-[10px] py-[20px]  md:px-[20px] !justify-start rounded-[20px] min-h-fit h-full">
-                <div className="box flex-col gap-[24px]">
-                  <div className="">
-                    <div className="text-4xl md:text-6xl text-white text-center">
-                      presidential debate
-                    </div>
-                    <div className="text-5xl md:text-7xl text-center text-white">2024</div>
-                  </div>
-
-                  <div className="candidates max-w-[1000px] pb-3 gap-[0px] mt-[40px] md:gap-[20px] !items-center flex flex-col xl:flex-row justify-between w-full">
-                    <div className="kamala">
-                      <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black winner h-fit">
-                        <Image
-                          src={getSpeakerImage("Kamala Harris")}
-                          alt="Speaker Image"
-                          width={180}
-                          height={41}
-                          className="block mx-auto w-[132.5px] md:w-[180px]"
-                        />
-                      </div>
-                      <div className="text-center text-base md:text-lg poppins pt-1.5 text-white">
-                        Kamala Harris
-                      </div>
-                    </div>
-                    
-                    <div className="flex box !justify-between max-w-[300px] md:max-w-[450px] py-8 xl:py-0">
-                      <div className="score1 poppins text-4xl md:text-6xl text-white">1000</div>
-
-                      <Image
-                        src={"icons/vote-icon.svg"}
-                        alt="next"
-                        height={60}
-                        width={90}
-                      />
-
-                      <div className="score2 poppins text-4xl md:text-6xl text-white">1000</div>
-                    </div>
-
-                  <div className="trump">
-                    <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black">
-                      <Image
-                        src={getSpeakerImage("Donald Trump")}
-                        alt="Speaker Image"
-                        width={180}
-                        height={41}
-                        className="block flex-shrink-0 mx-auto w-[132.5px] md:w-[180px]"
-                      />
-                    </div>
-                    <div className="text-center text-base md:text-lg poppins pt-1.5 text-white">
-                      Donald Trump
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              <ScoreBox />
             {turnsData && turnsData.length > 0 ? (
   turnsData
     .filter((turn) => turn.turn >= 11)

@@ -50,6 +50,7 @@ const RelatedMedia = () => {
   const [currentSentenceIndex, setCurrentSentenceIndex] = useState<number>(0);
   const [isSearchBarExpanded, setSearchBarExpanded] = useState(false);
   const [mediaItems, setMediaItems] = useState([]);
+  const [isInboxOpen, setInboxOpen] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -57,54 +58,33 @@ const RelatedMedia = () => {
   const turnsData: Array<TurnData> = JFile.analysis;
   const currentData = turnsData[currentTurn] ?? null;
   const nextData: TurnData | null = turnsData[currentTurn + 1] || null;
-  const cumulativeScoreKH = getCumulativeScoreKH();
-  const cumulativeScoreDT = getCumulativeScoreDT();
   const scoreForCurrentTurn = currentData.score;
   const nextTurnText =
     nextData && nextData.analysis.claims.length > 0
       ? nextData.analysis.claims[0].text
       : "No next turn text available";
 
-  useEffect(() => {
-    fetch("/api/media-items")
-      .then((response) => response.json())
-      .then((data) => setMediaItems(data))
-      .catch((error) => console.error("Error fetching media items:", error));
-  }, []);
-
-  // Functions to calculate scores
-  function getCumulativeScoreKH() {
-    return (
-      turnsData
-        .filter((turn) => turn.speaker_name === "Kamala Harris")
-        .find((turn) => turn.turn_number === currentData.turn_number)
-        ?.cumulative_score || 0
-    );
-  }
-
-  function getCumulativeScoreDT() {
-    return (
-      turnsData
-        .filter((turn) => turn.speaker_name === "Donald Trump")
-        .find((turn) => turn.turn_number === currentData.turn_number)
-        ?.cumulative_score || 0
-    );
-  }
+  // useEffect(() => {
+  //   fetch("/api/media-items")
+  //     .then((response) => response.json())
+  //     .then((data) => setMediaItems(data))
+  //     .catch((error) => console.error("Error fetching media items:", error));
+  // }, []);
 
   // UI Handlers
-  const handleExpandClick = () => {
-    setTranscriptExpanded((prevState) => !prevState);
-  };
+  // const handleExpandClick = () => {
+  //   setTranscriptExpanded((prevState) => !prevState);
+  // };
 
-  const handleSearchBarClick = () => {
-    setSearchBarExpanded(true);
-  };
+  // const handleSearchBarClick = () => {
+  //   setSearchBarExpanded(true);
+  // };
 
-  const handleClearSearch = () => {
-    setSearchInput("");
-    setSearchMode(false);
-    setSearchBarExpanded(false);
-  };
+  // const handleClearSearch = () => {
+  //   setSearchInput("");
+  //   setSearchMode(false);
+  //   setSearchBarExpanded(false);
+  // };
 
   const toggleSearchTab = () => {
     setInboxOpen(!isInboxOpen);
@@ -112,29 +92,6 @@ const RelatedMedia = () => {
 
   const toggleTranscript = () => {
     setTranscriptOpen(!isTranscriptOpen);
-  };
-
-  // Search Handlers
-  const handleToggleInbox = () => {
-    setInboxOpen((prev) => !prev);
-    setFetchOpen(false); // Close fetch when inbox is opened
-    setSearchMode(false);
-  };
-
-  const handleToggleFetch = () => {
-    setFetchOpen((prev) => !prev);
-    setInboxOpen(false); // Close inbox when fetch is opened
-    setSearchMode(false);
-  };
-
-  const handleSearchClick = () => {
-    setSearchMode(true);
-    setInboxOpen(false);
-    setFetchOpen(false);
-  };
-
-  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
   };
 
   // Audio Handlers
@@ -177,19 +134,6 @@ const RelatedMedia = () => {
     if (currentTurn > 0) {
       setCurrentTurn(currentTurn - 1);
       setIsPlaying(false);
-    }
-  };
-
-  // Touch Handlers for Swipe Gestures
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    const clientY = e.targetTouches[0].clientY;
-    setTouchStart(clientY);
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
-    setTouchEnd(e.changedTouches[0].clientY);
-    if (touchStart - touchEnd > 50) {
-      setTranscriptOpen(true);
     }
   };
 
