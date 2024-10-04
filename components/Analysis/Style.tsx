@@ -48,7 +48,7 @@ const Style: React.FC<AnalysisProps> = ({
   isModerator,
   turnNumber,
 }) => {
-  const [activeTab, setActiveTab] = useState<string>("toneAndDemeanor");
+  const [activeTab, setActiveTab] = useState<string>("summary");
 
   // Access the correct turn data from the StyleData array using turnNumber
   const turnData = StyleData[turnNumber - 1]; // Adjust for 0-based indexing

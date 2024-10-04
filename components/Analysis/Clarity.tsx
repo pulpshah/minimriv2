@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { RadarChart } from "../ChartData";
 import { ClarityChart } from "../Chart/Clarity.jsx";
 import ClarityData from '@/public/data/Clarity.json';
@@ -42,10 +42,11 @@ const Clarity: React.FC<AnalysisProps> = ({
   isModerator,
   turnNumber,
 }) => {
-  const [activeTab, setActiveTab] = useState<string>("explicitness");
+  const [activeTab, setActiveTab] = useState<string>("summary");
 
   // Extract data for the given turn number
   const turnData = (ClarityData as ClarityDataArrayType)[turnNumber];
+  const memoizedChart = useMemo(() => <ClarityChart turnNum={turnNumber} />, [turnNumber]);
 
   // Helper function to get the highest scoring subcategory's reasoning
   const getHighestReasoning = (categoryKeys: (keyof ClarityDataType)[]) => {
@@ -89,6 +90,13 @@ const Clarity: React.FC<AnalysisProps> = ({
     "ConsistencyOfIdeas"
   ];
 
+  const explicitnessReasoning = getHighestReasoning(explicitnessKeys);
+  const concisionReasoning = getHighestReasoning(concisionKeys);
+  const focusReasoning = getHighestReasoning(focusKeys);
+  const cohesionReasoning = getHighestReasoning(cohesionKeys);
+  const coherenceReasoning = getHighestReasoning(coherenceKeys);
+
+
   return (
     <div className="analysis grid grid-cols-1 w-full h-fit gap-[25px]">
       {/* Appeal content and score */}
@@ -108,10 +116,9 @@ const Clarity: React.FC<AnalysisProps> = ({
             persuasive impact on the audience.
           </div>
         </div>
-        {showChart && (
           <div className="analysis-content grid grid-cols-1 xl:grid-cols-2 w-full rounded-[20px] black-card h-fit !bg-[url('/bg/clarity.webp')] !bg-cover !bg-center p-[10px] py-4 md:p-[20px]">
             <div className="chart scale-[118%] ps-6 p-20 box w-full ">
-              <ClarityChart turnNum={turnNumber} />
+              {memoizedChart}
             </div>
             <div className="textual-annotation box flex flex-col gap-[20px]">
               
@@ -123,7 +130,7 @@ const Clarity: React.FC<AnalysisProps> = ({
                         Summary
                       </div>
                       <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                      {`${explicitnessReasoning} ${concisionReasoning} ${focusReasoning} ${cohesionReasoning} ${coherenceReasoning}`}
                       </div>
                     </div>
                   </div>
@@ -137,7 +144,7 @@ const Clarity: React.FC<AnalysisProps> = ({
                         Explicitness
                       </div>
                       <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                        {getHighestReasoning(explicitnessKeys)}
+                        {explicitnessReasoning}
                       </div>
                     </div>
                   </div>
@@ -151,7 +158,7 @@ const Clarity: React.FC<AnalysisProps> = ({
                         Concision
                       </div>
                       <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                        {getHighestReasoning(concisionKeys)}
+                        {concisionReasoning}
                       </div>
                     </div>
                   </div>
@@ -165,7 +172,7 @@ const Clarity: React.FC<AnalysisProps> = ({
                         Focus
                       </div>
                       <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                        {getHighestReasoning(focusKeys)}
+                        {focusReasoning}
                       </div>
                     </div>
                   </div>
@@ -179,7 +186,7 @@ const Clarity: React.FC<AnalysisProps> = ({
                         Cohesion
                       </div>
                       <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                        {getHighestReasoning(cohesionKeys)}
+                        {cohesionReasoning}
                       </div>
                     </div>
                   </div>
@@ -193,7 +200,7 @@ const Clarity: React.FC<AnalysisProps> = ({
                         Coherence
                       </div>
                       <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                        {getHighestReasoning(coherenceKeys)}
+                        {coherenceReasoning}
                       </div>
                     </div>
                   </div>
@@ -255,7 +262,6 @@ const Clarity: React.FC<AnalysisProps> = ({
         </div>
             </div>
           </div>
-        )}
         
       </div>
     </div>
