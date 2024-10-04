@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { RadarChart } from "../ChartData";
 import { StyleChart } from "../Chart/Style.jsx";
-import StyleData from "@/public/data/Style.json"
+import StyleData from "@/public/data/Style.json";
 
 interface AnalysisProps {
   ethosScore: number;
@@ -54,7 +54,9 @@ const Style: React.FC<AnalysisProps> = ({
   const turnData = StyleData[turnNumber - 1]; // Adjust for 0-based indexing
 
   // Helper function to get the correct Style object
-  const getStyleObject = (style: StyleCategory | StyleCategory[]): StyleCategory => {
+  const getStyleObject = (
+    style: StyleCategory | StyleCategory[]
+  ): StyleCategory => {
     return Array.isArray(style) ? style[0] : style;
   };
 
@@ -119,7 +121,8 @@ const Style: React.FC<AnalysisProps> = ({
   }, [turnData]);
 
   // Summary reasoning concatenating tone and rhetorical devices reasoning
-  const summaryReasoning = `${highestToneReasoning} ${highestRhetoricalDevicesReasoning}`.trim();
+  const summaryReasoning =
+    `${highestToneReasoning} ${highestRhetoricalDevicesReasoning}`.trim();
 
   return (
     <div className="analysis grid grid-cols-1 w-full h-fit gap-[25px]">
@@ -146,87 +149,81 @@ const Style: React.FC<AnalysisProps> = ({
               <StyleChart turnNum={turnNumber} />
             </div>
             <div className="textual-annotation box flex flex-col gap-[20px]">
-              
               {activeTab === "summary" && (
                 <div className="summary box ">
-
                   <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
-                  <div className="reasoning w-full text-left">
-                    <div className="text-lg text-center md:text-xl">
-                      Summary
+                    <div className="reasoning w-full text-left">
+                      <div className="text-lg text-center md:text-xl">
+                        Summary
+                      </div>
+                      <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
+                        {summaryReasoning}
+                      </div>
                     </div>
-                    <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                    {summaryReasoning}
-                    </div>
-                  </div>
                   </div>
                 </div>
               )}
               {activeTab === "toneAndDemeanor" && (
                 <div className="toneAndDemeanor box">
-
                   <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
-                  <div className="reasoning w-full text-left">
-                    <div className="text-lg text-center md:text-xl">
-                      Tone and Demeanor
+                    <div className="reasoning w-full text-left">
+                      <div className="text-lg text-center md:text-xl">
+                        Tone and Demeanor
+                      </div>
+                      <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
+                        {highestToneReasoning}
+                      </div>
                     </div>
-                    <div className="reasoning poppins text-sm md:text-[14px] md:text-md">
-                    {highestToneReasoning}
-                    </div>
-                  </div>
                   </div>
                 </div>
               )}
               {activeTab === "rhetoricalDevices" && (
                 <div className="rhetoricalDevices box">
-                  
                   <div className="!justify-start black-card box rounded-[20px] md:rounded-[20px] p-[10px] md:p-[25px] flex-col">
-                  <div className="reasoning w-full text-left">
-                    <div className="text-lg text-center md:text-xl">
-                      Use of Rhetorical Devices
-                    </div>
-                    <div className="reasoning poppins  text-sm md:text-[14px] md:text-md">
-                    {highestRhetoricalDevicesReasoning}
+                    <div className="reasoning w-full text-left">
+                      <div className="text-lg text-center md:text-xl">
+                        Use of Rhetorical Devices
+                      </div>
+                      <div className="reasoning poppins  text-sm md:text-[14px] md:text-md">
+                        {highestRhetoricalDevicesReasoning}
+                      </div>
                     </div>
                   </div>
-                  </div>
-
                 </div>
               )}
               <div
-          className={`tabs flex w-fit !shadow-none text-lg md:text-xl h-fit px-[12px] py-[1px] items-center rounded-full mx-auto gap-2 !bg-transparent ${
-            isModerator ? "white-opaque" : "black-card"
-          }`}
-        >
-          <button
-            className={`px-[10px] py-[1px] rounded-[20px] tab-btn ${
-              activeTab === "summary" ? "active" : ""
-            }`}
-            onClick={() => setActiveTab("summary")}
-          >
-            1
-          </button>
-          <button
-            className={`px-[10px] py-[1px] rounded-[20px] tab-btn ${
-              activeTab === "toneAndDemeanor" ? "active" : ""
-            }`}
-            onClick={() => setActiveTab("toneAndDemeanor")}
-          >
-            2
-          </button>
-          <button
-            className={`px-[10px] py-[1px] rounded-[20px] tab-btn ${
-              activeTab === "rhetoricalDevices" ? "active" : ""
-            }`}
-            onClick={() => setActiveTab("rhetoricalDevices")}
-          >
-            3
-          </button>
-        </div>
+                className={`tabs flex w-fit !shadow-none text-lg md:text-xl h-fit px-[12px] py-[1px] items-center rounded-full mx-auto gap-2 !bg-transparent ${
+                  isModerator ? "white-opaque" : "black-card"
+                }`}
+              >
+                <button
+                  className={`px-[10px] py-[1px] rounded-[20px] tab-btn ${
+                    activeTab === "summary" ? "active" : ""
+                  }`}
+                  onClick={() => setActiveTab("summary")}
+                >
+                  1
+                </button>
+                <button
+                  className={`px-[10px] py-[1px] rounded-[20px] tab-btn ${
+                    activeTab === "toneAndDemeanor" ? "active" : ""
+                  }`}
+                  onClick={() => setActiveTab("toneAndDemeanor")}
+                >
+                  2
+                </button>
+                <button
+                  className={`px-[10px] py-[1px] rounded-[20px] tab-btn ${
+                    activeTab === "rhetoricalDevices" ? "active" : ""
+                  }`}
+                  onClick={() => setActiveTab("rhetoricalDevices")}
+                >
+                  3
+                </button>
+              </div>
             </div>
           </div>
         )}
-        
       </div>
     </div>
   );

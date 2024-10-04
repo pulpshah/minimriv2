@@ -251,19 +251,19 @@ const HomePage = () => {
     if (audioRef.current) {
       // Pause any currently playing audio before starting a new one
       audioRef.current.pause();
-  
+
       if (turnNumber !== null) {
         // Adjust `turnNumber` to reflect the correct turn
         const actualTurnNumber = turnNumber - 10;
-  
+
         setCurrentPlayingTurn(turnNumber);
         setCurrentTurn(turnNumber); // Update current turn for the top-pill
         setIsPlaying(true);
-  
+
         // Set the new audio source using the S3 URL
         const audioFile = `https://harris-trump-debate-audio.s3.us-east-2.amazonaws.com/turn${actualTurnNumber}.wav`;
         audioRef.current.src = audioFile;
-  
+
         // Play the audio once it can play
         audioRef.current.oncanplay = () => {
           audioRef.current
@@ -481,66 +481,68 @@ const HomePage = () => {
       >
         <div className="feed w-full h-fit z-40 items-center justify-center flex">
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
-            <div className="box bg-[url('/bg/starting.webp')] bg-cover bg-center gap-[15px] md:gap-[25px] flex-col p-[10px] py-[20px]  md:px-[20px] !justify-start rounded-[20px] min-h-fit h-full">
-                  <div className="box flex-col gap-[24px]">
-                    <div className="">
-                    <div className="text-4xl md:text-6xl text-center">
-                     presidential debate
-
-                    </div>
-                    <div className="text-5xl md:text-7xl text-center">
-                     2024
-
-                    </div>
-                    </div>
-            
-              <div className="candidates gap-[20px] items-center flex flex-col md:flex-row justify-between w-full">
-                
-                <div className="kamala">
-                  <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black winner h-fit">
+          <div className="box">
                     <Image
-                      src={getSpeakerImage("Kamala Harris")}
-                      alt="Speaker Image"
-                      width={180}
-                      height={41}
-                      className="block mx-auto"
-                    />
+                    src={"/logo.svg"}
+                    alt="next"
+                    height={60}
+                    width={110}
+                  /></div>
+            <div className="box bg-[url('/bg/total.webp')] bg-cover bg-center gap-[15px] md:gap-[25px] flex-col p-[10px] py-[20px]  md:px-[20px] !justify-start rounded-[20px] min-h-fit h-full">
+              <div className="box flex-col gap-[24px]">
+                <div className="">
+                  <div className="text-4xl md:text-6xl text-white text-center">
+                    presidential debate
                   </div>
-                  <div className="text-center text-base md:text-lg poppins pt-1.5">
-                    Kamala Harris
-                  </div>
+                  <div className="text-5xl md:text-7xl text-center text-white">2024</div>
                 </div>
-                
-       
-                   
 
-    
-                    <Image
-                              src={"icons/vote-icon.svg"}
-                              alt="next"
-                              height={60}
-                              width={100}
-                              />
-
-                <div className="trump">
-                  <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black">
-                    <Image
-                      src={getSpeakerImage("Donald Trump")}
-                      alt="Speaker Image"
-                      width={180}
-                      height={41}
-                      className="block mx-auto"
+                <div className="candidates max-w-[1000px] pb-3 gap-[0px] mt-[40px] md:gap-[20px] !items-center flex flex-col xl:flex-row justify-between w-full">
+                  <div className="kamala">
+                    <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black winner h-fit">
+                      <Image
+                        src={getSpeakerImage("Kamala Harris")}
+                        alt="Speaker Image"
+                        width={180}
+                        height={41}
+                        className="block mx-auto w-[132.5px] md:w-[180px]"
                       />
+                    </div>
+                    <div className="text-center text-base md:text-lg poppins pt-1.5 text-white">
+                      Kamala Harris
+                    </div>
                   </div>
-                  <div className="text-center text-base md:text-lg poppins pt-1.5">
-                    Donald Trump
+                  
+                  <div className="flex box !justify-between max-w-[300px] md:max-w-[450px] py-8 xl:py-0">
+                    <div className="score1 poppins text-4xl md:text-6xl text-white">1000</div>
+
+                  <Image
+                    src={"icons/vote-icon.svg"}
+                    alt="next"
+                    height={60}
+                    width={90}
+                  />
+
+                  <div className="score2 poppins text-4xl md:text-6xl text-white">1000</div>
+
+
                   </div>
-                      </div>
-            
+
+                  <div className="trump">
+                    <div className="rounded-[40px] overflow-hidden w-fit md:w-fit mx-auto border-[5px] black-opaque border-black">
+                      <Image
+                        src={getSpeakerImage("Donald Trump")}
+                        alt="Speaker Image"
+                        width={180}
+                        height={41}
+                        className="block flex-shrink-0 mx-auto w-[132.5px] md:w-[180px]"
+                      />
+                    </div>
+                    <div className="text-center text-base md:text-lg poppins pt-1.5 text-white">
+                      Donald Trump
+                    </div>
+                  </div>
                 </div>
-
-                
-
               </div>
             </div>
             {turnsData && turnsData.length > 0 ? (

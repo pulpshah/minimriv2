@@ -314,7 +314,7 @@ const RelatedMedia = () => {
           <div className="grid grid-cols-1 w-full h-fit gap-[24px]">
             <div className="flex gap-5 items-center box">
               <h1 className="text-xl md:text-2xl text-center">related media</h1>
-                <p className="rounded-[20px] items-center text-xl md:text-2xl flex gap-1 black-opaque px-[11px] py-1">
+              <p className="rounded-[20px] items-center text-xl md:text-2xl flex gap-1 black-opaque px-[11px] py-1">
                 Turn <div className="">1</div>
               </p>
             </div>
@@ -431,7 +431,6 @@ const RelatedMedia = () => {
                 <div className="flex flex-row items-center justify-between w-full">
                   <div className="rounded-[20px] poppins px-[10px]">
                     {currentData?.turn_category || "no category"}
-
                   </div>
                   <p className="rounded-[20px] flex gap-1 white-opaque px-[10px]">
                     Turn <div className="">1</div>
@@ -457,8 +456,6 @@ const RelatedMedia = () => {
         <div className="navbar fixed bottom-0 sm:bottom-2.5 w-full sm:max-w-[500px] z-40 px-[0px] sm:px-[20px]">
           <NavBar onSearchClick={toggleSearchTab} />
         </div>
-
-       
       </div>
     </div>
   );
