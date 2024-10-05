@@ -177,9 +177,12 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 isModerator ? "text-white" : ""
               }`}
             >
-              <div className="text-white text-2xl md:text-3xl topic-outline">
-                {topic}
-              </div>
+<div className="text-white text-2xl md:text-3xl topic-outline">
+  <span>{topic.slice(0, -2)}</span> {/* Render the main part of the headline */}
+  <span className="emoji">
+    {topic.slice(-2)} {/* Render only the emoji with specific styles */}
+  </span>
+</div>
             </div>
           </div>
         </div>

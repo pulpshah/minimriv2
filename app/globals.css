@@ -175,6 +175,27 @@ html, body {
   animation: AnimationName 5s ease infinite;
 }
 
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.emoji {
+  display: inline-block;
+  filter: none !important; /* Remove any inherited effects */
+  -webkit-background-clip: text !important; /* Ensure text is visible */
+  background: none !important; /* Remove background settings */
+  color: initial !important; /* Reset to the default color */
+  -webkit-text-fill-color: initial !important; /* Remove any text fill color settings */
+  font-size: 1em; /* Increase the size slightly */
+  animation: pulse 2s infinite ease-in-out; /* Apply the pulsating animation */
+}
+
+
 @-webkit-keyframes AnimationName {
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
