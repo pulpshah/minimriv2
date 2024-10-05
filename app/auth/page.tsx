@@ -54,7 +54,7 @@ export default function Home() {
               alt="Logo"
               width={150}
               height={41}
-              className="block mx-auto"
+              className="block mx-auto invert"
             />
           </div>
           <div className="text text-white text-[20px] text-center">

@@ -177,7 +177,7 @@ const FeedItem: React.FC<FeedItemProps> = ({
                 isModerator ? "text-white" : ""
               }`}
             >
-              <div className="text-white topic-outline">
+              <div className="text-white text-2xl md:text-3xl topic-outline">
                 {topic}
               </div>
             </div>
