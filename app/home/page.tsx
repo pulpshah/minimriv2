@@ -7,7 +7,7 @@ import SearchBar from "@/components/SearchBar";
 import { NavBar } from "@/components/NavBar";
 import ScoreBox from "@/components/ScoreBox";
 import { motion, useAnimation, PanInfo } from 'framer-motion';
-import ThinkingScores from '@/public/data/ThinkingScores.json';
+import Headlines from '@/public/data/Style+Headlines.json'
 
 type TurnData = {
   turn: number;
@@ -148,9 +148,9 @@ const HomePage = () => {
         (turn: TurnData) => turn.turn === turnNumber
       );
   
-      // Find the headline from ThinkingScores for the current turn
-      const thinkingScore = ThinkingScores.thinking_score.find(
-        (score) => score?.turn_index === turnNumber
+      // Find the headline from Headlines for the current turn
+      const headlineData = Headlines.find(
+        (headline) => headline.turn_index === turnNumber
       );
   
       if (turnData) {
@@ -159,7 +159,7 @@ const HomePage = () => {
           turn: turnData.turn,
           speaker: turnData.speaker,
           role: turnData.role,
-          headline: thinkingScore?.headline || "No headline available",
+          headline: headlineData?.style_headline || "No headline available",
           rawTotalScore: turnData.rawTotalScore || 0,
         };
   
@@ -574,9 +574,8 @@ const HomePage = () => {
   turnsData
     .filter((turn) => turn.turn >= 11)
     .map((turn: TurnData, index: number) => {
-      // Find the corresponding headline from thinkingScores.json
-      const thinkingScore = ThinkingScores.thinking_score.find(
-        (score) => score?.turn_index === turn.turn
+      const headlineData = Headlines.find(
+        (headline) => headline.turn_index === turn.turn
       );
 
       return (
@@ -584,7 +583,7 @@ const HomePage = () => {
           key={index}
           speaker={turn.speaker}
           role={turn.role}
-          topic={thinkingScore?.headline || "No Topic"}
+          topic={headlineData?.style_headline || "No Topic"}
           turn_number={turn.turn}
           turn_category={turn.role || "segment"}
           title={turn.role || "segment"}
